@@ -9,6 +9,25 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Game_stash">
+        <activity android:name=".errorPage"></activity>
+        <activity android:name=".profile" />
+        <activity android:name=".APIsGameDetails" />
+        <activity
+            android:name=".searchResults"
+            android:label="@string/title_activity_search_results"
+            android:theme="@style/Theme.Game_stash.NoActionBar" />
+        <activity android:name=".gameDisplay" />
+        <activity android:name=".addGameManually" />
+        <activity android:name=".addGameSearch" />
+        <activity android:name=".gameEditor" />
+        <activity
+            android:name=".editGamesList"
+            android:label="@string/title_activity_edit_games_list"
+            android:theme="@style/Theme.Game_stash.NoActionBar" />
+        <activity
+            android:name=".usersListOfGames"
+            android:label="@string/title_activity_users_list_of_games"
+            android:theme="@style/Theme.Game_stash.NoActionBar" />
         <activity
             android:name=".MainActivity"
             android:label="@string/app_name"
