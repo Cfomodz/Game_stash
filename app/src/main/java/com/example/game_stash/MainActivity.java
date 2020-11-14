@@ -23,13 +23,22 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         FloatingActionButton fab = findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
+        fab.setOnClickListener(view -> Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+                .setAction("Action", null).show());
+
+        // TEST AREA START // // TEST AREA START // // TEST AREA START //
+        // TEST AREA START // // TEST AREA START // // TEST AREA START //
+        // TEST AREA START // // TEST AREA START // // TEST AREA START //
+
+        // Use your function below to test stuff you may need to test...
+        testStuff4Lee();
+        testStuff4Daren();
+        testStuff4David();
+        testStuff4Megan();
+        //  TEST AREA END  // //  TEST AREA END  // //  TEST AREA END  //
+        //  TEST AREA END  // //  TEST AREA END  // //  TEST AREA END  //
+        //  TEST AREA END  // //  TEST AREA END  // //  TEST AREA END  //
+
     }
 
     @Override
@@ -52,5 +61,21 @@ public class MainActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    public void testStuff4Lee() {
+        //TEST AREA for Lee
+    }
+
+    public void testStuff4Daren() {
+        //TEST AREA for Daren
+    }
+
+    public void testStuff4David() {
+        //TEST AREA for David
+    }
+
+    public void testStuff4Megan() {
+        //TEST AREA for Megan
     }
 }
