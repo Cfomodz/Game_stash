@@ -77,7 +77,7 @@ public class VMainActivity extends AppCompatActivity {
         String test = new MAPIQueryURL("", "", "Certifiable Games", -1, 10,-1,-1).getUrl();
         Log.d(TAG_B, "URL: " + test);
 
-        MAPIConnection connection = new MAPIConnection(test);
+        MAPIConnection connection = new MAPIConnection(null, test);
         Log.d(TAG_B, "Beginning MAPI CONNECTION");
         Thread thread = new Thread(connection);
         thread.start();

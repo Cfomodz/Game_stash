@@ -4,18 +4,21 @@ import android.util.Log;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.lang.ref.WeakReference;
 import java.net.URL;
 import java.net.URLConnection;
 import java.util.Scanner;
 
 public class MAPIConnection implements Runnable {
     private static final String TAG = "Msg_MDAPIConnection:";
+    private WeakReference<IPresenter> presenterRef;
     private String url;
     private URLConnection connection = null;
     private InputStream response = null;
     private String apiResponse;
 
-    public MAPIConnection(String url) {
+    public MAPIConnection(IPresenter presenter, String url) {
+        this.presenterRef = new WeakReference<IPresenter>(presenter);
         this.url = url;
     }
 
@@ -37,5 +40,12 @@ public class MAPIConnection implements Runnable {
         }
         MDataHolder.setReturnApiSTR(this.apiResponse);
         Log.d(TAG, MDataHolder.getReturnApiSTR());
+
+        //
+        final IPresenter presenter = presenterRef.get();
+
+        if (presenter != null) {
+            //DO STUFF W/PRESENTER LIKE TELL IT THAT THE INFO HAS BEEN UPDATED...
+        }
     }
 }
