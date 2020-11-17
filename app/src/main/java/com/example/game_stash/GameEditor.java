@@ -4,7 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
-public class gameEditor extends AppCompatActivity {
+public class GameEditor extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

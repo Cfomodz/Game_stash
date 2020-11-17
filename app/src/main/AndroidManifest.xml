@@ -9,23 +9,23 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Game_stash">
-        <activity android:name=".errorPage"></activity>
-        <activity android:name=".profile" />
+        <activity android:name=".ErrorPage"></activity>
+        <activity android:name=".Profile" />
         <activity android:name=".APIsGameDetails" />
         <activity
-            android:name=".searchResults"
+            android:name=".SearchResults"
             android:label="@string/title_activity_search_results"
             android:theme="@style/Theme.Game_stash.NoActionBar" />
-        <activity android:name=".gameDisplay" />
-        <activity android:name=".addGameManually" />
-        <activity android:name=".addGameSearch" />
-        <activity android:name=".gameEditor" />
+        <activity android:name=".GameDisplay" />
+        <activity android:name=".AddGameManually" />
+        <activity android:name=".AddGameSearch" />
+        <activity android:name=".GameEditor" />
         <activity
-            android:name=".editGamesList"
+            android:name=".EditGamesList"
             android:label="@string/title_activity_edit_games_list"
             android:theme="@style/Theme.Game_stash.NoActionBar" />
         <activity
-            android:name=".usersListOfGames"
+            android:name=".UsersListOfGames"
             android:label="@string/title_activity_users_list_of_games"
             android:theme="@style/Theme.Game_stash.NoActionBar" />
         <activity
