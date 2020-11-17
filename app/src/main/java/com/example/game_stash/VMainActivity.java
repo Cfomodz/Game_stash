@@ -1,5 +1,6 @@
 package com.example.game_stash;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -12,6 +13,7 @@ import android.util.Log;
 
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 
 public class VMainActivity extends AppCompatActivity {
 
@@ -76,6 +78,12 @@ public class VMainActivity extends AppCompatActivity {
 
     public void testStuff4David() {
         //TEST AREA for David
+
+    }
+
+    public void addGameManually(View view){
+        Intent intent = new Intent(this, VAddGameManually.class);
+        startActivity(intent);
     }
 
     public void testStuff4Megan() {
