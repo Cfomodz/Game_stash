@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MAPIQueryURL {
+    private static final String TAG = "Msg_MAPIQueryURL:";
     private final String apiURL = "https://api.boardgameatlas.com/api/";
     private final String apiFunction = "search?";
     private final String apiClientID = "&client_id=KsnYD4Bc2j";

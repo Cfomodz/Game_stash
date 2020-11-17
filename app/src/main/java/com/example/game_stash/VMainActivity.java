@@ -14,6 +14,12 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 public class VMainActivity extends AppCompatActivity {
+    private static final String TAG = "Msg_VMainActivity:";
+
+    private static final String TAG_B = "VMainActivity_B:";
+    private static final String TAG_T = "VMainActivity_T:";
+    private static final String TAG_M = "VMainActivity_M:";
+    private static final String TAG_A = "VMainActivity_A:";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,9 +71,14 @@ public class VMainActivity extends AppCompatActivity {
 
     public void testStuff4Lee() {
         //TEST AREA for Lee
-        Log.d("Msg_Lee:", "Beginning MAPI CONNECTION");
+        Log.d(TAG_B, "Building API Query URL");
         String test = new MAPIQueryURL("", "", "Certifiable Games", -1, 10,-1,-1).getUrl();
-        Log.d("Msg_Lee:", test);
+        Log.d(TAG_B, "URL: " + test);
+
+        MAPIConnection connection = new MAPIConnection(test);
+        Log.d(TAG_B, "Beginning MAPI CONNECTION");
+        Thread thread = new Thread(connection);
+        thread.start();
     }
 
     public void testStuff4Daren() {
