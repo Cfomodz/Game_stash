@@ -9,27 +9,27 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Game_stash">
-        <activity android:name=".ErrorPage"></activity>
-        <activity android:name=".Profile" />
-        <activity android:name=".APIsGameDetails" />
+        <activity android:name=".VErrorPage"></activity>
+        <activity android:name=".VProfile" />
+        <activity android:name=".VAPIsGameDetails" />
         <activity
-            android:name=".SearchResults"
+            android:name=".VSearchResults"
             android:label="@string/title_activity_search_results"
             android:theme="@style/Theme.Game_stash.NoActionBar" />
-        <activity android:name=".GameDisplay" />
-        <activity android:name=".AddGameManually" />
-        <activity android:name=".AddGameSearch" />
-        <activity android:name=".GameEditor" />
+        <activity android:name=".VGameDisplay" />
+        <activity android:name=".VAddGameManually" />
+        <activity android:name=".VAddGameSearch" />
+        <activity android:name=".VGameEditor" />
         <activity
-            android:name=".EditGamesList"
+            android:name=".VEditGamesList"
             android:label="@string/title_activity_edit_games_list"
             android:theme="@style/Theme.Game_stash.NoActionBar" />
         <activity
-            android:name=".UsersListOfGames"
+            android:name=".VUsersListOfGames"
             android:label="@string/title_activity_users_list_of_games"
             android:theme="@style/Theme.Game_stash.NoActionBar" />
         <activity
-            android:name=".MainActivity"
+            android:name=".VMainActivity"
             android:label="@string/app_name"
             android:theme="@style/Theme.Game_stash.NoActionBar">
             <intent-filter>

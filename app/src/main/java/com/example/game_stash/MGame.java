@@ -2,7 +2,7 @@ package com.example.game_stash;
 
 import java.util.Map;
 
-public class Game {
+public class MGame {
     /**
      * Member variables.
      */
@@ -41,16 +41,16 @@ public class Game {
     // Constructors.
 
     /** This constructor will likely create a new game using GSON from API data. */
-    public Game(){}
+    public MGame(){}
 
     /**
      * Use this constructor to create a game from API data.
      * Most likely not used.
      */
-    public Game(String id, String name, int yearPublished, int minPlayers, int maxPlayers,
-                int minPlayTime, int maxPlayTime, int minAge, String description,
-                String thumbURL, String imageURL, String url, float price, float msrp,
-                String primaryPublisher, Map<String, String> mechanics) {
+    public MGame(String id, String name, int yearPublished, int minPlayers, int maxPlayers,
+                 int minPlayTime, int maxPlayTime, int minAge, String description,
+                 String thumbURL, String imageURL, String url, float price, float msrp,
+                 String primaryPublisher, Map<String, String> mechanics) {
         this.id = id;
         this.name = name;
         this.yearPublished = yearPublished;
@@ -72,10 +72,10 @@ public class Game {
     /**
      * Use this to constructor to create a custom game.
      */
-    public Game(String editedName, int editedYearPublished, int editedMinPlayers,
-                int editedMaxPlayers, int editedMinPlayTime, int editedMaxPlayTime,
-                int editedMinAge, String editedDescription, String editedThumbURL,
-                String editedImageURL, String editedPrimaryPublisher) {
+    public MGame(String editedName, int editedYearPublished, int editedMinPlayers,
+                 int editedMaxPlayers, int editedMinPlayTime, int editedMaxPlayTime,
+                 int editedMinAge, String editedDescription, String editedThumbURL,
+                 String editedImageURL, String editedPrimaryPublisher) {
         this.editedName = editedName;
         this.editedYearPublished = editedYearPublished;
         this.editedMinPlayers = editedMinPlayers;
