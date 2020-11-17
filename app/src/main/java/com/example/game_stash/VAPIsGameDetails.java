@@ -4,11 +4,11 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
-public class gameEditor extends AppCompatActivity {
+public class VAPIsGameDetails extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_game_editor);
+        setContentView(R.layout.activity_a_p_is_game_details);
     }
 }

@@ -11,12 +11,12 @@ import androidx.appcompat.widget.Toolbar;
 
 import android.view.View;
 
-public class usersListOfGames extends AppCompatActivity {
+public class VEditGamesList extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_users_list_of_games);
+        setContentView(R.layout.activity_edit_games_list);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         CollapsingToolbarLayout toolBarLayout = (CollapsingToolbarLayout) findViewById(R.id.toolbar_layout);

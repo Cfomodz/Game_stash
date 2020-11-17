@@ -8,12 +8,12 @@ import com.google.android.material.snackbar.Snackbar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
-import android.view.View;
+import android.util.Log;
 
 import android.view.Menu;
 import android.view.MenuItem;
 
-public class MainActivity extends AppCompatActivity {
+public class VMainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,13 +23,22 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         FloatingActionButton fab = findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
+        fab.setOnClickListener(view -> Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+                .setAction("Action", null).show());
+
+        // TEST AREA START // // TEST AREA START // // TEST AREA START //
+        // TEST AREA START // // TEST AREA START // // TEST AREA START //
+        // TEST AREA START // // TEST AREA START // // TEST AREA START //
+
+        // Use your function below to test stuff you may need to test...
+        testStuff4Lee();
+        testStuff4Daren();
+        testStuff4David();
+        testStuff4Megan();
+        //  TEST AREA END  // //  TEST AREA END  // //  TEST AREA END  //
+        //  TEST AREA END  // //  TEST AREA END  // //  TEST AREA END  //
+        //  TEST AREA END  // //  TEST AREA END  // //  TEST AREA END  //
+
     }
 
     @Override
@@ -52,5 +61,24 @@ public class MainActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    public void testStuff4Lee() {
+        //TEST AREA for Lee
+        Log.d("Msg_Lee:", "Beginning MAPI CONNECTION");
+        String test = new MAPIQueryURL("", "", "Certifiable Games", -1, 10,-1,-1).getUrl();
+        Log.d("Msg_Lee:", test);
+    }
+
+    public void testStuff4Daren() {
+        //TEST AREA for Daren
+    }
+
+    public void testStuff4David() {
+        //TEST AREA for David
+    }
+
+    public void testStuff4Megan() {
+        //TEST AREA for Megan
     }
 }

@@ -4,11 +4,11 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
-public class APIsGameDetails extends AppCompatActivity {
+public class VGameDisplay extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_a_p_is_game_details);
+        setContentView(R.layout.activity_game_display);
     }
 }
