@@ -46,6 +46,7 @@ public class MAPIConnection implements Runnable {
 
         if (presenter != null) {
             //DO STUFF W/PRESENTER LIKE TELL IT THAT THE INFO HAS BEEN UPDATED...
+            //Then let presenter validate the string and send it to MGSON Parser...
         }
     }
 }
