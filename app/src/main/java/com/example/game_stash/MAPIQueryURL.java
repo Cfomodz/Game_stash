@@ -62,14 +62,14 @@ public class MAPIQueryURL {
 
     private void setApiQuery() {
         List<String> queryList = new ArrayList<>();
-        if (this.gameIds.equals("")) {
+        if (!this.gameIds.equals("")) {
             queryList.add("ids=" + this.gameIds);
         }
-        if (this.gameName.equals("")) {
+        if (!this.gameName.equals("")) {
             queryList.add("name=" + this.gameName);
             queryList.add("fuzzy_match=true");
         }
-        if (this.gamePublisher.equals("")) {
+        if (!this.gamePublisher.equals("")) {
             queryList.add("publisher=" + this.gamePublisher);
         }
         if (this.gameMinPlayers > 0) {
