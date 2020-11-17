@@ -8,7 +8,7 @@ import com.google.android.material.snackbar.Snackbar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
-import android.view.View;
+import android.util.Log;
 
 import android.view.Menu;
 import android.view.MenuItem;
@@ -65,6 +65,9 @@ public class VMainActivity extends AppCompatActivity {
 
     public void testStuff4Lee() {
         //TEST AREA for Lee
+        Log.d("Msg_Lee:", "Beginning MAPI CONNECTION");
+        String test = new MAPIQueryURL("", "", "Certifiable Games", -1, 10,-1,-1).getUrl();
+        Log.d("Msg_Lee:", test);
     }
 
     public void testStuff4Daren() {
