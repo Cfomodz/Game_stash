@@ -21,9 +21,7 @@ public class VAddGameSearch extends AppCompatActivity {
         String search = editTextName.getText().toString();
 
         MDataHolder.setSearchSTR(search);
-        MDataHolder.setApiGameList(null);
-        MDataHolder.setHasBeenEditedAPIGameList();
-
+        
         Intent intent = new Intent(this, VAPISearchResults.class);
         startActivity(intent);
     }

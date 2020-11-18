@@ -20,6 +20,9 @@ class PAPISearchResults implements IPresenter {
             //New Search String available: run search, reset the flag
             Log.d(TAG, "New searchSTR");
 
+            //Reset game list...
+            MDataHolder.setApiGameList(null);
+
             //Run search
             this.doSearch(MDataHolder.getSearchSTR());
             //Reset the flag
@@ -39,8 +42,8 @@ class PAPISearchResults implements IPresenter {
             //New game list from the API available: update view, reset the flag
             Log.d(TAG, "New apiGameList");
 
-            //Update view adapter
-            if (masterRef.get() != null) {
+            //Update view adapter, unless the game list was set to null...
+            if (masterRef.get() != null & MDataHolder.getApiGameList() != null) {
                 masterRef.get().runOnUiThread(() -> masterRef.get().setListView());
             }
 

@@ -21,10 +21,12 @@ public class VAPISearchResults extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_api_search_results);
 
+        // Check for updates and reset flags before handling view...
+        this.presenter.processUpdates();
+
         if(MDataHolder.getApiGameList() != null) {
             this.setListView();
         }
-        this.presenter.processUpdates(); //check for updates and reset flags
     }
 
     public void setListView() {
