@@ -26,6 +26,7 @@
     <string name="profileInfo">Info</string>
     <string name="upload">Upload</string>
     <string name="backup">Backup</string>
+    <string name="search">Search</string>
 
 
     <string name="title_activity_users_list_of_games">ScrollingActivity</string>
