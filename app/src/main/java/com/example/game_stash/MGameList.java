@@ -6,5 +6,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MGameList {
-    public @SerializedName("games") List<MGame> gameList = new ArrayList<>();
+    private @SerializedName("games") List<MGame> gameList = new ArrayList<>();
+
+    /** This constructor will likely create a new game using GSON from API data. */
+    public MGameList(){}
+
+    public void setGameList(List<MGame> gameList) {this.gameList = gameList;}
+
+    public List<MGame> getGameList() {return gameList;}
 }

@@ -13,7 +13,7 @@ public class MGSONParser implements Runnable{
     private MGameList gameListObj;
 
     public MGSONParser(IPresenter presenter, String response) {
-        this.presenterRef = new WeakReference<IPresenter>(presenter);
+        this.presenterRef = new WeakReference<>(presenter);
         this.response = response;
     }
 
@@ -28,8 +28,8 @@ public class MGSONParser implements Runnable{
         this.gameListObj = MDataHolder.getApiGameList();
 
         //REMOVEABLE::NEED TO DEBUG ONLY...
-        if(!gameListObj.gameList.isEmpty()) {
-            Log.d(TAG, gameListObj.gameList.get(0).getName());
+        if(!gameListObj.getGameList().isEmpty()) {
+            Log.d(TAG, gameListObj.getGameList().get(0).getName());
         }
 
         //Notify Presenter of update...
