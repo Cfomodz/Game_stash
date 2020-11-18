@@ -15,12 +15,14 @@ public class VProfile extends AppCompatActivity {
     }
 
     public void upload(View view) {
-        Intent intent = new Intent(this, VAddGameManually.class);
+        Intent intent = new Intent(this, VMainActivity.class);
         startActivity(intent);
+        // for now this leads back to the main activity page
     }
 
     public void backup(View view) {
-        Intent intent = new Intent(this, VAddGameManually.class);
+        Intent intent = new Intent(this, VMainActivity.class);
         startActivity(intent);
+        // for now this leads back to the main activity page
     }
 }

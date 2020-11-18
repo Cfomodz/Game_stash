@@ -8,9 +8,12 @@
     <string name="previous">Previous</string>
 
     <string name="add_game_manually">Add Game Manually</string>
+    <string name="add_game_search">Add Game Search</string>
     <string name="add_game">Add Game</string>
 
     <string name="profile">Profile</string>
+    <string name="upload">Upload</string>
+    <string name="backup">Backup</string>
 
     <string name="hello_first_fragment">Hello first fragment</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
