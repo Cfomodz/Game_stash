@@ -6,8 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MGameList {
-    private static final String fName = VMainMenu.class.getSimpleName();
-    private static final String TAG = fName + ":";
+    private static final String TAG = MGameList.class.getSimpleName();
 
     private @SerializedName("games") List<MGame> gameList = new ArrayList<>();
 

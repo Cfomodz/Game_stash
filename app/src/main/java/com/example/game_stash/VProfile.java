@@ -7,8 +7,7 @@ import android.view.View;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class VProfile extends AppCompatActivity {
-    private static final String fName = VMainMenu.class.getSimpleName();
-    private static final String TAG = fName + ":";
+    private static final String TAG = VProfile.class.getSimpleName();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -5,8 +5,7 @@ import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class VAPIGameDetails extends AppCompatActivity {
-    private static final String fName = VMainMenu.class.getSimpleName();
-    private static final String TAG = fName + ":";
+    private static final String TAG = VAPIGameDetails.class.getSimpleName();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

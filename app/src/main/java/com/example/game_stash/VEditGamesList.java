@@ -11,8 +11,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 
 public class VEditGamesList extends AppCompatActivity {
-    private static final String fName = VMainMenu.class.getSimpleName();
-    private static final String TAG = fName + ":";
+    private static final String TAG = VEditGamesList.class.getSimpleName();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

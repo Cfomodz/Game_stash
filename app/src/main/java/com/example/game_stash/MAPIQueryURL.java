@@ -6,8 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MAPIQueryURL {
-    private static final String fName = VMainMenu.class.getSimpleName();
-    private static final String TAG = fName + ":";
+    private static final String TAG = MAPIQueryURL.class.getSimpleName();
 
     private final String apiURL = "https://api.boardgameatlas.com/api/";
     private final String apiFunction = "search?";

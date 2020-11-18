@@ -9,8 +9,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import java.util.List;
 
 public class VAPISearchResults extends AppCompatActivity {
-    private static final String fName = VMainMenu.class.getSimpleName();
-    private static final String TAG = fName + ":";
+    private static final String TAG = VAPISearchResults.class.getSimpleName();
 
     private IPresenter presenter = new PAPISearchResults(this);
 

@@ -13,13 +13,12 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 
 public class VMainMenu extends AppCompatActivity {
-    private static final String fName = VMainMenu.class.getSimpleName();
-    private static final String TAG = fName + ":";
+    private static final String TAG = VMainMenu.class.getSimpleName();
 
-    private static final String TAG_B = fName + "_B:";
-    private static final String TAG_T = fName + "_T:";
-    private static final String TAG_M = fName + "_M:";
-    private static final String TAG_A = fName + "_A:";
+    private static final String TAG_B = TAG + "_B:";
+    private static final String TAG_T = TAG + "_T:";
+    private static final String TAG_M = TAG + "_M:";
+    private static final String TAG_A = TAG + "_A:";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -8,8 +8,7 @@ import java.lang.ref.WeakReference;
 
 public class MDataHolder {
     // Member variables
-    private static final String fName = VMainMenu.class.getSimpleName();
-    private static final String TAG = fName + ":";
+    private static final String TAG = MDataHolder.class.getSimpleName();
 
     private static WeakReference<IPresenter> currPresenterRef;
     private static String searchSTR = "";

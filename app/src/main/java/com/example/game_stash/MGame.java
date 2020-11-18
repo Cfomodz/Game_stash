@@ -3,11 +3,8 @@ package com.example.game_stash;
 import com.google.gson.annotations.SerializedName;
 
 public class MGame {
-    /**
-     * Member variables.
-     */
-    private static final String fName = VMainMenu.class.getSimpleName();
-    private static final String TAG = fName + ":";
+    //Member variables.
+    private static final String TAG = MGame.class.getSimpleName();
 
     // API variables.
     private String id;
