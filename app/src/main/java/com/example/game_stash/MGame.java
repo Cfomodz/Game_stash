@@ -43,6 +43,11 @@ public class MGame {
     /** This constructor will likely create a new game using GSON from API data. */
     public MGame(){}
 
+    /** This constructor will be used when there is an empty list. */
+    public MGame(String name){
+        this.name = name;
+    }
+
     /**
      * Use this constructor to create a game from API data.
      * Most likely not used.
