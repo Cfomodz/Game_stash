@@ -122,4 +122,15 @@
     <string name="title_activity_edit_games_list">ScrollingActivity</string>
     <string name="title_activity_search_results">ScrollingActivity</string>
     <string name="hint_et_game_name">Enter Name of Game</string>
+    <string name="lbl_game_CAPS">GAME STASH</string>
+    <string name="lbl_game">Game Stash</string>
+    <string name="lbl_main_menu">Main Menu</string>
+    <string name="lbl_search_results">Search Results</string>
+    <string name="lbl_add_a_game">Add a Game</string>
+    <string name="lbl_your_games">Your Games</string>
+    <string name="lbl_profile">Your User Profile</string>
+    <string name="lbl_game_editor">Edit</string>
+    <string name="lbl_game_details">Game Details</string>
+    <string name="lbl_error">Game Not Found</string>
+
 </resources>
