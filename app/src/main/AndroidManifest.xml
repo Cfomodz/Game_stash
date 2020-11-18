@@ -1,35 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.game_stash">
-
+    <uses-permission android:name="android.permission.INTERNET" />
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
+        android:networkSecurityConfig="@xml/network_security_config"
         android:theme="@style/Theme.Game_stash">
-        <activity android:name=".errorPage"></activity>
-        <activity android:name=".profile" />
-        <activity android:name=".APIsGameDetails" />
+        <activity android:name=".VErrorPage" android:parentActivityName=".VMainActivity"/>
+        <activity android:name=".VProfile" android:parentActivityName=".VMainActivity"/>
+        <activity android:name=".VAPIsGameDetails" android:parentActivityName=".VMainActivity"/>
         <activity
-            android:name=".searchResults"
+            android:name=".VSearchResults"
             android:label="@string/title_activity_search_results"
             android:theme="@style/Theme.Game_stash.NoActionBar" />
-        <activity android:name=".gameDisplay" />
-        <activity android:name=".addGameManually" />
-        <activity android:name=".addGameSearch" />
-        <activity android:name=".gameEditor" />
+        <activity android:name=".VGameDisplay" android:parentActivityName=".VMainActivity"/>
+        <activity android:name=".VAddGameManually" android:parentActivityName=".VMainActivity"/>
+        <activity android:name=".VAddGameSearch" android:parentActivityName=".VMainActivity"/>
+        <activity android:name=".VGameEditor" android:parentActivityName=".VMainActivity"/>
         <activity
-            android:name=".editGamesList"
+            android:name=".VEditGamesList"
             android:label="@string/title_activity_edit_games_list"
-            android:theme="@style/Theme.Game_stash.NoActionBar" />
+            android:theme="@style/Theme.Game_stash.NoActionBar"
+            android:parentActivityName=".VMainActivity" />
         <activity
-            android:name=".usersListOfGames"
+            android:name=".VUsersListOfGames"
             android:label="@string/title_activity_users_list_of_games"
-            android:theme="@style/Theme.Game_stash.NoActionBar" />
+            android:theme="@style/Theme.Game_stash.NoActionBar"
+            android:parentActivityName=".VMainActivity" />
         <activity
-            android:name=".MainActivity"
+            android:name=".VMainActivity"
             android:label="@string/app_name"
             android:theme="@style/Theme.Game_stash.NoActionBar">
             <intent-filter>
