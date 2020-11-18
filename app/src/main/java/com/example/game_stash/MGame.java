@@ -8,7 +8,7 @@ public class MGame {
 
     // API variables.
     private @SerializedName("id") String gameID;
-    private @SerializedName("game") String gameName;
+    private @SerializedName("name") String gameName;
     private @SerializedName("year_published") int yearPublished;
     private @SerializedName("min_players")  int minPlayers;
     private @SerializedName("max_players") int maxPlayers;
