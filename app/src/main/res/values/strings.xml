@@ -121,4 +121,5 @@
     </string>
     <string name="title_activity_edit_games_list">ScrollingActivity</string>
     <string name="title_activity_search_results">ScrollingActivity</string>
+    <string name="hint_et_game_name">Enter Name of Game</string>
 </resources>

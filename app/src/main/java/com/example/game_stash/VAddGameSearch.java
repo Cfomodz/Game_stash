@@ -17,8 +17,14 @@ public class VAddGameSearch extends AppCompatActivity {
     }
 
     public void onclickSearch(View view) {
-        EditText editTextName = (EditText) findViewById(R.id.etName);
-        MDataHolder.setSearchSTR(editTextName.getText().toString());
+        EditText editTextName = (EditText) findViewById(R.id.et_game_name);
+        String search = editTextName.getText().toString();
+        if(search.length() > 0){
+            MDataHolder.setSearchSTR(search);
+
+        } else {
+            MDataHolder.setSearchSTR("search");
+        }
 
         Intent intent = new Intent(this, VAPISearchResults.class);
         startActivity(intent);

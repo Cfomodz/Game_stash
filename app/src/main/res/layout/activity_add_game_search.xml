@@ -70,14 +70,13 @@
         app:layout_constraintTop_toBottomOf="@+id/toolbar2" />
 
     <EditText
-        android:id="@+id/etName"
+        android:id="@+id/et_game_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="72dp"
         android:ems="10"
-        android:hint="Name of the game you are looking for"
+        android:hint="@string/hint_et_game_name"
         android:inputType="textWebEditText|text"
-        android:text="@string/game_search_bar"
         app:layout_constraintStart_toStartOf="@id/textView5"
         app:layout_constraintTop_toBottomOf="@+id/textView5" />
 
@@ -91,5 +90,5 @@
         android:onClick="onclickSearch"
         android:text="@string/search"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etName" />
+        app:layout_constraintTop_toBottomOf="@+id/et_game_name" />
 </androidx.constraintlayout.widget.ConstraintLayout>

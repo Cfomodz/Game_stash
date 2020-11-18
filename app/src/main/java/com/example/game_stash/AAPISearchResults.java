@@ -36,7 +36,7 @@ public class AAPISearchResults extends ArrayAdapter<MGame> {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         String name = getItem(position).getGameName();
-        String publisher = getItem(position).getPublisher();
+        String publisher = getItem(position).getPublisher().getName();
         //etc.
 
         final View result;

@@ -21,7 +21,7 @@ public class MGame {
     private String url;
     private float price;
     private float msrp;
-    private @SerializedName("primary_publisher") String publisher;
+    private @SerializedName("primary_publisher") MPublisher publisher;
     //private Map<String, String> mechanics;
 
     // Edited variables.
@@ -35,7 +35,7 @@ public class MGame {
     private String editedDescription;
     private String editedThumbURL;
     private String editedImageURL;
-    private String editedPublisher;
+    private MPublisher editedPublisher;
 
     //Owner's Storage Location
     private String location;
@@ -68,7 +68,7 @@ public class MGame {
                  String url,
                  float price,
                  float msrp,
-                 String publisher) {
+                 MPublisher publisher) {
         this.gameID = gameID;
         this.gameName = gameName;
         this.yearPublished = yearPublished;
@@ -99,7 +99,7 @@ public class MGame {
                  String editedDescription,
                  String editedThumbURL,
                  String editedImageURL,
-                 String editedPublisher,
+                 MPublisher editedPublisher,
                  String location) {
         this.editedGameName = editedGameName;
         this.editedYearPublished = editedYearPublished;
@@ -132,7 +132,7 @@ public class MGame {
                  String url,
                  float price,
                  float msrp,
-                 String publisher,
+                 MPublisher publisher,
                  String editedGameName,
                  int editedYearPublished,
                  int editedMinPlayers,
@@ -143,7 +143,7 @@ public class MGame {
                  String editedDescription,
                  String editedThumbURL,
                  String editedImageURL,
-                 String editedPublisher,
+                 MPublisher editedPublisher,
                  String location) {
         this.gameID = gameID;
         this.gameName = gameName;
@@ -211,7 +211,7 @@ public class MGame {
 
     public void setMsrp(float msrp) {this.msrp = msrp;}
 
-    public void setPublisher(String publisher) {this.publisher = publisher;}
+    public void setPublisher(MPublisher publisher) {this.publisher = publisher;}
 
     public void setEditedGameName(String editedGameName) {this.editedGameName = editedGameName;}
 
@@ -233,7 +233,7 @@ public class MGame {
 
     public void setEditedImageURL(String editedImageURL) {this.editedImageURL = editedImageURL;}
 
-    public void setEditedPublisher(String editedPublisher) {this.editedPublisher = editedPublisher;}
+    public void setEditedPublisher(MPublisher editedPublisher) {this.editedPublisher = editedPublisher;}
 
     // Getters.
     public String getGameID() {return gameID;}
@@ -264,7 +264,7 @@ public class MGame {
 
     public String getThumbURL() {return thumbURL;}
 
-    public String getPublisher() {return publisher;}
+    public MPublisher getPublisher() {return publisher;}
 
     public String getEditedGameName() {return editedGameName;}
 
@@ -286,7 +286,7 @@ public class MGame {
 
     public String getEditedImageURL() {return editedImageURL;}
 
-    public String getEditedPublisher() {return editedPublisher;}
+    public MPublisher getEditedPublisher() {return editedPublisher;}
 
     //Getters that return edits over default api content...
     public String getVisibleGameName() {
@@ -369,8 +369,8 @@ public class MGame {
         }
     }
 
-    public String getVisiblePublisher() {
-        if (!editedPublisher.equals("")) {
+    public MPublisher getVisiblePublisher() {
+        if (editedPublisher != null) {
             return editedPublisher;
         } else {
             return publisher;
