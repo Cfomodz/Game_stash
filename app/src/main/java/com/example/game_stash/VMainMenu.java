@@ -12,8 +12,8 @@ import androidx.appcompat.widget.Toolbar;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 
-public class VMenu extends AppCompatActivity {
-    private static final String fName = VMenu.class.getSimpleName();
+public class VMainMenu extends AppCompatActivity {
+    private static final String fName = VMainMenu.class.getSimpleName();
     private static final String TAG = fName + ":";
 
     private static final String TAG_B = fName + "_B:";
@@ -24,7 +24,7 @@ public class VMenu extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_menu);
+        setContentView(R.layout.activity_main_menu);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 

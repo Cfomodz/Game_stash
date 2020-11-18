@@ -2,7 +2,7 @@ package com.example.game_stash;
 
 import android.util.Log;
 
-class PGameSearch implements IPresenter {
+class PAPISearchResults implements IPresenter {
     private static final String TAG = "PGameSearch:";
 
     private static final String TAG_B = "PGameSearch_B:";
