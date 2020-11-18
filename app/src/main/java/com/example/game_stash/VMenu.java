@@ -13,7 +13,7 @@ import androidx.appcompat.widget.Toolbar;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 
-public class VMainActivity extends AppCompatActivity {
+public class VMenu extends AppCompatActivity {
     private static final String TAG = "Msg_VMainActivity:";
 
     private static final String TAG_B = "VMainActivity_B:";
