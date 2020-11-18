@@ -72,17 +72,17 @@ public class VMenu extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    public void addGameManually(View view){
+    public void onclickAddGameManually(View view){
         Intent intent = new Intent(this, VAddGameManually.class);
         startActivity(intent);
     }
 
-    public void addGameSearch(View view){
+    public void onclickAddGameSearch(View view){
         Intent intent = new Intent(this, VAddGameSearch.class);
         startActivity(intent);
     }
 
-    public void profile(View view) {
+    public void onclickProfile(View view) {
         Intent intent = new Intent(this, VProfile. class);
         startActivity(intent);
     }
