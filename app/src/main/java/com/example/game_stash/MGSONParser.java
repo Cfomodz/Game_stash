@@ -7,7 +7,9 @@ import com.google.gson.Gson;
 import java.lang.ref.WeakReference;
 
 public class MGSONParser implements Runnable{
-    private static final String TAG = "MGSONParser:";
+    private static final String fName = VMainMenu.class.getSimpleName();
+    private static final String TAG = fName + ":";
+
     private WeakReference<IPresenter> presenterRef;
     private String response;
     private MGameList gameListObj;

@@ -1,13 +1,14 @@
 package com.example.game_stash;
 
 import android.text.TextUtils;
-import android.util.Log;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class MAPIQueryURL {
-    private static final String TAG = "Msg_MAPIQueryURL:";
+    private static final String fName = VMainMenu.class.getSimpleName();
+    private static final String TAG = fName + ":";
+
     private final String apiURL = "https://api.boardgameatlas.com/api/";
     private final String apiFunction = "search?";
     private final String apiClientID = "&client_id=KsnYD4Bc2j";

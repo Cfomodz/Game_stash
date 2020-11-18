@@ -6,6 +6,8 @@ public class MGame {
     /**
      * Member variables.
      */
+    private static final String fName = VMainMenu.class.getSimpleName();
+    private static final String TAG = fName + ":";
 
     // API variables.
     private String id;

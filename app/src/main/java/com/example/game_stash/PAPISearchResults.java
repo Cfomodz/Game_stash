@@ -5,7 +5,9 @@ import android.util.Log;
 import java.lang.ref.WeakReference;
 
 class PAPISearchResults implements IPresenter {
-    private static final String TAG = "PGameSearch:";
+    private static final String fName = VMainMenu.class.getSimpleName();
+    private static final String TAG = fName + ":";
+
     private WeakReference<VAPISearchResults> masterRef;
 
     public PAPISearchResults(VAPISearchResults activity){

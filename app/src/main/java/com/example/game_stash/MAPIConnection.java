@@ -10,7 +10,9 @@ import java.net.URLConnection;
 import java.util.Scanner;
 
 public class MAPIConnection implements Runnable {
-    private static final String TAG = "MDAPIConnection:";
+    private static final String fName = VMainMenu.class.getSimpleName();
+    private static final String TAG = fName + ":";
+
     private WeakReference<IPresenter> presenterRef;
     private String url;
     private URLConnection connection = null;

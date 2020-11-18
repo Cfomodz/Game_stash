@@ -41,7 +41,7 @@ public class VMainMenu extends AppCompatActivity {
         testStuff4Daren();
         testStuff4David();
 
-        System.out.println(TAG_A);
+        System.out.println(TAG);
 
         testStuff4Megan();
         //  TEST AREA END  // //  TEST AREA END  // //  TEST AREA END  //

@@ -6,6 +6,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MGameList {
+    private static final String fName = VMainMenu.class.getSimpleName();
+    private static final String TAG = fName + ":";
+
     private @SerializedName("games") List<MGame> gameList = new ArrayList<>();
 
     /** This constructor will likely create a new game using GSON from API data. */

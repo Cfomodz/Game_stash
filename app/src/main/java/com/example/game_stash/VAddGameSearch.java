@@ -8,6 +8,8 @@ import android.widget.EditText;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class VAddGameSearch extends AppCompatActivity {
+    private static final String fName = VMainMenu.class.getSimpleName();
+    private static final String TAG = fName + ":";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

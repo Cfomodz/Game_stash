@@ -14,7 +14,9 @@ import androidx.annotation.NonNull;
 import java.util.List;
 
 public class AAPISearchResults extends ArrayAdapter<MGame> {
-    private static final String TAG = "AAPISearchResults";
+    private static final String fName = VMainMenu.class.getSimpleName();
+    private static final String TAG = fName + ":";
+
     private Context mContext;
     private int mResource;
     private int lastPosition = -1;
