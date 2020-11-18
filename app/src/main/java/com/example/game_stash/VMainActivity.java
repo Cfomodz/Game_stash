@@ -95,6 +95,16 @@ public class VMainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public void addGameSearch(View view){
+        Intent intent = new Intent(this, VAddGameSearch.class);
+        startActivity(intent);
+    }
+
+    public void profile(View view) {
+        Intent intent = new Intent(this, VProfile. class);
+        startActivity(intent);
+    }
+
     public void testStuff4Megan() {
         //TEST AREA for Megan
     }
