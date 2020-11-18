@@ -8,10 +8,16 @@
     <string name="previous">Previous</string>
 
     <string name="add_game_manually">Add Game Manually</string>
+    <string name="game_search_text1">Add Game</string>
+    <string name="game_search_text2">Search</string>
+    <string name="game_search_text3">Find a game!</string>
+    <string name="game_search_bar">Search</string>
     <string name="add_game_search">Add Game Search</string>
     <string name="add_game">Add Game</string>
 
     <string name="profile">Profile</string>
+    <string name="profileName">Name</string>
+    <string name="profileInfo">Info</string>
     <string name="upload">Upload</string>
     <string name="backup">Backup</string>
 
