@@ -37,6 +37,9 @@ public class MGame {
     private String editedImageURL;
     private String editedPublisher;
 
+    //Owner's Storage Location
+    private String location;
+
     // Constructors.
 
     /** This constructor will likely create a new game using GSON from API data. */
@@ -96,7 +99,8 @@ public class MGame {
                  String editedDescription,
                  String editedThumbURL,
                  String editedImageURL,
-                 String editedPublisher) {
+                 String editedPublisher,
+                 String location) {
         this.editedGameName = editedGameName;
         this.editedYearPublished = editedYearPublished;
         this.editedMinPlayers = editedMinPlayers;
@@ -108,6 +112,66 @@ public class MGame {
         this.editedThumbURL = editedThumbURL;
         this.editedImageURL = editedImageURL;
         this.editedPublisher = editedPublisher;
+        this.location = location;
+    }
+
+    /**
+     * Use this constructor to add a game... possibly with edits...
+     */
+    public MGame(String gameID,
+                 String gameName,
+                 int yearPublished,
+                 int minPlayers,
+                 int maxPlayers,
+                 int minPlayTime,
+                 int maxPlayTime,
+                 int minAge,
+                 String description,
+                 String imageURL,
+                 String thumbURL,
+                 String url,
+                 float price,
+                 float msrp,
+                 String publisher,
+                 String editedGameName,
+                 int editedYearPublished,
+                 int editedMinPlayers,
+                 int editedMaxPlayers,
+                 int editedMinPlayTime,
+                 int editedMaxPlayTime,
+                 int editedMinAge,
+                 String editedDescription,
+                 String editedThumbURL,
+                 String editedImageURL,
+                 String editedPublisher,
+                 String location) {
+        this.gameID = gameID;
+        this.gameName = gameName;
+        this.yearPublished = yearPublished;
+        this.minPlayers = minPlayers;
+        this.maxPlayers = maxPlayers;
+        this.minPlayTime = minPlayTime;
+        this.maxPlayTime = maxPlayTime;
+        this.minAge = minAge;
+        this.description = description;
+        this.imageURL = imageURL;
+        this.thumbURL = thumbURL;
+        this.url = url;
+        this.price = price;
+        this.msrp = msrp;
+        this.publisher = publisher;
+        this.editedGameName = editedGameName;
+        this.editedYearPublished = editedYearPublished;
+        this.editedMinPlayers = editedMinPlayers;
+        this.editedMaxPlayers = editedMaxPlayers;
+        this.editedMinPlayTime = editedMinPlayTime;
+        this.editedMaxPlayTime = editedMaxPlayTime;
+        this.editedMinAge = editedMinAge;
+        this.editedDescription = editedDescription;
+        this.editedThumbURL = editedThumbURL;
+        this.editedImageURL = editedImageURL;
+        this.editedPublisher = editedPublisher;
+        this.location = location;
     }
 
     // Methods.
