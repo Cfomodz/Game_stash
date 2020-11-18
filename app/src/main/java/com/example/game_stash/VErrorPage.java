@@ -14,7 +14,7 @@ public class VErrorPage extends AppCompatActivity {
         setContentView(R.layout.activity_error_page);
     }
 
-    public void addGameManually(View view){
+    public void onClickGoToAddGameManually(View view){
         Intent intent = new Intent(this, VAddGameManually.class);
         startActivity(intent);
     }
