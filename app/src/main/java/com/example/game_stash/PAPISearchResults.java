@@ -66,7 +66,7 @@ class PAPISearchResults implements IPresenter {
 
     private void doSearch(String name) {
         Log.d(TAG, "Building API Query URL");
-        String url = new MAPIQueryURL("", name, "", -1, 10,-1,-1).getUrl();
+        String url = new MAPIQueryURL("", name, "", -1, -1,-1,-1).getUrl();
         Log.d(TAG, "URL: " + url);
 
         Log.d(TAG, "Beginning MAPI CONNECTION");

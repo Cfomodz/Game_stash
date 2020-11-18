@@ -7,21 +7,21 @@ public class MGame {
     private static final String TAG = MGame.class.getSimpleName();
 
     // API variables.
-    private @SerializedName("id") String gameID;
-    private @SerializedName("name") String gameName;
-    private @SerializedName("year_published") int yearPublished;
-    private @SerializedName("min_players")  int minPlayers;
-    private @SerializedName("max_players") int maxPlayers;
-    private @SerializedName("min_playtime") int minPlayTime;
-    private @SerializedName("max_playtime") int maxPlayTime;
-    private @SerializedName("min_age") int minAge;
-    private String description;
-    private @SerializedName("image_url") String imageURL;
-    private @SerializedName("thumb_url") String thumbURL;
-    private String url;
-    private float price;
-    private float msrp;
-    private @SerializedName("primary_publisher") MPublisher publisher;
+    private @SerializedName("id") String gameID = "";
+    private @SerializedName("name") String gameName = "";
+    private @SerializedName("year_published") int yearPublished = 0;
+    private @SerializedName("min_players")  int minPlayers = -1;
+    private @SerializedName("max_players") int maxPlayers = -1;
+    private @SerializedName("min_playtime") int minPlayTime = -1;
+    private @SerializedName("max_playtime") int maxPlayTime = -1;
+    private @SerializedName("min_age") int minAge = -1;
+    private String description = "";
+    private @SerializedName("image_url") String imageURL = "";
+    private @SerializedName("thumb_url") String thumbURL = "";
+    private String url = "";
+    private float price = 0;
+    private float msrp = 0;
+    private @SerializedName("primary_publisher") MPublisher publisher = new MPublisher();
     //private Map<String, String> mechanics;
 
     // Edited variables.
@@ -38,7 +38,7 @@ public class MGame {
     private MPublisher editedPublisher;
 
     //Owner's Storage Location
-    private String location;
+    private String location = "";
 
     // Constructors.
 
