@@ -88,7 +88,8 @@
         </activity>
         <activity
             android:name=".VMainMenu"
-            android:label="@string/lbl_game_CAPS">
+            android:label="@string/lbl_game_CAPS"
+            android:theme="@style/Theme.Game_stash.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
