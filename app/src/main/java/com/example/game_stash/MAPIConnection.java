@@ -36,17 +36,32 @@ public class MAPIConnection implements Runnable {
             Scanner weatherScanner = new Scanner(response);
             this.apiResponse = weatherScanner.useDelimiter("\\A").next();
         } else {
+
             this.apiResponse = "";
         }
+
+        try {
+            response.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
         MDataHolder.setReturnApiSTR(this.apiResponse);
         Log.d(TAG, MDataHolder.getReturnApiSTR());
 
-        //
+        //Notify Presenter of update...
         final IPresenter presenter = presenterRef.get();
 
         if (presenter != null) {
             //DO STUFF W/PRESENTER LIKE TELL IT THAT THE INFO HAS BEEN UPDATED...
             //Then let presenter validate the string and send it to MGSON Parser...
+        }
+
+        //RIP THIS OUT...
+        MGSONParser gsonParser = new MGSONParser(this.apiResponse);
+        MGameList gameList = gsonParser.getGameList();
+        if(!gameList.gameList.isEmpty()) {
+            Log.d(TAG, gameList.gameList.get(0).getName());
         }
     }
 }
