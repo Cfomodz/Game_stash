@@ -13,4 +13,9 @@ public class VAddGameSearch extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_game_search);
     }
+
+    public void onClickGoToAddGameSearch(View view){
+        Intent intent = new Intent(this, VAddGameSearch.class);
+        startActivity(intent);
+    }
 }
