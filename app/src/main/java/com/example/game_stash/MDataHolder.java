@@ -11,7 +11,7 @@ public class MDataHolder {
     private static final String TAG = MDataHolder.class.getSimpleName();
 
     private static WeakReference<IPresenter> currPresenterRef;
-    private static String searchSTR = "";
+    private static String searchSTR;
     private static String returnApiSTR = "";
     private static MGameList apiGameList;
     private static MGameList userGameList;
@@ -40,8 +40,10 @@ public class MDataHolder {
 
     //Setters
     public static void setSearchSTR(String searchSTR) {
-        MDataHolder.searchSTR = searchSTR;
-        MDataHolder.hasBeenEditedSearchSTR = true;
+        if(!searchSTR.equals(MDataHolder.getSearchSTR())){
+            MDataHolder.searchSTR = searchSTR;
+            MDataHolder.hasBeenEditedSearchSTR = true;
+        }
     }
 
     public static void setReturnApiSTR(String returnApiSTR) {

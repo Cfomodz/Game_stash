@@ -28,11 +28,11 @@
         </activity>
         <activity
             android:name=".VAPIGameDetails"
-            android:parentActivityName=".VMainMenu"
+            android:parentActivityName=".VAPISearchResults"
             android:label="@string/lbl_game_details">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".VMainMenu" />
+                android:value=".VAPISearchResults" />
         </activity>
         <activity
             android:name=".VAPISearchResults"
