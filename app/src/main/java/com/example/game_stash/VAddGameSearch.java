@@ -1,6 +1,7 @@
 package com.example.game_stash;
 
 import android.os.Bundle;
+import android.view.View;
 import android.widget.EditText;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -14,11 +15,9 @@ public class VAddGameSearch extends AppCompatActivity {
         setContentView(R.layout.activity_add_game_search);
     }
 
-    public void onclickSearch() {
-        //Call presenter...
+    public void onclickSearch(View view) {
         EditText editTextName = (EditText) findViewById(R.id.etName);
-        String name = editTextName.getText().toString();
-        this.presenter.doSearch(name);
-
+        String gameName = editTextName.getText().toString();
+        this.presenter.doSearch(gameName);
     }
 }

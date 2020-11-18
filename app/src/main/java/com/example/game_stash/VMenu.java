@@ -2,7 +2,6 @@ package com.example.game_stash;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -14,12 +13,12 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 
 public class VMenu extends AppCompatActivity {
-    private static final String TAG = "Msg_VMainActivity:";
+    private static final String TAG = "VMenu:";
 
-    private static final String TAG_B = "VMainActivity_B:";
-    private static final String TAG_T = "VMainActivity_T:";
-    private static final String TAG_M = "VMainActivity_M:";
-    private static final String TAG_A = "VMainActivity_A:";
+    private static final String TAG_B = "VMenu_B:";
+    private static final String TAG_T = "VMenu_T:";
+    private static final String TAG_M = "VMenu_M:";
+    private static final String TAG_A = "VMenu_A:";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -71,14 +70,6 @@ public class VMenu extends AppCompatActivity {
 
     public void testStuff4Lee() {
         //TEST AREA for Lee
-        Log.d(TAG_B, "Building API Query URL");
-        String test = new MAPIQueryURL("", "", "Certifiable Studios", -1, 10,-1,-1).getUrl();
-        Log.d(TAG_B, "URL: " + test);
-
-        MAPIConnection connection = new MAPIConnection(null, test);
-        Log.d(TAG_B, "Beginning MAPI CONNECTION");
-        Thread thread = new Thread(connection);
-        thread.start();
     }
 
     public void testStuff4Daren() {

@@ -14,6 +14,7 @@
         android:layout_marginBottom="674dp"
         android:background="?attr/colorPrimary"
         android:minHeight="?attr/actionBarSize"
+        android:onClick="onclickSearch"
         android:theme="?attr/actionBarTheme"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -82,6 +83,7 @@
         android:layout_marginStart="149dp"
         android:layout_marginLeft="149dp"
         android:layout_marginTop="21dp"
+        android:onClick="onclickSearch"
         android:text="@string/search"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/etName" />
