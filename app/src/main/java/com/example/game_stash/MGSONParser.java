@@ -1,18 +1,43 @@
 package com.example.game_stash;
 
+import android.util.Log;
+
 import com.google.gson.Gson;
 
-public class MGSONParser {
-    private String response;
-    private MGameList gameList;
+import java.lang.ref.WeakReference;
 
-    public MGSONParser(String response) {
+public class MGSONParser implements Runnable{
+    private static final String TAG = "MGSONParser:";
+    private WeakReference<IPresenter> presenterRef;
+    private String response;
+    private MGameList gameListObj;
+
+    public MGSONParser(IPresenter presenter, String response) {
+        this.presenterRef = new WeakReference<IPresenter>(presenter);
         this.response = response;
-        Gson gson = new Gson();
-        this.gameList = gson.fromJson(this.response, MGameList.class);
     }
 
-    public MGameList getGameList() {
-        return gameList;
+    public MGameList getGameListObj() {
+        return gameListObj;
+    }
+
+    @Override
+    public void run() {
+        Gson gson = new Gson();
+        MDataHolder.setApiGameList(gson.fromJson(this.response, MGameList.class));
+        this.gameListObj = MDataHolder.getApiGameList();
+
+        //REMOVEABLE::NEED TO DEBUG ONLY...
+        if(!gameListObj.gameList.isEmpty()) {
+            Log.d(TAG, gameListObj.gameList.get(0).getName());
+        }
+
+        //Notify Presenter of update...
+        if (presenterRef.get() != null) {
+            presenterRef.get().processUpdates();
+        }
+
+
+
     }
 }

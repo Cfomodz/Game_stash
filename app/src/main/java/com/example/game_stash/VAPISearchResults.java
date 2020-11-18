@@ -35,6 +35,6 @@ public class VAPISearchResults extends AppCompatActivity {
         });
 
         //THIS IS FUNCTIONAL CODE...Don't know what above is doing...
-        this.presenter.doSearch(MDataHolder.getSearchSTR());
+        this.presenter.processUpdates(); //check for updates and reset flags first...
     }
 }
