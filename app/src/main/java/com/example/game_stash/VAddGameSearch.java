@@ -16,7 +16,7 @@ public class VAddGameSearch extends AppCompatActivity {
 
     public void onclickSearch() {
         //Call presenter...
-        EditText editTextName = (EditText) findViewById(R.id.editTextTextPersonName7);
+        EditText editTextName = (EditText) findViewById(R.id.etName);
         String name = editTextName.getText().toString();
         this.presenter.doSearch(name);
 
