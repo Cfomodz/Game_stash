@@ -13,12 +13,13 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 
 public class VMenu extends AppCompatActivity {
-    private static final String TAG = "VMenu:";
+    private static final String fName = VMenu.class.getSimpleName();
+    private static final String TAG = fName + ":";
 
-    private static final String TAG_B = "VMenu_B:";
-    private static final String TAG_T = "VMenu_T:";
-    private static final String TAG_M = "VMenu_M:";
-    private static final String TAG_A = "VMenu_A:";
+    private static final String TAG_B = fName + "_B:";
+    private static final String TAG_T = fName + "_T:";
+    private static final String TAG_M = fName + "_M:";
+    private static final String TAG_A = fName + "_A:";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +40,9 @@ public class VMenu extends AppCompatActivity {
         testStuff4Lee();
         testStuff4Daren();
         testStuff4David();
+
+        System.out.println(TAG_A);
+
         testStuff4Megan();
         //  TEST AREA END  // //  TEST AREA END  // //  TEST AREA END  //
         //  TEST AREA END  // //  TEST AREA END  // //  TEST AREA END  //
@@ -68,19 +72,6 @@ public class VMenu extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    public void testStuff4Lee() {
-        //TEST AREA for Lee
-    }
-
-    public void testStuff4Daren() {
-        //TEST AREA for Daren
-    }
-
-    public void testStuff4David() {
-        //TEST AREA for David
-
-    }
-
     public void addGameManually(View view){
         Intent intent = new Intent(this, VAddGameManually.class);
         startActivity(intent);
@@ -94,6 +85,19 @@ public class VMenu extends AppCompatActivity {
     public void profile(View view) {
         Intent intent = new Intent(this, VProfile. class);
         startActivity(intent);
+    }
+
+    public void testStuff4Lee() {
+        //TEST AREA for Lee
+    }
+
+    public void testStuff4Daren() {
+        //TEST AREA for Daren
+    }
+
+    public void testStuff4David() {
+        //TEST AREA for David
+
     }
 
     public void testStuff4Megan() {
