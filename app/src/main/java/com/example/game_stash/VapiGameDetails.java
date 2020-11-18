@@ -1,14 +1,14 @@
 package com.example.game_stash;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
 
-public class VAPIsGameDetails extends AppCompatActivity {
+import androidx.appcompat.app.AppCompatActivity;
+
+public class VapiGameDetails extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_a_p_is_game_details);
+        setContentView(R.layout.activity_api_game_details);
     }
 }

@@ -12,7 +12,7 @@
         android:theme="@style/Theme.Game_stash">
         <activity android:name=".VErrorPage" android:parentActivityName=".VMenu"/>
         <activity android:name=".VProfile" android:parentActivityName=".VMenu"/>
-        <activity android:name=".VAPIsGameDetails" android:parentActivityName=".VMenu"/>
+        <activity android:name=".VapiGameDetails" android:parentActivityName=".VMenu"/>
         <activity
             android:name=".VSearchResults"
             android:label="@string/title_activity_search_results"
