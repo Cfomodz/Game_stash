@@ -2,20 +2,18 @@ package com.example.game_stash;
 
 import android.content.Intent;
 import android.os.Bundle;
-
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
-
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-
 import android.util.Log;
-
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
-public class VMainActivity extends AppCompatActivity {
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.android.material.snackbar.Snackbar;
+
+public class VMenu extends AppCompatActivity {
     private static final String TAG = "Msg_VMainActivity:";
 
     private static final String TAG_B = "VMainActivity_B:";
@@ -74,7 +72,7 @@ public class VMainActivity extends AppCompatActivity {
     public void testStuff4Lee() {
         //TEST AREA for Lee
         Log.d(TAG_B, "Building API Query URL");
-        String test = new MAPIQueryURL("", "", "Certifiable Games", -1, 10,-1,-1).getUrl();
+        String test = new MAPIQueryURL("", "", "Certifiable Studios", -1, 10,-1,-1).getUrl();
         Log.d(TAG_B, "URL: " + test);
 
         MAPIConnection connection = new MAPIConnection(null, test);

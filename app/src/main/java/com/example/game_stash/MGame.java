@@ -1,6 +1,6 @@
 package com.example.game_stash;
 
-import java.util.Map;
+import com.google.gson.annotations.SerializedName;
 
 public class MGame {
     /**
@@ -10,20 +10,20 @@ public class MGame {
     // API variables.
     private String id;
     private String name;
-    private int yearPublished;
-    private int minPlayers;
-    private int maxPlayers;
-    private int minPlayTime;
-    private int maxPlayTime;
-    private int minAge;
+    private @SerializedName("year_published") int yearPublished;
+    private @SerializedName("min_players")  int minPlayers;
+    private @SerializedName("max_players") int maxPlayers;
+    private @SerializedName("min_playtime") int minPlayTime;
+    private @SerializedName("max_playtime") int maxPlayTime;
+    private @SerializedName("min_age") int minAge;
     private String description;
-    private String thumbURL;
-    private String imageURL;
+    private @SerializedName("image_url") String imageURL;
+    private @SerializedName("thumb_url") String thumbURL;
     private String url;
     private float price;
     private float msrp;
-    private String primaryPublisher;
-    private Map<String, String> mechanics;
+    private @SerializedName("primary_publisher") String primaryPublisher;
+    //private Map<String, String> mechanics;
 
     // Edited variables.
     private String editedName;
@@ -47,10 +47,21 @@ public class MGame {
      * Use this constructor to create a game from API data.
      * Most likely not used.
      */
-    public MGame(String id, String name, int yearPublished, int minPlayers, int maxPlayers,
-                 int minPlayTime, int maxPlayTime, int minAge, String description,
-                 String thumbURL, String imageURL, String url, float price, float msrp,
-                 String primaryPublisher, Map<String, String> mechanics) {
+    public MGame(String id,
+                 String name,
+                 int yearPublished,
+                 int minPlayers,
+                 int maxPlayers,
+                 int minPlayTime,
+                 int maxPlayTime,
+                 int minAge,
+                 String description,
+                 String thumbURL,
+                 String imageURL,
+                 String url,
+                 float price,
+                 float msrp,
+                 String primaryPublisher) {
         this.id = id;
         this.name = name;
         this.yearPublished = yearPublished;
@@ -66,16 +77,22 @@ public class MGame {
         this.price = price;
         this.msrp = msrp;
         this.primaryPublisher = primaryPublisher;
-        this.mechanics = mechanics;
     }
 
     /**
      * Use this to constructor to create a custom game.
      */
-    public MGame(String editedName, int editedYearPublished, int editedMinPlayers,
-                 int editedMaxPlayers, int editedMinPlayTime, int editedMaxPlayTime,
-                 int editedMinAge, String editedDescription, String editedThumbURL,
-                 String editedImageURL, String editedPrimaryPublisher) {
+    public MGame(String editedName,
+                 int editedYearPublished,
+                 int editedMinPlayers,
+                 int editedMaxPlayers,
+                 int editedMinPlayTime,
+                 int editedMaxPlayTime,
+                 int editedMinAge,
+                 String editedDescription,
+                 String editedThumbURL,
+                 String editedImageURL,
+                 String editedPrimaryPublisher) {
         this.editedName = editedName;
         this.editedYearPublished = editedYearPublished;
         this.editedMinPlayers = editedMinPlayers;
@@ -127,8 +144,6 @@ public class MGame {
     public float getMsrp() {return msrp;}
 
     public String getPrimaryPublisher() {return primaryPublisher;}
-
-    public Map<String, String> getMechanics() {return mechanics;}
 
     public String getEditedName() {return editedName;}
 
@@ -183,8 +198,6 @@ public class MGame {
     public void setMsrp(float msrp) {this.msrp = msrp;}
 
     public void setPrimaryPublisher(String primaryPublisher) {this.primaryPublisher = primaryPublisher;}
-
-    public void setMechanics(Map<String, String> mechanics) {this.mechanics = mechanics;}
 
     public void setEditedName(String editedName) {this.editedName = editedName;}
 
