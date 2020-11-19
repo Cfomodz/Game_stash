@@ -1,16 +1,16 @@
 package com.example.game_stash;
 
 import android.text.TextUtils;
-import android.util.Log;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class MAPIQueryURL {
-    private static final String TAG = "Msg_MAPIQueryURL:";
+    private static final String TAG = MAPIQueryURL.class.getSimpleName();
+
     private final String apiURL = "https://api.boardgameatlas.com/api/";
     private final String apiFunction = "search?";
-    private final String apiClientID = "&client_id=KsnYD4Bc2j";
+    private final String apiClientID = "client_id=KsnYD4Bc2j";
     private String gameIds;
     private String gameName;
     private String gamePublisher;
@@ -67,7 +67,7 @@ public class MAPIQueryURL {
         }
         if (!this.gameName.equals("")) {
             queryList.add("name=" + this.gameName);
-            queryList.add("fuzzy_match=true");
+            //queryList.add("fuzzy_match=true");
         }
         if (!this.gamePublisher.equals("")) {
             queryList.add("publisher=" + this.gamePublisher);
@@ -85,11 +85,13 @@ public class MAPIQueryURL {
             queryList.add("lt_max_playtime=" + this.gameMaxPlayTime);
         }
 
+        queryList.add(this.apiClientID);
+
         this.apiQuery = TextUtils.join("&", queryList);
     }
 
     private void setUrl() {
-        this.url = this.apiURL + apiFunction + this.apiQuery + apiClientID;
+        this.url = this.apiURL + apiFunction + this.apiQuery;
     }
 
     public String getUrl() { return url; }

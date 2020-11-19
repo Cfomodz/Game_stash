@@ -1,12 +1,13 @@
 package com.example.game_stash;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 public class VProfile extends AppCompatActivity {
+    private static final String TAG = VProfile.class.getSimpleName();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -15,13 +16,13 @@ public class VProfile extends AppCompatActivity {
     }
 
     public void upload(View view) {
-        Intent intent = new Intent(this, VMainActivity.class);
+        Intent intent = new Intent(this, VMainMenu.class);
         startActivity(intent);
         // for now this leads back to the main activity page
     }
 
     public void backup(View view) {
-        Intent intent = new Intent(this, VMainActivity.class);
+        Intent intent = new Intent(this, VMainMenu.class);
         startActivity(intent);
         // for now this leads back to the main activity page
     }

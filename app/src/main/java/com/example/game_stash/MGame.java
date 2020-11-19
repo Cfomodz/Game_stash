@@ -1,32 +1,31 @@
 package com.example.game_stash;
 
-import java.util.Map;
+import com.google.gson.annotations.SerializedName;
 
 public class MGame {
-    /**
-     * Member variables.
-     */
+    //Member variables.
+    private static final String TAG = MGame.class.getSimpleName();
 
     // API variables.
-    private String id;
-    private String name;
-    private int yearPublished;
-    private int minPlayers;
-    private int maxPlayers;
-    private int minPlayTime;
-    private int maxPlayTime;
-    private int minAge;
-    private String description;
-    private String thumbURL;
-    private String imageURL;
-    private String url;
-    private float price;
-    private float msrp;
-    private String primaryPublisher;
-    private Map<String, String> mechanics;
+    private @SerializedName("id") String gameID = "";
+    private @SerializedName("name") String gameName = "";
+    private @SerializedName("year_published") int yearPublished = 0;
+    private @SerializedName("min_players")  int minPlayers = -1;
+    private @SerializedName("max_players") int maxPlayers = -1;
+    private @SerializedName("min_playtime") int minPlayTime = -1;
+    private @SerializedName("max_playtime") int maxPlayTime = -1;
+    private @SerializedName("min_age") int minAge = -1;
+    private String description = "";
+    private @SerializedName("image_url") String imageURL = "";
+    private @SerializedName("thumb_url") String thumbURL = "";
+    private String url = "";
+    private float price = 0;
+    private float msrp = 0;
+    private @SerializedName("primary_publisher") MPublisher publisher = new MPublisher();
+    //private Map<String, String> mechanics;
 
     // Edited variables.
-    private String editedName;
+    private String editedGameName;
     private int editedYearPublished;
     private int editedMinPlayers;
     private int editedMaxPlayers;
@@ -36,23 +35,42 @@ public class MGame {
     private String editedDescription;
     private String editedThumbURL;
     private String editedImageURL;
-    private String editedPrimaryPublisher;
+    private MPublisher editedPublisher;
+
+    //Owner's Storage Location
+    private String location = "";
 
     // Constructors.
 
     /** This constructor will likely create a new game using GSON from API data. */
     public MGame(){}
 
+    /** This constructor will be used when there is an empty list. */
+    public MGame(String gameName){
+        this.gameName = gameName;
+    }
+
     /**
      * Use this constructor to create a game from API data.
      * Most likely not used.
      */
-    public MGame(String id, String name, int yearPublished, int minPlayers, int maxPlayers,
-                 int minPlayTime, int maxPlayTime, int minAge, String description,
-                 String thumbURL, String imageURL, String url, float price, float msrp,
-                 String primaryPublisher, Map<String, String> mechanics) {
-        this.id = id;
-        this.name = name;
+    public MGame(String gameID,
+                 String gameName,
+                 int yearPublished,
+                 int minPlayers,
+                 int maxPlayers,
+                 int minPlayTime,
+                 int maxPlayTime,
+                 int minAge,
+                 String description,
+                 String thumbURL,
+                 String imageURL,
+                 String url,
+                 float price,
+                 float msrp,
+                 MPublisher publisher) {
+        this.gameID = gameID;
+        this.gameName = gameName;
         this.yearPublished = yearPublished;
         this.minPlayers = minPlayers;
         this.maxPlayers = maxPlayers;
@@ -65,18 +83,25 @@ public class MGame {
         this.url = url;
         this.price = price;
         this.msrp = msrp;
-        this.primaryPublisher = primaryPublisher;
-        this.mechanics = mechanics;
+        this.publisher = publisher;
     }
 
     /**
      * Use this to constructor to create a custom game.
      */
-    public MGame(String editedName, int editedYearPublished, int editedMinPlayers,
-                 int editedMaxPlayers, int editedMinPlayTime, int editedMaxPlayTime,
-                 int editedMinAge, String editedDescription, String editedThumbURL,
-                 String editedImageURL, String editedPrimaryPublisher) {
-        this.editedName = editedName;
+    public MGame(String editedGameName,
+                 int editedYearPublished,
+                 int editedMinPlayers,
+                 int editedMaxPlayers,
+                 int editedMinPlayTime,
+                 int editedMaxPlayTime,
+                 int editedMinAge,
+                 String editedDescription,
+                 String editedThumbURL,
+                 String editedImageURL,
+                 MPublisher editedPublisher,
+                 String location) {
+        this.editedGameName = editedGameName;
         this.editedYearPublished = editedYearPublished;
         this.editedMinPlayers = editedMinPlayers;
         this.editedMaxPlayers = editedMaxPlayers;
@@ -86,7 +111,67 @@ public class MGame {
         this.editedDescription = editedDescription;
         this.editedThumbURL = editedThumbURL;
         this.editedImageURL = editedImageURL;
-        this.editedPrimaryPublisher = editedPrimaryPublisher;
+        this.editedPublisher = editedPublisher;
+        this.location = location;
+    }
+
+    /**
+     * Use this constructor to add a game... possibly with edits...
+     */
+    public MGame(String gameID,
+                 String gameName,
+                 int yearPublished,
+                 int minPlayers,
+                 int maxPlayers,
+                 int minPlayTime,
+                 int maxPlayTime,
+                 int minAge,
+                 String description,
+                 String imageURL,
+                 String thumbURL,
+                 String url,
+                 float price,
+                 float msrp,
+                 MPublisher publisher,
+                 String editedGameName,
+                 int editedYearPublished,
+                 int editedMinPlayers,
+                 int editedMaxPlayers,
+                 int editedMinPlayTime,
+                 int editedMaxPlayTime,
+                 int editedMinAge,
+                 String editedDescription,
+                 String editedThumbURL,
+                 String editedImageURL,
+                 MPublisher editedPublisher,
+                 String location) {
+        this.gameID = gameID;
+        this.gameName = gameName;
+        this.yearPublished = yearPublished;
+        this.minPlayers = minPlayers;
+        this.maxPlayers = maxPlayers;
+        this.minPlayTime = minPlayTime;
+        this.maxPlayTime = maxPlayTime;
+        this.minAge = minAge;
+        this.description = description;
+        this.imageURL = imageURL;
+        this.thumbURL = thumbURL;
+        this.url = url;
+        this.price = price;
+        this.msrp = msrp;
+        this.publisher = publisher;
+        this.editedGameName = editedGameName;
+        this.editedYearPublished = editedYearPublished;
+        this.editedMinPlayers = editedMinPlayers;
+        this.editedMaxPlayers = editedMaxPlayers;
+        this.editedMinPlayTime = editedMinPlayTime;
+        this.editedMaxPlayTime = editedMaxPlayTime;
+        this.editedMinAge = editedMinAge;
+        this.editedDescription = editedDescription;
+        this.editedThumbURL = editedThumbURL;
+        this.editedImageURL = editedImageURL;
+        this.editedPublisher = editedPublisher;
+        this.location = location;
     }
 
     // Methods.
@@ -97,66 +182,10 @@ public class MGame {
 
     }
 
-    // Getters.
-    public String getId() {return id;}
-
-    public String getName() {return name;}
-
-    public int getYearPublished() {return yearPublished;}
-
-    public int getMinPlayers() {return minPlayers;}
-
-    public int getMaxPlayers() {return maxPlayers;}
-
-    public int getMinPlayTime() {return minPlayTime;}
-
-    public int getMaxPlayTime() {return maxPlayTime;}
-
-    public int getMinAge() {return minAge;}
-
-    public String getDescription() {return description;}
-
-    public String getThumbURL() {return thumbURL;}
-
-    public String getImageURL() {return imageURL;}
-
-    public String getUrl() {return url;}
-
-    public float getPrice() {return price;}
-
-    public float getMsrp() {return msrp;}
-
-    public String getPrimaryPublisher() {return primaryPublisher;}
-
-    public Map<String, String> getMechanics() {return mechanics;}
-
-    public String getEditedName() {return editedName;}
-
-    public int getEditedYearPublished() {return editedYearPublished;}
-
-    public int getEditedMinPlayers() {return editedMinPlayers;}
-
-    public int getEditedMaxPlayers() {return editedMaxPlayers;}
-
-    public int getEditedMinPlayTime() {return editedMinPlayTime;}
-
-    public int getEditedMaxPlayTime() {return editedMaxPlayTime;}
-
-    public int getEditedMinAge() {return editedMinAge;}
-
-    public String getEditedDescription() {return editedDescription;}
-
-    public String getEditedThumbURL() {return editedThumbURL;}
-
-    public String getEditedImageURL() {return editedImageURL;}
-
-    public String getEditedPrimaryPublisher() {return editedPrimaryPublisher;}
-
-
     // Setters.
-    public void setId(String id) {this.id = id;}
+    public void setGameID(String gameID) {this.gameID = gameID;}
 
-    public void setName(String name) {this.name = name;}
+    public void setGameName(String gameName) {this.gameName = gameName;}
 
     public void setYearPublished(int yearPublished) {this.yearPublished = yearPublished;}
 
@@ -182,11 +211,9 @@ public class MGame {
 
     public void setMsrp(float msrp) {this.msrp = msrp;}
 
-    public void setPrimaryPublisher(String primaryPublisher) {this.primaryPublisher = primaryPublisher;}
+    public void setPublisher(MPublisher publisher) {this.publisher = publisher;}
 
-    public void setMechanics(Map<String, String> mechanics) {this.mechanics = mechanics;}
-
-    public void setEditedName(String editedName) {this.editedName = editedName;}
+    public void setEditedGameName(String editedGameName) {this.editedGameName = editedGameName;}
 
     public void setEditedYearPublished(int editedYearPublished) {this.editedYearPublished = editedYearPublished;}
 
@@ -206,6 +233,147 @@ public class MGame {
 
     public void setEditedImageURL(String editedImageURL) {this.editedImageURL = editedImageURL;}
 
-    public void setEditedPrimaryPublisher(String editedPrimaryPublisher) {this.editedPrimaryPublisher = editedPrimaryPublisher;}
+    public void setEditedPublisher(MPublisher editedPublisher) {this.editedPublisher = editedPublisher;}
 
+    // Getters.
+    public String getGameID() {return gameID;}
+
+    public String getGameName() {return gameName;}
+
+    public String getUrl() {return url;}
+
+    public float getPrice() {return price;}
+
+    public float getMsrp() {return msrp;}
+
+    public int getYearPublished() {return yearPublished;}
+
+    public int getMinPlayers() {return minPlayers;}
+
+    public int getMaxPlayers() {return maxPlayers;}
+
+    public int getMinPlayTime() {return minPlayTime;}
+
+    public int getMaxPlayTime() {return maxPlayTime;}
+
+    public int getMinAge() {return minAge;}
+
+    public String getDescription() {return description;}
+
+    public String getImageURL() {return imageURL;}
+
+    public String getThumbURL() {return thumbURL;}
+
+    public MPublisher getPublisher() {return publisher;}
+
+    public String getEditedGameName() {return editedGameName;}
+
+    public int getEditedYearPublished() {return editedYearPublished;}
+
+    public int getEditedMinPlayers() {return editedMinPlayers;}
+
+    public int getEditedMaxPlayers() {return editedMaxPlayers;}
+
+    public int getEditedMinPlayTime() {return editedMinPlayTime;}
+
+    public int getEditedMaxPlayTime() {return editedMaxPlayTime;}
+
+    public int getEditedMinAge() {return editedMinAge;}
+
+    public String getEditedDescription() {return editedDescription;}
+
+    public String getEditedThumbURL() {return editedThumbURL;}
+
+    public String getEditedImageURL() {return editedImageURL;}
+
+    public MPublisher getEditedPublisher() {return editedPublisher;}
+
+    //Getters that return edits over default api content...
+    public String getVisibleGameName() {
+        if (!editedGameName.equals("")) {
+            return editedGameName;
+        } else {
+            return gameName;
+        }
+    }
+
+    public int getVisibleYearPublished() {
+        if(editedYearPublished > 0) {
+            return editedYearPublished;
+        } else {
+            return yearPublished;
+        }
+    }
+
+    public int getVisibleMinPlayers() {
+        if(editedMinPlayers > -1) {
+            return editedMinPlayers;
+        } else {
+            return minPlayers;
+        }
+    }
+
+    public int getVisibleMaxPlayers() {
+        if(editedMaxPlayers > -1) {
+            return editedMaxPlayers;
+        } else {
+            return maxPlayers;
+        }
+    }
+
+    public int getVisibleMinPlayTime() {
+        if(editedMinPlayTime > -1) {
+            return editedMinPlayTime;
+        } else {
+            return minPlayTime;
+        }
+    }
+
+    public int getVisibleMaxPlayTime() {
+        if (editedMaxPlayTime > -1) {
+            return editedMaxPlayTime;
+        } else {
+            return maxPlayTime;
+        }
+    }
+
+    public int getVisibleMinAge() {
+        if (editedMinAge > -1) {
+            return editedMinAge;
+        } else {
+            return minAge;
+        }
+    }
+
+    public String getVisibleDescription() {
+        if (!editedDescription.equals("")) {
+            return editedDescription;
+        } else {
+            return description;
+        }
+    }
+
+    public String getVisibleThumbURL() {
+        if (!editedThumbURL.equals("")) {
+            return editedThumbURL;
+        } else {
+            return thumbURL;
+        }
+    }
+
+    public String getVisibleImageURL() {
+        if (!editedImageURL.equals("")) {
+            return editedImageURL;
+        } else {
+            return imageURL;
+        }
+    }
+
+    public MPublisher getVisiblePublisher() {
+        if (editedPublisher != null) {
+            return editedPublisher;
+        } else {
+            return publisher;
+        }
+    }
 }

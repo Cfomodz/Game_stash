@@ -2,37 +2,24 @@ package com.example.game_stash;
 
 import android.content.Intent;
 import android.os.Bundle;
-
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
-
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-
-import android.util.Log;
-
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
-public class VMainActivity extends AppCompatActivity {
-    private static final String TAG = "Msg_VMainActivity:";
+import androidx.appcompat.app.AppCompatActivity;
 
-    private static final String TAG_B = "VMainActivity_B:";
-    private static final String TAG_T = "VMainActivity_T:";
-    private static final String TAG_M = "VMainActivity_M:";
-    private static final String TAG_A = "VMainActivity_A:";
+public class VMainMenu extends AppCompatActivity {
+    private static final String TAG = VMainMenu.class.getSimpleName();
+
+    private static final String TAG_B = TAG + "_B:";
+    private static final String TAG_T = TAG + "_T:";
+    private static final String TAG_M = TAG + "_M:";
+    private static final String TAG_A = TAG + "_A:";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        Toolbar toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-
-        FloatingActionButton fab = findViewById(R.id.fab);
-        fab.setOnClickListener(view -> Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                .setAction("Action", null).show());
+        setContentView(R.layout.activity_main_menu);
 
         // TEST AREA START // // TEST AREA START // // TEST AREA START //
         // TEST AREA START // // TEST AREA START // // TEST AREA START //
@@ -42,6 +29,9 @@ public class VMainActivity extends AppCompatActivity {
         testStuff4Lee();
         testStuff4Daren();
         testStuff4David();
+
+        System.out.println(TAG);
+
         testStuff4Megan();
         //  TEST AREA END  // //  TEST AREA END  // //  TEST AREA END  //
         //  TEST AREA END  // //  TEST AREA END  // //  TEST AREA END  //
@@ -71,16 +61,23 @@ public class VMainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    public void onclickAddGameManually(View view){
+        Intent intent = new Intent(this, VAddGameManually.class);
+        startActivity(intent);
+    }
+
+    public void onclickAddGameSearch(View view){
+        Intent intent = new Intent(this, VAddGameSearch.class);
+        startActivity(intent);
+    }
+
+    public void onclickProfile(View view) {
+        Intent intent = new Intent(this, VProfile. class);
+        startActivity(intent);
+    }
+
     public void testStuff4Lee() {
         //TEST AREA for Lee
-        Log.d(TAG_B, "Building API Query URL");
-        String test = new MAPIQueryURL("", "", "Certifiable Games", -1, 10,-1,-1).getUrl();
-        Log.d(TAG_B, "URL: " + test);
-
-        MAPIConnection connection = new MAPIConnection(null, test);
-        Log.d(TAG_B, "Beginning MAPI CONNECTION");
-        Thread thread = new Thread(connection);
-        thread.start();
     }
 
     public void testStuff4Daren() {
@@ -90,21 +87,6 @@ public class VMainActivity extends AppCompatActivity {
     public void testStuff4David() {
         //TEST AREA for David
 
-    }
-
-    public void addGameManually(View view){
-        Intent intent = new Intent(this, VAddGameManually.class);
-        startActivity(intent);
-    }
-
-    public void addGameSearch(View view){
-        Intent intent = new Intent(this, VAddGameSearch.class);
-        startActivity(intent);
-    }
-
-    public void profile(View view) {
-        Intent intent = new Intent(this, VProfile. class);
-        startActivity(intent);
     }
 
     public void testStuff4Megan() {

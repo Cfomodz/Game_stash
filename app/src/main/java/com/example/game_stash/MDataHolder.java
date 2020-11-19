@@ -1,6 +1,6 @@
 package com.example.game_stash;
 
-import java.util.List;
+import java.lang.ref.WeakReference;
 
 /**
  * This class is used to store data between activities.
@@ -8,11 +8,13 @@ import java.util.List;
 
 public class MDataHolder {
     // Member variables
-    private static final String TAG = "Msg_MDataHolder:";
-    private static String searchSTR = "";
+    private static final String TAG = MDataHolder.class.getSimpleName();
+
+    private static WeakReference<IPresenter> currPresenterRef;
+    private static String searchSTR;
     private static String returnApiSTR = "";
-    private static List<MGame> apiGameList;
-    private static List<MGame> userGameList;
+    private static MGameList apiGameList;
+    private static MGameList userGameList;
     private static Boolean hasBeenEditedSearchSTR = false;
     private static Boolean hasBeenEditedReturnApiSTR = false;
     private static Boolean hasBeenEditedAPIGameList = false;
@@ -24,9 +26,9 @@ public class MDataHolder {
 
     public static String getReturnApiSTR() {return returnApiSTR;}
 
-    public static List<MGame> getApiGameList() {return apiGameList;}
+    public static MGameList getApiGameList() {return apiGameList;}
 
-    public static List<MGame> getUserGameList() {return userGameList;}
+    public static MGameList getUserGameList() {return userGameList;}
 
     public static Boolean getHasBeenEditedSearchSTR() {return hasBeenEditedSearchSTR;}
 
@@ -38,8 +40,10 @@ public class MDataHolder {
 
     //Setters
     public static void setSearchSTR(String searchSTR) {
-        MDataHolder.searchSTR = searchSTR;
-        MDataHolder.hasBeenEditedSearchSTR = true;
+        if(!searchSTR.equals(MDataHolder.getSearchSTR())){
+            MDataHolder.searchSTR = searchSTR;
+            MDataHolder.hasBeenEditedSearchSTR = true;
+        }
     }
 
     public static void setReturnApiSTR(String returnApiSTR) {
@@ -47,12 +51,12 @@ public class MDataHolder {
         MDataHolder.hasBeenEditedReturnApiSTR = true;
     }
 
-    public static void setApiGameList(List<MGame> apiGameList) {
+    public static void setApiGameList(MGameList apiGameList) {
         MDataHolder.apiGameList = apiGameList;
         MDataHolder.hasBeenEditedAPIGameList = true;
     }
 
-    public static void setUserGameList(List<MGame> userGameList) {
+    public static void setUserGameList(MGameList userGameList) {
         MDataHolder.userGameList = userGameList;
         MDataHolder.hasBeenEditedUserGameList = true;
     }

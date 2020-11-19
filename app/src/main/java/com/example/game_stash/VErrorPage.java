@@ -1,12 +1,13 @@
 package com.example.game_stash;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 public class VErrorPage extends AppCompatActivity {
+    private static final String TAG = VErrorPage.class.getSimpleName();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -14,7 +15,7 @@ public class VErrorPage extends AppCompatActivity {
         setContentView(R.layout.activity_error_page);
     }
 
-    public void addGameManually(View view){
+    public void onClickGoToAddGameManually(View view){
         Intent intent = new Intent(this, VAddGameManually.class);
         startActivity(intent);
     }

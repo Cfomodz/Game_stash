@@ -10,7 +10,8 @@ import java.net.URLConnection;
 import java.util.Scanner;
 
 public class MAPIConnection implements Runnable {
-    private static final String TAG = "Msg_MDAPIConnection:";
+    private static final String TAG = MAPIConnection.class.getSimpleName();
+
     private WeakReference<IPresenter> presenterRef;
     private String url;
     private URLConnection connection = null;
@@ -33,20 +34,25 @@ public class MAPIConnection implements Runnable {
         }
 
         if (response != null) {
-            Scanner weatherScanner = new Scanner(response);
-            this.apiResponse = weatherScanner.useDelimiter("\\A").next();
+            Scanner apiScanner = new Scanner(response);
+            this.apiResponse = apiScanner.useDelimiter("\\A").next();
         } else {
+
             this.apiResponse = "";
         }
+
+        try {
+            response.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
         MDataHolder.setReturnApiSTR(this.apiResponse);
         Log.d(TAG, MDataHolder.getReturnApiSTR());
 
-        //
-        final IPresenter presenter = presenterRef.get();
-
-        if (presenter != null) {
-            //DO STUFF W/PRESENTER LIKE TELL IT THAT THE INFO HAS BEEN UPDATED...
-            //Then let presenter validate the string and send it to MGSON Parser...
+        //Notify Presenter of update...
+        if (presenterRef.get() != null) {
+            presenterRef.get().processUpdates();
         }
     }
 }
