@@ -1,5 +1,6 @@
 package com.example.game_stash;
 
+import android.content.Context;
 import android.util.Log;
 import android.widget.Toast;
 
@@ -7,6 +8,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.gson.Gson;
 
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.lang.ref.WeakReference;
 
 public class MSaveGame implements Runnable{
@@ -51,7 +54,17 @@ public class MSaveGame implements Runnable{
     }
 
     public void sendObjToJSON() {
-        Log.d(TAG, new Gson().toJson(MDataHolder.getUserGameList()));
+
+        String filename = "usergamelist.json";
+        String fileContents = new Gson().toJson(MDataHolder.getUserGameList());
+        Log.d(TAG, fileContents);
+
+        try (FileOutputStream fos = this.masterRef.get().openFileOutput(filename, Context.MODE_PRIVATE)) {
+            fos.write(fileContents.getBytes());
+            Log.d(TAG, "File should be written...");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public void sendToast() {
