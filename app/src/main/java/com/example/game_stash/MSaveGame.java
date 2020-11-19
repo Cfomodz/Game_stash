@@ -17,7 +17,9 @@ public class MSaveGame implements Runnable{
     private static WeakReference<MGame> gameRef;
     private static WeakReference<AppCompatActivity> masterRef;
     private static WeakReference<IPAPIGameDetails> presenterRef;
-    boolean notSaved = false;
+    boolean existsInUserList = false;
+    boolean saved = false;
+    boolean savedToFile = false;
 
     /** This constructor will likely create a new game using GSON from API data. */
     public MSaveGame(VAPIGameDetails activity, IPAPIGameDetails presenter, MGame game){
@@ -28,19 +30,18 @@ public class MSaveGame implements Runnable{
 
     @Override
     public void run() {
-        this.saveGameToUserList();
-        this.sendObjToJSON();
+        this.saved = this.saveGameToUserList();
+        this.savedToFile = this.sendObjToJSON();
         this.sendToast();
     }
 
-    public void saveGameToUserList() {
+    public boolean saveGameToUserList() {
         //Check if user list is empty
         if(MDataHolder.getUserGameList() != null && MDataHolder.getUserGameList().getGameList() != null) {
-            this.notSaved = true; //switches it to true...if the above criteria are met...
             //Check if game id matches any an id in the user list...
             for (MGame usersGame : MDataHolder.getUserGameList().getGameList()) {
                 if(this.gameRef.get() != null && usersGame.getGameID().equals(this.gameRef.get().getGameID())) {
-                    this.notSaved = false;
+                    this.existsInUserList = true;
                 }
             }
         } else {
@@ -48,27 +49,33 @@ public class MSaveGame implements Runnable{
         }
 
         // If no match add game...
-        if (this.notSaved && this.gameRef.get() != null && this.presenterRef.get() != null) {
+        if (!this.existsInUserList && this.gameRef.get() != null && this.presenterRef.get() != null) {
             MDataHolder.getUserGameList().getGameList().add(this.gameRef.get());
+            return true;
+        } else {
+            return false;
         }
     }
 
-    public void sendObjToJSON() {
+    public boolean sendObjToJSON() {
+        if(this.saved) {
+            String filename = "usergamelist.json";
+            String fileContents = new Gson().toJson(MDataHolder.getUserGameList());
+            Log.d(TAG, fileContents);
 
-        String filename = "usergamelist.json";
-        String fileContents = new Gson().toJson(MDataHolder.getUserGameList());
-        Log.d(TAG, fileContents);
-
-        try (FileOutputStream fos = this.masterRef.get().openFileOutput(filename, Context.MODE_PRIVATE)) {
-            fos.write(fileContents.getBytes());
-            Log.d(TAG, "File should be written...");
-        } catch (IOException e) {
-            e.printStackTrace();
+            try (FileOutputStream fos = this.masterRef.get().openFileOutput(filename, Context.MODE_PRIVATE)) {
+                fos.write(fileContents.getBytes());
+                Log.d(TAG, "File should be written...");
+                return true;
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
+        return false;
     }
 
     public void sendToast() {
-        if (this.notSaved && this.gameRef.get() != null) {
+        if (this.savedToFile && this.gameRef.get() != null) {
             // TOAST::GAME ADDED TO USER LIST
             Log.d(TAG, "Game added...");
             if (masterRef.get() != null) {
