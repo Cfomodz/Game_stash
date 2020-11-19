@@ -17,9 +17,12 @@ public class MSaveGame implements Runnable{
     private static WeakReference<MGame> gameRef;
     private static WeakReference<AppCompatActivity> masterRef;
     private static WeakReference<IPAPIGameDetails> presenterRef;
-    boolean existsInUserList = false;
-    boolean saved = false;
-    boolean savedToFile = false;
+    private boolean existsInUserList = false;
+    private boolean addedToUserGameList = false;
+    private boolean jsonStringCreated = false;
+    private boolean savedToFile = false;
+    private String jsonString;
+    private static final String filename = "usergamelist.json";
 
     /** This constructor will likely create a new game using GSON from API data. */
     public MSaveGame(VAPIGameDetails activity, IPAPIGameDetails presenter, MGame game){
@@ -30,8 +33,9 @@ public class MSaveGame implements Runnable{
 
     @Override
     public void run() {
-        this.saved = this.saveGameToUserList();
-        this.savedToFile = this.sendObjToJSON();
+        this.addedToUserGameList = this.saveGameToUserList();
+        this.jsonStringCreated = this.objToJSONString();
+        this.savedToFile = this.saveToFile(filename, jsonString);
         this.sendToast();
     }
 
@@ -57,12 +61,17 @@ public class MSaveGame implements Runnable{
         }
     }
 
-    public boolean sendObjToJSON() {
-        if(this.saved) {
-            String filename = "usergamelist.json";
-            String fileContents = new Gson().toJson(MDataHolder.getUserGameList());
-            Log.d(TAG, fileContents);
+    public boolean objToJSONString() {
+        if(this.addedToUserGameList) {
+            this.jsonString = new Gson().toJson(MDataHolder.getUserGameList());
+            Log.d(TAG, this.jsonString);
+            return true;
+        }
+        return false;
+    }
 
+    public boolean saveToFile(String filename, String fileContents) {
+        if(fileContents != null){
             try (FileOutputStream fos = this.masterRef.get().openFileOutput(filename, Context.MODE_PRIVATE)) {
                 fos.write(fileContents.getBytes());
                 Log.d(TAG, "File should be written...");
@@ -71,6 +80,7 @@ public class MSaveGame implements Runnable{
                 e.printStackTrace();
             }
         }
+
         return false;
     }
 
