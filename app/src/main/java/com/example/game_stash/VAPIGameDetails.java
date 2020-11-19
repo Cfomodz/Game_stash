@@ -9,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class VAPIGameDetails extends AppCompatActivity {
     private static final String TAG = VAPIGameDetails.class.getSimpleName();
+    private IPresenter presenter = new PAPIGameDetails(this);
     private MGame game;
 
     @Override
@@ -26,9 +27,11 @@ public class VAPIGameDetails extends AppCompatActivity {
 
     public void onclickSave(View view) {
 
-        //MOVE TO PRESENTER
-        MSaveGame saveGame = new MSaveGame(this, this.game);
-        Thread thread = new Thread(saveGame);
-        thread.start();
+        // Trigger PAPIGameDetails method to save...
+        presenter.processUpdates();
+    }
+
+    public MGame getGame() {
+        return game;
     }
 }

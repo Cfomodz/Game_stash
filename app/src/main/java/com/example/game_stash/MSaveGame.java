@@ -13,7 +13,7 @@ public class MSaveGame implements Runnable{
     private static WeakReference<AppCompatActivity> masterRef;
 
     /** This constructor will likely create a new game using GSON from API data. */
-    public MSaveGame(AppCompatActivity activity, MGame game){
+    public MSaveGame(VAPIGameDetails activity, MGame game){
         this.masterRef = new WeakReference<>(activity);
         this.gameRef = new WeakReference<>(game);
     }
