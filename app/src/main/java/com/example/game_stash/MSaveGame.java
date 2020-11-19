@@ -5,6 +5,8 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.gson.Gson;
+
 import java.lang.ref.WeakReference;
 
 public class MSaveGame implements Runnable{
@@ -12,6 +14,7 @@ public class MSaveGame implements Runnable{
     private static WeakReference<MGame> gameRef;
     private static WeakReference<AppCompatActivity> masterRef;
     private static WeakReference<IPAPIGameDetails> presenterRef;
+    boolean notSaved = false;
 
     /** This constructor will likely create a new game using GSON from API data. */
     public MSaveGame(VAPIGameDetails activity, IPAPIGameDetails presenter, MGame game){
@@ -22,15 +25,19 @@ public class MSaveGame implements Runnable{
 
     @Override
     public void run() {
+        this.saveGameToUserList();
+        this.sendObjToJSON();
+        this.sendToast();
+    }
 
-        boolean notSaved = false;
+    public void saveGameToUserList() {
         //Check if user list is empty
         if(MDataHolder.getUserGameList() != null && MDataHolder.getUserGameList().getGameList() != null) {
-            notSaved = true; //switches it to true...if the above criteria are met...
+            this.notSaved = true; //switches it to true...if the above criteria are met...
             //Check if game id matches any an id in the user list...
             for (MGame usersGame : MDataHolder.getUserGameList().getGameList()) {
                 if(this.gameRef.get() != null && usersGame.getGameID().equals(this.gameRef.get().getGameID())) {
-                    notSaved = false;
+                    this.notSaved = false;
                 }
             }
         } else {
@@ -38,12 +45,17 @@ public class MSaveGame implements Runnable{
         }
 
         // If no match add game...
-        if (notSaved && this.gameRef.get() != null && this.presenterRef.get() != null) {
-            MDataHolder.addUserGame(this.gameRef.get());
-            this.presenterRef.get().processUpdates();
+        if (this.notSaved && this.gameRef.get() != null && this.presenterRef.get() != null) {
+            MDataHolder.getUserGameList().getGameList().add(this.gameRef.get());
         }
+    }
 
-        if (notSaved && this.gameRef.get() != null) {
+    public void sendObjToJSON() {
+        Log.d(TAG, new Gson().toJson(MDataHolder.getUserGameList()));
+    }
+
+    public void sendToast() {
+        if (this.notSaved && this.gameRef.get() != null) {
             // TOAST::GAME ADDED TO USER LIST
             Log.d(TAG, "Game added...");
             if (masterRef.get() != null) {
@@ -68,4 +80,5 @@ public class MSaveGame implements Runnable{
             }
         }
     }
+
 }

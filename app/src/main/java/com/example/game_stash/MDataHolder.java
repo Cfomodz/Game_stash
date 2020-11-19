@@ -71,11 +71,6 @@ public class MDataHolder {
         MDataHolder.hasBeenEditedUserGameList = true;
     }
 
-    public static void addUserGame(MGame userGame) {
-        MDataHolder.userGameList.getGameList().add(userGame);
-        MDataHolder.hasBeenEditedUserGameList = true;
-    }
-
     public static void setHasBeenEditedSearchSTR() {
         MDataHolder.hasBeenEditedSearchSTR = false;
     }
