@@ -28,7 +28,7 @@ public class MGSONParser implements Runnable{
         MDataHolder.setApiGameList(gson.fromJson(this.response, MGameList.class));
         this.gameListObj = MDataHolder.getApiGameList();
 
-        //REMOVEABLE::NEED TO DEBUG ONLY...
+        //REMOVEABLE::NEEDED TO DEBUG ONLY...
         if(!gameListObj.getGameList().isEmpty()) {
             Log.d(TAG, gameListObj.getGameList().get(0).getGameName());
         }
