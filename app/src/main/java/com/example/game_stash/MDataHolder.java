@@ -1,6 +1,11 @@
 package com.example.game_stash;
 
+import android.os.Build;
+
+import androidx.annotation.RequiresApi;
+
 import java.lang.ref.WeakReference;
+import java.util.Comparator;
 
 /**
  * This class is used to store data between activities.
@@ -10,11 +15,11 @@ public class MDataHolder {
     // Member variables
     private static final String TAG = MDataHolder.class.getSimpleName();
 
-    private static WeakReference<IPresenter> currPresenterRef;
+    private static WeakReference<IPAPISearchResults> currPresenterRef;
     private static String searchSTR;
     private static String returnApiSTR = "";
-    private static MGameList apiGameList;
-    private static MGameList userGameList;
+    private static MGameList apiGameList = new MGameList();
+    private static MGameList userGameList = new MGameList();
     private static Boolean hasBeenEditedSearchSTR = false;
     private static Boolean hasBeenEditedReturnApiSTR = false;
     private static Boolean hasBeenEditedAPIGameList = false;
@@ -56,7 +61,12 @@ public class MDataHolder {
         MDataHolder.hasBeenEditedAPIGameList = true;
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.N)
     public static void setUserGameList(MGameList userGameList) {
+        if(userGameList != null) {
+            userGameList.getGameList().sort(Comparator.<MGame, String>comparing(MGame::getGameName));
+        }
+
         MDataHolder.userGameList = userGameList;
         MDataHolder.hasBeenEditedUserGameList = true;
     }

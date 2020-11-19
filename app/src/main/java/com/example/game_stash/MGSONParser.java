@@ -9,11 +9,11 @@ import java.lang.ref.WeakReference;
 public class MGSONParser implements Runnable{
     private static final String TAG = MGSONParser.class.getSimpleName();
 
-    private WeakReference<IPresenter> presenterRef;
+    private WeakReference<IPAPISearchResults> presenterRef;
     private String response;
     private MGameList gameListObj;
 
-    public MGSONParser(IPresenter presenter, String response) {
+    public MGSONParser(IPAPISearchResults presenter, String response) {
         this.presenterRef = new WeakReference<>(presenter);
         this.response = response;
     }
@@ -28,7 +28,7 @@ public class MGSONParser implements Runnable{
         MDataHolder.setApiGameList(gson.fromJson(this.response, MGameList.class));
         this.gameListObj = MDataHolder.getApiGameList();
 
-        //REMOVEABLE::NEED TO DEBUG ONLY...
+        //REMOVEABLE::NEEDED TO DEBUG ONLY...
         if(!gameListObj.getGameList().isEmpty()) {
             Log.d(TAG, gameListObj.getGameList().get(0).getGameName());
         }
