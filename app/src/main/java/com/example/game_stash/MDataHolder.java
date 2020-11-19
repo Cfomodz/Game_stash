@@ -18,8 +18,8 @@ public class MDataHolder {
     private static WeakReference<IPresenter> currPresenterRef;
     private static String searchSTR;
     private static String returnApiSTR = "";
-    private static MGameList apiGameList;
-    private static MGameList userGameList;
+    private static MGameList apiGameList = new MGameList();
+    private static MGameList userGameList = new MGameList();
     private static Boolean hasBeenEditedSearchSTR = false;
     private static Boolean hasBeenEditedReturnApiSTR = false;
     private static Boolean hasBeenEditedAPIGameList = false;
