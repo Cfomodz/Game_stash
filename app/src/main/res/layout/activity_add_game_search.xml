@@ -4,10 +4,21 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_alignParentLeft="true"
-    android:layout_alignParentRight="true"
-    android:layout_alignParentBottom="true"
     tools:context=".VAddGameSearch">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="1dp"
+        android:layout_marginBottom="674dp"
+        android:background="?attr/colorPrimary"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/textView5"
@@ -15,26 +26,10 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="108dp"
         android:layout_marginLeft="108dp"
-        android:layout_marginTop="12dp"
         android:layout_marginEnd="109dp"
         android:layout_marginRight="109dp"
         android:text="@string/game_search_text3"
         android:textAppearance="@style/TextAppearance.AppCompat.Display1"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView6" />
-
-    <TextView
-        android:id="@+id/textView6"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="136dp"
-        android:layout_marginLeft="136dp"
-        android:layout_marginTop="9dp"
-        android:layout_marginEnd="137dp"
-        android:layout_marginRight="137dp"
-        android:text="@string/game_search_text2"
-        android:textAppearance="@style/TextAppearance.AppCompat.Display2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView7" />
@@ -45,37 +40,41 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="75dp"
         android:layout_marginLeft="75dp"
-        android:layout_marginTop="80dp"
+        android:layout_marginTop="9dp"
         android:layout_marginEnd="75dp"
         android:layout_marginRight="75dp"
         android:text="@string/game_search_text1"
         android:textAppearance="@style/TextAppearance.AppCompat.Display3"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/toolbar2" />
 
     <EditText
-        android:id="@+id/et_game_name"
+        android:id="@+id/editTextTextPersonName7"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="103dp"
+        android:layout_marginLeft="103dp"
         android:layout_marginTop="72dp"
+        android:layout_marginEnd="98dp"
+        android:layout_marginRight="98dp"
+        android:layout_marginBottom="346dp"
         android:ems="10"
-        android:hint="@string/hint_et_game_name"
-        android:gravity="center"
-        android:inputType="textWebEditText|text"
-        app:layout_constraintStart_toStartOf="@id/textView5"
+        android:inputType="textPersonName"
+        android:text="@string/game_search_bar"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView5" />
 
     <Button
-        android:id="@+id/button10"
+        android:id="@+id/button4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="149dp"
-        android:layout_marginLeft="149dp"
-        android:layout_marginTop="21dp"
+        android:layout_marginTop="17dp"
         android:onClick="onclickSearch"
-        android:text="@string/search"
+        android:text="@string/game_search_text2"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/et_game_name" />
+        app:layout_constraintTop_toBottomOf="@+id/textView5" />
 </androidx.constraintlayout.widget.ConstraintLayout>
