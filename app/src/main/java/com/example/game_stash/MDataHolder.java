@@ -15,7 +15,7 @@ public class MDataHolder {
     // Member variables
     private static final String TAG = MDataHolder.class.getSimpleName();
 
-    private static WeakReference<IPresenter> currPresenterRef;
+    private static WeakReference<IPAPISearchResults> currPresenterRef;
     private static String searchSTR;
     private static String returnApiSTR = "";
     private static MGameList apiGameList = new MGameList();
@@ -68,6 +68,11 @@ public class MDataHolder {
         }
 
         MDataHolder.userGameList = userGameList;
+        MDataHolder.hasBeenEditedUserGameList = true;
+    }
+
+    public static void addUserGame(MGame userGame) {
+        MDataHolder.userGameList.getGameList().add(userGame);
         MDataHolder.hasBeenEditedUserGameList = true;
     }
 

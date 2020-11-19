@@ -11,10 +11,12 @@ public class MSaveGame implements Runnable{
     private static final String TAG = MGameList.class.getSimpleName();
     private static WeakReference<MGame> gameRef;
     private static WeakReference<AppCompatActivity> masterRef;
+    private static WeakReference<IPAPIGameDetails> presenterRef;
 
     /** This constructor will likely create a new game using GSON from API data. */
-    public MSaveGame(VAPIGameDetails activity, MGame game){
+    public MSaveGame(VAPIGameDetails activity, IPAPIGameDetails presenter, MGame game){
         this.masterRef = new WeakReference<>(activity);
+        this.presenterRef = new WeakReference<>(presenter);
         this.gameRef = new WeakReference<>(game);
     }
 
@@ -36,8 +38,12 @@ public class MSaveGame implements Runnable{
         }
 
         // If no match add game...
+        if (notSaved && this.gameRef.get() != null && this.presenterRef.get() != null) {
+            MDataHolder.addUserGame(this.gameRef.get());
+            this.presenterRef.get().processUpdates();
+        }
+
         if (notSaved && this.gameRef.get() != null) {
-            MDataHolder.getUserGameList().getGameList().add(this.gameRef.get());
             // TOAST::GAME ADDED TO USER LIST
             Log.d(TAG, "Game added...");
             if (masterRef.get() != null) {

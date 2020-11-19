@@ -14,7 +14,7 @@ import java.util.List;
 public class VAPISearchResults extends AppCompatActivity {
     private static final String TAG = VAPISearchResults.class.getSimpleName();
 
-    private IPresenter presenter = new PAPISearchResults(this);
+    private IPAPISearchResults presenter = new PAPISearchResults(this);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

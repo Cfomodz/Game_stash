@@ -4,7 +4,7 @@ import android.util.Log;
 
 import java.lang.ref.WeakReference;
 
-class PAPISearchResults implements IPresenter {
+class PAPISearchResults implements IPAPISearchResults {
     private static final String TAG = PAPISearchResults.class.getSimpleName();
 
     private WeakReference<VAPISearchResults> masterRef;
