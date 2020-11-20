@@ -1,16 +1,20 @@
 package com.example.game_stash;
 
 import android.content.Context;
+import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 
+import java.io.InputStream;
+import java.net.URL;
 import java.util.List;
 
 public class AAPISearchResults extends ArrayAdapter<MGame> {
@@ -23,6 +27,7 @@ public class AAPISearchResults extends ArrayAdapter<MGame> {
     static class ViewHolder {
         TextView name;
         TextView publisher;
+        ImageView gameImage;
         //etc.
     }
 
@@ -37,6 +42,7 @@ public class AAPISearchResults extends ArrayAdapter<MGame> {
     public View getView(int position, View convertView, ViewGroup parent) {
         String name = getItem(position).getGameName();
         String publisher = getItem(position).getPublisher().getName();
+        Drawable gameImage = this.loadImageFromWeb(getItem(position).getThumbURL());
         //etc.
 
         final View result;
@@ -49,6 +55,7 @@ public class AAPISearchResults extends ArrayAdapter<MGame> {
             holder = new ViewHolder();
             holder.name = (TextView) convertView.findViewById(R.id.tv_name);
             holder.publisher = (TextView) convertView.findViewById(R.id.tv_primarypublisher);
+            holder.gameImage = (ImageView) convertView.findViewById(R.id.iv_game_thumb);
             //etc.
 
             result = convertView;
@@ -65,9 +72,20 @@ public class AAPISearchResults extends ArrayAdapter<MGame> {
 
         holder.name.setText(name);
         holder.publisher.setText(publisher);
+        holder.gameImage.setImageDrawable(gameImage);
         //etc.
 
         return convertView;
+    }
+
+    public Drawable loadImageFromWeb(String url) {
+        try {
+            InputStream is = (InputStream) new URL(url).getContent();
+            Drawable d = Drawable.createFromStream(is, "src name");
+            return d;
+        } catch (Exception e) {
+            return null;
+        }
     }
 
 }
