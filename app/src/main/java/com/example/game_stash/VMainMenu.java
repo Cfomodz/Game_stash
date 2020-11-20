@@ -1,6 +1,5 @@
 package com.example.game_stash;
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
@@ -10,8 +9,7 @@ import android.widget.ImageView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.Random;
 
 public class VMainMenu extends AppCompatActivity {
     private static final String TAG = VMainMenu.class.getSimpleName();
@@ -25,6 +23,22 @@ public class VMainMenu extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_menu);
+
+        //Random starting image... just add R.darawable. image name to array to expand.
+        int[] mainImgs =  {R.drawable.main_menu_img_00,
+                R.drawable.main_menu_img_01,
+                R.drawable.main_menu_img_02,
+                R.drawable.main_menu_img_03,
+                R.drawable.main_menu_img_04,
+                R.drawable.main_menu_img_05,
+                R.drawable.main_menu_img_06,
+                R.drawable.main_menu_img_07,
+                R.drawable.main_menu_img_10,
+                R.drawable.main_menu_img_11,
+                R.drawable.main_menu_img_12,
+                R.drawable.main_menu_img_13};
+        ImageView imageView = (ImageView) findViewById(R.id.iv_main_menu);
+        imageView.setImageResource(mainImgs[new Random().nextInt(mainImgs.length)]);
 
         // TEST AREA START // // TEST AREA START // // TEST AREA START //
         // TEST AREA START // // TEST AREA START // // TEST AREA START //
@@ -85,6 +99,7 @@ public class VMainMenu extends AppCompatActivity {
 
     public void testStuff4Lee() {
         //TEST AREA for Lee
+
     }
 
     public void testStuff4Daren() {

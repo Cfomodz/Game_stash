@@ -1,7 +1,6 @@
 package com.example.game_stash;
 
 import android.content.Context;
-import android.graphics.drawable.Drawable;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,8 +15,6 @@ import androidx.annotation.NonNull;
 
 import com.squareup.picasso.Picasso;
 
-import java.io.InputStream;
-import java.net.URL;
 import java.util.List;
 
 public class AAPISearchResults extends ArrayAdapter<MGame> {
@@ -78,21 +75,11 @@ public class AAPISearchResults extends ArrayAdapter<MGame> {
                 .load(getItem(position).getThumbURL())
                 .resize(100, 100)
                 .centerInside()
+                .noFade()
                 .into(holder.gameImage);
         Log.d(TAG, getItem(position).getGameName() + " " + getItem(position).getThumbURL());
         //etc.
 
         return convertView;
     }
-
-    public Drawable loadImageFromWeb(String url) {
-        try {
-            InputStream is = (InputStream) new URL(url).getContent();
-            Drawable d = Drawable.createFromStream(is, "src name");
-            return d;
-        } catch (Exception e) {
-            return null;
-        }
-    }
-
 }
