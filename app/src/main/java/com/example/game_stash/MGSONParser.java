@@ -43,7 +43,7 @@ public class MGSONParser implements Runnable{
         this.gameListObj = this.getList.get();
 
         //REMOVEABLE::NEEDED TO DEBUG ONLY...
-        if(!gameListObj.getGameList().isEmpty()) {
+        if(gameListObj.getGameList() != null && !gameListObj.getGameList().isEmpty()) {
             Log.d(TAG, gameListObj.getGameList().get(0).getGameName());
         }
 

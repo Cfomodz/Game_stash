@@ -138,10 +138,14 @@ public class VMainMenu extends AppCompatActivity {
         //return jsonString
 
         //PROCESS JSON STRING
-        MGSONParser gsonParse = new MGSONParser(new PMainMenu(this), MDataHolder::setUserGameList, MDataHolder::getUserGameList, jsonString);
-        //Thread thread = new Thread(gsonParse);
-        //thread.start();
-        gsonParse.run();
+        //Not placed in the above string because that should be in its own function... While this should be separate...
+        if(jsonString != null) {
+            MGSONParser gsonParse = new MGSONParser(new PMainMenu(this), MDataHolder::setUserGameList, MDataHolder::getUserGameList, jsonString);
+            //Thread thread = new Thread(gsonParse);
+            //thread.start();
+            gsonParse.run();
+        }
+
     }
 
     public void testStuff4Daren() {
