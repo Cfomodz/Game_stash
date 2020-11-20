@@ -27,6 +27,9 @@
     <string name="upload">Upload</string>
     <string name="backup">Backup</string>
     <string name="search">Search</string>
+    <string name="users_list">View Collection</string>
+    <string name="edit_games">Edit Games</string>
+    <string name="add_new_game">Add New Game</string>
 
 
     <string name="title_activity_users_list_of_games">ScrollingActivity</string>
@@ -132,5 +135,6 @@
     <string name="lbl_game_editor">Edit</string>
     <string name="lbl_game_details">Game Details</string>
     <string name="lbl_error">Game Not Found</string>
+    <string name="todo">TODO</string>
 
 </resources>
