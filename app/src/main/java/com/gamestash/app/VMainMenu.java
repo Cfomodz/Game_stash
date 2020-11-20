@@ -12,8 +12,6 @@ import android.widget.ImageView;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.gamestash.app.R;
-
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -40,14 +38,7 @@ public class VMainMenu extends AppCompatActivity {
                 R.drawable.main_menu_img_01,
                 R.drawable.main_menu_img_02,
                 R.drawable.main_menu_img_03,
-                R.drawable.main_menu_img_04,
-                R.drawable.main_menu_img_05,
-                R.drawable.main_menu_img_06,
-                R.drawable.main_menu_img_07,
-                R.drawable.main_menu_img_10,
-                R.drawable.main_menu_img_11,
-                R.drawable.main_menu_img_12,
-                R.drawable.main_menu_img_13};
+                R.drawable.main_menu_img_04};
         ImageView imageView = findViewById(R.id.iv_main_menu);
         imageView.setImageResource(mainImgs[new Random().nextInt(mainImgs.length)]);
 
