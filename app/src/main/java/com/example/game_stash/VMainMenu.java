@@ -125,10 +125,16 @@ public class VMainMenu extends AppCompatActivity {
 
             int size = is.available();
             byte[] buffer = new byte[size];
-            is.read(buffer);
+            int exists = is.read(buffer);
             is.close();
 
-            jsonString = new String(buffer, StandardCharsets.UTF_8);
+            if(exists > -1) {
+                jsonString = new String(buffer, StandardCharsets.UTF_8);
+            } else {
+                jsonString = null;
+                //return null;
+            }
+
         } catch (IOException e) {
             e.printStackTrace();
             jsonString = null;
