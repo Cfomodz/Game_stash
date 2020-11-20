@@ -39,6 +39,7 @@ public class MSaveGame implements Runnable{
         this.sendToast();
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.N)
     public boolean saveGameToUserList() {
         //Check if user list is empty
         if(MDataHolder.getUserGameList() != null && MDataHolder.getUserGameList().getGameList() != null) {
@@ -54,7 +55,7 @@ public class MSaveGame implements Runnable{
 
         // If no match add game...
         if (!this.existsInUserList && gameRef.get() != null && presenterRef.get() != null) {
-            MDataHolder.getUserGameList().getGameList().add(gameRef.get());
+            MDataHolder.addGameUserGameList(gameRef.get());
             return true;
         } else {
             return false;

@@ -33,7 +33,12 @@ public class MDataHolder {
 
     public static MGameList getApiGameList() {return apiGameList;}
 
+    @RequiresApi(api = Build.VERSION_CODES.N)
     public static MGameList getUserGameList() {
+        if(hasBeenEditedUserGameList) {
+            sortUserGameList();
+            setHasBeenEditedUserGameList();
+        }
         return userGameList;
     }
 
@@ -65,6 +70,11 @@ public class MDataHolder {
 
     public static void setUserGameList(MGameList userGameList) {
         MDataHolder.userGameList = userGameList;
+        MDataHolder.hasBeenEditedUserGameList = true;
+    }
+
+    public static void addGameUserGameList(MGame game) {
+        MDataHolder.userGameList.getGameList().add(game);
         MDataHolder.hasBeenEditedUserGameList = true;
     }
 
