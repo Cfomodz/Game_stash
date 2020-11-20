@@ -20,13 +20,8 @@ public class MGSONParser implements Runnable{
     private WeakReference<IProcess> presenterRef;
     private String response;
     private MGameList gameListObj;
-    private SetList setList = MDataHolder::setApiGameList;
-    private GetList getList = MDataHolder::getApiGameList;
-
-    public MGSONParser(IProcess presenter, String response) {
-        this.presenterRef = new WeakReference<>(presenter);
-        this.response = response;
-    }
+    private SetList setList;
+    private GetList getList;
 
     public MGSONParser(IProcess presenter, SetList setList, GetList getList, String response) {
         this.presenterRef = new WeakReference<>(presenter);
@@ -53,8 +48,8 @@ public class MGSONParser implements Runnable{
         }
 
         //Notify Presenter of update...
-        if (presenterRef.get() != null) {
-            presenterRef.get().processChanges();
+        if (this.presenterRef.get() != null) {
+            this.presenterRef.get().processChanges();
         }
     }
 }

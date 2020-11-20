@@ -97,7 +97,7 @@ public class MDataHolder {
     @RequiresApi(api = Build.VERSION_CODES.N)
     public static void sortUserGameList() {
         if(MDataHolder.userGameList != null) {
-            MDataHolder.userGameList.getGameList().sort(Comparator.comparing(MGame::getGameName));
+            MDataHolder.userGameList.getGameList().sort(Comparator.comparing(MGame::getVisibleGameName));
         }
     }
 }

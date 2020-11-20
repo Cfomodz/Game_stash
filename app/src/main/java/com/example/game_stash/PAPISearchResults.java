@@ -33,7 +33,7 @@ class PAPISearchResults implements IProcess {
             Log.d(TAG, "New returnApiSTR");
 
             //Parse the JSON using GSON
-            this.gsonParse(MDataHolder.getReturnApiSTR());
+            this.gsonParse();
 
             //Reset the flag
             MDataHolder.setHasBeenEditedReturnApiSTR();
@@ -78,8 +78,8 @@ class PAPISearchResults implements IProcess {
         thread.start();
     }
 
-    private void gsonParse(String response) {
-        MGSONParser gsonParse = new MGSONParser(this, MDataHolder.getReturnApiSTR());
+    private void gsonParse() {
+        MGSONParser gsonParse = new MGSONParser(this, MDataHolder::setApiGameList, MDataHolder::getApiGameList, MDataHolder.getReturnApiSTR());
         Thread thread = new Thread(gsonParse);
         thread.start();
     }

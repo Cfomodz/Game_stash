@@ -301,7 +301,7 @@ public class MGame {
 
     //Getters that return edits over default api content...
     public String getVisibleGameName() {
-        if (!editedGameName.equals("")) {
+        if (editedGameName != null && !editedGameName.equals("")) {
             return editedGameName;
         } else {
             return gameName;
@@ -357,7 +357,7 @@ public class MGame {
     }
 
     public String getVisibleDescription() {
-        if (!editedDescription.equals("")) {
+        if (editedDescription != null && !editedDescription.equals("")) {
             return editedDescription;
         } else {
             return description;
@@ -365,7 +365,7 @@ public class MGame {
     }
 
     public String getVisibleThumbURL() {
-        if (!editedThumbURL.equals("")) {
+        if (editedThumbURL != null && !editedThumbURL.equals("")) {
             return editedThumbURL;
         } else {
             return thumbURL;
@@ -373,7 +373,7 @@ public class MGame {
     }
 
     public String getVisibleImageURL() {
-        if (!editedImageURL.equals("")) {
+        if (editedImageURL != null && !editedImageURL.equals("")) {
             return editedImageURL;
         } else {
             return imageURL;
@@ -381,7 +381,7 @@ public class MGame {
     }
 
     public MPublisher getVisiblePublisher() {
-        if (editedPublisher != null) {
+        if (editedPublisher != null && !editedPublisher.equals("")) {
             return editedPublisher;
         } else {
             return publisher;
