@@ -1,6 +1,5 @@
 package com.example.game_stash;
 
-import android.content.Context;
 import android.util.Log;
 import android.widget.Toast;
 
@@ -8,8 +7,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.gson.Gson;
 
-import java.io.FileOutputStream;
-import java.io.IOException;
 import java.lang.ref.WeakReference;
 
 public class MSaveGame implements Runnable{
@@ -35,7 +32,7 @@ public class MSaveGame implements Runnable{
     public void run() {
         this.addedToUserGameList = this.saveGameToUserList();
         this.jsonStringCreated = this.objToJSONString();
-        this.savedToFile = this.saveToFile(filename, jsonString);
+        this.savedToFile = this.saveToFile(this.filename, this.jsonString);
         this.sendToast();
     }
 
@@ -70,17 +67,10 @@ public class MSaveGame implements Runnable{
         return false;
     }
 
-    public boolean saveToFile(String filename, String fileContents) {
-        if(fileContents != null){
-            try (FileOutputStream fos = this.masterRef.get().openFileOutput(filename, Context.MODE_PRIVATE)) {
-                fos.write(fileContents.getBytes());
-                Log.d(TAG, "File should be written...");
-                return true;
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+    public boolean saveToFile(String fileName, String fileContents) {
+        if (this.masterRef.get() != null) {
+            return new MSaveToFile(this.masterRef.get(), fileName, fileContents).run();
         }
-
         return false;
     }
 
