@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.game_stash">
+    package="com.gamestash.app">
     <uses-permission android:name="android.permission.INTERNET" />
     <application
         android:allowBackup="true"
@@ -9,85 +9,86 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:networkSecurityConfig="@xml/network_security_config"
-        android:theme="@style/Theme.Game_stash">
+        android:theme="@style/Theme.Game_stash"
+        android:fullBackupContent="@xml/app_backup_rules">
         <activity
-            android:name=".VErrorPage"
-            android:parentActivityName=".VMainMenu"
+            android:name="com.gamestash.app.VErrorPage"
+            android:parentActivityName="com.gamestash.app.VMainMenu"
             android:label="@string/lbl_error">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".VMainMenu" />
+                android:value="com.gamestash.app.VMainMenu" />
         </activity>
         <activity
-            android:name=".VProfile"
-            android:parentActivityName=".VMainMenu"
+            android:name="com.gamestash.app.VProfile"
+            android:parentActivityName="com.gamestash.app.VMainMenu"
             android:label="@string/lbl_profile">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".VMainMenu" />
+                android:value="com.gamestash.app.VMainMenu" />
         </activity>
         <activity
-            android:name=".VAPIGameDetails"
-            android:parentActivityName=".VAPISearchResults"
+            android:name="com.gamestash.app.VAPIGameDetails"
+            android:parentActivityName="com.gamestash.app.VAPISearchResults"
             android:label="@string/lbl_game_details">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".VAPISearchResults" />
+                android:value="com.gamestash.app.VAPISearchResults" />
         </activity>
         <activity
-            android:name=".VAPISearchResults"
+            android:name="com.gamestash.app.VAPISearchResults"
             android:label="@string/lbl_search_results"
-            android:parentActivityName=".VAddGameSearch">
+            android:parentActivityName="com.gamestash.app.VAddGameSearch">
             <!-- The meta-data tag is required if you support API level 15 and lower -->
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".VAddGameSearch" />
+                android:value="com.gamestash.app.VAddGameSearch" />
         </activity>
         <activity
-            android:name=".VUserGameDetails"
-            android:parentActivityName=".VUsersListOfGames"
+            android:name="com.gamestash.app.VUserGameDetails"
+            android:parentActivityName="com.gamestash.app.VUsersListOfGames"
             android:label="@string/lbl_game_details">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".VUsersListOfGames" />
+                android:value="com.gamestash.app.VUsersListOfGames" />
         </activity>
         <activity
-            android:name=".VAddGameManually"
-            android:parentActivityName=".VMainMenu"
+            android:name="com.gamestash.app.VAddGameManually"
+            android:parentActivityName="com.gamestash.app.VMainMenu"
             android:label="@string/lbl_add_a_game">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".VMainMenu" />
+                android:value="com.gamestash.app.VMainMenu" />
         </activity>
         <activity
-            android:name=".VAddGameSearch"
-            android:parentActivityName=".VMainMenu"
+            android:name="com.gamestash.app.VAddGameSearch"
+            android:parentActivityName="com.gamestash.app.VMainMenu"
             android:label="@string/lbl_add_a_game"/>
         <activity
-            android:name=".VGameEditor"
-            android:parentActivityName=".VMainMenu">
+            android:name="com.gamestash.app.VGameEditor"
+            android:parentActivityName="com.gamestash.app.VMainMenu">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".VMainMenu" />
+                android:value="com.gamestash.app.VMainMenu" />
         </activity>
         <activity
-            android:name=".VEditGamesList"
+            android:name="com.gamestash.app.VEditGamesList"
             android:label="@string/lbl_game_editor"
-            android:parentActivityName=".VMainMenu">
+            android:parentActivityName="com.gamestash.app.VMainMenu">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".VMainMenu" />
+                android:value="com.gamestash.app.VMainMenu" />
         </activity>
         <activity
-            android:name=".VUsersListOfGames"
+            android:name="com.gamestash.app.VUsersListOfGames"
             android:label="@string/lbl_your_games"
-            android:parentActivityName=".VMainMenu">
+            android:parentActivityName="com.gamestash.app.VMainMenu">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".VMainMenu" />
+                android:value="com.gamestash.app.VMainMenu" />
         </activity>
         <activity
-            android:name=".VMainMenu"
+            android:name="com.gamestash.app.VMainMenu"
             android:label="@string/lbl_game_CAPS"
             android:theme="@style/Theme.Game_stash.NoActionBar">
             <intent-filter>
@@ -97,5 +98,4 @@
             </intent-filter>
         </activity>
     </application>
-
 </manifest>
