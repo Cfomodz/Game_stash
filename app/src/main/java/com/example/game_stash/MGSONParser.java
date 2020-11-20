@@ -21,26 +21,32 @@ public class MGSONParser implements Runnable{
     private String response;
     private MGameList gameListObj;
     private SetList setList;
-    private GetList getList;
+    //private GetList getList;
 
+    public MGSONParser(IProcess presenter, SetList setList, String response) {
+        this.presenterRef = new WeakReference<>(presenter);
+        this.setList = setList;
+        this.response = response;
+    }
+
+    /**
     public MGSONParser(IProcess presenter, SetList setList, GetList getList, String response) {
         this.presenterRef = new WeakReference<>(presenter);
         this.setList = setList;
         this.getList = getList;
         this.response = response;
     }
-
-    //public MGameList getGameListObj() {
-    //    return gameListObj;
-    //}
+     */
 
     @Override
     public void run() {
         Gson gson = new Gson();
-        this.setList.set(gson.fromJson(this.response, MGameList.class));
-        this.gameListObj = this.getList.get();
 
-        //REMOVEABLE::NEEDED TO DEBUG ONLY...
+
+        this.gameListObj = gson.fromJson(this.response, MGameList.class);
+        this.setList.set(this.gameListObj);
+
+        // REMOVEABLE::NEEDED TO DEBUG ONLY...
         if(gameListObj.getGameList() != null && !gameListObj.getGameList().isEmpty()) {
             Log.d(TAG, gameListObj.getGameList().get(0).getGameName());
         }

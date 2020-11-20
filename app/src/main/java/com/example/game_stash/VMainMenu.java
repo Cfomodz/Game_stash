@@ -1,6 +1,7 @@
 package com.example.game_stash;
 
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -8,12 +9,14 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.nio.charset.StandardCharsets;
 import java.util.Random;
 
 public class VMainMenu extends AppCompatActivity {
@@ -24,6 +27,7 @@ public class VMainMenu extends AppCompatActivity {
     private static final String TAG_M = TAG + "_M:";
     private static final String TAG_A = TAG + "_A:";
 
+    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -107,6 +111,7 @@ public class VMainMenu extends AppCompatActivity {
         startActivity(intent);
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     public void testStuff4Lee() {
         //TEST AREA for Lee
 
@@ -123,7 +128,7 @@ public class VMainMenu extends AppCompatActivity {
             is.read(buffer);
             is.close();
 
-            jsonString = new String(buffer, "UTF-8");
+            jsonString = new String(buffer, StandardCharsets.UTF_8);
         } catch (IOException e) {
             e.printStackTrace();
             jsonString = null;
@@ -140,7 +145,9 @@ public class VMainMenu extends AppCompatActivity {
         //PROCESS JSON STRING
         //Not placed in the above string because that should be in its own function... While this should be separate...
         if(jsonString != null) {
-            MGSONParser gsonParse = new MGSONParser(new PMainMenu(this), MDataHolder::setUserGameList, MDataHolder::getUserGameList, jsonString);
+            //MGSONParser gsonParse = new MGSONParser(new PMainMenu(this), MDataHolder::setUserGameList, MDataHolder::getUserGameList, jsonString);
+            MGSONParser gsonParse = new MGSONParser(new PMainMenu(this), MDataHolder::setUserGameList, jsonString);
+
             //Thread thread = new Thread(gsonParse);
             //thread.start();
             gsonParse.run();

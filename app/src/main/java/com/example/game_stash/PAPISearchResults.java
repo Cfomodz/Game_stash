@@ -72,7 +72,8 @@ class PAPISearchResults implements IProcess {
     }
 
     private void gsonParse() {
-        MGSONParser gsonParse = new MGSONParser(this, MDataHolder::setApiGameList, MDataHolder::getApiGameList, MDataHolder.getReturnApiSTR());
+        //MGSONParser gsonParse = new MGSONParser(this, MDataHolder::setApiGameList, MDataHolder::getApiGameList, MDataHolder.getReturnApiSTR());
+        MGSONParser gsonParse = new MGSONParser(this, MDataHolder::setApiGameList, MDataHolder.getReturnApiSTR());
         Thread thread = new Thread(gsonParse);
         thread.start();
     }
