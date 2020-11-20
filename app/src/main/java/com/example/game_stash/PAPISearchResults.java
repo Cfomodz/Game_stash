@@ -50,13 +50,6 @@ class PAPISearchResults implements IProcess {
             //Reset the flag
             MDataHolder.setHasBeenEditedAPIGameList();
         }
-        if(MDataHolder.getHasBeenEditedUserGameList()) {
-            //New user game list available: reset the flag only
-            Log.d(TAG, "New userGameList");
-
-            //Reset the flag
-            MDataHolder.setHasBeenEditedUserGameList();
-        }
 
         //ALL FLAGS SHOUlD BE RESET...VERIFY
         Log.d(TAG, "Finished processing updates.");

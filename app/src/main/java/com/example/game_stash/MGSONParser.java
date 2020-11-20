@@ -30,8 +30,6 @@ public class MGSONParser implements Runnable{
         this.response = response;
     }
 
-
-
     //public MGameList getGameListObj() {
     //    return gameListObj;
     //}
