@@ -40,6 +40,9 @@ public class MGame {
     //Owner's Storage Location
     private String location = "";
 
+    //Promotional Content or expansion
+    private Boolean expansion = false;
+
     // Constructors.
 
     /** This constructor will likely create a new game using GSON from API data. */
