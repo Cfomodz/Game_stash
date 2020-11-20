@@ -3,8 +3,6 @@ package com.example.game_stash;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ListView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -32,7 +30,7 @@ public class VAPISearchResults extends AppCompatActivity {
     public void setListView() {
         setContentView(R.layout.activity_api_search_results);
 
-        ListView listView = (ListView) findViewById(R.id.lvGameList);
+        ListView listView = (ListView) findViewById(R.id.lv_game_list);
         Log.d(TAG, "onCreate: Started.");
 
         List<MGame> gameList = MDataHolder.getApiGameList().getGameList();
@@ -40,14 +38,11 @@ public class VAPISearchResults extends AppCompatActivity {
         AAPISearchResults adapter = new AAPISearchResults(this, R.layout.item_layout_gamelist, gameList);
 
         listView.setAdapter(adapter);
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapter, View view, int position, long id) {
+        listView.setOnItemClickListener((adapter1, view, position, id) -> {
 
-                Intent intent = new Intent(getApplicationContext(), VAPIGameDetails.class);
-                intent.putExtra("position", position);
-                startActivity(intent);
-            }
+            Intent intent = new Intent(getApplicationContext(), VAPIGameDetails.class);
+            intent.putExtra("position", position);
+            startActivity(intent);
         });
     }
 }

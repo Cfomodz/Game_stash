@@ -80,6 +80,7 @@
         android:layout_marginTop="32dp"
         android:layout_marginEnd="163dp"
         android:layout_marginRight="163dp"
+        android:onClick="onclickViewCollection"
         android:text="@string/users_list"
         app:backgroundTint="#66BBFF"
         app:layout_constraintEnd_toEndOf="parent"

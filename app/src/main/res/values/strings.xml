@@ -136,5 +136,8 @@
     <string name="lbl_game_details">Game Details</string>
     <string name="lbl_error">Game Not Found</string>
     <string name="todo">TODO</string>
+    <string name="lbl_game_name">Game Name</string>
+    <string name="lbl_info2">Variable Info 2</string>
+    <string name="img_desc_game_thumb">Game Thumbnail Image</string>
 
 </resources>

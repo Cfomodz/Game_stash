@@ -33,7 +33,11 @@ public class MDataHolder {
 
     public static MGameList getApiGameList() {return apiGameList;}
 
-    public static MGameList getUserGameList() {return userGameList;}
+    @RequiresApi(api = Build.VERSION_CODES.N)
+    public static MGameList getUserGameList() {
+        MDataHolder.sortUserGameList();
+        return userGameList;
+    }
 
     public static Boolean getHasBeenEditedSearchSTR() {return hasBeenEditedSearchSTR;}
 
@@ -61,12 +65,7 @@ public class MDataHolder {
         MDataHolder.hasBeenEditedAPIGameList = true;
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.N)
     public static void setUserGameList(MGameList userGameList) {
-        if(userGameList != null) {
-            userGameList.getGameList().sort(Comparator.<MGame, String>comparing(MGame::getGameName));
-        }
-
         MDataHolder.userGameList = userGameList;
         MDataHolder.hasBeenEditedUserGameList = true;
     }
@@ -85,5 +84,12 @@ public class MDataHolder {
 
     public static void setHasBeenEditedUserGameList() {
         MDataHolder.hasBeenEditedUserGameList = false;
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.N)
+    public static void sortUserGameList() {
+        if(MDataHolder.userGameList != null) {
+            MDataHolder.userGameList.getGameList().sort(Comparator.comparing(MGame::getGameName));
+        }
     }
 }

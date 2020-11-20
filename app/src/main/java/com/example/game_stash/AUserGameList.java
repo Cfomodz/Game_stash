@@ -17,8 +17,8 @@ import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
-public class AAPISearchResults extends ArrayAdapter<MGame> {
-    private static final String TAG = AAPISearchResults.class.getSimpleName();
+public class AUserGameList extends ArrayAdapter<MGame> {
+    private static final String TAG = AUserGameList.class.getSimpleName();
 
     private Context mContext;
     private int mResource;
@@ -26,12 +26,12 @@ public class AAPISearchResults extends ArrayAdapter<MGame> {
 
     static class ViewHolder {
         TextView name;
-        TextView publisher;
+        TextView location;
         ImageView gameImage;
         //etc.
     }
 
-    public AAPISearchResults(Context context, int resource, List<MGame> objects) {
+    public AUserGameList(Context context, int resource, List<MGame> objects) {
         super(context, resource, objects);
         this.mContext = context;
         this.mResource = resource;
@@ -41,7 +41,7 @@ public class AAPISearchResults extends ArrayAdapter<MGame> {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         String name = getItem(position).getGameName();
-        String publisher = getItem(position).getPublisher().getName();
+        String location = getItem(position).getLocation();
         //etc.
 
         final View result;
@@ -53,7 +53,7 @@ public class AAPISearchResults extends ArrayAdapter<MGame> {
 
             holder = new ViewHolder();
             holder.name = (TextView) convertView.findViewById(R.id.tv_game_name);
-            holder.publisher = (TextView) convertView.findViewById(R.id.tv_info2);
+            holder.location = (TextView) convertView.findViewById(R.id.tv_info2);
             holder.gameImage = (ImageView) convertView.findViewById(R.id.iv_game_thumb);
             //etc.
 
@@ -70,7 +70,7 @@ public class AAPISearchResults extends ArrayAdapter<MGame> {
         lastPosition = position;
 
         holder.name.setText(name);
-        holder.publisher.setText(publisher);
+        holder.location.setText(location);
         Picasso.get()
                 .load(getItem(position).getThumbURL())
                 .resize(100, 100)

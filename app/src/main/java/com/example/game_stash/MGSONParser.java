@@ -37,8 +37,5 @@ public class MGSONParser implements Runnable{
         if (presenterRef.get() != null) {
             presenterRef.get().processUpdates();
         }
-
-
-
     }
 }

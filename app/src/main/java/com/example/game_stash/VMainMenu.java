@@ -82,12 +82,17 @@ public class VMainMenu extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    public void onclickAddGameManually(View view){
+    public void onclickViewCollection(View view) {
+        Intent intent = new Intent(this, VUsersListOfGames.class);
+        startActivity(intent);
+    }
+
+    public void onclickAddGameManually(View view) {
         Intent intent = new Intent(this, VAddGameManually.class);
         startActivity(intent);
     }
 
-    public void onclickAddGameSearch(View view){
+    public void onclickAddGameSearch(View view) {
         Intent intent = new Intent(this, VAddGameSearch.class);
         startActivity(intent);
     }

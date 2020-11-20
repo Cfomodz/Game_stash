@@ -238,6 +238,10 @@ public class MGame {
 
     public void setEditedPublisher(MPublisher editedPublisher) {this.editedPublisher = editedPublisher;}
 
+    public void setLocation(String location) {this.location = location;}
+
+    public void setExpansion(Boolean expansion) {this.expansion = expansion;}
+
     // Getters.
     public String getGameID() {return gameID;}
 
@@ -290,6 +294,10 @@ public class MGame {
     public String getEditedImageURL() {return editedImageURL;}
 
     public MPublisher getEditedPublisher() {return editedPublisher;}
+
+    public String getLocation() {return location;}
+
+    public Boolean getExpansion() {return expansion;}
 
     //Getters that return edits over default api content...
     public String getVisibleGameName() {
