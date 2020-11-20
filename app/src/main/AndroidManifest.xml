@@ -44,12 +44,12 @@
                 android:value=".VAddGameSearch" />
         </activity>
         <activity
-            android:name=".VGameDisplay"
-            android:parentActivityName=".VMainMenu"
+            android:name=".VUserGameDetails"
+            android:parentActivityName=".VUsersListOfGames"
             android:label="@string/lbl_game_details">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".VMainMenu" />
+                android:value=".VUsersListOfGames" />
         </activity>
         <activity
             android:name=".VAddGameManually"

@@ -4,8 +4,8 @@ import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-public class VGameDisplay extends AppCompatActivity {
-    private static final String TAG = VGameDisplay.class.getSimpleName();
+public class VUserGameDetails extends AppCompatActivity {
+    private static final String TAG = VUserGameDetails.class.getSimpleName();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

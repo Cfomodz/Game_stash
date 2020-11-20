@@ -33,9 +33,7 @@ public class MDataHolder {
 
     public static MGameList getApiGameList() {return apiGameList;}
 
-    @RequiresApi(api = Build.VERSION_CODES.N)
     public static MGameList getUserGameList() {
-        MDataHolder.sortUserGameList();
         return userGameList;
     }
 

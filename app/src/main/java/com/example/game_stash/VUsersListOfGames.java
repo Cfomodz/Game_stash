@@ -39,7 +39,7 @@ public class VUsersListOfGames extends AppCompatActivity {
         listView.setAdapter(adapter);
         listView.setOnItemClickListener((adapter1, view, position, id) -> {
 
-            Intent intent = new Intent(getApplicationContext(), VGameDisplay.class);
+            Intent intent = new Intent(getApplicationContext(), VUserGameDetails.class);
             intent.putExtra("position", position);
             startActivity(intent);
         });
