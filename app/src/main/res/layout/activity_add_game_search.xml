@@ -50,18 +50,18 @@
         app:layout_constraintTop_toBottomOf="@+id/toolbar2" />
 
     <EditText
-        android:id="@+id/game_name"
+        android:id="@+id/et_game_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="103dp"
         android:layout_marginLeft="103dp"
-        android:layout_marginTop="72dp"
         android:layout_marginEnd="98dp"
         android:layout_marginRight="98dp"
         android:layout_marginBottom="346dp"
         android:ems="10"
+        android:hint="@string/game_search_bar"
         android:inputType="textPersonName"
-        android:text="@string/game_search_bar"
+        android:onClick="onclickSearch"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -71,10 +71,10 @@
         android:id="@+id/button4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="17dp"
+        android:layout_marginTop="44dp"
         android:onClick="onclickSearch"
         android:text="@string/game_search_text2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView5" />
+        app:layout_constraintTop_toBottomOf="@+id/et_game_name" />
 </androidx.constraintlayout.widget.ConstraintLayout>
