@@ -10,10 +10,6 @@ interface SetList{
     void set(MGameList m);
 }
 
-interface GetList{
-    MGameList get();
-}
-
 public class MGSONParser implements Runnable{
     private static final String TAG = MGSONParser.class.getSimpleName();
 
