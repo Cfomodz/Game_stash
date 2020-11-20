@@ -15,7 +15,7 @@ public class MDataHolder {
     // Member variables
     private static final String TAG = MDataHolder.class.getSimpleName();
 
-    private static WeakReference<IPAPISearchResults> currPresenterRef;
+    private static WeakReference<IProcess> currPresenterRef;
     private static String searchSTR;
     private static String returnApiSTR = "";
     private static MGameList apiGameList = new MGameList();

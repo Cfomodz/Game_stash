@@ -12,14 +12,14 @@ import java.util.Scanner;
 public class MAPIConnection implements Runnable {
     private static final String TAG = MAPIConnection.class.getSimpleName();
 
-    private WeakReference<IPAPISearchResults> presenterRef;
+    private WeakReference<IProcess> presenterRef;
     private String url;
     private URLConnection connection = null;
     private InputStream response = null;
     private String apiResponse;
 
-    public MAPIConnection(IPAPISearchResults presenter, String url) {
-        this.presenterRef = new WeakReference<IPAPISearchResults>(presenter);
+    public MAPIConnection(IProcess presenter, String url) {
+        this.presenterRef = new WeakReference<IProcess>(presenter);
         this.url = url;
     }
 
@@ -52,7 +52,7 @@ public class MAPIConnection implements Runnable {
 
         //Notify Presenter of update...
         if (presenterRef.get() != null) {
-            presenterRef.get().processUpdates();
+            presenterRef.get().processChanges();
         }
     }
 }

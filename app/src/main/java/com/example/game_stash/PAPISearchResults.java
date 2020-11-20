@@ -4,7 +4,7 @@ import android.util.Log;
 
 import java.lang.ref.WeakReference;
 
-class PAPISearchResults implements IPAPISearchResults {
+class PAPISearchResults implements IProcess {
     private static final String TAG = PAPISearchResults.class.getSimpleName();
 
     private WeakReference<VAPISearchResults> masterRef;
@@ -14,7 +14,7 @@ class PAPISearchResults implements IPAPISearchResults {
     }
 
     @Override
-    public void processUpdates() {
+    public void processChanges() {
         Log.d(TAG, "Beginning to process the updates");
         if(MDataHolder.getHasBeenEditedSearchSTR()) {
             //New Search String available: run search, reset the flag

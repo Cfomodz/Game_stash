@@ -2,6 +2,7 @@ package com.example.game_stash;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -9,6 +10,10 @@ import android.widget.ImageView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.Random;
 
 public class VMainMenu extends AppCompatActivity {
@@ -105,6 +110,38 @@ public class VMainMenu extends AppCompatActivity {
     public void testStuff4Lee() {
         //TEST AREA for Lee
 
+        //SET FILE
+        File file = new File(this.getFilesDir() + "/usergamelist.json");
+
+        //FIND FILE AND PULL JSON STRING
+        String jsonString;
+        try {
+            InputStream is = new FileInputStream(file);
+
+            int size = is.available();
+            byte[] buffer = new byte[size];
+            is.read(buffer);
+            is.close();
+
+            jsonString = new String(buffer, "UTF-8");
+        } catch (IOException e) {
+            e.printStackTrace();
+            jsonString = null;
+            //return null;
+        }
+
+        if(jsonString != null) {
+            Log.d(TAG, jsonString);
+        } else {
+            Log.d(TAG, "file not found.");
+        }
+        //return jsonString
+
+        //PROCESS JSON STRING
+        MGSONParser gsonParse = new MGSONParser(new PMainMenu(this), MDataHolder::setUserGameList, MDataHolder::getUserGameList, jsonString);
+        //Thread thread = new Thread(gsonParse);
+        //thread.start();
+        gsonParse.run();
     }
 
     public void testStuff4Daren() {

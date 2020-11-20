@@ -12,7 +12,7 @@ import java.util.List;
 public class VAPISearchResults extends AppCompatActivity {
     private static final String TAG = VAPISearchResults.class.getSimpleName();
 
-    private IPAPISearchResults presenter = new PAPISearchResults(this);
+    private IProcess presenter = new PAPISearchResults(this);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,7 +20,7 @@ public class VAPISearchResults extends AppCompatActivity {
         setContentView(R.layout.activity_api_search_results);
 
         // Check for updates and reset flags before handling view...
-        this.presenter.processUpdates();
+        this.presenter.processChanges();
 
         if(MDataHolder.getApiGameList() != null) {
             this.setListView();

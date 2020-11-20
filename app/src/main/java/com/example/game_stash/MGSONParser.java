@@ -6,27 +6,46 @@ import com.google.gson.Gson;
 
 import java.lang.ref.WeakReference;
 
+interface SetList{
+    void set(MGameList m);
+}
+
+interface GetList{
+    MGameList get();
+}
+
 public class MGSONParser implements Runnable{
     private static final String TAG = MGSONParser.class.getSimpleName();
 
-    private WeakReference<IPAPISearchResults> presenterRef;
+    private WeakReference<IProcess> presenterRef;
     private String response;
     private MGameList gameListObj;
+    private SetList setList = MDataHolder::setApiGameList;
+    private GetList getList = MDataHolder::getApiGameList;
 
-    public MGSONParser(IPAPISearchResults presenter, String response) {
+    public MGSONParser(IProcess presenter, String response) {
         this.presenterRef = new WeakReference<>(presenter);
         this.response = response;
     }
 
-    public MGameList getGameListObj() {
-        return gameListObj;
+    public MGSONParser(IProcess presenter, SetList setList, GetList getList, String response) {
+        this.presenterRef = new WeakReference<>(presenter);
+        this.setList = setList;
+        this.getList = getList;
+        this.response = response;
     }
+
+
+
+    //public MGameList getGameListObj() {
+    //    return gameListObj;
+    //}
 
     @Override
     public void run() {
         Gson gson = new Gson();
-        MDataHolder.setApiGameList(gson.fromJson(this.response, MGameList.class));
-        this.gameListObj = MDataHolder.getApiGameList();
+        this.setList.set(gson.fromJson(this.response, MGameList.class));
+        this.gameListObj = this.getList.get();
 
         //REMOVEABLE::NEEDED TO DEBUG ONLY...
         if(!gameListObj.getGameList().isEmpty()) {
@@ -35,7 +54,7 @@ public class MGSONParser implements Runnable{
 
         //Notify Presenter of update...
         if (presenterRef.get() != null) {
-            presenterRef.get().processUpdates();
+            presenterRef.get().processChanges();
         }
     }
 }
