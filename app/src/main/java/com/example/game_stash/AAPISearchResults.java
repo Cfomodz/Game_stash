@@ -2,6 +2,7 @@ package com.example.game_stash;
 
 import android.content.Context;
 import android.graphics.drawable.Drawable;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +13,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+
+import com.squareup.picasso.Picasso;
 
 import java.io.InputStream;
 import java.net.URL;
@@ -42,7 +45,6 @@ public class AAPISearchResults extends ArrayAdapter<MGame> {
     public View getView(int position, View convertView, ViewGroup parent) {
         String name = getItem(position).getGameName();
         String publisher = getItem(position).getPublisher().getName();
-        Drawable gameImage = this.loadImageFromWeb(getItem(position).getThumbURL());
         //etc.
 
         final View result;
@@ -72,7 +74,12 @@ public class AAPISearchResults extends ArrayAdapter<MGame> {
 
         holder.name.setText(name);
         holder.publisher.setText(publisher);
-        holder.gameImage.setImageDrawable(gameImage);
+        Picasso.get()
+                .load(getItem(position).getThumbURL())
+                .resize(100, 100)
+                .centerInside()
+                .into(holder.gameImage);
+        Log.d(TAG, getItem(position).getGameName() + " " + getItem(position).getThumbURL());
         //etc.
 
         return convertView;
