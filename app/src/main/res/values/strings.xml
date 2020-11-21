@@ -3,8 +3,11 @@
     <string name="action_settings">Settings</string>
 
     <!-- Game parameters -->
-    <string name="min_num_players">Num of Players</string>
+    <string name="min_num_players">Min Num of Players</string>
+    <string name="max_num_players">Max Num of Players</string>
     <string name="play_time">Play Time</string>
+    <string name="min_play_time">Min Play Time</string>
+    <string name="max_play_time">Max Play Time</string>
     <string name="game_name">Name</string>
     <string name="add_date">Date Added</string>
     <string name="pub_date">Date Published</string>
@@ -30,6 +33,10 @@
     <string name="users_list">View Collection</string>
     <string name="edit_games">Edit Games</string>
     <string name="add_new_game">Add New Game</string>
+    <string name="default_image">Filler Image</string>
+    <string name="expantion">Expansion</string>
+    <string name="pub">Publisher</string>
+    <string name="min_age">Minimum Age</string>
 
 
     <string name="title_activity_users_list_of_games">ScrollingActivity</string>
@@ -74,54 +81,8 @@
         "position along the z-axis and has a standard 1dp thickness.\n"
         "On the web, the z-axis is used for layering and not for perspective. The 3D world is "
         "emulated by manipulating the y-axis.\n\n"
-
-        "Light and shadow.\n\n"
-
-        "Within the material environment, virtual lights illuminate the scene. Key lights create "
-        "directional shadows, while ambient light creates soft shadows from all angles.\n"
-        "Shadows in the material environment are cast by these two light sources. In Android "
-        "development, shadows occur when light sources are blocked by sheets of material at "
-        "various positions along the z-axis. On the web, shadows are depicted by manipulating the "
-        "y-axis only. The following example shows the card with a height of 6dp.\n\n"
-
-        "Resting elevation.\n\n"
-
-        "All material objects, regardless of size, have a resting elevation, or default elevation "
-        "that does not change. If an object changes elevation, it should return to its resting "
-        "elevation as soon as possible.\n\n"
-
-        "Component elevations.\n\n"
-
-        "The resting elevation for a component type is consistent across apps (e.g., FAB elevation "
-        "does not vary from 6dp in one app to 16dp in another app).\n"
-        "Components may have different resting elevations across platforms, depending on the depth "
-        "of the environment (e.g., TV has a greater depth than mobile or desktop).\n\n"
-
-        "Responsive elevation and dynamic elevation offsets.\n\n"
-
-        "Some component types have responsive elevation, meaning they change elevation in response "
-        "to user input (e.g., normal, focused, and pressed) or system events. These elevation "
-        "changes are consistently implemented using dynamic elevation offsets.\n"
-        "Dynamic elevation offsets are the goal elevation that a component moves towards, relative "
-        "to the component’s resting state. They ensure that elevation changes are consistent "
-        "across actions and component types. For example, all components that lift on press have "
-        "the same elevation change relative to their resting elevation.\n"
-        "Once the input event is completed or cancelled, the component will return to its resting "
-        "elevation.\n\n"
-
-        "Avoiding elevation interference.\n\n"
-
-        "Components with responsive elevations may encounter other components as they move between "
-        "their resting elevations and dynamic elevation offsets. Because material cannot pass "
-        "through other material, components avoid interfering with one another any number of ways, "
-        "whether on a per component basis or using the entire app layout.\n"
-        "On a component level, components can move or be removed before they cause interference. "
-        "For example, a floating action button (FAB) can disappear or move off screen before a "
-        "user picks up a card, or it can move if a snackbar appears.\n"
-        "On the layout level, design your app layout to minimize opportunities for interference. "
-        "For example, position the FAB to one side of stream of a cards so the FAB won’t interfere "
-        "when a user tries to pick up one of cards.\n\n"
     </string>
+
     <string name="title_activity_edit_games_list">ScrollingActivity</string>
     <string name="title_activity_search_results">ScrollingActivity</string>
     <string name="hint_et_game_name">Enter Name of Game</string>
