@@ -27,11 +27,15 @@ public class VMainMenu extends AppCompatActivity {
     private static final String TAG_M = TAG + "_M:";
     private static final String TAG_A = TAG + "_A:";
 
+    private IProcess presenter;
+
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_menu);
+
+        presenter = new PMainMenu(this);
 
         //Random starting image... just add R.darawable. image name to array to expand.
         int[] mainImgs =  {R.drawable.main_menu_img_00,
@@ -42,6 +46,8 @@ public class VMainMenu extends AppCompatActivity {
         ImageView imageView = findViewById(R.id.iv_main_menu);
         imageView.setImageResource(mainImgs[new Random().nextInt(mainImgs.length)]);
 
+        this.presenter.processChanges();
+
         // TEST AREA START // // TEST AREA START // // TEST AREA START //
         // TEST AREA START // // TEST AREA START // // TEST AREA START //
         // TEST AREA START // // TEST AREA START // // TEST AREA START //
@@ -50,11 +56,6 @@ public class VMainMenu extends AppCompatActivity {
         testStuff4Lee();
         testStuff4Daren();
         testStuff4David();
-
-       
-
-        System.out.println(TAG);
-
         testStuff4Megan();
         //  TEST AREA END  // //  TEST AREA END  // //  TEST AREA END  //
         //  TEST AREA END  // //  TEST AREA END  // //  TEST AREA END  //
@@ -107,51 +108,6 @@ public class VMainMenu extends AppCompatActivity {
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     public void testStuff4Lee() {
         //TEST AREA for Lee
-
-        //SET FILE
-        File file = new File(this.getFilesDir() + "/usergamelist.json");
-
-        //FIND FILE AND PULL JSON STRING
-        String jsonString;
-        try {
-            InputStream is = new FileInputStream(file);
-
-            int size = is.available();
-            byte[] buffer = new byte[size];
-            int exists = is.read(buffer);
-            is.close();
-
-            if(exists > -1) {
-                jsonString = new String(buffer, StandardCharsets.UTF_8);
-            } else {
-                jsonString = null;
-                //return null;
-            }
-
-        } catch (IOException e) {
-            e.printStackTrace();
-            jsonString = null;
-            //return null;
-        }
-
-        if(jsonString != null) {
-            Log.d(TAG, jsonString);
-        } else {
-            Log.d(TAG, "file not found.");
-        }
-        //return jsonString
-
-        //PROCESS JSON STRING
-        //Not placed in the above string because that should be in its own function... While this should be separate...
-        if(jsonString != null) {
-            //MGSONParser gsonParse = new MGSONParser(new PMainMenu(this), MDataHolder::setUserGameList, MDataHolder::getUserGameList, jsonString);
-            MGSONParser gsonParse = new MGSONParser(new PMainMenu(this), MDataHolder::setUserGameList, jsonString);
-
-            //Thread thread = new Thread(gsonParse);
-            //thread.start();
-            gsonParse.run();
-        }
-
     }
 
     public void testStuff4Daren() {

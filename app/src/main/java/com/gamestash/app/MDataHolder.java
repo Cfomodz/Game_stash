@@ -1,9 +1,12 @@
 package com.gamestash.app;
 
+import android.app.Application;
+import android.content.Context;
 import android.os.Build;
 
 import androidx.annotation.RequiresApi;
 
+import java.io.File;
 import java.lang.ref.WeakReference;
 import java.util.Comparator;
 
@@ -18,10 +21,12 @@ public class MDataHolder {
     private static WeakReference<IProcess> currPresenterRef;
     private static String searchSTR;
     private static String returnApiSTR = "";
+    private static String returnUserSTR = "";
     private static MGameList apiGameList = new MGameList();
     private static MGameList userGameList = new MGameList();
     private static Boolean hasBeenEditedSearchSTR = false;
     private static Boolean hasBeenEditedReturnApiSTR = false;
+    private static Boolean hasBeenEditedReturnUserSTR = false;
     private static Boolean hasBeenEditedAPIGameList = false;
     private static Boolean hasBeenEditedUserGameList = false;
 
@@ -30,6 +35,8 @@ public class MDataHolder {
     public static String getSearchSTR() {return searchSTR;}
 
     public static String getReturnApiSTR() {return returnApiSTR;}
+
+    public static String getReturnUserSTR() {return returnUserSTR;}
 
     public static MGameList getApiGameList() {return apiGameList;}
 
@@ -46,6 +53,8 @@ public class MDataHolder {
 
     public static Boolean getHasBeenEditedReturnApiSTR() {return hasBeenEditedReturnApiSTR;}
 
+    public static Boolean getHasBeenEditedReturnUserSTR() {return hasBeenEditedReturnUserSTR;}
+
     public static Boolean getHasBeenEditedAPIGameList() {return hasBeenEditedAPIGameList;}
 
     public static Boolean getHasBeenEditedUserGameList() {return hasBeenEditedUserGameList;}
@@ -61,6 +70,11 @@ public class MDataHolder {
     public static void setReturnApiSTR(String returnApiSTR) {
         MDataHolder.returnApiSTR = returnApiSTR;
         MDataHolder.hasBeenEditedReturnApiSTR = true;
+    }
+
+    public static void setReturnUserSTR(String returnUserSTR) {
+        MDataHolder.returnUserSTR = returnUserSTR;
+        MDataHolder.hasBeenEditedReturnUserSTR = true;
     }
 
     public static void setApiGameList(MGameList apiGameList) {
@@ -86,6 +100,10 @@ public class MDataHolder {
         MDataHolder.hasBeenEditedReturnApiSTR = false;
     }
 
+    public static void setHasBeenEditedReturnUserSTR() {
+        MDataHolder.hasBeenEditedReturnUserSTR = false;
+    }
+
     public static void setHasBeenEditedAPIGameList() {
         MDataHolder.hasBeenEditedAPIGameList = false;
     }
@@ -100,4 +118,5 @@ public class MDataHolder {
             MDataHolder.userGameList.getGameList().sort(Comparator.comparing(MGame::getVisibleGameName));
         }
     }
+
 }
