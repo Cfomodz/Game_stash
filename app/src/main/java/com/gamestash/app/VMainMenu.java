@@ -46,6 +46,8 @@ public class VMainMenu extends AppCompatActivity {
         ImageView imageView = findViewById(R.id.iv_main_menu);
         imageView.setImageResource(mainImgs[new Random().nextInt(mainImgs.length)]);
 
+        MDataHolder.setUserJSONFile(new File(this.getFilesDir() + "/usergamelist.json"));
+
         this.presenter.processChanges();
 
         // TEST AREA START // // TEST AREA START // // TEST AREA START //

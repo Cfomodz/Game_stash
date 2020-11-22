@@ -18,6 +18,7 @@ public class MDataHolder {
     // Member variables
     private static final String TAG = MDataHolder.class.getSimpleName();
 
+    private static File userJSONFile;
     private static WeakReference<IProcess> currPresenterRef;
     private static String searchSTR;
     private static String returnApiSTR = "";
@@ -30,8 +31,9 @@ public class MDataHolder {
     private static Boolean hasBeenEditedAPIGameList = false;
     private static Boolean hasBeenEditedUserGameList = false;
 
-
     // Getters
+    public static File getUserJSONFile() {return userJSONFile;}
+
     public static String getSearchSTR() {return searchSTR;}
 
     public static String getReturnApiSTR() {return returnApiSTR;}
@@ -60,6 +62,8 @@ public class MDataHolder {
     public static Boolean getHasBeenEditedUserGameList() {return hasBeenEditedUserGameList;}
 
     //Setters
+    public static void setUserJSONFile(File userJSONFile) {MDataHolder.userJSONFile = userJSONFile;}
+
     public static void setSearchSTR(String searchSTR) {
         if(!searchSTR.equals(MDataHolder.getSearchSTR())){
             MDataHolder.searchSTR = searchSTR;
