@@ -13,7 +13,6 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 
-import com.gamestash.app.R;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
@@ -26,9 +25,11 @@ public class AUserGameList extends ArrayAdapter<MGame> {
     private int lastPosition = -1;
 
     static class ViewHolder {
-        TextView name;
-        TextView location;
         ImageView gameImage;
+        TextView name;
+        TextView publisher;
+        TextView extraDetails;
+
         //etc.
     }
 
@@ -41,8 +42,10 @@ public class AUserGameList extends ArrayAdapter<MGame> {
     @NonNull
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
+        String gameImage = getItem(position).getThumbURL();
         String name = getItem(position).getGameName();
-        String location = getItem(position).getLocation();
+        String publisher = getItem(position).getPublisher().getName();
+        String extraDetails = getItem(position).getLocation();
         //etc.
 
         final View result;
@@ -53,9 +56,10 @@ public class AUserGameList extends ArrayAdapter<MGame> {
             convertView = inflater.inflate(mResource, parent, false);
 
             holder = new ViewHolder();
-            holder.name = convertView.findViewById(R.id.tv_game_name);
-            holder.location = convertView.findViewById(R.id.tv_info2);
-            holder.gameImage = convertView.findViewById(R.id.iv_game_thumb);
+            holder.gameImage = convertView.findViewById(R.id.iv_gamelist_item_game_thumb);
+            holder.name = convertView.findViewById(R.id.tv_gamelist_item_game_name);
+            holder.publisher = convertView.findViewById(R.id.tv_gamelist_publisher);
+            holder.extraDetails = convertView.findViewById(R.id.tv_gamelist_item_extra_details);
             //etc.
 
             result = convertView;
@@ -70,16 +74,18 @@ public class AUserGameList extends ArrayAdapter<MGame> {
         result.startAnimation(animation);
         lastPosition = position;
 
-        holder.name.setText(name);
-        holder.location.setText(location);
         Picasso.get()
-                .load(getItem(position).getThumbURL())
+                .load(gameImage)
                 .resize(100, 100)
                 .centerInside()
                 .noFade()
                 .into(holder.gameImage);
-        Log.d(TAG, getItem(position).getGameName() + " " + getItem(position).getThumbURL());
+        holder.name.setText(name);
+        holder.publisher.setText(publisher);
+        holder.extraDetails.setText(extraDetails);
         //etc.
+
+        Log.d(TAG, getItem(position).getGameName() + " " + getItem(position).getThumbURL());
 
         return convertView;
     }
