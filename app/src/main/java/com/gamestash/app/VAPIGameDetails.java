@@ -9,11 +9,11 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.gamestash.app.R;
 import com.squareup.picasso.Picasso;
 
 public class VAPIGameDetails extends AppCompatActivity {
     private static final String TAG = VAPIGameDetails.class.getSimpleName();
+
     private IPAPIGameDetails presenter = new PAPIGameDetails(this);
     private MGame game;
 
@@ -29,7 +29,7 @@ public class VAPIGameDetails extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_api_game_details);
+        setContentView(R.layout.activity_game_details_api);
 
         Intent intent = getIntent();
         int position = intent.getIntExtra("position", 0);
@@ -44,7 +44,6 @@ public class VAPIGameDetails extends AppCompatActivity {
         String minAge = "Age: " + this.game.getMinAge() + "+";
 
         ViewHolder holder = new ViewHolder();
-        this.game = MDataHolder.getApiGameList().getGameList().get(position);
         holder.gameImage = this.findViewById(R.id.tv_api_details_game_image);
         holder.gameName = this.findViewById(R.id.tv_api_details_game_name);
         holder.publisher = this.findViewById(R.id.tv_api_details_publisher);
