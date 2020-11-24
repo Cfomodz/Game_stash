@@ -7,10 +7,8 @@ import android.widget.EditText;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.gamestash.app.R;
-
-public class VAddGameSearch extends AppCompatActivity {
-    private static final String TAG = VAddGameSearch.class.getSimpleName();
+public class VAddGameAPI extends AppCompatActivity {
+    private static final String TAG = VAddGameAPI.class.getSimpleName();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,9 +20,9 @@ public class VAddGameSearch extends AppCompatActivity {
         EditText editTextName = findViewById(R.id.et_game_name);
         String search = editTextName.getText().toString();
 
-        MDataHolder.setSearchSTR(search);
+        DApp.setSearchSTR(search);
         
-        Intent intent = new Intent(this, VAPISearchResults.class);
+        Intent intent = new Intent(this, VGameListAPI.class);
         startActivity(intent);
     }
 }

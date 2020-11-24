@@ -9,12 +9,10 @@ import android.widget.ListView;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.gamestash.app.R;
-
 import java.util.List;
 
-public class VUsersListOfGames extends AppCompatActivity {
-    private static final String TAG = VUsersListOfGames.class.getSimpleName();
+public class VGameListUser extends AppCompatActivity {
+    private static final String TAG = VGameListUser.class.getSimpleName();
 
     @Override
     @RequiresApi(api = Build.VERSION_CODES.N)
@@ -22,7 +20,7 @@ public class VUsersListOfGames extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_users_list_of_games);
 
-        if(MDataHolder.getUserGameList() != null) {
+        if(DApp.getUserGameList() != null) {
             this.setListView();
         }
     }
@@ -34,14 +32,14 @@ public class VUsersListOfGames extends AppCompatActivity {
         ListView listView = findViewById(R.id.lv_game_list);
         Log.d(TAG, "onCreate: Started.");
 
-        List<MGame> gameList = MDataHolder.getUserGameList().getGameList();
+        List<DGame> gameList = DApp.getUserGameList().getGameList();
 
-        AUserGameList adapter = new AUserGameList(this, R.layout.item_layout_gamelist, gameList);
+        AGameListUser adapter = new AGameListUser(this, R.layout.item_layout_gamelist, gameList);
 
         listView.setAdapter(adapter);
         listView.setOnItemClickListener((adapter1, view, position, id) -> {
 
-            Intent intent = new Intent(getApplicationContext(), VUserGameDetails.class);
+            Intent intent = new Intent(getApplicationContext(), VGameDetailsUser.class);
             intent.putExtra("position", position);
             startActivity(intent);
         });

@@ -17,8 +17,8 @@ import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
-public class AAPISearchResults extends ArrayAdapter<MGame> {
-    private static final String TAG = AAPISearchResults.class.getSimpleName();
+public class AGameListAPI extends ArrayAdapter<DGame> {
+    private static final String TAG = AGameListAPI.class.getSimpleName();
 
     private Context mContext;
     private int mResource;
@@ -32,7 +32,7 @@ public class AAPISearchResults extends ArrayAdapter<MGame> {
         //etc.
     }
 
-    public AAPISearchResults(Context context, int resource, List<MGame> objects) {
+    public AGameListAPI(Context context, int resource, List<DGame> objects) {
         super(context, resource, objects);
         this.mContext = context;
         this.mResource = resource;

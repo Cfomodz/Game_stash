@@ -8,12 +8,12 @@ import java.io.InputStream;
 import java.lang.ref.WeakReference;
 import java.nio.charset.StandardCharsets;
 
-public class TMReadJSON implements Runnable{
-    private static final String TAG = TMReadJSON.class.getSimpleName();
+public class TReadJSON implements Runnable{
+    private static final String TAG = TReadJSON.class.getSimpleName();
 
     private WeakReference<IProcess> presenterRef;
 
-    public TMReadJSON(IProcess presenter) {
+    public TReadJSON(IProcess presenter) {
         this.presenterRef = new WeakReference<>(presenter);
     }
 
@@ -21,7 +21,7 @@ public class TMReadJSON implements Runnable{
     public void run() {
         String jsonString;
         try {
-            InputStream is = new FileInputStream(MDataHolder.getUserJSONFile());
+            InputStream is = new FileInputStream(DApp.getUserJSONFile());
 
             int size = is.available();
             byte[] buffer = new byte[size];
@@ -46,7 +46,7 @@ public class TMReadJSON implements Runnable{
         }
 
         if (jsonString != null && !jsonString.equals("")){
-            MDataHolder.setReturnUserSTR(jsonString);
+            DApp.setReturnUserSTR(jsonString);
         }
 
         //ADD the process piece...

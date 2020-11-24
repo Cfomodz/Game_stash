@@ -11,11 +11,11 @@ import com.google.gson.Gson;
 
 import java.lang.ref.WeakReference;
 
-public class TMSaveGame implements Runnable{
-    private static final String TAG = MGameList.class.getSimpleName();
-    private static WeakReference<MGame> gameRef;
+public class TSaveGame implements Runnable{
+    private static final String TAG = DGameList.class.getSimpleName();
+    private static WeakReference<DGame> gameRef;
     private static WeakReference<AppCompatActivity> masterRef;
-    private static WeakReference<IPAPIGameDetails> presenterRef;
+    private static WeakReference<ISave> presenterRef;
     private boolean existsInUserList = false;
     private boolean addedToUserGameList = false;
     private boolean jsonStringCreated = false;
@@ -24,7 +24,7 @@ public class TMSaveGame implements Runnable{
     private static final String filename = "usergamelist.json";
 
     /** This constructor will likely create a new game using GSON from API data. */
-    public TMSaveGame(VAPIGameDetails activity, IPAPIGameDetails presenter, MGame game){
+    public TSaveGame(VGameDetailsAPI activity, ISave presenter, DGame game){
         masterRef = new WeakReference<>(activity);
         presenterRef = new WeakReference<>(presenter);
         gameRef = new WeakReference<>(game);
@@ -42,9 +42,9 @@ public class TMSaveGame implements Runnable{
     @RequiresApi(api = Build.VERSION_CODES.N)
     public boolean saveGameToUserList() {
         //Check if user list is empty
-        if(MDataHolder.getUserGameList() != null && MDataHolder.getUserGameList().getGameList() != null) {
+        if(DApp.getUserGameList() != null && DApp.getUserGameList().getGameList() != null) {
             //Check if game id matches any an id in the user list...
-            for (MGame usersGame : MDataHolder.getUserGameList().getGameList()) {
+            for (DGame usersGame : DApp.getUserGameList().getGameList()) {
                 if(gameRef.get() != null && usersGame.getGameID().equals(gameRef.get().getGameID())) {
                     this.existsInUserList = true;
                 }
@@ -55,7 +55,7 @@ public class TMSaveGame implements Runnable{
 
         // If no match add game...
         if (!this.existsInUserList && gameRef.get() != null && presenterRef.get() != null) {
-            MDataHolder.addGameUserGameList(gameRef.get());
+            DApp.addGameUserGameList(gameRef.get());
             return true;
         } else {
             return false;
@@ -65,7 +65,7 @@ public class TMSaveGame implements Runnable{
     @RequiresApi(api = Build.VERSION_CODES.N)
     public boolean objToJSONString() {
         if(this.addedToUserGameList) {
-            this.jsonString = new Gson().toJson(MDataHolder.getUserGameList());
+            this.jsonString = new Gson().toJson(DApp.getUserGameList());
             Log.d(TAG, this.jsonString);
             return true;
         }
@@ -74,7 +74,7 @@ public class TMSaveGame implements Runnable{
 
     public boolean saveToFile(String fileName, String fileContents) {
         if (masterRef.get() != null) {
-            return new TMSaveToFile(masterRef.get(), fileName, fileContents).run();
+            return new TSaveToFile(masterRef.get(), fileName, fileContents).run();
         }
         return false;
     }

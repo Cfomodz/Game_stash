@@ -2,19 +2,19 @@ package com.gamestash.app;
 
 import java.lang.ref.WeakReference;
 
-public class PAPIGameDetails implements IPAPIGameDetails {
+public class PAPIGameDetails implements ISave {
     private static final String TAG = PAPIGameDetails.class.getSimpleName();
 
-    private WeakReference<VAPIGameDetails> masterRef;
+    private WeakReference<VGameDetailsAPI> masterRef;
 
-    public PAPIGameDetails(VAPIGameDetails activity){
+    public PAPIGameDetails(VGameDetailsAPI activity){
         this.masterRef = new WeakReference<>(activity);
     }
 
     @Override
     public void saveGameInUserList() {
         if (this.masterRef.get() !=  null){
-            TMSaveGame saveGame = new TMSaveGame(this.masterRef.get(), this, this.masterRef.get().getGame());
+            TSaveGame saveGame = new TSaveGame(this.masterRef.get(), this, this.masterRef.get().getGame());
             Thread thread = new Thread(saveGame);
             thread.start();
         }

@@ -2,9 +2,9 @@ package com.gamestash.app;
 
 import com.google.gson.annotations.SerializedName;
 
-public class MGame {
+public class DGame {
     //Member variables.
-    private static final String TAG = MGame.class.getSimpleName();
+    private static final String TAG = DGame.class.getSimpleName();
 
     // API variables.
     private @SerializedName("id") String gameID = "";
@@ -21,7 +21,8 @@ public class MGame {
     private String url = "";
     private float price = 0;
     private float msrp = 0;
-    private @SerializedName("primary_publisher") MPublisher publisher = new MPublisher();
+    private @SerializedName("primary_publisher")
+    DPublisher publisher = new DPublisher();
     //private Map<String, String> mechanics;
 
     // Edited variables.
@@ -35,7 +36,7 @@ public class MGame {
     private String editedDescription;
     private String editedThumbURL;
     private String editedImageURL;
-    private MPublisher editedPublisher;
+    private DPublisher editedPublisher;
 
     //Owner's Storage Location
     private String location = "";
@@ -46,10 +47,10 @@ public class MGame {
     // Constructors.
 
     /** This constructor will likely create a new game using GSON from API data. */
-    public MGame(){}
+    public DGame(){}
 
     /** This constructor will be used when there is an empty list. */
-    public MGame(String gameName){
+    public DGame(String gameName){
         this.gameName = gameName;
     }
 
@@ -57,7 +58,7 @@ public class MGame {
      * Use this constructor to create a game from API data.
      * Most likely not used.
      */
-    public MGame(String gameID,
+    public DGame(String gameID,
                  String gameName,
                  int yearPublished,
                  int minPlayers,
@@ -71,7 +72,7 @@ public class MGame {
                  String url,
                  float price,
                  float msrp,
-                 MPublisher publisher) {
+                 DPublisher publisher) {
         this.gameID = gameID;
         this.gameName = gameName;
         this.yearPublished = yearPublished;
@@ -92,7 +93,7 @@ public class MGame {
     /**
      * Use this to constructor to create a custom game.
      */
-    public MGame(String editedGameName,
+    public DGame(String editedGameName,
                  int editedYearPublished,
                  int editedMinPlayers,
                  int editedMaxPlayers,
@@ -102,7 +103,7 @@ public class MGame {
                  String editedDescription,
                  String editedThumbURL,
                  String editedImageURL,
-                 MPublisher editedPublisher,
+                 DPublisher editedPublisher,
                  String location) {
         this.editedGameName = editedGameName;
         this.editedYearPublished = editedYearPublished;
@@ -121,7 +122,7 @@ public class MGame {
     /**
      * Use this constructor to add a game... possibly with edits...
      */
-    public MGame(String gameID,
+    public DGame(String gameID,
                  String gameName,
                  int yearPublished,
                  int minPlayers,
@@ -135,7 +136,7 @@ public class MGame {
                  String url,
                  float price,
                  float msrp,
-                 MPublisher publisher,
+                 DPublisher publisher,
                  String editedGameName,
                  int editedYearPublished,
                  int editedMinPlayers,
@@ -146,7 +147,7 @@ public class MGame {
                  String editedDescription,
                  String editedThumbURL,
                  String editedImageURL,
-                 MPublisher editedPublisher,
+                 DPublisher editedPublisher,
                  String location) {
         this.gameID = gameID;
         this.gameName = gameName;
@@ -214,7 +215,7 @@ public class MGame {
 
     public void setMsrp(float msrp) {this.msrp = msrp;}
 
-    public void setPublisher(MPublisher publisher) {this.publisher = publisher;}
+    public void setPublisher(DPublisher publisher) {this.publisher = publisher;}
 
     public void setEditedGameName(String editedGameName) {this.editedGameName = editedGameName;}
 
@@ -236,7 +237,7 @@ public class MGame {
 
     public void setEditedImageURL(String editedImageURL) {this.editedImageURL = editedImageURL;}
 
-    public void setEditedPublisher(MPublisher editedPublisher) {this.editedPublisher = editedPublisher;}
+    public void setEditedPublisher(DPublisher editedPublisher) {this.editedPublisher = editedPublisher;}
 
     public void setLocation(String location) {this.location = location;}
 
@@ -271,7 +272,7 @@ public class MGame {
 
     public String getThumbURL() {return thumbURL;}
 
-    public MPublisher getPublisher() {return publisher;}
+    public DPublisher getPublisher() {return publisher;}
 
     public String getEditedGameName() {return editedGameName;}
 
@@ -293,7 +294,7 @@ public class MGame {
 
     public String getEditedImageURL() {return editedImageURL;}
 
-    public MPublisher getEditedPublisher() {return editedPublisher;}
+    public DPublisher getEditedPublisher() {return editedPublisher;}
 
     public String getLocation() {return location;}
 
@@ -380,7 +381,7 @@ public class MGame {
         }
     }
 
-    public MPublisher getVisiblePublisher() {
+    public DPublisher getVisiblePublisher() {
         if (editedPublisher != null) {
             return editedPublisher;
         } else {

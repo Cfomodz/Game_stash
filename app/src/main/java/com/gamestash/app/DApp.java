@@ -1,7 +1,5 @@
 package com.gamestash.app;
 
-import android.app.Application;
-import android.content.Context;
 import android.os.Build;
 
 import androidx.annotation.RequiresApi;
@@ -14,17 +12,17 @@ import java.util.Comparator;
  * This class is used to store data between activities.
  */
 
-public class MDataHolder {
+public class DApp {
     // Member variables
-    private static final String TAG = MDataHolder.class.getSimpleName();
+    private static final String TAG = DApp.class.getSimpleName();
 
     private static File userJSONFile;
     private static WeakReference<IProcess> currPresenterRef;
     private static String searchSTR;
     private static String returnApiSTR = "";
     private static String returnUserSTR = "";
-    private static MGameList apiGameList = new MGameList();
-    private static MGameList userGameList = new MGameList();
+    private static DGameList apiGameList = new DGameList();
+    private static DGameList userGameList = new DGameList();
     private static Boolean hasBeenEditedSearchSTR = false;
     private static Boolean hasBeenEditedReturnApiSTR = false;
     private static Boolean hasBeenEditedReturnUserSTR = false;
@@ -40,10 +38,10 @@ public class MDataHolder {
 
     public static String getReturnUserSTR() {return returnUserSTR;}
 
-    public static MGameList getApiGameList() {return apiGameList;}
+    public static DGameList getApiGameList() {return apiGameList;}
 
     @RequiresApi(api = Build.VERSION_CODES.N)
-    public static MGameList getUserGameList() {
+    public static DGameList getUserGameList() {
         if(hasBeenEditedUserGameList) {
             sortUserGameList();
             setHasBeenEditedUserGameList();
@@ -62,64 +60,65 @@ public class MDataHolder {
     public static Boolean getHasBeenEditedUserGameList() {return hasBeenEditedUserGameList;}
 
     //Setters
-    public static void setUserJSONFile(File userJSONFile) {MDataHolder.userJSONFile = userJSONFile;}
+    public static void setUserJSONFile(File userJSONFile) {
+        DApp.userJSONFile = userJSONFile;}
 
     public static void setSearchSTR(String searchSTR) {
-        if(!searchSTR.equals(MDataHolder.getSearchSTR())){
-            MDataHolder.searchSTR = searchSTR;
-            MDataHolder.hasBeenEditedSearchSTR = true;
+        if(!searchSTR.equals(DApp.getSearchSTR())){
+            DApp.searchSTR = searchSTR;
+            DApp.hasBeenEditedSearchSTR = true;
         }
     }
 
     public static void setReturnApiSTR(String returnApiSTR) {
-        MDataHolder.returnApiSTR = returnApiSTR;
-        MDataHolder.hasBeenEditedReturnApiSTR = true;
+        DApp.returnApiSTR = returnApiSTR;
+        DApp.hasBeenEditedReturnApiSTR = true;
     }
 
     public static void setReturnUserSTR(String returnUserSTR) {
-        MDataHolder.returnUserSTR = returnUserSTR;
-        MDataHolder.hasBeenEditedReturnUserSTR = true;
+        DApp.returnUserSTR = returnUserSTR;
+        DApp.hasBeenEditedReturnUserSTR = true;
     }
 
-    public static void setApiGameList(MGameList apiGameList) {
-        MDataHolder.apiGameList = apiGameList;
-        MDataHolder.hasBeenEditedAPIGameList = true;
+    public static void setApiGameList(DGameList apiGameList) {
+        DApp.apiGameList = apiGameList;
+        DApp.hasBeenEditedAPIGameList = true;
     }
 
-    public static void setUserGameList(MGameList userGameList) {
-        MDataHolder.userGameList = userGameList;
-        MDataHolder.hasBeenEditedUserGameList = true;
+    public static void setUserGameList(DGameList userGameList) {
+        DApp.userGameList = userGameList;
+        DApp.hasBeenEditedUserGameList = true;
     }
 
-    public static void addGameUserGameList(MGame game) {
-        MDataHolder.userGameList.getGameList().add(game);
-        MDataHolder.hasBeenEditedUserGameList = true;
+    public static void addGameUserGameList(DGame game) {
+        DApp.userGameList.getGameList().add(game);
+        DApp.hasBeenEditedUserGameList = true;
     }
 
     public static void setHasBeenEditedSearchSTR() {
-        MDataHolder.hasBeenEditedSearchSTR = false;
+        DApp.hasBeenEditedSearchSTR = false;
     }
 
     public static void setHasBeenEditedReturnApiSTR() {
-        MDataHolder.hasBeenEditedReturnApiSTR = false;
+        DApp.hasBeenEditedReturnApiSTR = false;
     }
 
     public static void setHasBeenEditedReturnUserSTR() {
-        MDataHolder.hasBeenEditedReturnUserSTR = false;
+        DApp.hasBeenEditedReturnUserSTR = false;
     }
 
     public static void setHasBeenEditedAPIGameList() {
-        MDataHolder.hasBeenEditedAPIGameList = false;
+        DApp.hasBeenEditedAPIGameList = false;
     }
 
     public static void setHasBeenEditedUserGameList() {
-        MDataHolder.hasBeenEditedUserGameList = false;
+        DApp.hasBeenEditedUserGameList = false;
     }
 
     @RequiresApi(api = Build.VERSION_CODES.N)
     public static void sortUserGameList() {
-        if(MDataHolder.userGameList != null) {
-            MDataHolder.userGameList.getGameList().sort(Comparator.comparing(MGame::getVisibleGameName));
+        if(DApp.userGameList != null) {
+            DApp.userGameList.getGameList().sort(Comparator.comparing(DGame::getVisibleGameName));
         }
     }
 

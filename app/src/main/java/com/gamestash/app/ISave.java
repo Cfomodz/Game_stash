@@ -1,5 +1,5 @@
 package com.gamestash.app;
 
-public interface IPAPIGameDetails {
+public interface ISave {
     void saveGameInUserList();
 }

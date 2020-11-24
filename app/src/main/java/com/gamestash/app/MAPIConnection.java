@@ -48,8 +48,8 @@ public class MAPIConnection implements Runnable {
             e.printStackTrace();
         }
 
-        MDataHolder.setReturnApiSTR(this.apiResponse);
-        Log.d(TAG, MDataHolder.getReturnApiSTR());
+        DApp.setReturnApiSTR(this.apiResponse);
+        Log.d(TAG, DApp.getReturnApiSTR());
 
         //Notify Presenter of update...
         if (presenterRef.get() != null) {

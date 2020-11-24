@@ -7,12 +7,10 @@ import android.widget.ListView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.gamestash.app.R;
-
 import java.util.List;
 
-public class VAPISearchResults extends AppCompatActivity {
-    private static final String TAG = VAPISearchResults.class.getSimpleName();
+public class VGameListAPI extends AppCompatActivity {
+    private static final String TAG = VGameListAPI.class.getSimpleName();
 
     private IProcess presenter = new PAPISearchResults(this);
 
@@ -24,7 +22,7 @@ public class VAPISearchResults extends AppCompatActivity {
         // Check for updates and reset flags before handling view...
         this.presenter.processChanges();
 
-        if(MDataHolder.getApiGameList() != null) {
+        if(DApp.getApiGameList() != null) {
             this.setListView();
         }
     }
@@ -35,14 +33,14 @@ public class VAPISearchResults extends AppCompatActivity {
         ListView listView = findViewById(R.id.lv_game_list);
         Log.d(TAG, "onCreate: Started.");
 
-        List<MGame> gameList = MDataHolder.getApiGameList().getGameList();
+        List<DGame> gameList = DApp.getApiGameList().getGameList();
 
-        AAPISearchResults adapter = new AAPISearchResults(this, R.layout.item_layout_gamelist, gameList);
+        AGameListAPI adapter = new AGameListAPI(this, R.layout.item_layout_gamelist, gameList);
 
         listView.setAdapter(adapter);
         listView.setOnItemClickListener((adapter1, view, position, id) -> {
 
-            Intent intent = new Intent(getApplicationContext(), VAPIGameDetails.class);
+            Intent intent = new Intent(getApplicationContext(), VGameDetailsAPI.class);
             intent.putExtra("position", position);
             startActivity(intent);
         });

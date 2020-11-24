@@ -7,13 +7,13 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.lang.ref.WeakReference;
 
-public class TMSaveToFile {
-    private static final String TAG = TMSaveToFile.class.getSimpleName();
+public class TSaveToFile {
+    private static final String TAG = TSaveToFile.class.getSimpleName();
     private WeakReference<Context> context;
     private String fileName;
     private String fileContents;
 
-    public TMSaveToFile(Context context, String fileName, String fileContents){
+    public TSaveToFile(Context context, String fileName, String fileContents){
         this.context = new WeakReference<>(context);
         this.fileName = fileName;
         this.fileContents = fileContents;

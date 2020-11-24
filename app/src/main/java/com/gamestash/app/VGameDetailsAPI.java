@@ -11,11 +11,11 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.squareup.picasso.Picasso;
 
-public class VAPIGameDetails extends AppCompatActivity {
-    private static final String TAG = VAPIGameDetails.class.getSimpleName();
+public class VGameDetailsAPI extends AppCompatActivity {
+    private static final String TAG = VGameDetailsAPI.class.getSimpleName();
 
-    private IPAPIGameDetails presenter = new PAPIGameDetails(this);
-    private MGame game;
+    private ISave presenter = new PAPIGameDetails(this);
+    private DGame game;
 
     static class ViewHolder {
         ImageView gameImage;
@@ -33,7 +33,7 @@ public class VAPIGameDetails extends AppCompatActivity {
 
         Intent intent = getIntent();
         int position = intent.getIntExtra("position", 0);
-        this.game = MDataHolder.getApiGameList().getGameList().get(position);
+        this.game = DApp.getApiGameList().getGameList().get(position);
 
         //move to presenter...
         String gameImage = this.game.getThumbURL();
@@ -74,7 +74,7 @@ public class VAPIGameDetails extends AppCompatActivity {
         presenter.saveGameInUserList();
     }
 
-    public MGame getGame() {
+    public DGame getGame() {
         return game;
     }
 }

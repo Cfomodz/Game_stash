@@ -5,7 +5,7 @@
     android:id="@+id/user_details"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".VUserGameDetails">
+    tools:context=".VGameDetailsUser">
 
     <ImageView
         android:id="@+id/tv_user_details_game_image"

@@ -10,10 +10,10 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.squareup.picasso.Picasso;
 
-public class VUserGameDetails extends AppCompatActivity {
-    private static final String TAG = VUserGameDetails.class.getSimpleName();
+public class VGameDetailsUser extends AppCompatActivity {
+    private static final String TAG = VGameDetailsUser.class.getSimpleName();
 
-    private MGame game;
+    private DGame game;
 
     static class ViewHolder {
         ImageView gameImage;
@@ -31,7 +31,7 @@ public class VUserGameDetails extends AppCompatActivity {
 
         Intent intent = getIntent();
         int position = intent.getIntExtra("position", 0);
-        this.game = MDataHolder.getUserGameList().getGameList().get(position);
+        this.game = DApp.getUserGameList().getGameList().get(position);
 
         //move to presenter...
         String gameImage = this.game.getThumbURL();
@@ -41,7 +41,7 @@ public class VUserGameDetails extends AppCompatActivity {
         String playTime = "Playtime: " + this.game.getMinPlayTime() + " - " + this.game.getMaxPlayTime() + " min";
         String minAge = "Age: " + this.game.getMinAge() + "+";
 
-        VAPIGameDetails.ViewHolder holder = new VAPIGameDetails.ViewHolder();
+        VGameDetailsAPI.ViewHolder holder = new VGameDetailsAPI.ViewHolder();
         holder.gameImage = this.findViewById(R.id.tv_user_details_game_image);
         holder.gameName = this.findViewById(R.id.tv_user_details_game_name);
         holder.publisher = this.findViewById(R.id.tv_user_details_publisher);

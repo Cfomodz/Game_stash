@@ -7,7 +7,7 @@ import com.google.gson.Gson;
 import java.lang.ref.WeakReference;
 
 interface SetList{
-    void set(MGameList m);
+    void set(DGameList m);
 }
 
 public class MGSONParser implements Runnable{
@@ -15,7 +15,7 @@ public class MGSONParser implements Runnable{
 
     private WeakReference<IProcess> presenterRef;
     private String response;
-    private MGameList gameListObj;
+    private DGameList gameListObj;
     private SetList setList;
     //private GetList getList;
 
@@ -39,7 +39,7 @@ public class MGSONParser implements Runnable{
         Gson gson = new Gson();
 
 
-        this.gameListObj = gson.fromJson(this.response, MGameList.class);
+        this.gameListObj = gson.fromJson(this.response, DGameList.class);
         this.setList.set(this.gameListObj);
 
         // REMOVEABLE::NEEDED TO DEBUG ONLY...

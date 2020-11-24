@@ -6,8 +6,6 @@ import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.gamestash.app.R;
-
 public class VErrorPage extends AppCompatActivity {
     private static final String TAG = VErrorPage.class.getSimpleName();
 
@@ -18,7 +16,7 @@ public class VErrorPage extends AppCompatActivity {
     }
 
     public void onClickGoToAddGameManually(View view){
-        Intent intent = new Intent(this, VAddGameManually.class);
+        Intent intent = new Intent(this, VAddGameUser.class);
         startActivity(intent);
     }
 }

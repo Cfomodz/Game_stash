@@ -8,10 +8,8 @@ import android.view.View;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.gamestash.app.R;
-
-public class VAddGameManually extends AppCompatActivity {
-    private static final String TAG = VAddGameManually.class.getSimpleName();
+public class VAddGameUser extends AppCompatActivity {
+    private static final String TAG = VAddGameUser.class.getSimpleName();
 
 
     @Override
@@ -27,7 +25,7 @@ public class VAddGameManually extends AppCompatActivity {
         //actually add the game to our JSON via game object,
         //which we need to create from users' input
 
-        Intent intent = new Intent(this, VUsersListOfGames.class);
+        Intent intent = new Intent(this, VGameListUser.class);
         startActivity(intent);
     }
 

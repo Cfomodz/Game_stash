@@ -13,30 +13,30 @@ public class PMainMenu implements IProcess{
 
     @Override
     public void processChanges() {
-        if(MDataHolder.getReturnUserSTR().equals("")){
+        if(DApp.getReturnUserSTR().equals("")){
             getJSON();
         }
-        if(MDataHolder.getHasBeenEditedReturnUserSTR()){
+        if(DApp.getHasBeenEditedReturnUserSTR()){
             gsonParse();
-            MDataHolder.setHasBeenEditedReturnUserSTR();
+            DApp.setHasBeenEditedReturnUserSTR();
         }
-        if(MDataHolder.getHasBeenEditedUserGameList()){
+        if(DApp.getHasBeenEditedUserGameList()){
             //Do something with the list...? Not on this screen?
-            MDataHolder.setHasBeenEditedUserGameList();
+            DApp.setHasBeenEditedUserGameList();
         }
     }
 
     private void getJSON() {
         //This should be in a thread...
-        TMReadJSON readJSON = new TMReadJSON(this);
+        TReadJSON readJSON = new TReadJSON(this);
         Thread thread = new Thread(readJSON);
         thread.start();
     }
 
     private void gsonParse() {
-        if(MDataHolder.getReturnUserSTR() != null) {
+        if(DApp.getReturnUserSTR() != null) {
             //MGSONParser gsonParse = new MGSONParser(this, MDataHolder::setApiGameList, MDataHolder::getApiGameList, MDataHolder.getReturnApiSTR());
-            MGSONParser gsonParse = new MGSONParser(this, MDataHolder::setUserGameList, MDataHolder.getReturnUserSTR());
+            MGSONParser gsonParse = new MGSONParser(this, DApp::setUserGameList, DApp.getReturnUserSTR());
             Thread thread = new Thread(gsonParse);
             thread.start();
 

@@ -3,7 +3,6 @@ package com.gamestash.app;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -13,10 +12,6 @@ import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.nio.charset.StandardCharsets;
 import java.util.Random;
 
 public class VMainMenu extends AppCompatActivity {
@@ -46,7 +41,7 @@ public class VMainMenu extends AppCompatActivity {
         ImageView imageView = findViewById(R.id.iv_main_menu);
         imageView.setImageResource(mainImgs[new Random().nextInt(mainImgs.length)]);
 
-        MDataHolder.setUserJSONFile(new File(this.getFilesDir() + "/usergamelist.json"));
+        DApp.setUserJSONFile(new File(this.getFilesDir() + "/usergamelist.json"));
 
         this.presenter.processChanges();
 
@@ -88,17 +83,17 @@ public class VMainMenu extends AppCompatActivity {
     }
 
     public void onclickViewCollection(View view) {
-        Intent intent = new Intent(this, VUsersListOfGames.class);
+        Intent intent = new Intent(this, VGameListUser.class);
         startActivity(intent);
     }
 
     public void onclickAddGameManually(View view) {
-        Intent intent = new Intent(this, VAddGameManually.class);
+        Intent intent = new Intent(this, VAddGameUser.class);
         startActivity(intent);
     }
 
     public void onclickAddGameSearch(View view) {
-        Intent intent = new Intent(this, VAddGameSearch.class);
+        Intent intent = new Intent(this, VAddGameAPI.class);
         startActivity(intent);
     }
 

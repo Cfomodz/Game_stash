@@ -5,7 +5,7 @@
     android:id="@+id/api_details"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".VAPIGameDetails">
+    tools:context=".VGameDetailsAPI">
 
     <ImageView
         android:id="@+id/tv_api_details_game_image"

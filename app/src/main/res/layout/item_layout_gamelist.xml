@@ -9,7 +9,7 @@
     android:paddingTop="16dp"
     android:paddingRight="16dp"
     android:paddingBottom="16dp"
-    tools:context=".VAddGameSearch">
+    tools:context=".VAddGameAPI">
 
     <ImageView
         android:id="@+id/iv_gamelist_item_game_thumb"

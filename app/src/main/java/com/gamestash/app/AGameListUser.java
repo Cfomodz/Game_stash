@@ -17,8 +17,8 @@ import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
-public class AUserGameList extends ArrayAdapter<MGame> {
-    private static final String TAG = AUserGameList.class.getSimpleName();
+public class AGameListUser extends ArrayAdapter<DGame> {
+    private static final String TAG = AGameListUser.class.getSimpleName();
 
     private Context mContext;
     private int mResource;
@@ -33,7 +33,7 @@ public class AUserGameList extends ArrayAdapter<MGame> {
         //etc.
     }
 
-    public AUserGameList(Context context, int resource, List<MGame> objects) {
+    public AGameListUser(Context context, int resource, List<DGame> objects) {
         super(context, resource, objects);
         this.mContext = context;
         this.mResource = resource;

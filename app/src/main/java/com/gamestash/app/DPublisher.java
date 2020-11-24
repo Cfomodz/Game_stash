@@ -1,12 +1,12 @@
 package com.gamestash.app;
 
-public class MPublisher {
+public class DPublisher {
     private String name;
     private String url;
 
-    public MPublisher() {}
+    public DPublisher() {}
 
-    public MPublisher(String name, String url) {
+    public DPublisher(String name, String url) {
         this.name = name;
         this.url = url;
     }
