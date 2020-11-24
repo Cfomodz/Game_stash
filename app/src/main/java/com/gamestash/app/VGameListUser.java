@@ -18,7 +18,7 @@ public class VGameListUser extends AppCompatActivity {
     @RequiresApi(api = Build.VERSION_CODES.N)
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_users_list_of_games);
+        setContentView(R.layout.activity_gamelist_user);
 
         if(DApp.getUserGameList() != null) {
             this.setListView();
@@ -27,7 +27,7 @@ public class VGameListUser extends AppCompatActivity {
 
     @RequiresApi(api = Build.VERSION_CODES.N)
     public void setListView() {
-        setContentView(R.layout.activity_users_list_of_games);
+        setContentView(R.layout.activity_gamelist_user);
 
         ListView listView = findViewById(R.id.lv_game_list);
         Log.d(TAG, "onCreate: Started.");

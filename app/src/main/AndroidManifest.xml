@@ -53,7 +53,7 @@
                 android:value="com.gamestash.app.VGameListUser" />
         </activity>
         <activity
-            android:name="com.gamestash.app.VAddGameUser"
+            android:name="com.gamestash.app.VGameEditor"
             android:parentActivityName="com.gamestash.app.VMainMenu"
             android:label="@string/lbl_add_a_game">
             <meta-data
@@ -64,13 +64,6 @@
             android:name="com.gamestash.app.VAddGameAPI"
             android:parentActivityName="com.gamestash.app.VMainMenu"
             android:label="@string/lbl_add_a_game"/>
-        <activity
-            android:name="com.gamestash.app.VGameEditor"
-            android:parentActivityName="com.gamestash.app.VMainMenu">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.gamestash.app.VMainMenu" />
-        </activity>
         <activity
             android:name="com.gamestash.app.VEditGamesList"
             android:label="@string/lbl_game_editor"

@@ -17,7 +17,7 @@ public class VGameListAPI extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_api_search_results);
+        setContentView(R.layout.activity_gamelist_api);
 
         // Check for updates and reset flags before handling view...
         this.presenter.processChanges();
@@ -28,7 +28,7 @@ public class VGameListAPI extends AppCompatActivity {
     }
 
     public void setListView() {
-        setContentView(R.layout.activity_api_search_results);
+        setContentView(R.layout.activity_gamelist_api);
 
         ListView listView = findViewById(R.id.lv_game_list);
         Log.d(TAG, "onCreate: Started.");

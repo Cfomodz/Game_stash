@@ -6,4 +6,333 @@
     android:layout_height="match_parent"
     tools:context=".VGameEditor">
 
+    <TextView
+        android:id="@+id/textView18"
+        android:layout_width="154dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="32dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/editTextNumber"
+        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName5" />
+
+    <TextView
+        android:id="@+id/lbl_play_time"
+        android:layout_width="90dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="8dp"
+        android:gravity="right"
+        android:text="Play Time:"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toStartOf="@+id/editTextTextPersonName5"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName3" />
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/main_menu_img_04"
+        tools:src="@tools:sample/avatars" />
+
+    <EditText
+        android:id="@+id/editTextTextPersonName"
+        android:layout_width="220dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="32dp"
+        android:ems="10"
+        android:hint="@string/game_name"
+        android:inputType="textPersonName"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/lbl_editor_game_name"
+        app:layout_constraintTop_toBottomOf="@+id/switch1" />
+
+    <EditText
+        android:id="@+id/editTextTextPersonName2"
+        android:layout_width="220dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="32dp"
+        android:ems="10"
+        android:hint="@string/pub"
+        android:inputType="textPersonName"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/lbl_publisher"
+        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName" />
+
+    <EditText
+        android:id="@+id/editTextTextPersonName3"
+        android:layout_width="50dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
+        android:ems="10"
+        android:hint="Min#"
+        android:inputType="number"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toStartOf="@+id/textView13"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/lbl_num_of_players"
+        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName2" />
+
+    <EditText
+        android:id="@+id/editTextTextPersonName4"
+        style="@android:style/Widget.DeviceDefault.EditText"
+        android:layout_width="50dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
+        android:ems="10"
+        android:hint="Max#"
+        android:inputType="number"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toStartOf="@+id/textView14"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/textView13"
+        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName2" />
+
+    <EditText
+        android:id="@+id/editTextTextPersonName5"
+        android:layout_width="50dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
+        android:ems="10"
+        android:hint="Min#"
+        android:inputType="number"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toStartOf="@+id/textView16"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/lbl_play_time"
+        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName3" />
+
+    <EditText
+        android:id="@+id/editTextTextPersonName6"
+        android:layout_width="50dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
+        android:ems="10"
+        android:hint="Max#"
+        android:inputType="number"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toStartOf="@+id/textView17"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/textView16"
+        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName4" />
+
+    <EditText
+        android:id="@+id/editTextNumber"
+        android:layout_width="50dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
+        android:ems="10"
+        android:hint="#"
+        android:inputType="number"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toStartOf="@+id/textView18"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/lbl_min_age"
+        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName5" />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:onClick="saveGame"
+        android:text="@string/save_game"
+        app:backgroundTint="#66BBFF"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Switch
+        android:id="@+id/switch1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
+        android:text="@string/favorite"
+        app:layout_constraintEnd_toStartOf="@+id/switch3"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView2" />
+
+    <Switch
+        android:id="@+id/switch3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:text="@string/expantion"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/switch1"
+        app:layout_constraintTop_toBottomOf="@+id/imageView2" />
+
+    <TextView
+        android:id="@+id/lbl_editor_game_name"
+        android:layout_width="90dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="8dp"
+        android:gravity="right"
+        android:text="Name:"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toStartOf="@+id/editTextTextPersonName"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/switch1" />
+
+    <TextView
+        android:id="@+id/lbl_publisher"
+        android:layout_width="90dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="8dp"
+        android:gravity="right"
+        android:text="Publisher:"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toStartOf="@+id/editTextTextPersonName2"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName" />
+
+    <TextView
+        android:id="@+id/lbl_min_age"
+        android:layout_width="90dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="8dp"
+        android:gravity="right"
+        android:text="Min Age: "
+        android:textSize="18sp"
+        app:layout_constraintEnd_toStartOf="@+id/editTextNumber"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName5" />
+
+    <TextView
+        android:id="@+id/lbl_location"
+        android:layout_width="90dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="8dp"
+        android:gravity="right"
+        android:text="Location:"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toStartOf="@+id/spinner"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextNumber" />
+
+    <TextView
+        android:id="@+id/lbl_num_of_players"
+        android:layout_width="90dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="8dp"
+        android:gravity="right"
+        android:text="Nº Players:"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toStartOf="@+id/editTextTextPersonName3"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName2" />
+
+    <TextView
+        android:id="@+id/textView13"
+        android:layout_width="20dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:gravity="center"
+        android:text="-"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toStartOf="@+id/editTextTextPersonName4"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/editTextTextPersonName3"
+        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName2" />
+
+    <TextView
+        android:id="@+id/textView16"
+        android:layout_width="20dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:gravity="center"
+        android:text="-"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toStartOf="@+id/editTextTextPersonName6"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/editTextTextPersonName5"
+        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName3" />
+
+    <TextView
+        android:id="@+id/textView14"
+        android:layout_width="68dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="32dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/editTextTextPersonName4"
+        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName2" />
+
+    <TextView
+        android:id="@+id/textView17"
+        android:layout_width="68dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="32dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/editTextTextPersonName6"
+        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName4" />
+
+    <Spinner
+        android:id="@+id/spinner"
+        android:layout_width="220dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="32dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/lbl_location"
+        app:layout_constraintTop_toBottomOf="@+id/editTextNumber" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

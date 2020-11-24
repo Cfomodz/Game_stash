@@ -16,7 +16,7 @@ public class VErrorPage extends AppCompatActivity {
     }
 
     public void onClickGoToAddGameManually(View view){
-        Intent intent = new Intent(this, VAddGameUser.class);
+        Intent intent = new Intent(this, VGameEditor.class);
         startActivity(intent);
     }
 }

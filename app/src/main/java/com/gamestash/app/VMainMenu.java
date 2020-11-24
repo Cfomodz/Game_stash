@@ -88,7 +88,8 @@ public class VMainMenu extends AppCompatActivity {
     }
 
     public void onclickAddGameManually(View view) {
-        Intent intent = new Intent(this, VAddGameUser.class);
+        Intent intent = new Intent(this, VGameEditor.class);
+        intent.putExtra("position", -1);
         startActivity(intent);
     }
 
