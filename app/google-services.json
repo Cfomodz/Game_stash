@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "1000015287494",
+    "firebase_url": "https://gamestash-4af05.firebaseio.com",
+    "project_id": "gamestash-4af05",
+    "storage_bucket": "gamestash-4af05.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1000015287494:android:ea1bec140789f90e9b73c7",
+        "android_client_info": {
+          "package_name": "com.gamestash.app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1000015287494-6f8kbvbicrof3c0ticm3l9qt1eqocnq7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAFPXElEz2911EhmEA_nzrF4fGCQvtOM5E"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1000015287494-6f8kbvbicrof3c0ticm3l9qt1eqocnq7.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
