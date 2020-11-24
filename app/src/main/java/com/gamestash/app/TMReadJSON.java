@@ -8,12 +8,12 @@ import java.io.InputStream;
 import java.lang.ref.WeakReference;
 import java.nio.charset.StandardCharsets;
 
-public class MReadJSON implements Runnable{
-    private static final String TAG = MReadJSON.class.getSimpleName();
+public class TMReadJSON implements Runnable{
+    private static final String TAG = TMReadJSON.class.getSimpleName();
 
     private WeakReference<IProcess> presenterRef;
 
-    public MReadJSON(IProcess presenter) {
+    public TMReadJSON(IProcess presenter) {
         this.presenterRef = new WeakReference<>(presenter);
     }
 

@@ -14,7 +14,7 @@ public class PAPIGameDetails implements IPAPIGameDetails {
     @Override
     public void saveGameInUserList() {
         if (this.masterRef.get() !=  null){
-            MSaveGame saveGame = new MSaveGame(this.masterRef.get(), this, this.masterRef.get().getGame());
+            TMSaveGame saveGame = new TMSaveGame(this.masterRef.get(), this, this.masterRef.get().getGame());
             Thread thread = new Thread(saveGame);
             thread.start();
         }

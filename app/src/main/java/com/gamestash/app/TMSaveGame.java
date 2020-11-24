@@ -11,7 +11,7 @@ import com.google.gson.Gson;
 
 import java.lang.ref.WeakReference;
 
-public class MSaveGame implements Runnable{
+public class TMSaveGame implements Runnable{
     private static final String TAG = MGameList.class.getSimpleName();
     private static WeakReference<MGame> gameRef;
     private static WeakReference<AppCompatActivity> masterRef;
@@ -24,7 +24,7 @@ public class MSaveGame implements Runnable{
     private static final String filename = "usergamelist.json";
 
     /** This constructor will likely create a new game using GSON from API data. */
-    public MSaveGame(VAPIGameDetails activity, IPAPIGameDetails presenter, MGame game){
+    public TMSaveGame(VAPIGameDetails activity, IPAPIGameDetails presenter, MGame game){
         masterRef = new WeakReference<>(activity);
         presenterRef = new WeakReference<>(presenter);
         gameRef = new WeakReference<>(game);
@@ -74,7 +74,7 @@ public class MSaveGame implements Runnable{
 
     public boolean saveToFile(String fileName, String fileContents) {
         if (masterRef.get() != null) {
-            return new MSaveToFile(masterRef.get(), fileName, fileContents).run();
+            return new TMSaveToFile(masterRef.get(), fileName, fileContents).run();
         }
         return false;
     }

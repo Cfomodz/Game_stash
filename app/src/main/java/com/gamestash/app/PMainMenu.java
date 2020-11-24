@@ -1,14 +1,6 @@
 package com.gamestash.app;
 
-import android.content.Context;
-import android.util.Log;
-
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.InputStream;
 import java.lang.ref.WeakReference;
-import java.nio.charset.StandardCharsets;
 
 public class PMainMenu implements IProcess{
     private static final String TAG = PMainMenu.class.getSimpleName();
@@ -36,7 +28,7 @@ public class PMainMenu implements IProcess{
 
     private void getJSON() {
         //This should be in a thread...
-        MReadJSON readJSON = new MReadJSON(this);
+        TMReadJSON readJSON = new TMReadJSON(this);
         Thread thread = new Thread(readJSON);
         thread.start();
     }
