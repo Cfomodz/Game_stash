@@ -3,6 +3,7 @@ package com.gamestash.app;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 
 import androidx.annotation.RequiresApi;
@@ -30,13 +31,8 @@ public class VGameEditor extends AppCompatActivity {
 
     }
 
-    public void saveGame(View view){
-
-        //actually add the game to our JSON via game object,
-        //which we need to create from users' input
-
-        //Intent intent = new Intent(this, VGameListUser.class);
-        //startActivity(intent);
+    public void onclickSaveGame(View view) {
+        //Pass to presenter...
     }
 
 }

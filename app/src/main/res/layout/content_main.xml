@@ -4,22 +4,21 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    app:layout_behavior="@string/appbar_scrolling_view_behavior" >
+    app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
     <ImageView
         android:id="@+id/iv_main_menu"
         android:layout_width="300dp"
         android:layout_height="300dp"
-        android:layout_marginStart="139dp"
-        android:layout_marginLeft="139dp"
         android:layout_marginTop="32dp"
-        android:layout_marginEnd="144dp"
-        android:layout_marginRight="144dp"
+        android:layout_marginBottom="16dp"
         android:contentDescription="@string/todo"
+        app:layout_constraintBottom_toTopOf="@+id/button6"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.491"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
+        app:layout_constraintVertical_chainStyle="packed"
         app:srcCompat="@drawable/main_menu_img_00"
         tools:srcCompat="@drawable/main_menu_img_00" />
 
@@ -27,30 +26,26 @@
         android:id="@+id/button2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="106dp"
-        android:layout_marginLeft="106dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="107dp"
-        android:layout_marginRight="107dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
         android:onClick="onclickAddGameManually"
         android:text="@string/add_game_manually"
         app:backgroundTint="#66BBFF"
+        app:layout_constraintBottom_toTopOf="@+id/button3"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/button9" />
+        app:layout_constraintTop_toBottomOf="@+id/button9" />
 
     <Button
         android:id="@+id/button3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="158dp"
-        android:layout_marginLeft="158dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="158dp"
-        android:layout_marginRight="158dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="32dp"
         android:onClick="onclickProfile"
         android:text="@string/profile"
         app:backgroundTint="#66BBFF"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/button2" />
@@ -59,33 +54,28 @@
         android:id="@+id/button9"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="117dp"
-        android:layout_marginLeft="117dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="117dp"
-        android:layout_marginRight="117dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
         android:onClick="onclickAddGameSearch"
         android:text="@string/add_game_search"
         app:backgroundTint="#66BBFF"
+        app:layout_constraintBottom_toTopOf="@+id/button2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/button6" />
+        app:layout_constraintTop_toBottomOf="@+id/button6" />
 
     <Button
         android:id="@+id/button6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="155dp"
-        android:layout_marginLeft="155dp"
-        android:layout_marginTop="32dp"
-        android:layout_marginEnd="163dp"
-        android:layout_marginRight="163dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="8dp"
         android:onClick="onclickViewCollection"
         android:text="@string/users_list"
         app:backgroundTint="#66BBFF"
+        app:layout_constraintBottom_toTopOf="@+id/button9"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.447"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/iv_main_menu" />
+        app:layout_constraintTop_toBottomOf="@+id/iv_main_menu" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
