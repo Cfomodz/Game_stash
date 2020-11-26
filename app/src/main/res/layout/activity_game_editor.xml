@@ -59,7 +59,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/lbl_editor_game_name"
-        app:layout_constraintTop_toBottomOf="@+id/switch1" />
+        app:layout_constraintTop_toBottomOf="@+id/switch_editor_favorite" />
 
     <EditText
         android:id="@+id/et_editor_publisher"
@@ -173,20 +173,20 @@
         app:layout_constraintVertical_bias="1.0" />
 
     <Switch
-        android:id="@+id/switch1"
+        android:id="@+id/switch_editor_favorite"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="8dp"
         android:text="@string/favorite"
-        app:layout_constraintEnd_toStartOf="@+id/switch3"
+        app:layout_constraintEnd_toStartOf="@+id/switch_editor_expansion"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintHorizontal_chainStyle="packed"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView2" />
 
     <Switch
-        android:id="@+id/switch3"
+        android:id="@+id/switch_editor_expansion"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -194,7 +194,7 @@
         android:text="@string/expantion"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/switch1"
+        app:layout_constraintStart_toEndOf="@+id/switch_editor_favorite"
         app:layout_constraintTop_toBottomOf="@+id/imageView2" />
 
     <TextView
@@ -210,7 +210,7 @@
         app:layout_constraintEnd_toStartOf="@+id/et_editor_game_name"
         app:layout_constraintHorizontal_chainStyle="packed"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/switch1" />
+        app:layout_constraintTop_toBottomOf="@+id/switch_editor_favorite" />
 
     <TextView
         android:id="@+id/lbl_editor_publisher"
