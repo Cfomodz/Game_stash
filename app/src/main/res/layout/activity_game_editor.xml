@@ -15,11 +15,11 @@
         android:layout_marginEnd="32dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/editTextNumber"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName5" />
+        app:layout_constraintStart_toEndOf="@+id/et_editor_min_age"
+        app:layout_constraintTop_toBottomOf="@+id/et_editor_min_play_time" />
 
     <TextView
-        android:id="@+id/lbl_play_time"
+        android:id="@+id/lbl_editor_play_time"
         android:layout_width="90dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
@@ -28,11 +28,11 @@
         android:gravity="right"
         android:text="Play Time:"
         android:textSize="18sp"
-        app:layout_constraintEnd_toStartOf="@+id/editTextTextPersonName5"
+        app:layout_constraintEnd_toStartOf="@+id/et_editor_min_play_time"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintHorizontal_chainStyle="packed"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName3" />
+        app:layout_constraintTop_toBottomOf="@+id/et_editor_min_players" />
 
     <ImageView
         android:id="@+id/imageView2"
@@ -46,7 +46,7 @@
         tools:src="@tools:sample/avatars" />
 
     <EditText
-        android:id="@+id/editTextTextPersonName"
+        android:id="@+id/et_editor_game_name"
         android:layout_width="220dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -62,7 +62,7 @@
         app:layout_constraintTop_toBottomOf="@+id/switch1" />
 
     <EditText
-        android:id="@+id/editTextTextPersonName2"
+        android:id="@+id/et_editor_publisher"
         android:layout_width="220dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -74,11 +74,11 @@
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/lbl_publisher"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName" />
+        app:layout_constraintStart_toEndOf="@+id/lbl_editor_publisher"
+        app:layout_constraintTop_toBottomOf="@+id/et_editor_game_name" />
 
     <EditText
-        android:id="@+id/editTextTextPersonName3"
+        android:id="@+id/et_editor_min_players"
         android:layout_width="50dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -90,11 +90,11 @@
         android:textSize="16sp"
         app:layout_constraintEnd_toStartOf="@+id/textView13"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/lbl_num_of_players"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName2" />
+        app:layout_constraintStart_toEndOf="@+id/lbl_editor_num_of_players"
+        app:layout_constraintTop_toBottomOf="@+id/et_editor_publisher" />
 
     <EditText
-        android:id="@+id/editTextTextPersonName4"
+        android:id="@+id/et_editor_max_players"
         style="@android:style/Widget.DeviceDefault.EditText"
         android:layout_width="50dp"
         android:layout_height="wrap_content"
@@ -108,10 +108,10 @@
         app:layout_constraintEnd_toStartOf="@+id/textView14"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/textView13"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName2" />
+        app:layout_constraintTop_toBottomOf="@+id/et_editor_publisher" />
 
     <EditText
-        android:id="@+id/editTextTextPersonName5"
+        android:id="@+id/et_editor_min_play_time"
         android:layout_width="50dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -123,11 +123,11 @@
         android:textSize="16sp"
         app:layout_constraintEnd_toStartOf="@+id/textView16"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/lbl_play_time"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName3" />
+        app:layout_constraintStart_toEndOf="@+id/lbl_editor_play_time"
+        app:layout_constraintTop_toBottomOf="@+id/et_editor_min_players" />
 
     <EditText
-        android:id="@+id/editTextTextPersonName6"
+        android:id="@+id/et_editor_max_play_time"
         android:layout_width="50dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -140,10 +140,10 @@
         app:layout_constraintEnd_toStartOf="@+id/textView17"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/textView16"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName4" />
+        app:layout_constraintTop_toBottomOf="@+id/et_editor_max_players" />
 
     <EditText
-        android:id="@+id/editTextNumber"
+        android:id="@+id/et_editor_min_age"
         android:layout_width="50dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -155,8 +155,8 @@
         android:textSize="16sp"
         app:layout_constraintEnd_toStartOf="@+id/textView18"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/lbl_min_age"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName5" />
+        app:layout_constraintStart_toEndOf="@+id/lbl_editor_min_age"
+        app:layout_constraintTop_toBottomOf="@+id/et_editor_min_play_time" />
 
     <Button
         android:id="@+id/button"
@@ -169,7 +169,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/spinner"
+        app:layout_constraintTop_toBottomOf="@+id/sp_editor_location"
         app:layout_constraintVertical_bias="1.0" />
 
     <Switch
@@ -207,13 +207,13 @@
         android:gravity="right"
         android:text="Name:"
         android:textSize="18sp"
-        app:layout_constraintEnd_toStartOf="@+id/editTextTextPersonName"
+        app:layout_constraintEnd_toStartOf="@+id/et_editor_game_name"
         app:layout_constraintHorizontal_chainStyle="packed"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/switch1" />
 
     <TextView
-        android:id="@+id/lbl_publisher"
+        android:id="@+id/lbl_editor_publisher"
         android:layout_width="90dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
@@ -222,13 +222,13 @@
         android:gravity="right"
         android:text="Publisher:"
         android:textSize="18sp"
-        app:layout_constraintEnd_toStartOf="@+id/editTextTextPersonName2"
+        app:layout_constraintEnd_toStartOf="@+id/et_editor_publisher"
         app:layout_constraintHorizontal_chainStyle="packed"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName" />
+        app:layout_constraintTop_toBottomOf="@+id/et_editor_game_name" />
 
     <TextView
-        android:id="@+id/lbl_min_age"
+        android:id="@+id/lbl_editor_min_age"
         android:layout_width="90dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
@@ -237,14 +237,14 @@
         android:gravity="right"
         android:text="Min Age: "
         android:textSize="18sp"
-        app:layout_constraintEnd_toStartOf="@+id/editTextNumber"
+        app:layout_constraintEnd_toStartOf="@+id/et_editor_min_age"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintHorizontal_chainStyle="packed"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName5" />
+        app:layout_constraintTop_toBottomOf="@+id/et_editor_min_play_time" />
 
     <TextView
-        android:id="@+id/lbl_location"
+        android:id="@+id/lbl_editor_location"
         android:layout_width="90dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
@@ -253,14 +253,14 @@
         android:gravity="right"
         android:text="Location:"
         android:textSize="18sp"
-        app:layout_constraintEnd_toStartOf="@+id/spinner"
+        app:layout_constraintEnd_toStartOf="@+id/sp_editor_location"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintHorizontal_chainStyle="packed"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextNumber" />
+        app:layout_constraintTop_toBottomOf="@+id/et_editor_min_age" />
 
     <TextView
-        android:id="@+id/lbl_num_of_players"
+        android:id="@+id/lbl_editor_num_of_players"
         android:layout_width="90dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
@@ -269,11 +269,11 @@
         android:gravity="right"
         android:text="Nº Players:"
         android:textSize="18sp"
-        app:layout_constraintEnd_toStartOf="@+id/editTextTextPersonName3"
+        app:layout_constraintEnd_toStartOf="@+id/et_editor_min_players"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintHorizontal_chainStyle="packed"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName2" />
+        app:layout_constraintTop_toBottomOf="@+id/et_editor_publisher" />
 
     <TextView
         android:id="@+id/textView13"
@@ -283,10 +283,10 @@
         android:gravity="center"
         android:text="-"
         android:textSize="18sp"
-        app:layout_constraintEnd_toStartOf="@+id/editTextTextPersonName4"
+        app:layout_constraintEnd_toStartOf="@+id/et_editor_max_players"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/editTextTextPersonName3"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName2" />
+        app:layout_constraintStart_toEndOf="@+id/et_editor_min_players"
+        app:layout_constraintTop_toBottomOf="@+id/et_editor_publisher" />
 
     <TextView
         android:id="@+id/textView16"
@@ -296,10 +296,10 @@
         android:gravity="center"
         android:text="-"
         android:textSize="18sp"
-        app:layout_constraintEnd_toStartOf="@+id/editTextTextPersonName6"
+        app:layout_constraintEnd_toStartOf="@+id/et_editor_max_play_time"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/editTextTextPersonName5"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName3" />
+        app:layout_constraintStart_toEndOf="@+id/et_editor_min_play_time"
+        app:layout_constraintTop_toBottomOf="@+id/et_editor_min_players" />
 
     <TextView
         android:id="@+id/textView14"
@@ -310,8 +310,8 @@
         android:layout_marginEnd="32dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/editTextTextPersonName4"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName2" />
+        app:layout_constraintStart_toEndOf="@+id/et_editor_max_players"
+        app:layout_constraintTop_toBottomOf="@+id/et_editor_publisher" />
 
     <TextView
         android:id="@+id/textView17"
@@ -322,11 +322,11 @@
         android:layout_marginEnd="32dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/editTextTextPersonName6"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName4" />
+        app:layout_constraintStart_toEndOf="@+id/et_editor_max_play_time"
+        app:layout_constraintTop_toBottomOf="@+id/et_editor_max_players" />
 
     <Spinner
-        android:id="@+id/spinner"
+        android:id="@+id/sp_editor_location"
         android:layout_width="220dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -334,7 +334,7 @@
         android:layout_marginEnd="32dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/lbl_location"
-        app:layout_constraintTop_toBottomOf="@+id/editTextNumber" />
+        app:layout_constraintStart_toEndOf="@+id/lbl_editor_location"
+        app:layout_constraintTop_toBottomOf="@+id/et_editor_min_age" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

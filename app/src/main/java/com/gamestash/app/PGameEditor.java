@@ -6,11 +6,13 @@ public class PGameEditor implements IProcess, ISave {
         //Validate
         if (this.validateGameData()) {
             //actually add the game to our JSON via game object
+
         } else {
             //do stuff to indicate the game is wrong...
+
         }
 
-        //If successful then...???
+        //If successful then...??? Party!
         //Intent intent = new Intent(this, VGameListUser.class);
         //startActivity(intent);
     }
