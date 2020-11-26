@@ -11,7 +11,7 @@
     <string name="game_name">Name</string>
     <string name="add_date">Date Added</string>
     <string name="pub_date">Date Published</string>
-    <string name="location">Location</string>
+    <string name="location">Location/Shelf</string>
 
     <!-- Buttons -->
     <string name="add_game_manually">Add Game Manually</string>

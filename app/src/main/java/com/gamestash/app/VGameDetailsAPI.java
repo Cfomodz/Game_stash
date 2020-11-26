@@ -4,12 +4,17 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ImageView;
+import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.squareup.picasso.Picasso;
+
+import java.util.ArrayList;
 
 public class VGameDetailsAPI extends AppCompatActivity {
     private static final String TAG = VGameDetailsAPI.class.getSimpleName();
@@ -47,8 +52,8 @@ public class VGameDetailsAPI extends AppCompatActivity {
         holder.gameImage = this.findViewById(R.id.tv_api_details_game_image);
         holder.gameName = this.findViewById(R.id.tv_api_details_game_name);
         holder.publisher = this.findViewById(R.id.tv_api_details_publisher);
-        holder.players = this.findViewById(R.id.tv_api_details_players);
-        holder.playTime = this.findViewById(R.id.tv_api_details_play_time);
+        holder.players = this.findViewById(R.id.tv_api_details_max_players);
+        holder.playTime = this.findViewById(R.id.tv_api_details_max_play_time);
         holder.minAge = this.findViewById(R.id.tv_api_details_min_age);
 
         Picasso.get()
@@ -66,7 +71,42 @@ public class VGameDetailsAPI extends AppCompatActivity {
 
         //use game to fill out display...
         Log.d(TAG, game.getGameName());
+
+        //Spinner
+        initList();
+
+        Spinner spinnerLocations = findViewById(R.id.spinner2);
+
+        mAdapter = new LocationAdapter(this, mLocationList);
+        spinnerLocations.setAdapter(mAdapter);
+        spinnerLocations.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                LocationItem clickedItem = (LocationItem) parent.getItemAtPosition(position);
+                String clickedLocationName = clickedItem.getLocationName();
+                Toast.makeText(VGameDetailsAPI.this, clickedLocationName, Toast.LENGTH_SHORT).show();
+                String clickedLocationID = clickedItem.getLocationID();
+                Toast.makeText(VGameDetailsAPI.this, clickedLocationID, Toast.LENGTH_SHORT).show();
+                
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+
     }
+
+    private void initList() {
+        mLocationList = new ArrayList<>();
+
+        mLocationList.add(new LocationItem("Shelf", "1"));
+        mLocationList.add(new LocationItem("Storage", "2"));
+        mLocationList.add(new LocationItem("Under Your Bed", "3"));
+        mLocationList.add(new LocationItem("Shelf2", "3"));
+    }
+
 
     public void onclickSave(View view) {
 
@@ -77,4 +117,8 @@ public class VGameDetailsAPI extends AppCompatActivity {
     public DGame getGame() {
         return game;
     }
+
+    //Spinner
+    private ArrayList<LocationItem> mLocationList;
+    private LocationAdapter mAdapter;
 }

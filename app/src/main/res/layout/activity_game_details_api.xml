@@ -40,7 +40,7 @@
         android:layout_marginStart="80dp"
         android:layout_marginTop="32dp"
         android:layout_marginEnd="80dp"
-        android:text="Publisher"
+        android:text="@string/pub"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -48,32 +48,60 @@
         app:layout_constraintTop_toBottomOf="@+id/tv_api_details_game_name" />
 
     <TextView
-        android:id="@+id/tv_api_details_players"
+        android:id="@+id/tv_api_details_max_players"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="80dp"
         android:layout_marginTop="32dp"
         android:layout_marginEnd="80dp"
-        android:text="Players"
+        android:text="@string/min_num_players"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_api_details_publisher" />
+        app:layout_constraintTop_toBottomOf="@id/tv_api_details_min_players" />
 
     <TextView
-        android:id="@+id/tv_api_details_play_time"
+        android:id="@+id/tv_api_details_min_players"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="80dp"
         android:layout_marginTop="32dp"
         android:layout_marginEnd="80dp"
-        android:text="PlayTime"
+        android:text="@string/min_num_players"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_api_details_players" />
+        app:layout_constraintTop_toBottomOf="@id/tv_api_details_publisher" />
+
+    <TextView
+        android:id="@+id/tv_api_details_max_play_time"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="80dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="80dp"
+        android:text="@string/max_play_time"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_api_details_min_play_time2" />
+
+    <TextView
+        android:id="@+id/tv_api_details_min_play_time2"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="80dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="80dp"
+        android:text="@string/min_play_time"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_api_details_max_players" />
 
     <TextView
         android:id="@+id/tv_api_details_min_age"
@@ -82,12 +110,12 @@
         android:layout_marginStart="80dp"
         android:layout_marginTop="32dp"
         android:layout_marginEnd="80dp"
-        android:text="MinAge"
+        android:text="@string/min_age"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_api_details_play_time" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_api_details_max_play_time" />
 
     <TextView
         android:id="@+id/tv_api_details_lbl_location"
@@ -96,7 +124,7 @@
         android:layout_marginStart="80dp"
         android:layout_marginTop="32dp"
         android:layout_marginBottom="32dp"
-        android:text="Location/Shelf:"
+        android:text="@string/location"
         android:textSize="18sp"
         app:layout_constraintBottom_toTopOf="@+id/button10"
         app:layout_constraintStart_toStartOf="parent"
