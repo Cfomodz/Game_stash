@@ -12,12 +12,16 @@ import androidx.appcompat.app.AppCompatActivity;
 public class VGameEditor extends AppCompatActivity {
     private static final String TAG = VGameEditor.class.getSimpleName();
 
+    private IProcess presenter;
+
     private DGame game = null;
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game_editor);
+
+        presenter = new PGameEditor(this, this);
 
         Intent intent = getIntent();
         int position = intent.getIntExtra("position", -1);
@@ -33,6 +37,7 @@ public class VGameEditor extends AppCompatActivity {
 
     public void onclickSaveGame(View view) {
         //Pass to presenter...
+        presenter.processChanges();
 
     }
 
