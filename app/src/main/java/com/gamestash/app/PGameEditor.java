@@ -1,16 +1,11 @@
 package com.gamestash.app;
 
-import android.app.Activity;
 import android.content.Context;
-import android.util.Log;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Switch;
 
-import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 
 import java.lang.ref.WeakReference;
 
@@ -19,7 +14,8 @@ public class PGameEditor implements IProcess, ISave {
     // Member variables.
     private static final String TAG = PGameEditor.class.getSimpleName();
     private Context mContext;
-    private WeakReference<Activity> activityRef;
+    private WeakReference<AppCompatActivity> masterRef;
+    private DGame game;
 
     static class ViewHolder {
         Switch favorite;
@@ -34,37 +30,35 @@ public class PGameEditor implements IProcess, ISave {
         Spinner location;
     }
 
-    public PGameEditor(Context context, Activity activity) {
+    public PGameEditor(Context context, AppCompatActivity activity) {
         this.mContext = context;
-        this.activityRef = new WeakReference<Activity>(activity);
+        this.masterRef = new WeakReference<AppCompatActivity>(activity);
     }
-
-    //EditText gameName = (EditText) this.activity.findViewById(R.id.et_editor_game_name);
-    //        return gameName.getText().toString();
-
-
 
     @Override
     public void processChanges() {
         //Add Layout to Holder
         ViewHolder holder = new PGameEditor.ViewHolder();
-        if(activityRef.get() != null) {
-            holder.favorite = this.activityRef.get().findViewById(R.id.switch_editor_favorite);
-            holder.expansion = this.activityRef.get().findViewById(R.id.switch_editor_expansion);
-            holder.gameName = this.activityRef.get().findViewById(R.id.et_editor_game_name);
-            holder.publisher = this.activityRef.get().findViewById(R.id.et_editor_publisher);
-            holder.minPlayers = this.activityRef.get().findViewById(R.id.et_editor_min_players);
-            holder.maxPlayers = this.activityRef.get().findViewById(R.id.et_editor_max_players);
-            holder.minPlayTime = this.activityRef.get().findViewById(R.id.et_editor_min_play_time);
-            holder.maxPlayTime = this.activityRef.get().findViewById(R.id.et_editor_max_play_time);
-            holder.minAge = this.activityRef.get().findViewById(R.id.et_editor_min_age);
-            holder.location = this.activityRef.get().findViewById(R.id.sp_editor_location);
+        if(masterRef.get() != null) {
+            holder.favorite = this.masterRef.get().findViewById(R.id.switch_editor_favorite);
+            holder.expansion = this.masterRef.get().findViewById(R.id.switch_editor_expansion);
+            holder.gameName = this.masterRef.get().findViewById(R.id.et_editor_game_name);
+            holder.publisher = this.masterRef.get().findViewById(R.id.et_editor_publisher);
+            holder.minPlayers = this.masterRef.get().findViewById(R.id.et_editor_min_players);
+            holder.maxPlayers = this.masterRef.get().findViewById(R.id.et_editor_max_players);
+            holder.minPlayTime = this.masterRef.get().findViewById(R.id.et_editor_min_play_time);
+            holder.maxPlayTime = this.masterRef.get().findViewById(R.id.et_editor_max_play_time);
+            holder.minAge = this.masterRef.get().findViewById(R.id.et_editor_min_age);
+            holder.location = this.masterRef.get().findViewById(R.id.sp_editor_location);
         }
         //Validate
         if (this.validateGameData(holder)) {
-            //actually add the game to our JSON via game object
+            //IF VALID GAME DATA... THEN CREATE GAME OBJ.
 
-            DGame game = new DGame();
+            this.game = new DGame();
+            game.setIsUserCreated(true);
+            game.setFavorite(holder.favorite.isChecked());
+            game.setExpansion(holder.expansion.isChecked());
             game.setEditedGameName(holder.gameName.getText().toString());
             game.setEditedMinPlayers(Integer.parseInt(holder.minPlayers.getText().toString()));
             game.setEditedMaxPlayers(Integer.parseInt(holder.maxPlayers.getText().toString()));
@@ -76,7 +70,19 @@ public class PGameEditor implements IProcess, ISave {
             publisher.setName(holder.publisher.getText().toString());
             game.setEditedPublisher(publisher);
 
+            /**
+            Log.d(TAG, game.getFavorite().toString());
+            Log.d(TAG, game.getExpansion().toString());
             Log.d(TAG, game.getEditedGameName());
+            Log.d(TAG, game.getEditedMinPlayers().toString());
+            Log.d(TAG, game.getEditedMaxPlayers().toString());
+            Log.d(TAG, game.getEditedMinPlayTime().toString());
+            Log.d(TAG, game.getEditedMaxPlayTime().toString());
+            Log.d(TAG, game.getEditedMinAge().toString());
+            */
+
+            //SAVE GAME OBJECT
+            this.saveGameInUserList();
 
         } else {
             //do stuff to indicate the game is wrong...
@@ -88,12 +94,6 @@ public class PGameEditor implements IProcess, ISave {
         //startActivity(intent);
     }
 
-    @Override
-    public void saveGameInUserList() {
-
-    }
-
-    //move to presenter...
     private Boolean validateGameData(ViewHolder holder) {
         Boolean validation = true;
         if(holder.gameName.getText().toString().length() == 0) {
@@ -129,5 +129,12 @@ public class PGameEditor implements IProcess, ISave {
         } else {
             return true;
         }
+    }
+
+    @Override
+    public void saveGameInUserList() {
+        TSaveGame saveGame = new TSaveGame(this.masterRef.get(), this, this.game);
+        Thread thread = new Thread(saveGame);
+        thread.start();
     }
 }

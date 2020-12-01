@@ -7,7 +7,7 @@ import android.widget.Toast;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 
 import java.lang.ref.WeakReference;
 
@@ -24,7 +24,7 @@ public class TSaveGame implements Runnable{
     private static final String filename = "usergamelist.json";
 
     /** This constructor will likely create a new game using GSON from API data. */
-    public TSaveGame(VGameDetailsAPI activity, ISave presenter, DGame game){
+    public TSaveGame(AppCompatActivity activity, ISave presenter, DGame game){
         masterRef = new WeakReference<>(activity);
         presenterRef = new WeakReference<>(presenter);
         gameRef = new WeakReference<>(game);
@@ -45,7 +45,9 @@ public class TSaveGame implements Runnable{
         if(DApp.getUserGameList() != null && DApp.getUserGameList().getGameList() != null) {
             //Check if game id matches any an id in the user list...
             for (DGame usersGame : DApp.getUserGameList().getGameList()) {
-                if(gameRef.get() != null && usersGame.getGameID().equals(gameRef.get().getGameID())) {
+                if(gameRef.get() != null && usersGame.getGameID().equals(gameRef.get().getGameID()) && !gameRef.get().getIsUserCreated()) {
+                    this.existsInUserList = true;
+                } else if(gameRef.get() != null && gameRef.get().getIsUserCreated() && usersGame.getVisibleGameName().equals(gameRef.get().getVisibleGameName())) {
                     this.existsInUserList = true;
                 }
             }
@@ -65,7 +67,11 @@ public class TSaveGame implements Runnable{
     @RequiresApi(api = Build.VERSION_CODES.N)
     public boolean objToJSONString() {
         if(this.addedToUserGameList) {
-            this.jsonString = new Gson().toJson(DApp.getUserGameList());
+            //this.jsonString = new Gson().toJson(DApp.getUserGameList());
+            this.jsonString = new GsonBuilder()
+                    .setPrettyPrinting()
+                    .create()
+                    .toJson(DApp.getUserGameList());
             Log.d(TAG, this.jsonString);
             return true;
         }

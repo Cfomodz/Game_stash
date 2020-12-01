@@ -118,7 +118,7 @@ public class DApp {
     @RequiresApi(api = Build.VERSION_CODES.N)
     public static void sortUserGameList() {
         if(DApp.userGameList != null) {
-            DApp.userGameList.getGameList().sort(Comparator.comparing(DGame::getVisibleGameName));
+            DApp.userGameList.getGameList().sort(Comparator.comparing(DGame::compareVisibleGameName));
         }
     }
 

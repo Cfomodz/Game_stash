@@ -42,9 +42,9 @@ public class AGameListUser extends ArrayAdapter<DGame> {
     @NonNull
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        String gameImage = getItem(position).getThumbURL();
-        String name = getItem(position).getGameName();
-        String publisher = getItem(position).getPublisher().getName();
+        String gameImage = getItem(position).getVisibleThumbURL();
+        String name = getItem(position).getVisibleGameName();
+        String publisher = getItem(position).getVisiblePublisher().getName();
         String extraDetails = getItem(position).getLocation();
         //etc.
 
@@ -74,12 +74,23 @@ public class AGameListUser extends ArrayAdapter<DGame> {
         result.startAnimation(animation);
         lastPosition = position;
 
-        Picasso.get()
-                .load(gameImage)
-                .resize(100, 100)
-                .centerInside()
-                .noFade()
-                .into(holder.gameImage);
+        if(gameImage.trim().length() > 0) {
+            Picasso.get()
+                    .load(gameImage)
+                    .resize(100, 100)
+                    .error(R.drawable.main_menu_img_00)
+                    .centerInside()
+                    .noFade()
+                    .into(holder.gameImage);
+        } else {
+            Picasso.get()
+                    .load(R.drawable.main_menu_img_00)
+                    .resize(100, 100)
+                    .centerInside()
+                    .noFade()
+                    .into(holder.gameImage);
+        }
+
         holder.name.setText(name);
         holder.publisher.setText(publisher);
         holder.extraDetails.setText(extraDetails);

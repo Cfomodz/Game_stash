@@ -9,40 +9,40 @@ public class DGame {
     // API variables.
     private @SerializedName("id") String gameID = "";
     private @SerializedName("name") String gameName = "";
-    private @SerializedName("year_published") int yearPublished = 0;
-    private @SerializedName("min_players")  int minPlayers = -1;
-    private @SerializedName("max_players") int maxPlayers = -1;
-    private @SerializedName("min_playtime") int minPlayTime = -1;
-    private @SerializedName("max_playtime") int maxPlayTime = -1;
-    private @SerializedName("min_age") int minAge = -1;
+    private @SerializedName("year_published") Integer yearPublished = 0;
+    private @SerializedName("min_players")  Integer minPlayers = -1;
+    private @SerializedName("max_players") Integer maxPlayers = -1;
+    private @SerializedName("min_playtime") Integer minPlayTime = -1;
+    private @SerializedName("max_playtime") Integer maxPlayTime = -1;
+    private @SerializedName("min_age") Integer minAge = -1;
     private String description = "";
     private @SerializedName("image_url") String imageURL = "";
     private @SerializedName("thumb_url") String thumbURL = "";
     private String url = "";
-    private float price = 0;
-    private float msrp = 0;
+    private Float price = 0f;
+    private Float msrp = 0f;
     private @SerializedName("primary_publisher")
     DPublisher publisher = new DPublisher();
     //private Map<String, String> mechanics;
 
     // Edited variables.
     private String editedGameName;
-    private int editedYearPublished;
-    private int editedMinPlayers;
-    private int editedMaxPlayers;
-    private int editedMinPlayTime;
-    private int editedMaxPlayTime;
-    private int editedMinAge;
+    private Integer editedYearPublished;
+    private Integer editedMinPlayers;
+    private Integer editedMaxPlayers;
+    private Integer editedMinPlayTime;
+    private Integer editedMaxPlayTime;
+    private Integer editedMinAge;
     private String editedDescription;
     private String editedThumbURL;
     private String editedImageURL;
     private DPublisher editedPublisher;
 
-    //Owner's Storage Location
-    private String location = "";
-
-    //Promotional Content or expansion
+    //General User Variables
+    private Boolean isUserCreated = false;
+    private Boolean favorite = false;
     private Boolean expansion = false;
+    private String location = "";
 
     // Constructors.
 
@@ -191,17 +191,17 @@ public class DGame {
 
     public void setGameName(String gameName) {this.gameName = gameName;}
 
-    public void setYearPublished(int yearPublished) {this.yearPublished = yearPublished;}
+    public void setYearPublished(Integer yearPublished) {this.yearPublished = yearPublished;}
 
-    public void setMinPlayers(int minPlayers) {this.minPlayers = minPlayers;}
+    public void setMinPlayers(Integer minPlayers) {this.minPlayers = minPlayers;}
 
-    public void setMaxPlayers(int maxPlayers) {this.maxPlayers = maxPlayers;}
+    public void setMaxPlayers(Integer maxPlayers) {this.maxPlayers = maxPlayers;}
 
-    public void setMinPlayTime(int minPlayTime) {this.minPlayTime = minPlayTime;}
+    public void setMinPlayTime(Integer minPlayTime) {this.minPlayTime = minPlayTime;}
 
-    public void setMaxPlayTime(int maxPlayTime) {this.maxPlayTime = maxPlayTime;}
+    public void setMaxPlayTime(Integer maxPlayTime) {this.maxPlayTime = maxPlayTime;}
 
-    public void setMinAge(int minAge) {this.minAge = minAge;}
+    public void setMinAge(Integer minAge) {this.minAge = minAge;}
 
     public void setDescription(String description) {this.description = description;}
 
@@ -211,25 +211,25 @@ public class DGame {
 
     public void setUrl(String url) {this.url = url;}
 
-    public void setPrice(float price) {this.price = price;}
+    public void setPrice(Float price) {this.price = price;}
 
-    public void setMsrp(float msrp) {this.msrp = msrp;}
+    public void setMsrp(Float msrp) {this.msrp = msrp;}
 
     public void setPublisher(DPublisher publisher) {this.publisher = publisher;}
 
     public void setEditedGameName(String editedGameName) {this.editedGameName = editedGameName;}
 
-    public void setEditedYearPublished(int editedYearPublished) {this.editedYearPublished = editedYearPublished;}
+    public void setEditedYearPublished(Integer editedYearPublished) {this.editedYearPublished = editedYearPublished;}
 
-    public void setEditedMinPlayers(int editedMinPlayers) {this.editedMinPlayers = editedMinPlayers;}
+    public void setEditedMinPlayers(Integer editedMinPlayers) {this.editedMinPlayers = editedMinPlayers;}
 
-    public void setEditedMaxPlayers(int editedMaxPlayers) {this.editedMaxPlayers = editedMaxPlayers;}
+    public void setEditedMaxPlayers(Integer editedMaxPlayers) {this.editedMaxPlayers = editedMaxPlayers;}
 
-    public void setEditedMinPlayTime(int editedMinPlayTime) {this.editedMinPlayTime = editedMinPlayTime;}
+    public void setEditedMinPlayTime(Integer editedMinPlayTime) {this.editedMinPlayTime = editedMinPlayTime;}
 
-    public void setEditedMaxPlayTime(int editedMaxPlayTime) {this.editedMaxPlayTime = editedMaxPlayTime;}
+    public void setEditedMaxPlayTime(Integer editedMaxPlayTime) {this.editedMaxPlayTime = editedMaxPlayTime;}
 
-    public void setEditedMinAge(int editedMinAge) {this.editedMinAge = editedMinAge;}
+    public void setEditedMinAge(Integer editedMinAge) {this.editedMinAge = editedMinAge;}
 
     public void setEditedDescription(String editedDescription) {this.editedDescription = editedDescription;}
 
@@ -243,6 +243,10 @@ public class DGame {
 
     public void setExpansion(Boolean expansion) {this.expansion = expansion;}
 
+    public void setFavorite(Boolean favorite) {this.favorite = favorite;}
+
+    public void setIsUserCreated(Boolean isUserCreated) {this.isUserCreated = isUserCreated;}
+
     // Getters.
     public String getGameID() {return gameID;}
 
@@ -250,21 +254,21 @@ public class DGame {
 
     public String getUrl() {return url;}
 
-    public float getPrice() {return price;}
+    public Float getPrice() {return price;}
 
-    public float getMsrp() {return msrp;}
+    public Float getMsrp() {return msrp;}
 
-    public int getYearPublished() {return yearPublished;}
+    public Integer getYearPublished() {return yearPublished;}
 
-    public int getMinPlayers() {return minPlayers;}
+    public Integer getMinPlayers() {return minPlayers;}
 
-    public int getMaxPlayers() {return maxPlayers;}
+    public Integer getMaxPlayers() {return maxPlayers;}
 
-    public int getMinPlayTime() {return minPlayTime;}
+    public Integer getMinPlayTime() {return minPlayTime;}
 
-    public int getMaxPlayTime() {return maxPlayTime;}
+    public Integer getMaxPlayTime() {return maxPlayTime;}
 
-    public int getMinAge() {return minAge;}
+    public Integer getMinAge() {return minAge;}
 
     public String getDescription() {return description;}
 
@@ -276,17 +280,17 @@ public class DGame {
 
     public String getEditedGameName() {return editedGameName;}
 
-    public int getEditedYearPublished() {return editedYearPublished;}
+    public Integer getEditedYearPublished() {return editedYearPublished;}
 
-    public int getEditedMinPlayers() {return editedMinPlayers;}
+    public Integer getEditedMinPlayers() {return editedMinPlayers;}
 
-    public int getEditedMaxPlayers() {return editedMaxPlayers;}
+    public Integer getEditedMaxPlayers() {return editedMaxPlayers;}
 
-    public int getEditedMinPlayTime() {return editedMinPlayTime;}
+    public Integer getEditedMinPlayTime() {return editedMinPlayTime;}
 
-    public int getEditedMaxPlayTime() {return editedMaxPlayTime;}
+    public Integer getEditedMaxPlayTime() {return editedMaxPlayTime;}
 
-    public int getEditedMinAge() {return editedMinAge;}
+    public Integer getEditedMinAge() {return editedMinAge;}
 
     public String getEditedDescription() {return editedDescription;}
 
@@ -300,6 +304,10 @@ public class DGame {
 
     public Boolean getExpansion() {return expansion;}
 
+    public Boolean getFavorite() {return favorite;}
+
+    public Boolean getIsUserCreated() {return isUserCreated;}
+
     //Getters that return edits over default api content...
     public String getVisibleGameName() {
         if (editedGameName != null && !editedGameName.equals("")) {
@@ -309,7 +317,22 @@ public class DGame {
         }
     }
 
-    public int getVisibleYearPublished() {
+    // Required for sorting. The toLowerCase() return ensures that case is ignored when sorting
+    // the user list. If getVisibleGameName is used instead then comparator.comparing groups
+    // uppercase letters together, then lowercase letters. Note: GROUPS not sorts...
+    // Example of sort without using this function:
+    // Game Name: Apples to Apples
+    // Game Name: Zenolyth
+    // Game Name: adam and eve
+    public String compareVisibleGameName() {
+        if (editedGameName != null && !editedGameName.equals("")) {
+            return editedGameName.toLowerCase();
+        } else {
+            return gameName.toLowerCase();
+        }
+    }
+
+    public Integer getVisibleYearPublished() {
         if(editedYearPublished > 0) {
             return editedYearPublished;
         } else {
@@ -317,7 +340,7 @@ public class DGame {
         }
     }
 
-    public int getVisibleMinPlayers() {
+    public Integer getVisibleMinPlayers() {
         if(editedMinPlayers > -1) {
             return editedMinPlayers;
         } else {
@@ -325,7 +348,7 @@ public class DGame {
         }
     }
 
-    public int getVisibleMaxPlayers() {
+    public Integer getVisibleMaxPlayers() {
         if(editedMaxPlayers > -1) {
             return editedMaxPlayers;
         } else {
@@ -333,7 +356,7 @@ public class DGame {
         }
     }
 
-    public int getVisibleMinPlayTime() {
+    public Integer getVisibleMinPlayTime() {
         if(editedMinPlayTime > -1) {
             return editedMinPlayTime;
         } else {
@@ -341,7 +364,7 @@ public class DGame {
         }
     }
 
-    public int getVisibleMaxPlayTime() {
+    public Integer getVisibleMaxPlayTime() {
         if (editedMaxPlayTime > -1) {
             return editedMaxPlayTime;
         } else {
@@ -349,7 +372,7 @@ public class DGame {
         }
     }
 
-    public int getVisibleMinAge() {
+    public Integer getVisibleMinAge() {
         if (editedMinAge > -1) {
             return editedMinAge;
         } else {

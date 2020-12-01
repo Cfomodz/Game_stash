@@ -49,12 +49,23 @@ public class VGameDetailsUser extends AppCompatActivity {
         holder.playTime = this.findViewById(R.id.tv_user_details_play_time);
         holder.minAge = this.findViewById(R.id.tv_user_details_min_age);
 
-        Picasso.get()
-                .load(gameImage)
-                .resize(200, 200)
-                .centerInside()
-                .noFade()
-                .into(holder.gameImage);
+        if(gameImage.trim().length() > 0) {
+            Picasso.get()
+                    .load(gameImage)
+                    .resize(200, 200)
+                    .error(R.drawable.main_menu_img_00)
+                    .centerInside()
+                    .noFade()
+                    .into(holder.gameImage);
+        } else {
+            Picasso.get()
+                    .load(R.drawable.main_menu_img_00)
+                    .resize(200, 200)
+                    .centerInside()
+                    .noFade()
+                    .into(holder.gameImage);
+        }
+
         holder.gameName.setText(gameName);
         holder.publisher.setText(publisher);
         holder.players.setText(players);
