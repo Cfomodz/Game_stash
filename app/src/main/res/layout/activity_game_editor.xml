@@ -57,15 +57,14 @@
         android:layout_width="90dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="24dp"
         android:layout_marginEnd="8dp"
         android:gravity="right"
         android:text="Name:"
         android:textSize="18sp"
+        app:layout_constraintBaseline_toBaselineOf="@+id/et_editor_game_name"
         app:layout_constraintEnd_toStartOf="@+id/et_editor_game_name"
         app:layout_constraintHorizontal_chainStyle="packed"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/switch_editor_favorite" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
         android:id="@+id/et_editor_game_name"
@@ -95,15 +94,14 @@
         android:layout_width="90dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="24dp"
         android:layout_marginEnd="8dp"
         android:gravity="right"
         android:text="Publisher:"
         android:textSize="18sp"
+        app:layout_constraintBaseline_toBaselineOf="@+id/et_editor_publisher"
         app:layout_constraintEnd_toStartOf="@+id/et_editor_publisher"
         app:layout_constraintHorizontal_chainStyle="packed"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/et_editor_game_name" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
         android:id="@+id/et_editor_publisher"
@@ -131,16 +129,15 @@
         android:layout_width="90dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="24dp"
         android:layout_marginEnd="8dp"
         android:gravity="right"
         android:text="Nº Players:"
         android:textSize="18sp"
+        app:layout_constraintBaseline_toBaselineOf="@+id/et_editor_min_players"
         app:layout_constraintEnd_toStartOf="@+id/et_editor_min_players"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintHorizontal_chainStyle="packed"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/et_editor_publisher" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
         android:id="@+id/et_editor_min_players"
@@ -148,15 +145,14 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="16dp"
-        android:layout_marginEnd="8dp"
         android:ems="10"
         android:hint="Min#"
         android:inputType="number"
-        android:nextFocusDown="@+id/et_editor_max_players"
-        android:nextFocusRight="@+id/et_editor_max_players"
-        android:nextFocusForward="@+id/et_editor_max_players"
-        android:nextFocusUp="@+id/et_editor_publisher"
         android:nextFocusLeft="@+id/et_editor_publisher"
+        android:nextFocusRight="@+id/et_editor_max_players"
+        android:nextFocusUp="@+id/et_editor_publisher"
+        android:nextFocusDown="@+id/et_editor_max_players"
+        android:nextFocusForward="@+id/et_editor_max_players"
         android:textSize="16sp"
         app:layout_constraintEnd_toStartOf="@+id/textView13"
         app:layout_constraintHorizontal_bias="0.5"
@@ -167,32 +163,32 @@
         android:id="@+id/textView13"
         android:layout_width="20dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
+        android:layout_marginStart="2dp"
+        android:layout_marginEnd="2dp"
         android:gravity="center"
         android:text="-"
         android:textSize="18sp"
+        app:layout_constraintBaseline_toBaselineOf="@+id/et_editor_max_players"
         app:layout_constraintEnd_toStartOf="@+id/et_editor_max_players"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/et_editor_min_players"
-        app:layout_constraintTop_toBottomOf="@+id/et_editor_publisher" />
+        app:layout_constraintStart_toEndOf="@+id/et_editor_min_players" />
 
     <EditText
         android:id="@+id/et_editor_max_players"
         style="@android:style/Widget.DeviceDefault.EditText"
         android:layout_width="72dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="8dp"
         android:ems="10"
         android:hint="Max#"
         android:inputType="number"
-        android:textSize="16sp"
-        android:nextFocusDown="@+id/et_editor_min_play_time"
-        android:nextFocusRight="@+id/et_editor_min_play_time"
-        android:nextFocusForward="@+id/et_editor_min_play_time"
-        android:nextFocusUp="@+id/et_editor_min_players"
         android:nextFocusLeft="@+id/et_editor_min_players"
+        android:nextFocusRight="@+id/et_editor_min_play_time"
+        android:nextFocusUp="@+id/et_editor_min_players"
+        android:nextFocusDown="@+id/et_editor_min_play_time"
+        android:nextFocusForward="@+id/et_editor_min_play_time"
+        android:textSize="16sp"
         app:layout_constraintEnd_toStartOf="@+id/textView14"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/textView13"
@@ -200,31 +196,28 @@
 
     <TextView
         android:id="@+id/textView14"
-        android:layout_width="22dp"
+        android:layout_width="44dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="24dp"
         android:layout_marginEnd="32dp"
+        app:layout_constraintBaseline_toBaselineOf="@+id/et_editor_max_players"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/et_editor_max_players"
-        app:layout_constraintTop_toBottomOf="@+id/et_editor_publisher" />
+        app:layout_constraintStart_toEndOf="@+id/et_editor_max_players" />
 
     <TextView
         android:id="@+id/lbl_editor_play_time"
         android:layout_width="90dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="24dp"
         android:layout_marginEnd="8dp"
         android:gravity="right"
         android:text="Play Time:"
         android:textSize="18sp"
+        app:layout_constraintBaseline_toBaselineOf="@+id/et_editor_min_play_time"
         app:layout_constraintEnd_toStartOf="@+id/et_editor_min_play_time"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintHorizontal_chainStyle="packed"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/et_editor_min_players" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
         android:id="@+id/et_editor_min_play_time"
@@ -232,16 +225,15 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="16dp"
-        android:layout_marginEnd="8dp"
         android:ems="10"
         android:hint="Min#"
         android:inputType="number"
-        android:textSize="16sp"
-        android:nextFocusDown="@+id/et_editor_max_play_time"
-        android:nextFocusRight="@+id/et_editor_max_play_time"
-        android:nextFocusForward="@+id/et_editor_max_play_time"
-        android:nextFocusUp="@+id/et_editor_max_players"
         android:nextFocusLeft="@+id/et_editor_max_players"
+        android:nextFocusRight="@+id/et_editor_max_play_time"
+        android:nextFocusUp="@+id/et_editor_max_players"
+        android:nextFocusDown="@+id/et_editor_max_play_time"
+        android:nextFocusForward="@+id/et_editor_max_play_time"
+        android:textSize="16sp"
         app:layout_constraintEnd_toStartOf="@+id/textView16"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/lbl_editor_play_time"
@@ -251,31 +243,31 @@
         android:id="@+id/textView16"
         android:layout_width="20dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
+        android:layout_marginStart="2dp"
+        android:layout_marginEnd="2dp"
         android:gravity="center"
         android:text="-"
         android:textSize="18sp"
+        app:layout_constraintBaseline_toBaselineOf="@+id/et_editor_max_play_time"
         app:layout_constraintEnd_toStartOf="@+id/et_editor_max_play_time"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/et_editor_min_play_time"
-        app:layout_constraintTop_toBottomOf="@+id/et_editor_min_players" />
+        app:layout_constraintStart_toEndOf="@+id/et_editor_min_play_time" />
 
     <EditText
         android:id="@+id/et_editor_max_play_time"
         android:layout_width="72dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="8dp"
         android:ems="10"
         android:hint="Max#"
         android:inputType="number"
-        android:textSize="16sp"
-        android:nextFocusDown="@+id/et_editor_min_age"
-        android:nextFocusRight="@+id/et_editor_min_age"
-        android:nextFocusForward="@+id/et_editor_min_age"
-        android:nextFocusUp="@+id/et_editor_min_play_time"
         android:nextFocusLeft="@+id/et_editor_min_play_time"
+        android:nextFocusRight="@+id/et_editor_min_age"
+        android:nextFocusUp="@+id/et_editor_min_play_time"
+        android:nextFocusDown="@+id/et_editor_min_age"
+        android:nextFocusForward="@+id/et_editor_min_age"
+        android:textSize="16sp"
         app:layout_constraintEnd_toStartOf="@+id/textView17"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/textView16"
@@ -283,31 +275,30 @@
 
     <TextView
         android:id="@+id/textView17"
-        android:layout_width="22dp"
+        android:layout_width="44dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="24dp"
         android:layout_marginEnd="32dp"
+        android:text="min"
+        android:textSize="18sp"
+        app:layout_constraintBaseline_toBaselineOf="@+id/et_editor_max_play_time"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/et_editor_max_play_time"
-        app:layout_constraintTop_toBottomOf="@+id/et_editor_max_players" />
+        app:layout_constraintStart_toEndOf="@+id/et_editor_max_play_time" />
 
     <TextView
         android:id="@+id/lbl_editor_min_age"
         android:layout_width="90dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="24dp"
         android:layout_marginEnd="8dp"
         android:gravity="right"
         android:text="Min Age: "
         android:textSize="18sp"
+        app:layout_constraintBaseline_toBaselineOf="@+id/et_editor_min_age"
         app:layout_constraintEnd_toStartOf="@+id/et_editor_min_age"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintHorizontal_chainStyle="packed"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/et_editor_min_play_time" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
         android:id="@+id/et_editor_min_age"
@@ -332,12 +323,11 @@
         android:layout_width="154dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="24dp"
         android:layout_marginEnd="32dp"
+        app:layout_constraintBaseline_toBaselineOf="@+id/et_editor_min_age"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/et_editor_min_age"
-        app:layout_constraintTop_toBottomOf="@+id/et_editor_min_play_time" />
+        app:layout_constraintStart_toEndOf="@+id/et_editor_min_age" />
 
     <TextView
         android:id="@+id/lbl_editor_location"

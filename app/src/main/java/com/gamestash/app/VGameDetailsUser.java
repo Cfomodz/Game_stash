@@ -34,12 +34,12 @@ public class VGameDetailsUser extends AppCompatActivity {
         this.game = DApp.getUserGameList().getGameList().get(position);
 
         //move to presenter...
-        String gameImage = this.game.getThumbURL();
-        String gameName = this.game.getGameName();
-        String publisher = "Publisher: " + this.game.getPublisher().getName();
-        String players = "Players: " + this.game.getMinPlayers() + " - " + this.game.getMaxPlayers();
-        String playTime = "Playtime: " + this.game.getMinPlayTime() + " - " + this.game.getMaxPlayTime() + " min";
-        String minAge = "Age: " + this.game.getMinAge() + "+";
+        String gameImage = this.game.getVisibleThumbURL();
+        String gameName = this.game.getVisibleGameName();
+        String publisher = "Publisher: " + this.game.getVisiblePublisher().getName();
+        String players = "Players: " + this.game.getVisibleMinPlayers() + " - " + this.game.getVisibleMaxPlayers();
+        String playTime = "Playtime: " + this.game.getVisibleMinPlayTime() + " - " + this.game.getVisibleMaxPlayTime() + " min";
+        String minAge = "Age: " + this.game.getVisibleMinAge() + "+";
 
         VGameDetailsAPI.ViewHolder holder = new VGameDetailsAPI.ViewHolder();
         holder.gameImage = this.findViewById(R.id.tv_user_details_game_image);
