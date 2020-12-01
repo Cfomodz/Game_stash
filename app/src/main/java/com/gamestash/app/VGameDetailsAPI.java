@@ -8,7 +8,6 @@ import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -75,7 +74,7 @@ public class VGameDetailsAPI extends AppCompatActivity {
         //Spinner
         initList();
 
-        Spinner spinnerLocations = findViewById(R.id.spinner2);
+        Spinner spinnerLocations = findViewById(R.id.sp_api_details_location);
 
         mAdapter = new LocationAdapter(this, mLocationList);
         spinnerLocations.setAdapter(mAdapter);

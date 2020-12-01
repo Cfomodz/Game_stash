@@ -75,7 +75,7 @@ public class VMainMenu extends AppCompatActivity {
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
+        if (id == R.id.item_menu_edit_games_list_action_settings) {
             return true;
         }
 

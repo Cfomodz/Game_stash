@@ -1,27 +1,23 @@
 <resources>
-    <string name="app_name">Game_stash</string>
     <string name="action_settings">Settings</string>
 
     <!-- Game parameters -->
-    <string name="min_num_players">Min# of Players</string>
-    <string name="max_num_players">Max# of Players</string>
-    <string name="play_time">Play Time</string>
-    <string name="min_play_time">Min Play Time</string>
-    <string name="max_play_time">Max Play Time</string>
-    <string name="game_name">Name</string>
-    <string name="add_date">Date Added</string>
-    <string name="pub_date">Date Published</string>
-    <string name="location">Location/Shelf</string>
+    <string name="tv_min_num_players">Min# of Players</string>
+    <string name="tv_max_num_players">Max# of Players</string>
+    <string name="tv_min_play_time">Min Play Time</string>
+    <string name="tv_max_play_time">Max Play Time</string>
+    <string name="tv_game_name">Name</string>
+    <string name="tv_location">Location/Shelf</string>
 
     <!-- Buttons -->
-    <string name="add_game_manually">Add Game Manually</string>
+    <string name="btn_add_game_manually">Add Game Manually</string>
     <string name="game_search_text1">Add Game</string>
     <string name="game_search_text2">Search</string>
     <string name="game_search_text3">Find a game!</string>
     <string name="game_search_bar">Search</string>
     <string name="add_game_search">Add Game Search</string>
     <string name="save_game">Save Game</string>
-    <string name="add_game">Add Game</string>
+    <string name="btn_add_game">Add Game</string>
 
     <!--  -->
     <string name="favorite">Favorite</string>
@@ -35,8 +31,8 @@
     <string name="add_new_game">Add New Game</string>
     <string name="default_image">Filler Image</string>
     <string name="expantion">Expansion</string>
-    <string name="pub">Publisher</string>
-    <string name="min_age">Minimum Age</string>
+    <string name="tv_publisher">Publisher</string>
+    <string name="tv_min_age">Minimum Age</string>
 
 
     <string name="title_activity_users_list_of_games">ScrollingActivity</string>
