@@ -84,9 +84,9 @@ public class VGameDetailsAPI extends AppCompatActivity {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 LocationItem clickedItem = (LocationItem) parent.getItemAtPosition(position);
                 String clickedLocationName = clickedItem.getLocationName();
-                Toast.makeText(VGameDetailsAPI.this, clickedLocationName, Toast.LENGTH_SHORT).show();
+                //Toast.makeText(VGameDetailsAPI.this, clickedLocationName, Toast.LENGTH_SHORT).show();
                 String clickedLocationID = clickedItem.getLocationID();
-                Toast.makeText(VGameDetailsAPI.this, clickedLocationID, Toast.LENGTH_SHORT).show();
+                //Toast.makeText(VGameDetailsAPI.this, clickedLocationID, Toast.LENGTH_SHORT).show();
                 
             }
 
