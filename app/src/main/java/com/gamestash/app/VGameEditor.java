@@ -27,8 +27,9 @@ public class VGameEditor extends AppCompatActivity {
         int position = intent.getIntExtra("position", -1);
 
         if(position > -1) {
-            // can you edit an api game first? not sure...
+            // can you edit an api game first? not sure...yes
             this.game = DApp.getUserGameList().getGameList().get(position);
+            //load the game editor with the game obj field data...
         } else {
             this.game = new DGame();
         }

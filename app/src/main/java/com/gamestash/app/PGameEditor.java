@@ -59,15 +59,15 @@ public class PGameEditor implements IProcess, ISave {
             game.setIsUserCreated(true);
             game.setFavorite(holder.favorite.isChecked());
             game.setExpansion(holder.expansion.isChecked());
-            game.setEditedGameName(holder.gameName.getText().toString());
-            game.setEditedMinPlayers(Integer.parseInt(holder.minPlayers.getText().toString()));
-            game.setEditedMaxPlayers(Integer.parseInt(holder.maxPlayers.getText().toString()));
-            game.setEditedMinPlayTime(Integer.parseInt(holder.minPlayTime.getText().toString()));
-            game.setEditedMaxPlayTime(Integer.parseInt(holder.maxPlayTime.getText().toString()));
-            game.setEditedMinAge(Integer.parseInt(holder.minAge.getText().toString()));
+            game.setEditedGameName(holder.gameName.getText().toString().trim());
+            game.setEditedMinPlayers(Integer.parseInt(holder.minPlayers.getText().toString().trim()));
+            game.setEditedMaxPlayers(Integer.parseInt(holder.maxPlayers.getText().toString().trim()));
+            game.setEditedMinPlayTime(Integer.parseInt(holder.minPlayTime.getText().toString().trim()));
+            game.setEditedMaxPlayTime(Integer.parseInt(holder.maxPlayTime.getText().toString().trim()));
+            game.setEditedMinAge(Integer.parseInt(holder.minAge.getText().toString().trim()));
 
             DPublisher publisher = new DPublisher();
-            publisher.setName(holder.publisher.getText().toString());
+            publisher.setName(holder.publisher.getText().toString().trim());
             game.setEditedPublisher(publisher);
 
             /**
@@ -96,7 +96,7 @@ public class PGameEditor implements IProcess, ISave {
 
     private Boolean validateGameData(ViewHolder holder) {
         Boolean validation = true;
-        if(holder.gameName.getText().toString().length() == 0) {
+        if(holder.gameName.getText().toString().trim().length() == 0) {
             holder.gameName.setError("Enter game name");
             validation = false;
         }
