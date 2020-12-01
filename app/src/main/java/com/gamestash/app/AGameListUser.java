@@ -58,7 +58,7 @@ public class AGameListUser extends ArrayAdapter<DGame> {
             holder = new ViewHolder();
             holder.gameImage = convertView.findViewById(R.id.iv_gamelist_item_game_thumb);
             holder.name = convertView.findViewById(R.id.tv_gamelist_item_game_name);
-            holder.publisher = convertView.findViewById(R.id.tv_gamelist_publisher);
+            holder.publisher = convertView.findViewById(R.id.tv_gamelist_item_publisher);
             holder.extraDetails = convertView.findViewById(R.id.tv_gamelist_item_extra_details);
             //etc.
 
