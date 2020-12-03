@@ -34,7 +34,9 @@ public class VGameListAPI extends AppCompatActivity {
         ListView listView = findViewById(R.id.lv_game_list);
         Log.d(TAG, "onCreate: Started.");
 
+        //RETURN LIST...
         List<DGame> gameList = DApp.getApiGameList().getGameList();
+        // NEED TO DO::ADD FILTER HERE; Currently not implemented
 
         AGameListAPI adapter = new AGameListAPI(this, R.layout.item_layout_gamelist, gameList);
 
