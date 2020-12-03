@@ -100,4 +100,29 @@
         app:layout_constraintTop_toBottomOf="@+id/tv_user_details_min_age"
         app:layout_constraintVertical_bias="1.0" />
 
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="80dp"
+        android:onClick="onclickDelete"
+        android:text="Delete"
+        app:layout_constraintBottom_toTopOf="@+id/tv_user_details_location"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_user_details_min_age"
+        app:layout_constraintVertical_bias="0.503" />
+
+    <Button
+        android:id="@+id/button4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="onclickEdit"
+        android:text="Edit"
+        app:layout_constraintBottom_toTopOf="@+id/tv_user_details_location"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.448"
+        app:layout_constraintStart_toEndOf="@+id/button2"
+        app:layout_constraintTop_toBottomOf="@+id/tv_user_details_min_age"
+        app:layout_constraintVertical_bias="0.503" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
