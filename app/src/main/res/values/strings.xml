@@ -10,6 +10,8 @@
     <string name="tv_location">Location/Shelf</string>
 
     <!-- Buttons -->
+    <string name="btn_edit_game">Edit</string>
+    <string name="btn_delete_game">Delete</string>
     <string name="btn_add_game_manually">Add Game Manually</string>
     <string name="lbl_find_a_game">Find a Game!</string>
     <string name="btn_game_name">Find a game!</string>
