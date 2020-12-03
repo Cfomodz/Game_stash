@@ -1,6 +1,7 @@
 package com.gamestash.app;
 
 import android.util.Log;
+import android.widget.Toast;
 
 import java.lang.ref.WeakReference;
 
@@ -22,6 +23,14 @@ class PAPISearchResults implements IProcess {
 
             //Reset game list...
             DApp.setApiGameList(null);
+
+            // Toast Searching...
+            if (masterRef.get() != null) {
+                masterRef.get().runOnUiThread(() -> {
+                    Toast toast = Toast.makeText(this.masterRef.get(), "Searching...", Toast.LENGTH_SHORT);
+                    toast.show();
+                });
+            }
 
             //Run search
             this.doSearch(DApp.getSearchSTR());
