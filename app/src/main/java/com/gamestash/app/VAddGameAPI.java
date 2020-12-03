@@ -17,7 +17,7 @@ public class VAddGameAPI extends AppCompatActivity {
     }
 
     public void onclickSearch(View view) {
-        EditText editTextName = findViewById(R.id.et_game_name);
+        EditText editTextName = findViewById(R.id.et_add_game_api_game_name);
         String search = editTextName.getText().toString();
 
         DApp.setSearchSTR(search);

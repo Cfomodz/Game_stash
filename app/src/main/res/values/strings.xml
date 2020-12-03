@@ -11,11 +11,10 @@
 
     <!-- Buttons -->
     <string name="btn_add_game_manually">Add Game Manually</string>
-    <string name="game_search_text1">Add Game</string>
-    <string name="game_search_text2">Search</string>
-    <string name="game_search_text3">Find a game!</string>
-    <string name="game_search_bar">Search</string>
-    <string name="add_game_search">Add Game Search</string>
+    <string name="lbl_find_a_game">Find a Game!</string>
+    <string name="btn_game_name">Find a game!</string>
+    <string name="et_game_search_bar">Search</string>
+    <string name="btn_add_game_search">Add Game Search</string>
     <string name="save_game">Save Game</string>
     <string name="btn_add_game">Add Game</string>
 
@@ -26,7 +25,7 @@
     <string name="profileInfo">Info</string>
     <string name="upload">Upload</string>
     <string name="backup">Backup</string>
-    <string name="users_list">View Collection</string>
+    <string name="btn_view_collection">View Collection</string>
     <string name="edit_games">Edit Games</string>
     <string name="add_new_game">Add New Game</string>
     <string name="default_image">Filler Image</string>
