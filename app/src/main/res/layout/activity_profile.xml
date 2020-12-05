@@ -7,14 +7,14 @@
     tools:context=".VProfile">
 
     <ImageView
-        android:id="@+id/imageView4"
+        android:id="@+id/img_profile_user_image"
         android:layout_width="200dp"
         android:layout_height="200dp"
         android:layout_marginStart="32dp"
         android:layout_marginTop="32dp"
         android:layout_marginEnd="32dp"
-        android:contentDescription="@string/default_image"
-        app:layout_constraintBottom_toTopOf="@+id/textView3"
+        android:contentDescription="@string/img_user_image"
+        app:layout_constraintBottom_toTopOf="@+id/tv_profile_name"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
@@ -25,36 +25,36 @@
         tools:srcCompat="@drawable/_" />
 
     <TextView
-        android:id="@+id/textView3"
+        android:id="@+id/tv_profile_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:layout_marginTop="32dp"
         android:layout_marginEnd="32dp"
-        android:text="@string/profileName"
+        android:text="@string/tv_name"
         android:textAppearance="@style/TextAppearance.AppCompat.Display2"
-        app:layout_constraintBottom_toTopOf="@+id/textView4"
+        app:layout_constraintBottom_toTopOf="@+id/tv_profile_info"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView4" />
+        app:layout_constraintTop_toBottomOf="@+id/img_profile_user_image" />
 
     <TextView
-        android:id="@+id/textView4"
+        android:id="@+id/tv_profile_info"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:layout_marginEnd="32dp"
-        android:text="@string/profileInfo"
+        android:text="@string/tv_info"
         android:textAppearance="@style/TextAppearance.AppCompat.Display1"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView3" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_profile_name" />
 
     <Button
-        android:id="@+id/button7"
+        android:id="@+id/btn_profile_upload"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
@@ -62,17 +62,17 @@
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="64dp"
         android:onClick="upload"
-        android:text="@string/upload"
+        android:text="@string/btn_upload"
         app:backgroundTint="#66BBFF"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/button8"
+        app:layout_constraintEnd_toStartOf="@+id/btn_profile_backup"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintHorizontal_chainStyle="packed"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView4" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_profile_info" />
 
     <Button
-        android:id="@+id/button8"
+        android:id="@+id/btn_profile_backup"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -80,11 +80,11 @@
         android:layout_marginEnd="32dp"
         android:layout_marginBottom="64dp"
         android:onClick="backup"
-        android:text="@string/backup"
+        android:text="@string/btn_backup"
         app:backgroundTint="#66BBFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/button7"
-        app:layout_constraintTop_toBottomOf="@+id/textView4" />
+        app:layout_constraintStart_toEndOf="@+id/btn_profile_upload"
+        app:layout_constraintTop_toBottomOf="@+id/tv_profile_info" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -31,19 +31,19 @@
         android:onClick="onclickAddGameManually"
         android:text="@string/btn_add_game_manually"
         app:backgroundTint="#66BBFF"
-        app:layout_constraintBottom_toTopOf="@+id/button3"
+        app:layout_constraintBottom_toTopOf="@+id/btn_main_profile"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btn_main_add_game_search" />
 
     <Button
-        android:id="@+id/button3"
+        android:id="@+id/btn_main_profile"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:layout_marginBottom="32dp"
         android:onClick="onclickProfile"
-        android:text="@string/profile"
+        android:text="@string/btn_profile"
         app:backgroundTint="#66BBFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
