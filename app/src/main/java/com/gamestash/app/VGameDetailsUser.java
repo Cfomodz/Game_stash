@@ -14,15 +14,18 @@ import com.squareup.picasso.Picasso;
 public class VGameDetailsUser extends AppCompatActivity {
     private static final String TAG = VGameDetailsUser.class.getSimpleName();
 
+    private IProcess presenter;
+
     private DGame game;
 
-    static class ViewHolder {
+    private class ViewHolder {
         ImageView gameImage;
         TextView gameName;
         TextView publisher;
         TextView players;
         TextView playTime;
         TextView minAge;
+        TextView location;
     }
 
     @Override
@@ -41,14 +44,22 @@ public class VGameDetailsUser extends AppCompatActivity {
         String players = "Players: " + this.game.getVisibleMinPlayers() + " - " + this.game.getVisibleMaxPlayers();
         String playTime = "Playtime: " + this.game.getVisibleMinPlayTime() + " - " + this.game.getVisibleMaxPlayTime() + " min";
         String minAge = "Age: " + this.game.getVisibleMinAge() + "+";
+        String location;
+        if (this.game.getLocation().length() > 0) {
+            location = "Location: " + this.game.getLocation();
+        } else {
+            location = "Location: Undefined";
+        }
 
-        VGameDetailsAPI.ViewHolder holder = new VGameDetailsAPI.ViewHolder();
+
+        ViewHolder holder = new ViewHolder();
         holder.gameImage = this.findViewById(R.id.tv_user_details_game_image);
         holder.gameName = this.findViewById(R.id.tv_user_details_game_name);
         holder.publisher = this.findViewById(R.id.tv_user_details_publisher);
         holder.players = this.findViewById(R.id.tv_user_details_players);
         holder.playTime = this.findViewById(R.id.tv_user_details_play_time);
         holder.minAge = this.findViewById(R.id.tv_user_details_min_age);
+        holder.location = this.findViewById(R.id.tv_user_details_location);
 
         if(gameImage.trim().length() > 0) {
             Picasso.get()
@@ -72,6 +83,7 @@ public class VGameDetailsUser extends AppCompatActivity {
         holder.players.setText(players);
         holder.playTime.setText(playTime);
         holder.minAge.setText(minAge);
+        holder.location.setText(location);
 
 
         //use game to fill out display...

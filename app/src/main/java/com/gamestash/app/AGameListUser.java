@@ -44,8 +44,13 @@ public class AGameListUser extends ArrayAdapter<DGame> {
     public View getView(int position, View convertView, ViewGroup parent) {
         String gameImage = getItem(position).getVisibleThumbURL();
         String name = getItem(position).getVisibleGameName();
-        String publisher = getItem(position).getVisiblePublisher().getName();
-        String extraDetails = getItem(position).getLocation();
+        String publisher = "Publisher: " + getItem(position).getVisiblePublisher().getName();
+        String extraDetails;
+        if (getItem(position).getLocation().length() > 0 ) {
+           extraDetails = "Location: " + getItem(position).getLocation();
+        } else {
+            extraDetails = "";
+        }
         //etc.
 
         final View result;
