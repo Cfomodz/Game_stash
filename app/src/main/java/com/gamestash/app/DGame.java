@@ -9,7 +9,7 @@ public class DGame {
     // API variables.
     private @SerializedName("id") String gameID = "";
     private @SerializedName("name") String gameName = "";
-    private @SerializedName("year_published") Integer yearPublished = 0;
+    private @SerializedName("year_published") Integer yearPublished = -1;
     private @SerializedName("min_players")  Integer minPlayers = -1;
     private @SerializedName("max_players") Integer maxPlayers = -1;
     private @SerializedName("min_playtime") Integer minPlayTime = -1;
@@ -26,16 +26,16 @@ public class DGame {
     //private Map<String, String> mechanics;
 
     // Edited variables.
-    private String editedGameName;
-    private Integer editedYearPublished;
-    private Integer editedMinPlayers;
-    private Integer editedMaxPlayers;
-    private Integer editedMinPlayTime;
-    private Integer editedMaxPlayTime;
-    private Integer editedMinAge;
-    private String editedDescription;
-    private String editedThumbURL;
-    private String editedImageURL;
+    private String editedGameName = "";
+    private Integer editedYearPublished = -1;
+    private Integer editedMinPlayers = -1;
+    private Integer editedMaxPlayers = -1;
+    private Integer editedMinPlayTime = -1;
+    private Integer editedMaxPlayTime = -1;
+    private Integer editedMinAge = -1;
+    private String editedDescription = "";
+    private String editedThumbURL = "";
+    private String editedImageURL = "";
     private DPublisher editedPublisher;
 
     //General User Variables
@@ -409,6 +409,22 @@ public class DGame {
             return editedPublisher;
         } else {
             return publisher;
+        }
+    }
+
+    public void resetUserValues() {
+        if(!isUserCreated) {
+            editedGameName = "";
+            editedYearPublished = -1;
+            editedMinPlayers = -1;
+            editedMaxPlayers = -1;
+            editedMinPlayTime = -1;
+            editedMaxPlayTime = -1;
+            editedMinAge = -1;
+            editedDescription = "";
+            editedThumbURL = "";
+            editedImageURL = "";
+            editedPublisher = new DPublisher();
         }
     }
 }

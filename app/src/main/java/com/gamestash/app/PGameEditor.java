@@ -17,6 +17,11 @@ public class PGameEditor implements IProcess, ISave {
     private WeakReference<AppCompatActivity> masterRef;
     private DGame game;
 
+    public PGameEditor(Context context, AppCompatActivity activity) {
+        this.mContext = context;
+        this.masterRef = new WeakReference<AppCompatActivity>(activity);
+    }
+
     static class ViewHolder {
         Switch favorite;
         Switch expansion;
@@ -27,12 +32,7 @@ public class PGameEditor implements IProcess, ISave {
         EditText minPlayTime;
         EditText maxPlayTime;
         EditText minAge;
-        Spinner location;
-    }
-
-    public PGameEditor(Context context, AppCompatActivity activity) {
-        this.mContext = context;
-        this.masterRef = new WeakReference<AppCompatActivity>(activity);
+        EditText location;
     }
 
     @Override
@@ -49,7 +49,7 @@ public class PGameEditor implements IProcess, ISave {
             holder.minPlayTime = this.masterRef.get().findViewById(R.id.et_editor_min_play_time);
             holder.maxPlayTime = this.masterRef.get().findViewById(R.id.et_editor_max_play_time);
             holder.minAge = this.masterRef.get().findViewById(R.id.et_editor_min_age);
-            holder.location = this.masterRef.get().findViewById(R.id.sp_editor_location);
+            holder.location = this.masterRef.get().findViewById(R.id.et_editor_location);
         }
         //Validate
         if (this.validateGameData(holder)) {
