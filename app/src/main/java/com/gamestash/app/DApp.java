@@ -6,6 +6,7 @@ import androidx.annotation.RequiresApi;
 
 import java.io.File;
 import java.lang.ref.WeakReference;
+import java.util.Collections;
 import java.util.Comparator;
 
 /**
@@ -23,11 +24,13 @@ public class DApp {
     private static String returnUserSTR = "";
     private static DGameList apiGameList = new DGameList();
     private static DGameList userGameList = new DGameList();
+    private static DLocationList userLocationList = new DLocationList();
     private static Boolean hasBeenEditedSearchSTR = false;
     private static Boolean hasBeenEditedReturnApiSTR = false;
     private static Boolean hasBeenEditedReturnUserSTR = false;
     private static Boolean hasBeenEditedAPIGameList = false;
     private static Boolean hasBeenEditedUserGameList = false;
+    private static Boolean hasBeenEditedUserLocationList = false;
 
     // Getters
     public static File getUserJSONFile() {return userJSONFile;}
@@ -49,6 +52,14 @@ public class DApp {
         return userGameList;
     }
 
+    public static DLocationList getUserLocationList() {
+        if(hasBeenEditedUserLocationList) {
+            sortUserLocationList();
+            setHasBeenEditedUserLocationList();
+        }
+        return userLocationList;
+    }
+
     public static Boolean getHasBeenEditedSearchSTR() {return hasBeenEditedSearchSTR;}
 
     public static Boolean getHasBeenEditedReturnApiSTR() {return hasBeenEditedReturnApiSTR;}
@@ -58,6 +69,8 @@ public class DApp {
     public static Boolean getHasBeenEditedAPIGameList() {return hasBeenEditedAPIGameList;}
 
     public static Boolean getHasBeenEditedUserGameList() {return hasBeenEditedUserGameList;}
+
+    public static Boolean getHasBeenEditedUserLocationList() {return hasBeenEditedUserLocationList;}
 
     //Setters
     public static void setUserJSONFile(File userJSONFile) {
@@ -95,6 +108,11 @@ public class DApp {
         DApp.hasBeenEditedUserGameList = true;
     }
 
+    public static void addUserLocationList(String location) {
+        DApp.userLocationList.getLocationList().add(location);
+        DApp.hasBeenEditedUserLocationList = true;
+    }
+
     public static void setHasBeenEditedSearchSTR() {
         DApp.hasBeenEditedSearchSTR = false;
     }
@@ -115,10 +133,20 @@ public class DApp {
         DApp.hasBeenEditedUserGameList = false;
     }
 
+    public static void setHasBeenEditedUserLocationList() {
+        DApp.hasBeenEditedUserLocationList = false;
+    }
+
     @RequiresApi(api = Build.VERSION_CODES.N)
     public static void sortUserGameList() {
         if(DApp.userGameList != null) {
             DApp.userGameList.getGameList().sort(Comparator.comparing(DGame::compareVisibleGameName));
+        }
+    }
+
+    public static void sortUserLocationList() {
+        if(DApp.userLocationList != null) {
+            Collections.sort(DApp.userLocationList.getLocationList());
         }
     }
 
