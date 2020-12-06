@@ -71,29 +71,6 @@ public class VGameDetailsAPI extends AppCompatActivity {
         //use game to fill out display...
         Log.d(TAG, game.getGameName());
 
-        //Spinner
-        initList();
-
-        Spinner spinnerLocations = findViewById(R.id.sp_api_details_location);
-
-        mAdapter = new LocationAdapter(this, mLocationList);
-        spinnerLocations.setAdapter(mAdapter);
-        spinnerLocations.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                LocationItem clickedItem = (LocationItem) parent.getItemAtPosition(position);
-                String clickedLocationName = clickedItem.getLocationName();
-                //Toast.makeText(VGameDetailsAPI.this, clickedLocationName, Toast.LENGTH_SHORT).show();
-                String clickedLocationID = clickedItem.getLocationID();
-                //Toast.makeText(VGameDetailsAPI.this, clickedLocationID, Toast.LENGTH_SHORT).show();
-                
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-
-            }
-        });
 
     }
 
