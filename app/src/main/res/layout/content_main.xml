@@ -12,7 +12,6 @@
         android:layout_height="300dp"
         android:layout_marginTop="32dp"
         android:layout_marginBottom="16dp"
-        android:contentDescription="@string/todo"
         app:layout_constraintBottom_toTopOf="@+id/btn_main_view_collection"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
