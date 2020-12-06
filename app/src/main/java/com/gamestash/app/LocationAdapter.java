@@ -30,21 +30,21 @@ public class LocationAdapter extends ArrayAdapter<LocationItem> {
     }
 
     private View initView(int position, View convertView, ViewGroup parent){
-        if (convertView == null){
-            convertView = LayoutInflater.from(getContext()).inflate(
-                    R.layout.location_spinner_row, parent, false
-            );
-        }
+        //if (convertView == null){
+        //    convertView = LayoutInflater.from(getContext()).inflate(
+                    //R.layout.location_spinner_row, parent, false
+        //    );
+        //}
 
-        TextView textView = convertView.findViewById(R.id.text_view_location);
-        TextView id = convertView.findViewById(R.id.text_location_id);
-        LocationItem currentItem = getItem(position);
+        //TextView textView = convertView.findViewById(R.id.text_view_location);
+        //TextView id = convertView.findViewById(R.id.text_location_id);
+        //LocationItem currentItem = getItem(position);
 
-        if(currentItem != null) {
+        //if(currentItem != null) {
 
-            textView.setText(currentItem.getLocationName());
-            textView.setText(currentItem.getLocationID());
-        }
+            //textView.setText(currentItem.getLocationName());
+            //textView.setText(currentItem.getLocationID());
+        //}
         return convertView;
     }
 }

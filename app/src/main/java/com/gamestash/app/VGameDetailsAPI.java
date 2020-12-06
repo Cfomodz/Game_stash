@@ -3,9 +3,13 @@ package com.gamestash.app;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.ListPopupWindow;
 import android.widget.Spinner;
 import android.widget.TextView;
 
@@ -15,11 +19,14 @@ import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
-public class VGameDetailsAPI extends AppCompatActivity {
-    private static final String TAG = VGameDetailsAPI.class.getSimpleName();
+public class VGameDetailsAPI extends AppCompatActivity implements View.OnTouchListener, AdapterView.OnItemClickListener {
+    private static final String TAG = VGameDetailsAPI.class.getSimpleName(); //implements LOCATION
 
     private ISave presenter = new PAPIGameDetails(this);
     private DGame game;
+    private String[] locationList; //LOCATION
+    private ListPopupWindow lpw; //LOCATION
+    private ViewHolder holder; //LOCATION
 
     static class ViewHolder {
         ImageView gameImage;
@@ -28,6 +35,7 @@ public class VGameDetailsAPI extends AppCompatActivity {
         TextView players;
         TextView playTime;
         TextView minAge;
+        EditText location;
     }
 
     @Override
@@ -46,14 +54,16 @@ public class VGameDetailsAPI extends AppCompatActivity {
         String players = "Players: " + this.game.getMinPlayers() + " - " + this.game.getMaxPlayers();
         String playTime = "Playtime: " + this.game.getMinPlayTime() + " - " + this.game.getMaxPlayTime() + " min";
         String minAge = "Age: " + this.game.getMinAge() + "+";
+        // String location = "something";
 
-        ViewHolder holder = new ViewHolder();
+        holder = new ViewHolder();
         holder.gameImage = this.findViewById(R.id.tv_api_details_game_image);
         holder.gameName = this.findViewById(R.id.tv_api_details_game_name);
         holder.publisher = this.findViewById(R.id.tv_api_details_publisher);
         holder.players = this.findViewById(R.id.tv_api_details_max_players);
         holder.playTime = this.findViewById(R.id.tv_api_details_max_play_time);
         holder.minAge = this.findViewById(R.id.tv_api_details_min_age);
+        holder.location = this.findViewById(R.id.et_api_details_location);
 
         Picasso.get()
                 .load(gameImage)
@@ -72,17 +82,20 @@ public class VGameDetailsAPI extends AppCompatActivity {
         Log.d(TAG, game.getGameName());
 
 
+        // LOCATION REPLACEMENT
+        holder.location.setOnTouchListener(this);
+
+        locationList = new String [] {"item1", "item2", "item3", "item4"};
+        lpw = new ListPopupWindow(this);
+        lpw.setAdapter(new ArrayAdapter<String>(this,
+                android.R.layout.simple_list_item_1, locationList));
+        lpw.setAnchorView(holder.location);
+        lpw.setModal(true);
+        lpw.setOnItemClickListener(this);
+
+
+
     }
-
-    private void initList() {
-        mLocationList = new ArrayList<>();
-
-        mLocationList.add(new LocationItem("Shelf", "1"));
-        mLocationList.add(new LocationItem("Storage", "2"));
-        mLocationList.add(new LocationItem("Under Your Bed", "3"));
-        mLocationList.add(new LocationItem("Shelf2", "3"));
-    }
-
 
     public void onclickSave(View view) {
 
@@ -94,7 +107,25 @@ public class VGameDetailsAPI extends AppCompatActivity {
         return game;
     }
 
-    //Spinner
-    private ArrayList<LocationItem> mLocationList;
-    private LocationAdapter mAdapter;
+    //LOCATION
+    @Override
+    public boolean onTouch(View v, MotionEvent event) {
+        final int DRAWABLE_RIGHT = 2;
+
+        if (event.getAction() == MotionEvent.ACTION_UP) {
+            if (event.getX() >= (v.getWidth() - ((EditText) v)
+                    .getCompoundDrawables()[DRAWABLE_RIGHT].getBounds().width())) {
+                lpw.show();
+                return true;
+            }
+        }
+        return false;
+    }
+
+    @Override
+    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+        String item = locationList[position];
+        holder.location.setText(item);
+        lpw.dismiss();
+    }
 }

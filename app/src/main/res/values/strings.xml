@@ -38,6 +38,9 @@
     <string name="lbl_placeholder_play_time">Replaced w/ Play Time</string>
     <string name="lbl_placeholder_publisher">Replaced w/ Publisher</string>
 
+    <!-- Hint -->
+    <string name="hint_placeholder_location">Location</string>
+
 
 
     <!-- UNSORTED -->

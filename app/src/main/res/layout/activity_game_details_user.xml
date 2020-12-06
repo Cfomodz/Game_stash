@@ -105,7 +105,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:onClick="onclickEdit"
-        android:text="@string/btn_edit_game"
+        android:text="@string/btn_edit"
         app:layout_constraintBottom_toTopOf="@+id/tv_user_details_location"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
