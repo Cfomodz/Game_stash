@@ -94,32 +94,64 @@ public class PGameEditor implements IProcess, ISave {
         //startActivity(intent);
     }
 
+    // Validate that required fields are filled in and have valid data.
     private Boolean validateGameData(ViewHolder holder) {
         Boolean validation = true;
+        // Make sure they entered a game name.
         if(holder.gameName.getText().toString().trim().length() == 0) {
             holder.gameName.setError("Enter game name");
             validation = false;
         }
+        // Make sure they entered a publisher.
         if(holder.publisher.getText().toString().trim().length() == 0) {
             holder.publisher.setError("Enter a publisher");
             validation = false;
         }
+        // Make sure they entered minimum player data.
         if(holder.minPlayers.getText().toString().trim().length() == 0) {
             holder.minPlayers.setError("Enter a #");
             validation = false;
         }
+        // Make sure the entered min players does not exceed the max player value.
+        if(holder.minPlayers.getText().toString().trim().length() >
+           holder.maxPlayers.getText().toString().trim().length()) {
+            holder.minPlayers.setError("Must Be Less Than Max Players.");
+            validation = false;
+        }
+        // Make sure they entered maximum player value.
         if(holder.maxPlayers.getText().toString().trim().length() == 0) {
             holder.maxPlayers.setError("Enter a #");
             validation = false;
         }
+        // Make sure the max players is not less than the minimum plaer value.
+        if(holder.maxPlayers.getText().toString().trim().length() <
+                holder.minPlayers.getText().toString().trim().length()) {
+            holder.maxPlayers.setError("Must Be Greater Than Min Players.");
+            validation = false;
+        }
+        // Make sure they entered minimum play time value.
         if(holder.minPlayTime.getText().toString().trim().length() == 0) {
             holder.minPlayTime.setError("Enter a #");
             validation = false;
         }
+        // Make sure the entered minimum does not exceed maximum play time value.
+        if(holder.minPlayTime.getText().toString().trim().length() >
+           holder.maxPlayTime.getText().toString().trim().length()) {
+            holder.minPlayTime.setError("Must Be Less Than Max Play Time");
+            validation = false;
+        }
+        // Make sure they entered maximum play time value.
         if(holder.maxPlayTime.getText().toString().trim().length() == 0) {
             holder.maxPlayTime.setError("Enter a #");
             validation = false;
         }
+        // Make sure the entered maximum is not less than the minimum play time.
+        if(holder.maxPlayTime.getText().toString().trim().length() <
+                holder.minPlayTime.getText().toString().trim().length()) {
+            holder.maxPlayTime.setError("Must Be Greater Than Min Play Time");
+            validation = false;
+        }
+        // Make sure they entered a minimum age value.
         if(holder.minAge.getText().toString().trim().length() == 0) {
             holder.minAge.setError("Enter a #");
             validation = false;
