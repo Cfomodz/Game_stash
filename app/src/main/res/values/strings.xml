@@ -2,21 +2,45 @@
     <string name="action_settings">Settings</string>
 
     <!-- Game parameters -->
-    <string name="tv_min_num_players">Min# of Players</string>
-    <string name="tv_max_num_players">Max# of Players</string>
-    <string name="tv_min_play_time">Min Play Time</string>
-    <string name="tv_max_play_time">Max Play Time</string>
-    <string name="tv_game_name">Name</string>
-    <string name="tv_location">Location/Shelf</string>
+
+    <!-- Fixed Fixed Fixed Fixed Fixed Fixed Fixed Fixed -->
+    <!-- Fixed Fixed Fixed Fixed Fixed Fixed Fixed Fixed -->
+    <!-- Fixed Fixed Fixed Fixed Fixed Fixed Fixed Fixed -->
+
+    <!-- Labels -->
+    <string name="lbl_fixed_location">Location/Shelf:</string>
+    <string name="lbl_find_a_game">Find a Game!</string>
+
+    <!-- Values -->
+
+    <!-- Hint Text -->
+    <string name="hint_game_name">Game Name</string>
+    <string name="hint_publisher">Publisher</string>
 
     <!-- Buttons -->
-    <string name="btn_edit_game">Edit</string>
-    <string name="btn_delete_game">Delete</string>
+    <string name="btn_edit">Edit</string>
     <string name="btn_add_game_manually">Add Game Manually</string>
-    <string name="lbl_find_a_game">Find a Game!</string>
-    <string name="btn_game_name">Find a game!</string>
-    <string name="et_game_search_bar">Search</string>
+    <string name="btn_find_game">Find a game!</string>
     <string name="btn_add_game_search">Add Game Search</string>
+
+
+
+    <!-- Edited Edited Edited Edited Edited Edited Edited -->
+    <!-- Edited Edited Edited Edited Edited Edited Edited -->
+    <!-- Edited Edited Edited Edited Edited Edited Edited -->
+
+    <!-- Labels -->
+    <string name="lbl_placeholder_game_name">Replaced w/ Game Name</string>
+    <string name="lbl_placeholder_num_players">Replaced w/ # of Players</string>
+    <string name="lbl_placeholder_play_time">Replaced w/ Play Time</string>
+    <string name="lbl_placeholder_publisher">Replaced w/ Publisher</string>
+
+
+
+    <!-- UNSORTED -->
+
+    <string name="et_game_search_bar">Search</string>
+
     <string name="btn_save_game">Save Game</string>
     <string name="btn_add_game">Add Game</string>
 
@@ -47,9 +71,8 @@
     <string name="lbl_game_details">Game Details</string>
     <string name="lbl_error">Game Not Found</string>
     <string name="todo">TODO</string>
-    <string name="lbl_game_name">Game Name</string>
     <string name="lbl_info2">Variable Info 2</string>
     <string name="img_desc_game_thumb">Game Thumbnail Image</string>
-    <string name="lbl_publisher">Publisher</string>
+
 
 </resources>
