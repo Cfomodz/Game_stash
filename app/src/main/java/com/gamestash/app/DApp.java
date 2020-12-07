@@ -106,6 +106,7 @@ public class DApp {
     public static void addGameUserGameList(DGame game) {
         DApp.userGameList.getGameList().add(game);
         DApp.hasBeenEditedUserGameList = true;
+        checkUserLocation(game);
     }
 
     public static void addUserLocationList(String location) {
@@ -147,6 +148,30 @@ public class DApp {
     public static void sortUserLocationList() {
         if(DApp.userLocationList != null) {
             Collections.sort(DApp.userLocationList.getLocationList());
+        }
+    }
+
+    public static void checkUserLocation(DGame game) {
+        // If a location value exists
+        if(game.getLocation().length() > 0){
+            // If the location list is bigger than 0
+            // Check for existing values
+            if(DApp.userLocationList.getLocationList().size() > 0 ) {
+                boolean match = false;
+                for (String location : DApp.userLocationList.getLocationList()) {
+                    if(location.toLowerCase().equals(game.getLocation().toLowerCase())){
+                        match = true;
+                    }
+                }
+
+                // If no existing match then add the location to the array.
+                if(!match) {
+                    addUserLocationList(game.getLocation());
+                }
+
+            } else { // if the location list is not bigger than 0.
+                addUserLocationList(game.getLocation());
+            }
         }
     }
 
