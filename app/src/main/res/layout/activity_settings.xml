@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".VProfile">
+    tools:context=".VSettings">
 
     <ImageView
         android:id="@+id/img_profile_user_image"
@@ -53,37 +53,18 @@
         app:layout_constraintTop_toBottomOf="@+id/tv_profile_name" />
 
     <Button
-        android:id="@+id/btn_profile_upload"
+        android:id="@+id/button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="64dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="64dp"
-        android:onClick="upload"
-        android:text="@string/f_btn_upload"
-        app:backgroundTint="#66BBFF"
+        android:layout_marginStart="158dp"
+        android:layout_marginTop="149dp"
+        android:layout_marginEnd="160dp"
+        android:layout_marginBottom="165dp"
+        android:onClick="onClickResetLocationList"
+        android:text="@string/f_btn_reset_location_list"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/btn_profile_backup"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_profile_info" />
 
-    <Button
-        android:id="@+id/btn_profile_backup"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="64dp"
-        android:layout_marginEnd="32dp"
-        android:layout_marginBottom="64dp"
-        android:onClick="backup"
-        android:text="@string/f_btn_backup"
-        app:backgroundTint="#66BBFF"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/btn_profile_upload"
-        app:layout_constraintTop_toBottomOf="@+id/tv_profile_info" />
 </androidx.constraintlayout.widget.ConstraintLayout>

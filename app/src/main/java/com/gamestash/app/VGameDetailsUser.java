@@ -9,7 +9,6 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.squareup.picasso.Picasso;
 
 public class VGameDetailsUser extends AppCompatActivity {
     private static final String TAG = VGameDetailsUser.class.getSimpleName();

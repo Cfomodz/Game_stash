@@ -3,8 +3,6 @@ package com.gamestash.app;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 
@@ -81,7 +79,7 @@ public class VMainMenu extends AppCompatActivity {
     }
 
     public void onclickProfile(View view) {
-        Intent intent = new Intent(this, VProfile. class);
+        Intent intent = new Intent(this, VSettings. class);
         startActivity(intent);
     }
 

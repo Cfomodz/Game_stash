@@ -127,7 +127,7 @@ public class TSaveGame implements Runnable{
     public boolean saveToFile(String fileName, String fileContents, boolean testResult) {
 
         if (testResult && masterRef.get() != null) {
-            return new TSaveToFile(masterRef.get(), fileName, fileContents).run();
+            return new TSaveToFile(masterRef.get(), fileName, fileContents).save();
         }
         return false;
     }

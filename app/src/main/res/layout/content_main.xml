@@ -42,7 +42,7 @@
         android:layout_marginTop="8dp"
         android:layout_marginBottom="32dp"
         android:onClick="onclickProfile"
-        android:text="@string/f_btn_profile"
+        android:text="@string/f_btn_settings"
         app:backgroundTint="#66BBFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

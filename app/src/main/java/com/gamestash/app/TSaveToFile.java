@@ -7,7 +7,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.lang.ref.WeakReference;
 
-public class TSaveToFile {
+public class TSaveToFile implements Runnable{
     private static final String TAG = TSaveToFile.class.getSimpleName();
     private WeakReference<Context> context;
     private String fileName;
@@ -19,7 +19,11 @@ public class TSaveToFile {
         this.fileContents = fileContents;
     }
 
-    public boolean run() {
+    public void run() {
+        save();
+    }
+
+    public boolean save() {
         if(this.fileContents != null){
             try (FileOutputStream fos = this.context.get().openFileOutput(this.fileName, Context.MODE_PRIVATE)) {
                 fos.write(this.fileContents.getBytes());

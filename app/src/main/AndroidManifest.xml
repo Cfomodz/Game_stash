@@ -12,15 +12,7 @@
         android:theme="@style/Theme.Game_stash"
         android:fullBackupContent="@xml/app_backup_rules">
         <activity
-            android:name="com.gamestash.app.VErrorPage"
-            android:parentActivityName="com.gamestash.app.VMainMenu"
-            android:label="@string/f_lbl_error">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.gamestash.app.VMainMenu" />
-        </activity>
-        <activity
-            android:name="com.gamestash.app.VProfile"
+            android:name="com.gamestash.app.VSettings"
             android:parentActivityName="com.gamestash.app.VMainMenu"
             android:label="@string/f_lbl_profile">
             <meta-data
