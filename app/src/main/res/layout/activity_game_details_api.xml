@@ -127,7 +127,6 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
         android:layout_marginEnd="40dp"
-        android:layout_marginRight="40dp"
         android:drawableEnd="@android:drawable/arrow_down_float"
         android:drawableRight="@android:drawable/arrow_down_float"
         android:ems="10"
@@ -137,5 +136,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/tv_api_details_lbl_location"
-        app:layout_constraintTop_toBottomOf="@+id/tv_api_details_min_age" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_api_details_min_age"
+        android:layout_marginRight="40dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>
