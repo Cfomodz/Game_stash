@@ -154,12 +154,12 @@ public class PGameEditor implements IPresent, IProcess, ISave, View.OnTouchListe
         }
 
         if(holder.minPlayers.getText().toString().trim().length() > 0 && holder.maxPlayers.getText().toString().trim().length() > 0) {
-            if(Integer.parseInt(holder.minPlayers.getText().toString().trim()) >= Integer.parseInt(holder.maxPlayers.getText().toString().trim())) {
+            if(Integer.parseInt(holder.minPlayers.getText().toString().trim()) > Integer.parseInt(holder.maxPlayers.getText().toString().trim())) {
                 holder.minPlayers.setError("Must Be Less Than Or Equal to Max Players.");
                 validation = false;
             }
 
-            if(Integer.parseInt(holder.maxPlayers.getText().toString().trim()) <= Integer.parseInt(holder.minPlayers.getText().toString().trim())) {
+            if(Integer.parseInt(holder.maxPlayers.getText().toString().trim()) < Integer.parseInt(holder.minPlayers.getText().toString().trim())) {
                 holder.maxPlayers.setError("Must Be Greater Than Or Equal to Min Players.");
                 validation = false;
             }
@@ -179,13 +179,13 @@ public class PGameEditor implements IPresent, IProcess, ISave, View.OnTouchListe
         }
 
         if(holder.minPlayTime.getText().toString().trim().length() > 0 && holder.maxPlayTime.getText().toString().trim().length() > 0){
-            if(Integer.parseInt(holder.minPlayTime.getText().toString().trim()) >= Integer.parseInt(holder.maxPlayTime.getText().toString().trim())) {
+            if(Integer.parseInt(holder.minPlayTime.getText().toString().trim()) > Integer.parseInt(holder.maxPlayTime.getText().toString().trim())) {
                 holder.minPlayTime.setError("Must Be Less Than Or Equal to Max Play Time");
                 validation = false;
             }
 
             // Make sure the entered maximum is not less than the minimum play time.
-            if(Integer.parseInt(holder.maxPlayTime.getText().toString().trim()) <= Integer.parseInt(holder.minPlayTime.getText().toString().trim())) {
+            if(Integer.parseInt(holder.maxPlayTime.getText().toString().trim()) < Integer.parseInt(holder.minPlayTime.getText().toString().trim())) {
                 holder.maxPlayTime.setError("Must Be Greater Than Or Equal to Min Play Time");
                 validation = false;
             }
