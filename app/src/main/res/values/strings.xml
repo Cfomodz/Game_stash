@@ -1,80 +1,68 @@
 <resources>
     <string name="action_settings">Settings</string>
 
-    <!-- Fixed Strings Fixed Strings Fixed Strings Fixed Strings -->
-    <!-- Fixed Strings Fixed Strings Fixed Strings Fixed Strings -->
-    <!-- Fixed Strings Fixed Strings Fixed Strings Fixed Strings -->
+    <!-- *************************************************************** -->
+    <!-- "FIXED STRINGS"                                                 -->
+    <!-- *************************************************************** -->
 
-    <!-- Labels -->
-    <string name="lbl_fixed_app_name">Game Stash</string>
-    <string name="lbl_fixed_game_CAPS">GAME STASH</string>
-    <string name="lbl_fixed_find_a_game">Find a Game!</string>
-    <string name="lbl_fixed_location">Location/Shelf:</string>
-
-
-    <!-- Values -->
-
-    <!-- Hint Text -->
-    <string name="hint_game_name">Game Name</string>
-    <string name="hint_publisher">Publisher</string>
-
-    <!-- Buttons -->
-    <string name="btn_edit">Edit</string>
-    <string name="btn_add_game_search">Add Game Search</string>
-    <string name="btn_add_game_manually">Add Game Manually</string>
-    <string name="btn_find_game">Find a game!</string>
-    <string name="btn_save_game">Save Game</string>
-    <string name="btn_add_game">Add Game</string>
+    <!-- "Fixed String" Labels -->
+    <string name="f_lbl_app_name">Game Stash</string>
+    <string name="f_lbl_game_CAPS">GAME STASH</string>
+    <string name="f_lbl_find_a_game">Find a Game!</string>
+    <string name="f_lbl_location">Location/Shelf:</string>
+    <string name="f_lbl_favorite">Favorite</string>
+    <string name="f_lbl_expansion">Expansion</string>
+    <string name="f_lbl_search_results">Search Results</string>
+    <string name="f_lbl_add_a_game">Add a Game</string>
+    <string name="f_lbl_your_games">Your Games</string>
+    <string name="f_lbl_game_editor">Game Editor</string>
+    <string name="f_lbl_game_details">Game Details</string>
 
 
+    <!-- "Fixed String" Values -->
 
-    <!-- Placeholder Strings Placeholder Strings Placeholder Strings -->
-    <!-- Placeholder Strings Placeholder Strings Placeholder Strings -->
-    <!-- Placeholder Strings Placeholder Strings Placeholder Strings -->
+    <!-- "Fixed String" Hint Text -->
+    <string name="f_hint_game_name">Game Name</string>
+    <string name="f_hint_publisher">Publisher</string>
+    <string name="f_hint_search_game_name">Enter Name of Game</string>
 
-    <!-- Labels -->
-    <string name="lbl_placeholder_game_name">Replaced w/ Game Name</string>
-    <string name="lbl_placeholder_num_players">Replaced w/ # of Players</string>
-    <string name="lbl_placeholder_play_time">Replaced w/ Play Time</string>
-    <string name="lbl_placeholder_publisher">Replaced w/ Publisher</string>
-
-    <!-- Hint -->
-    <string name="hint_placeholder_location">Location</string>
-
-
-
-    <!-- UNSORTED -->
-
-    <string name="btn_upload">Upload</string>
-    <string name="btn_backup">Backup</string>
-    <string name="btn_view_collection">View Collection</string>
-    <string name="btn_profile">Profile</string>
+    <!-- "Fixed String" Buttons -->
+    <string name="f_btn_view_collection">View Collection</string>
+    <string name="f_btn_add_game_search">Add Game Search</string>
+    <string name="f_btn_add_game_manually">Add Game Manually</string>
+    <string name="f_btn_find_game">Find a game!</string>
+    <string name="f_btn_save_game">Save Game</string>
+    <string name="f_btn_add_game">Add Game</string>
+    <string name="f_btn_edit">Edit</string>
 
 
-    <string name="switch_favorite">Favorite</string>
-    <string name="switch_expansion">Expansion</string>
+    <!-- *************************************************************** -->
+    <!-- "PLACEHOLDER STRINGS"                                           -->
+    <!-- *************************************************************** -->
 
-    <string name="tv_name">Name</string>
-    <string name="tv_info">Info</string>
-    <string name="tv_publisher">Publisher</string>
-    <string name="tv_min_age">Minimum Age</string>
+    <!-- "Placeholder String" Labels -->
+    <string name="p_lbl_game_name">Replaced w/ Game Name</string>
+    <string name="p_lbl_publisher">Replaced w/ Publisher</string>
+    <string name="p_lbl_num_players">Replaced w/ # of Players</string>
+    <string name="p_lbl_play_time">Replaced w/ Play Time</string>
+    <string name="p_lbl_min_age">Replaced w/ Minimum Age</string>
+    <string name="p_lbl_info2">Replace w/ More Game Details</string>
 
-    <string name="img_user_image">Filler Image</string>
-    <string name="img_desc_game_thumb">Game Thumbnail Image</string>
+    <!-- "Placeholder String" Hint -->
+    <string name="p_hint_location">Location</string>
 
-    <string name="hint_et_game_name">Enter Name of Game</string>
-
-    <string name="lbl_main_menu">Main Menu</string>
-    <string name="lbl_search_results">Search Results</string>
-    <string name="lbl_add_a_game">Add a Game</string>
-    <string name="lbl_your_games">Your Games</string>
-    <string name="lbl_profile">Your User Profile</string>
-    <string name="lbl_game_editor">Edit</string>
-    <string name="lbl_game_details">Game Details</string>
-    <string name="lbl_error">Game Not Found</string>
-    <string name="lbl_info2">Variable Info 2</string>
+    <!-- "Placeholder String" Image Description -->
+    <string name="p_img_desc_game_thumb">Game Thumbnail Image</string>
 
 
+    <!-- Delete ??? -->
+    <string name="f_lbl_profile">Your User Profile</string>
+    <string name="f_btn_profile">Profile</string>
+    <string name="f_btn_upload">Upload</string>
+    <string name="f_btn_backup">Backup</string>
+    <string name="p_lbl_name">Name</string>
+    <string name="p_lbl_info">Info</string>
 
+    <string name="f_lbl_error">Game Not Found</string>
 
 </resources>

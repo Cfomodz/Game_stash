@@ -15,10 +15,10 @@
         android:id="@+id/iv_gamelist_item_game_thumb"
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:layout_marginStart="72dp"
-        android:contentDescription="@string/img_desc_game_thumb"
+        android:layout_marginStart="2dp"
+        android:contentDescription="@string/p_img_desc_game_thumb"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/checkBox"
         app:layout_constraintTop_toTopOf="parent"
         tools:srcCompat="@tools:sample/avatars" />
 
@@ -27,8 +27,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        android:text="@string/lbl_info2"
+        android:text="@string/p_lbl_info2"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -40,15 +39,12 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="16dp"
-        android:text="@string/lbl_placeholder_game_name"
+        android:text="@string/p_lbl_game_name"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/iv_gamelist_item_game_thumb"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_chainStyle="packed" />
+        app:layout_constraintTop_toTopOf="@+id/iv_gamelist_item_game_thumb" />
 
     <TextView
         android:id="@+id/tv_gamelist_item_publisher"
@@ -56,9 +52,8 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
-        android:layout_marginEnd="16dp"
         android:layout_marginBottom="8dp"
-        android:text="@string/lbl_placeholder_publisher"
+        android:text="@string/p_lbl_publisher"
         app:layout_constraintBottom_toTopOf="@+id/tv_gamelist_item_extra_details"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -70,12 +65,8 @@
         android:id="@+id/checkBox"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="35dp"
-        android:layout_marginEnd="5dp"
         android:checked="false"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/iv_gamelist_item_game_thumb"
-        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
