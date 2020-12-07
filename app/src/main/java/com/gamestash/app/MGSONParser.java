@@ -5,6 +5,8 @@ import android.util.Log;
 import com.google.gson.Gson;
 
 import java.lang.ref.WeakReference;
+import java.util.ArrayList;
+import java.util.List;
 
 interface SetList{
     void set(DGameList m);
@@ -38,13 +40,15 @@ public class MGSONParser implements Runnable{
     public void run() {
         Gson gson = new Gson();
 
-
         this.gameListObj = gson.fromJson(this.response, DGameList.class);
-        this.setList.set(this.gameListObj);
 
-        // REMOVEABLE::NEEDED TO DEBUG ONLY...
         if(gameListObj.getGameList() != null && !gameListObj.getGameList().isEmpty()) {
+            this.setList.set(this.gameListObj);
             Log.d(TAG, gameListObj.getGameList().get(0).getGameName());
+        } else {
+            DGame game = new DGame(true);
+            this.gameListObj = new DGameList(game);
+            this.setList.set(this.gameListObj);
         }
 
         //Notify Presenter of update...

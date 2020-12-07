@@ -18,10 +18,14 @@ public class TSaveGame implements Runnable{
     private static WeakReference<ISave> presenterRef;
     private boolean existsInUserList = false;
     private boolean addedToUserGameList = false;
-    private boolean jsonStringCreated = false;
-    private boolean savedToFile = false;
+    private boolean addedToUserLocationList = false;
+    private boolean jsonGameStringCreated = false;
+    private boolean jsonLocationStringCreated = false;
+    private boolean savedGameToFile = false;
+    private boolean savedLocationListToFile = false;
     private String jsonString;
-    private static final String filename = "usergamelist.json";
+    private static final String filenameUserGameList = "usergamelist.json";
+    private static final String filenameUserLocationList = "userlocationlist.json";
 
     /** This constructor will likely create a new game using GSON from API data. */
     public TSaveGame(AppCompatActivity activity, ISave presenter, DGame game){
@@ -33,14 +37,21 @@ public class TSaveGame implements Runnable{
     @Override
     @RequiresApi(api = Build.VERSION_CODES.N)
     public void run() {
-        this.addedToUserGameList = this.saveGameToUserList();
-        this.jsonStringCreated = this.objToJSONString();
-        this.savedToFile = this.saveToFile(filename, this.jsonString);
+        // ADD GAME
+        this.addedToUserGameList = this.saveGameToUserGameList();
+        this.jsonGameStringCreated = this.objToJSONString(DApp.getUserGameList(), this.addedToUserGameList);
+        this.savedGameToFile = this.saveToFile(filenameUserGameList, this.jsonString, this.jsonGameStringCreated);
+
+        // ADD LOCATION
+        this.addedToUserLocationList = this.saveLocationToUserLocationList(this.savedGameToFile);
+        this.jsonLocationStringCreated = this.objToJSONString(DApp.getUserLocationList(), this.addedToUserLocationList);
+        this.savedLocationListToFile = this.saveToFile(filenameUserLocationList, this.jsonString, this.jsonLocationStringCreated);
+
         this.sendToast();
     }
 
     @RequiresApi(api = Build.VERSION_CODES.N)
-    public boolean saveGameToUserList() {
+    public boolean saveGameToUserGameList() {
         //Check if user list is empty
         if(DApp.getUserGameList() != null && DApp.getUserGameList().getGameList() != null) {
             //Check if game id matches any an id in the user list...
@@ -65,33 +76,62 @@ public class TSaveGame implements Runnable{
     }
 
     @RequiresApi(api = Build.VERSION_CODES.N)
-    public boolean objToJSONString() {
-        if(this.addedToUserGameList) {
-            //this.jsonString = new Gson().toJson(DApp.getUserGameList());
+    public boolean saveLocationToUserLocationList(boolean testResult) {
+        //Check if location is empty
+        boolean match = false;
+        if(testResult && gameRef.get() != null && gameRef.get().getLocation().length() > 0){
+            if(DApp.getUserLocationList() != null && DApp.getUserLocationList().getLocationList() != null && DApp.getUserLocationList().getLocationList().size() > 0) {
+                //Check if game id matches any an id in the user list...
+                for (String location : DApp.getUserLocationList().getLocationList()) {
+                    if(gameRef.get() != null && location.toLowerCase().equals(gameRef.get().getLocation().toLowerCase())){
+                        match = true;
+                    }
+                }
+            } else {
+                Log.d(TAG, "Location list was empty...");
+            }
+        } else {
+            match = true; // If length = 0 or no save occurred then string is "" and we don't allow that, so match = true, even thought it isn't a real match.
+        }
+
+        // If no match add location to location list...
+        if (gameRef.get() != null && !match) {
+            DApp.addUserLocationList(gameRef.get().getLocation());
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.N)
+    public boolean objToJSONString(Object obj, boolean testResult) {
+        this.jsonString = "";
+        if(testResult) {
             this.jsonString = new GsonBuilder()
                     .setPrettyPrinting()
                     .create()
-                    .toJson(DApp.getUserGameList());
+                    .toJson(obj);
             Log.d(TAG, this.jsonString);
             return true;
         }
         return false;
     }
 
-    public boolean saveToFile(String fileName, String fileContents) {
-        if (masterRef.get() != null) {
+    public boolean saveToFile(String fileName, String fileContents, boolean testResult) {
+
+        if (testResult && masterRef.get() != null) {
             return new TSaveToFile(masterRef.get(), fileName, fileContents).run();
         }
         return false;
     }
 
     public void sendToast() {
-        if (this.savedToFile && gameRef.get() != null) {
+        if (this.savedGameToFile && gameRef.get() != null) {
             // TOAST::GAME ADDED TO USER LIST
             Log.d(TAG, "Game added...");
             if (masterRef.get() != null) {
                 masterRef.get().runOnUiThread(() -> {
-                    Toast toast = Toast.makeText(masterRef.get(), "GAME ADDED TO USER LIST", Toast.LENGTH_LONG);
+                    Toast toast = Toast.makeText(masterRef.get(), "GAME ADDED TO USER LIST", Toast.LENGTH_SHORT);
                     toast.show();
                 });
             }
@@ -99,11 +139,10 @@ public class TSaveGame implements Runnable{
             // TOAST::GAME ALREADY EXISTS IN USER LIST
             if (masterRef.get() != null) {
                 masterRef.get().runOnUiThread(() -> {
-                    Toast toast = Toast.makeText(masterRef.get(), "GAME ALREADY EXISTS IN USER LIST", Toast.LENGTH_LONG);
+                    Toast toast = Toast.makeText(masterRef.get(), "GAME ALREADY EXISTS IN USER LIST", Toast.LENGTH_SHORT);
                     toast.show();
                 });
             }
         }
     }
-
 }

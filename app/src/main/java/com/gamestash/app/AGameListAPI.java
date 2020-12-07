@@ -75,16 +75,28 @@ public class AGameListAPI extends ArrayAdapter<DGame> {
         result.startAnimation(animation);
         lastPosition = position;
 
-        Picasso.get()
-                .load(gameImage)
-                .resize(100, 100)
-                .centerInside()
-                .noFade()
-                .into(holder.gameImage);
+        if(gameImage.trim().length() > 0) {
+            Picasso.get()
+                    .load(gameImage)
+                    .resize(100, 100)
+                    .error(R.drawable.main_menu_img_00)
+                    .centerInside()
+                    .noFade()
+                    .into(holder.gameImage);
+        } else {
+            Picasso.get()
+                    .load(R.drawable.error_404)
+                    .resize(100, 100)
+                    .centerInside()
+                    .noFade()
+                    .into(holder.gameImage);
+        }
         holder.name.setText(name);
         holder.publisher.setText(publisher);
         holder.extraDetails.setText(extraDetails);
         //etc.
+
+
 
         Log.d(TAG, getItem(position).getGameName() + " " + getItem(position).getThumbURL());
 

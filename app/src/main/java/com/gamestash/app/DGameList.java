@@ -13,6 +13,10 @@ public class DGameList {
     /** This constructor will likely create a new game using GSON from API data. */
     public DGameList(){}
 
+    public DGameList(DGame game){
+        this.gameList.add(game);
+    };
+
     public void setGameList(List<DGame> gameList) {this.gameList = gameList;}
 
     public List<DGame> getGameList() {return gameList;}

@@ -50,8 +50,15 @@ public class DGame {
     public DGame(){}
 
     /** This constructor will be used when there is an empty list. */
-    public DGame(String gameName){
-        this.gameName = gameName;
+    public DGame(boolean err404){
+        if(err404) {
+            this.gameID = "err404";
+            this.gameName = "GAME NOT FOUND";
+            this.publisher.setName("Nobody Ever");
+            this.minPlayers = 0;
+            this.maxPlayers = 0;
+            this.minAge = 404;
+        }
     }
 
     /**

@@ -43,9 +43,16 @@ public class VGameListAPI extends AppCompatActivity {
         listView.setAdapter(adapter);
         listView.setOnItemClickListener((adapter1, view, position, id) -> {
 
-            Intent intent = new Intent(getApplicationContext(), VGameDetailsAPI.class);
-            intent.putExtra("position", position);
-            startActivity(intent);
+            if(!gameList.get(position).getGameID().equals("err404")){
+                Intent intent = new Intent(getApplicationContext(), VGameDetailsAPI.class);
+                intent.putExtra("position", position);
+                startActivity(intent);
+            } else {
+                Toast toast = Toast.makeText(this, "GAME NOT FOUND. SEARCH AGAIN.", Toast.LENGTH_SHORT);
+                toast.show();
+            }
+
+
         });
     }
 }
