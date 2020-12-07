@@ -1,6 +1,7 @@
 package com.gamestash.app;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.AdapterView;
@@ -20,16 +21,19 @@ public class PGameEditor implements IPresent, IProcess, ISave, IDropDown, View.O
     // Member variables.
     private static final String TAG = PGameEditor.class.getSimpleName();
     private Context mContext;
-    private WeakReference<AppCompatActivity> masterRef;
+    private WeakReference<VGameEditor> masterRef;
     private DGame game;
     private List<String> locationList;
     private ListPopupWindow lpw;
     private ViewHolder holder = new ViewHolder();
+    private int position;
 
-    public PGameEditor(Context context, AppCompatActivity activity) {
+    public PGameEditor(Context context, VGameEditor activity) {
         this.mContext = context;
-        this.masterRef = new WeakReference<AppCompatActivity>(activity);
+        this.masterRef = new WeakReference<>(activity);
     }
+
+
 
     static class ViewHolder {
         Switch favorite;
@@ -46,8 +50,23 @@ public class PGameEditor implements IPresent, IProcess, ISave, IDropDown, View.O
 
     @Override
     public void setupPresenter() {
+
         if(masterRef.get() != null) {
             AppCompatActivity master = masterRef.get();
+            position = masterRef.get().getPosition();
+
+            // Set up the info for the fields...
+            // Move to presenter...
+            if(position > -1) {
+                // can you edit an api game first? not sure...yes
+                this.game = DApp.getUserGameList().getGameList().get(position);
+                //load the game editor with the game obj field data...
+                Log.d(TAG, game.getVisibleGameName());
+            } else {
+                this.game = new DGame();
+            }
+
+
             holder.favorite = master.findViewById(R.id.switch_editor_favorite);
             holder.expansion = master.findViewById(R.id.switch_editor_expansion);
             holder.gameName = master.findViewById(R.id.et_editor_game_name);
