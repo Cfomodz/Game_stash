@@ -5,7 +5,6 @@ import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import androidx.appcompat.widget.Toolbar;
 
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
@@ -14,29 +13,23 @@ public class VGameEditor extends AppCompatActivity {
     private static final String TAG = VGameEditor.class.getSimpleName();
 
     private PGameEditor presenter;
+    private int position = -1;
 
-    private DGame game = null;
+
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game_editor);
 
+        // Must come before presenter.setupPresenter is called if game position is supplied.
+        Intent intent = getIntent();
+        position = intent.getIntExtra("position", -1);
+
         presenter = new PGameEditor(this, this);
         presenter.setupPresenter();
 
-        Intent intent = getIntent();
-        int position = intent.getIntExtra("position", -1);
 
-        // Set up the info for the fields...
-        // Move to presenter...
-        if(position > -1) {
-            // can you edit an api game first? not sure...yes
-            this.game = DApp.getUserGameList().getGameList().get(position);
-            //load the game editor with the game obj field data...
-        } else {
-            this.game = new DGame();
-        }
 
     }
 
@@ -74,4 +67,5 @@ public class VGameEditor extends AppCompatActivity {
         return intent;
     }
 
+    public int getPosition() {return position;}
 }
