@@ -1,5 +1,6 @@
 package com.gamestash.app;
 
+import java.io.File;
 import java.lang.ref.WeakReference;
 
 public class PMainMenu implements IProcess{
@@ -14,29 +15,52 @@ public class PMainMenu implements IProcess{
     @Override
     public void processChanges() {
         if(DApp.getReturnUserSTR().equals("")){
-            getJSON();
+            getJSON(DApp.getUserJSONFile());
         }
         if(DApp.getHasBeenEditedReturnUserSTR()){
-            gsonParse();
+            gsonParse(DApp::setUserGameList, DApp.getReturnUserSTR());
             DApp.setHasBeenEditedReturnUserSTR();
         }
         if(DApp.getHasBeenEditedUserGameList()){
             //Do something with the list...? Not on this screen?
             DApp.setHasBeenEditedUserGameList();
+            //Start the process to add the location list...
+            getJSON(DApp.getUserLocationListJSONFile());
+        }
+        if(DApp.getHasBeenEditedReturnUserLocationListSTR()){
+            gsonParse(DApp::setUserLocationList, DApp.getReturnUserLocationListSTR());
+            DApp.setHasBeenEditedReturnUserLocationListSTR();
+        }
+        if(DApp.getHasBeenEditedUserLocationList()){
+            //Do something with the list...? Not on this screen?
+            DApp.setHasBeenEditedUserLocationList();
         }
     }
 
-    private void getJSON() {
+    private void getJSON(File file) {
         //This should be in a thread...
-        TReadJSON readJSON = new TReadJSON(this);
+        TReadJSON readJSON = new TReadJSON(this, file);
         Thread thread = new Thread(readJSON);
         thread.start();
     }
 
-    private void gsonParse() {
+    private void gsonParse(SetGameList setList, String response) {
+        // This is an overloaded method...
         if(DApp.getReturnUserSTR() != null) {
             //MGSONParser gsonParse = new MGSONParser(this, MDataHolder::setApiGameList, MDataHolder::getApiGameList, MDataHolder.getReturnApiSTR());
-            MGSONParser gsonParse = new MGSONParser(this, DApp::setUserGameList, DApp.getReturnUserSTR());
+            MGSONParser gsonParse = new MGSONParser(this, setList, response);
+            Thread thread = new Thread(gsonParse);
+            thread.start();
+
+        }
+
+    }
+
+    private void gsonParse(SetLocationList setList, String response) {
+        // This is an overloaded method...
+        if(DApp.getReturnUserSTR() != null) {
+            //MGSONParser gsonParse = new MGSONParser(this, MDataHolder::setApiGameList, MDataHolder::getApiGameList, MDataHolder.getReturnApiSTR());
+            MGSONParser gsonParse = new MGSONParser(this, setList, response);
             Thread thread = new Thread(gsonParse);
             thread.start();
 

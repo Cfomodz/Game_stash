@@ -15,7 +15,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import java.lang.ref.WeakReference;
 import java.util.List;
 
-public class PGameEditor implements IPresent, IProcess, ISave, View.OnTouchListener, AdapterView.OnItemClickListener {
+public class PGameEditor implements IPresent, IProcess, ISave, IDropDown, View.OnTouchListener, AdapterView.OnItemClickListener {
 
     // Member variables.
     private static final String TAG = PGameEditor.class.getSimpleName();
@@ -58,8 +58,9 @@ public class PGameEditor implements IPresent, IProcess, ISave, View.OnTouchListe
             holder.maxPlayTime = master.findViewById(R.id.et_editor_max_play_time);
             holder.minAge = master.findViewById(R.id.et_editor_min_age);
             holder.location = master.findViewById(R.id.et_editor_location);
-
-            holder.location.setOnTouchListener(this);
+            // holder.location value is set by on item click;
+            // holder.location list is set by:
+            setDropDown();
 
             locationList = DApp.getUserLocationList().getLocationList();
 
@@ -74,6 +75,22 @@ public class PGameEditor implements IPresent, IProcess, ISave, View.OnTouchListe
             }
         }
 
+    }
+
+    public void setDropDown() {
+        holder.location.setOnTouchListener(this);
+
+        locationList = DApp.getUserLocationList().getLocationList();
+
+        if(masterRef.get() != null) {
+            AppCompatActivity master = masterRef.get();
+            lpw = new ListPopupWindow(master);
+            lpw.setAdapter(new ArrayAdapter<String>(master,
+                    android.R.layout.simple_list_item_1, locationList));
+            lpw.setAnchorView(holder.location);
+            lpw.setModal(true);
+            lpw.setOnItemClickListener(this);
+        }
     }
 
     @Override
@@ -206,7 +223,7 @@ public class PGameEditor implements IPresent, IProcess, ISave, View.OnTouchListe
 
     @Override
     public void saveGameInUserList() {
-        TSaveGame saveGame = new TSaveGame(this.masterRef.get(), this, this.game);
+        TSaveGame saveGame = new TSaveGame(this.masterRef.get(), this, this, this.game);
         Thread thread = new Thread(saveGame);
         thread.start();
     }

@@ -23,6 +23,10 @@ public class VGameListUser extends AppCompatActivity {
         if(DApp.getUserGameList() != null) {
             this.setListView();
         }
+
+        //if(DApp.getUserLocationList() != null) {
+
+        //}
     }
 
     @RequiresApi(api = Build.VERSION_CODES.N)

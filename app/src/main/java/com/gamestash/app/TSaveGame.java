@@ -16,6 +16,7 @@ public class TSaveGame implements Runnable{
     private static WeakReference<DGame> gameRef;
     private static WeakReference<AppCompatActivity> masterRef;
     private static WeakReference<ISave> presenterRef;
+    private static WeakReference<IDropDown> dropDownRef;
     private boolean existsInUserList = false;
     private boolean addedToUserGameList = false;
     private boolean addedToUserLocationList = false;
@@ -28,9 +29,10 @@ public class TSaveGame implements Runnable{
     private static final String filenameUserLocationList = "userlocationlist.json";
 
     /** This constructor will likely create a new game using GSON from API data. */
-    public TSaveGame(AppCompatActivity activity, ISave presenter, DGame game){
+    public TSaveGame(AppCompatActivity activity, ISave presenter, IDropDown dropDown, DGame game){
         masterRef = new WeakReference<>(activity);
         presenterRef = new WeakReference<>(presenter);
+        dropDownRef = new WeakReference<>(dropDown);
         gameRef = new WeakReference<>(game);
     }
 
@@ -44,6 +46,7 @@ public class TSaveGame implements Runnable{
 
         // ADD LOCATION
         this.addedToUserLocationList = this.saveLocationToUserLocationList(this.savedGameToFile);
+        Log.d(TAG, "LOCATION CHECK: " + DApp.getUserLocationList().getLocationList().toString());
         this.jsonLocationStringCreated = this.objToJSONString(DApp.getUserLocationList(), this.addedToUserLocationList);
         this.savedLocationListToFile = this.saveToFile(filenameUserLocationList, this.jsonString, this.jsonLocationStringCreated);
 
@@ -95,8 +98,18 @@ public class TSaveGame implements Runnable{
         }
 
         // If no match add location to location list...
+        Log.d(TAG, "LOCATION CHECK: START: " + DApp.getUserLocationList().getLocationList().toString());
         if (gameRef.get() != null && !match) {
+            Log.d(TAG, "LOCATION CHECK: Inside gameref");
             DApp.addUserLocationList(gameRef.get().getLocation());
+            Log.d(TAG, "LOCATION CHECK: " + DApp.getUserLocationList().getLocationList().toString());
+            if(dropDownRef.get() != null){
+                Log.d(TAG, "LOCATION CHECK: Inside dropDownRef");
+                Log.d(TAG, "LOCATION CHECK: BEFORE setDropDown: " + DApp.getUserLocationList().getLocationList().toString());
+                //dropDownRef.get().setDropDown();
+                Log.d(TAG, "LOCATION CHECK: AFTER setDropDown: " + DApp.getUserLocationList().getLocationList().toString());
+            }
+            Log.d(TAG, "LOCATION CHECK: WHEN RETURNING LIST: " + DApp.getUserLocationList().getLocationList().toString());
             return true;
         } else {
             return false;

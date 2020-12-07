@@ -2,6 +2,7 @@ package com.gamestash.app;
 
 import android.util.Log;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -12,16 +13,18 @@ public class TReadJSON implements Runnable{
     private static final String TAG = TReadJSON.class.getSimpleName();
 
     private WeakReference<IProcess> presenterRef;
+    private File fileName;
 
-    public TReadJSON(IProcess presenter) {
+    public TReadJSON(IProcess presenter, File fileName) {
         this.presenterRef = new WeakReference<>(presenter);
+        this.fileName = fileName;
     }
 
     @Override
     public void run() {
         String jsonString;
         try {
-            InputStream is = new FileInputStream(DApp.getUserJSONFile());
+            InputStream is = new FileInputStream(this.fileName);
 
             int size = is.available();
             byte[] buffer = new byte[size];
@@ -46,7 +49,7 @@ public class TReadJSON implements Runnable{
         }
 
         if (jsonString != null && !jsonString.equals("")){
-            DApp.setReturnUserSTR(jsonString);
+            DApp.setReturnJSONStr(jsonString, this.fileName);
         }
 
         //ADD the process piece...

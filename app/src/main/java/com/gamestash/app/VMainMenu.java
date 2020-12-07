@@ -42,6 +42,7 @@ public class VMainMenu extends AppCompatActivity {
         imageView.setImageResource(mainImgs[new Random().nextInt(mainImgs.length)]);
 
         DApp.setUserJSONFile(new File(this.getFilesDir() + "/usergamelist.json"));
+        DApp.setUserLocationListJSONFile(new File(this.getFilesDir() + "/userlocationlist.json"));
 
         this.presenter.processChanges();
 
@@ -58,28 +59,6 @@ public class VMainMenu extends AppCompatActivity {
         //  TEST AREA END  // //  TEST AREA END  // //  TEST AREA END  //
         //  TEST AREA END  // //  TEST AREA END  // //  TEST AREA END  //
 
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.item_menu_edit_games_list_action_settings) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
     }
 
     public void onclickViewCollection(View view) {

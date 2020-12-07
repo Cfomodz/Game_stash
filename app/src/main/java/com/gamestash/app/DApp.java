@@ -18,16 +18,19 @@ public class DApp {
     private static final String TAG = DApp.class.getSimpleName();
 
     private static File userJSONFile;
+    private static File userLocationListJSONFile;
     private static WeakReference<IProcess> currPresenterRef;
     private static String searchSTR;
     private static String returnApiSTR = "";
     private static String returnUserSTR = "";
+    private static String returnUserLocationListSTR = "";
     private static DGameList apiGameList = new DGameList();
     private static DGameList userGameList = new DGameList();
     private static DLocationList userLocationList = new DLocationList();
     private static Boolean hasBeenEditedSearchSTR = false;
     private static Boolean hasBeenEditedReturnApiSTR = false;
     private static Boolean hasBeenEditedReturnUserSTR = false;
+    private static Boolean hasBeenEditedReturnUserLocationListSTR = false;
     private static Boolean hasBeenEditedAPIGameList = false;
     private static Boolean hasBeenEditedUserGameList = false;
     private static Boolean hasBeenEditedUserLocationList = false;
@@ -35,11 +38,19 @@ public class DApp {
     // Getters
     public static File getUserJSONFile() {return userJSONFile;}
 
+    public static File getUserLocationListJSONFile() {
+        return userLocationListJSONFile;
+    }
+
     public static String getSearchSTR() {return searchSTR;}
 
     public static String getReturnApiSTR() {return returnApiSTR;}
 
     public static String getReturnUserSTR() {return returnUserSTR;}
+
+    public static String getReturnUserLocationListSTR() {
+        return returnUserLocationListSTR;
+    }
 
     public static DGameList getApiGameList() {return apiGameList;}
 
@@ -66,6 +77,8 @@ public class DApp {
 
     public static Boolean getHasBeenEditedReturnUserSTR() {return hasBeenEditedReturnUserSTR;}
 
+    public static Boolean getHasBeenEditedReturnUserLocationListSTR() {return hasBeenEditedReturnUserLocationListSTR;}
+
     public static Boolean getHasBeenEditedAPIGameList() {return hasBeenEditedAPIGameList;}
 
     public static Boolean getHasBeenEditedUserGameList() {return hasBeenEditedUserGameList;}
@@ -73,8 +86,11 @@ public class DApp {
     public static Boolean getHasBeenEditedUserLocationList() {return hasBeenEditedUserLocationList;}
 
     //Setters
-    public static void setUserJSONFile(File userJSONFile) {
-        DApp.userJSONFile = userJSONFile;}
+    public static void setUserJSONFile(File userJSONFile) {DApp.userJSONFile = userJSONFile;}
+
+    public static void setUserLocationListJSONFile(File userLocationListJSONFile) {
+        DApp.userLocationListJSONFile = userLocationListJSONFile;
+    }
 
     public static void setSearchSTR(String searchSTR) {
         if(!searchSTR.equals(DApp.getSearchSTR())){
@@ -93,6 +109,19 @@ public class DApp {
         DApp.hasBeenEditedReturnUserSTR = true;
     }
 
+    public static void setReturnUserLocationListSTR(String returnUserLocationListSTR) {
+        DApp.returnUserLocationListSTR = returnUserLocationListSTR;
+        DApp.hasBeenEditedReturnUserLocationListSTR = true;
+    }
+
+    public static void setReturnJSONStr(String returnJSONStr, File fileName) {
+        if(fileName == userJSONFile) {
+            setReturnUserSTR(returnJSONStr);
+        } else if (fileName == userLocationListJSONFile){
+            setReturnUserLocationListSTR(returnJSONStr);
+        }
+    }
+
     public static void setApiGameList(DGameList apiGameList) {
         DApp.apiGameList = apiGameList;
         DApp.hasBeenEditedAPIGameList = true;
@@ -101,6 +130,11 @@ public class DApp {
     public static void setUserGameList(DGameList userGameList) {
         DApp.userGameList = userGameList;
         DApp.hasBeenEditedUserGameList = true;
+    }
+
+    public static void setUserLocationList(DLocationList userLocationList) {
+        DApp.userLocationList = userLocationList;
+        DApp.hasBeenEditedUserLocationList = true;
     }
 
     public static void addGameUserGameList(DGame game) {
@@ -123,6 +157,10 @@ public class DApp {
 
     public static void setHasBeenEditedReturnUserSTR() {
         DApp.hasBeenEditedReturnUserSTR = false;
+    }
+
+    public static void setHasBeenEditedReturnUserLocationListSTR() {
+        DApp.hasBeenEditedReturnUserLocationListSTR = false;
     }
 
     public static void setHasBeenEditedAPIGameList() {

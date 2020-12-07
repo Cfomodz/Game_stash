@@ -15,9 +15,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.squareup.picasso.Picasso;
 
 import java.lang.ref.WeakReference;
+import java.util.Collections;
 import java.util.List;
 
-public class PAPIGameDetails implements IPresent, ISave, View.OnTouchListener, AdapterView.OnItemClickListener {
+public class PAPIGameDetails implements IPresent, ISave, IDropDown, View.OnTouchListener, AdapterView.OnItemClickListener {
     private static final String TAG = PAPIGameDetails.class.getSimpleName();
 
     private WeakReference<VGameDetailsAPI> masterRef;
@@ -76,15 +77,16 @@ public class PAPIGameDetails implements IPresent, ISave, View.OnTouchListener, A
             holder.players.setText(players);
             holder.playTime.setText(playTime);
             holder.minAge.setText(minAge);
-            // holder.location is set by on item click;
+            // holder.location value is set by on item click;
+            // holder.location list is set by:
+            setDropDown();
         }
-
 
         //use game to fill out display...
         Log.d(TAG, game.getGameName());
+    }
 
-
-        // LOCATION REPLACEMENT
+    public void setDropDown() {
         holder.location.setOnTouchListener(this);
 
         locationList = DApp.getUserLocationList().getLocationList();
@@ -98,6 +100,9 @@ public class PAPIGameDetails implements IPresent, ISave, View.OnTouchListener, A
             lpw.setModal(true);
             lpw.setOnItemClickListener(this);
         }
+
+
+
     }
 
     @Override
@@ -107,7 +112,7 @@ public class PAPIGameDetails implements IPresent, ISave, View.OnTouchListener, A
             if (holder.location.getText().toString().trim().length() > 0) {
                 this.game.setLocation(holder.location.getText().toString());
             }
-            TSaveGame saveGame = new TSaveGame(this.masterRef.get(), this, this.game);
+            TSaveGame saveGame = new TSaveGame(this.masterRef.get(), this, this, this.game);
             Thread thread = new Thread(saveGame);
             thread.start();
         }

@@ -8,8 +8,12 @@ import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.List;
 
-interface SetList{
+interface SetGameList{
     void set(DGameList m);
+}
+
+interface SetLocationList{
+    void set(DLocationList m);
 }
 
 public class MGSONParser implements Runnable{
@@ -18,13 +22,24 @@ public class MGSONParser implements Runnable{
     private WeakReference<IProcess> presenterRef;
     private String response;
     private DGameList gameListObj;
-    private SetList setList;
+    private DLocationList locationListObj;
+    private SetGameList setGameList;
+    private SetLocationList setLocationList;
+    private String setListType = "";
     //private GetList getList;
 
-    public MGSONParser(IProcess presenter, SetList setList, String response) {
+    public MGSONParser(IProcess presenter, SetGameList setList, String response) {
         this.presenterRef = new WeakReference<>(presenter);
-        this.setList = setList;
+        this.setGameList = setList;
         this.response = response;
+        this.setListType = "game";
+    }
+
+    public MGSONParser(IProcess presenter, SetLocationList setList, String response) {
+        this.presenterRef = new WeakReference<>(presenter);
+        this.setLocationList = setList;
+        this.response = response;
+        this.setListType = "location";
     }
 
     /**
@@ -40,16 +55,25 @@ public class MGSONParser implements Runnable{
     public void run() {
         Gson gson = new Gson();
 
-        this.gameListObj = gson.fromJson(this.response, DGameList.class);
+        if(setListType.equals("game")) {
+            this.gameListObj = gson.fromJson(this.response, DGameList.class);
 
-        if(gameListObj.getGameList() != null && !gameListObj.getGameList().isEmpty()) {
-            this.setList.set(this.gameListObj);
-            Log.d(TAG, gameListObj.getGameList().get(0).getGameName());
-        } else {
-            DGame game = new DGame(true);
-            this.gameListObj = new DGameList(game);
-            this.setList.set(this.gameListObj);
+            if(gameListObj.getGameList() != null && !gameListObj.getGameList().isEmpty()) {
+                this.setGameList.set(this.gameListObj);
+                Log.d(TAG, gameListObj.getGameList().get(0).getGameName());
+            } else {
+                DGame game = new DGame(true);
+                this.gameListObj = new DGameList(game);
+                this.setGameList.set(this.gameListObj);
+            }
+        } else if(setListType.equals("location")) {
+            this.locationListObj = gson.fromJson(this.response, DLocationList.class);
+            if(locationListObj.getLocationList() != null && !locationListObj.getLocationList().isEmpty()) {
+                this.setLocationList.set(this.locationListObj);
+            }
         }
+
+
 
         //Notify Presenter of update...
         if (this.presenterRef.get() != null) {
