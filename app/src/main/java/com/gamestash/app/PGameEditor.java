@@ -1,21 +1,30 @@
 package com.gamestash.app;
 
 import android.content.Context;
+import android.view.MotionEvent;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.ListPopupWindow;
 import android.widget.Spinner;
 import android.widget.Switch;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.lang.ref.WeakReference;
+import java.util.List;
 
-public class PGameEditor implements IProcess, ISave {
+public class PGameEditor implements IPresent, IProcess, ISave, View.OnTouchListener, AdapterView.OnItemClickListener {
 
     // Member variables.
     private static final String TAG = PGameEditor.class.getSimpleName();
     private Context mContext;
     private WeakReference<AppCompatActivity> masterRef;
     private DGame game;
+    private List<String> locationList;
+    private ListPopupWindow lpw;
+    private ViewHolder holder = new ViewHolder();
 
     public PGameEditor(Context context, AppCompatActivity activity) {
         this.mContext = context;
@@ -36,21 +45,39 @@ public class PGameEditor implements IProcess, ISave {
     }
 
     @Override
-    public void processChanges() {
-        //Add Layout to Holder
-        ViewHolder holder = new PGameEditor.ViewHolder();
+    public void setupPresenter() {
         if(masterRef.get() != null) {
-            holder.favorite = this.masterRef.get().findViewById(R.id.switch_editor_favorite);
-            holder.expansion = this.masterRef.get().findViewById(R.id.switch_editor_expansion);
-            holder.gameName = this.masterRef.get().findViewById(R.id.et_editor_game_name);
-            holder.publisher = this.masterRef.get().findViewById(R.id.et_editor_publisher);
-            holder.minPlayers = this.masterRef.get().findViewById(R.id.et_editor_min_players);
-            holder.maxPlayers = this.masterRef.get().findViewById(R.id.et_editor_max_players);
-            holder.minPlayTime = this.masterRef.get().findViewById(R.id.et_editor_min_play_time);
-            holder.maxPlayTime = this.masterRef.get().findViewById(R.id.et_editor_max_play_time);
-            holder.minAge = this.masterRef.get().findViewById(R.id.et_editor_min_age);
-            holder.location = this.masterRef.get().findViewById(R.id.et_editor_location);
+            AppCompatActivity master = masterRef.get();
+            holder.favorite = master.findViewById(R.id.switch_editor_favorite);
+            holder.expansion = master.findViewById(R.id.switch_editor_expansion);
+            holder.gameName = master.findViewById(R.id.et_editor_game_name);
+            holder.publisher = master.findViewById(R.id.et_editor_publisher);
+            holder.minPlayers = master.findViewById(R.id.et_editor_min_players);
+            holder.maxPlayers = master.findViewById(R.id.et_editor_max_players);
+            holder.minPlayTime = master.findViewById(R.id.et_editor_min_play_time);
+            holder.maxPlayTime = master.findViewById(R.id.et_editor_max_play_time);
+            holder.minAge = master.findViewById(R.id.et_editor_min_age);
+            holder.location = master.findViewById(R.id.et_editor_location);
+
+            holder.location.setOnTouchListener(this);
+
+            locationList = DApp.getUserLocationList().getLocationList();
+
+            if(masterRef.get() != null) {
+                master = masterRef.get();
+                lpw = new ListPopupWindow(master);
+                lpw.setAdapter(new ArrayAdapter<String>(master,
+                        android.R.layout.simple_list_item_1, locationList));
+                lpw.setAnchorView(holder.location);
+                lpw.setModal(true);
+                lpw.setOnItemClickListener(this);
+            }
         }
+
+    }
+
+    @Override
+    public void processChanges() {
         //Validate
         if (this.validateGameData(holder)) {
             //IF VALID GAME DATA... THEN CREATE GAME OBJ.
@@ -69,6 +96,8 @@ public class PGameEditor implements IProcess, ISave {
             DPublisher publisher = new DPublisher();
             publisher.setName(holder.publisher.getText().toString().trim());
             game.setEditedPublisher(publisher);
+
+
 
             /**
             Log.d(TAG, game.getFavorite().toString());
@@ -168,5 +197,27 @@ public class PGameEditor implements IProcess, ISave {
         TSaveGame saveGame = new TSaveGame(this.masterRef.get(), this, this.game);
         Thread thread = new Thread(saveGame);
         thread.start();
+    }
+
+    //LOCATION
+    @Override
+    public boolean onTouch(View v, MotionEvent event) {
+        final int DRAWABLE_RIGHT = 2;
+
+        if (event.getAction() == MotionEvent.ACTION_UP) {
+            if (event.getX() >= (v.getWidth() - ((EditText) v)
+                    .getCompoundDrawables()[DRAWABLE_RIGHT].getBounds().width())) {
+                lpw.show();
+                return true;
+            }
+        }
+        return false;
+    }
+
+    @Override
+    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+        String item = locationList.get(position);
+        holder.location.setText(item);
+        lpw.dismiss();
     }
 }

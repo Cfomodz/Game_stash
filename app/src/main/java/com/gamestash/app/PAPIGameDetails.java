@@ -17,7 +17,7 @@ import com.squareup.picasso.Picasso;
 import java.lang.ref.WeakReference;
 import java.util.List;
 
-public class PAPIGameDetails implements IProcess, ISave, View.OnTouchListener, AdapterView.OnItemClickListener {
+public class PAPIGameDetails implements IPresent, ISave, View.OnTouchListener, AdapterView.OnItemClickListener {
     private static final String TAG = PAPIGameDetails.class.getSimpleName();
 
     private WeakReference<VGameDetailsAPI> masterRef;
@@ -42,7 +42,7 @@ public class PAPIGameDetails implements IProcess, ISave, View.OnTouchListener, A
     }
 
     @Override
-    public void processChanges() {
+    public void setupPresenter(){
         if(masterRef.get() != null) {
             VGameDetailsAPI master = masterRef.get();
             this.game = DApp.getApiGameList().getGameList().get(master.getPosition());
@@ -87,27 +87,6 @@ public class PAPIGameDetails implements IProcess, ISave, View.OnTouchListener, A
         // LOCATION REPLACEMENT
         holder.location.setOnTouchListener(this);
 
-        //TEST VALUES
-        DApp.addUserLocationList("Box11");
-        DApp.addUserLocationList("Box12");
-        DApp.addUserLocationList("Box01");
-        DApp.addUserLocationList("Box02");
-        DApp.addUserLocationList("Box03");
-        DApp.addUserLocationList("Box04");
-        DApp.addUserLocationList("Box05");
-        DApp.addUserLocationList("Box06");
-        DApp.addUserLocationList("Box07");
-        DApp.addUserLocationList("Box08");
-        DApp.addUserLocationList("Box09");
-        DApp.addUserLocationList("Box10");
-        DApp.addUserLocationList("Box13");
-        DApp.addUserLocationList("Box14");
-        DApp.addUserLocationList("Box15");
-        DApp.addUserLocationList("Box16");
-        DApp.addUserLocationList("Box17");
-        DApp.addUserLocationList("Box18");
-        //TEST END
-
         locationList = DApp.getUserLocationList().getLocationList();
 
         if(masterRef.get() != null) {
@@ -120,8 +99,6 @@ public class PAPIGameDetails implements IProcess, ISave, View.OnTouchListener, A
             lpw.setOnItemClickListener(this);
         }
     }
-
-
 
     @Override
     public void saveGameInUserList() {

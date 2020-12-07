@@ -34,7 +34,7 @@ public class VGameDetailsAPI extends AppCompatActivity {
         Intent intent = getIntent();
         position = intent.getIntExtra("position", 0);
 
-        presenter.processChanges();
+        presenter.setupPresenter();
 
     }
 
