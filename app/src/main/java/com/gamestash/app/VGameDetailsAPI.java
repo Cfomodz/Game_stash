@@ -2,28 +2,14 @@ package com.gamestash.app;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.MotionEvent;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.EditText;
-import android.widget.ImageView;
-import android.widget.ListPopupWindow;
-import android.widget.Spinner;
-import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
-
-import com.squareup.picasso.Picasso;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class VGameDetailsAPI extends AppCompatActivity {
     private static final String TAG = VGameDetailsAPI.class.getSimpleName();
 
-    private PAPIGameDetails presenter = new PAPIGameDetails(this);
+    private PGameDetailsAPI presenter = new PGameDetailsAPI(this);
     private int position;
 
     @Override
@@ -39,7 +25,7 @@ public class VGameDetailsAPI extends AppCompatActivity {
     }
 
     public void onclickSave(View view) {
-        // Trigger PAPIGameDetails method to save...
+        // Trigger PGameDetailsAPI method to save...
         presenter.saveGameInUserList();
     }
 

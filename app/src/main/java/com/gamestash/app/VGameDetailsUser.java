@@ -14,19 +14,10 @@ import com.squareup.picasso.Picasso;
 public class VGameDetailsUser extends AppCompatActivity {
     private static final String TAG = VGameDetailsUser.class.getSimpleName();
 
-    private IProcess presenter;
+    private PGameDetailsUser presenter = new PGameDetailsUser(this);
+    private int position;
 
     private DGame game;
-
-    private class ViewHolder {
-        ImageView gameImage;
-        TextView gameName;
-        TextView publisher;
-        TextView players;
-        TextView playTime;
-        TextView minAge;
-        TextView location;
-    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,69 +25,20 @@ public class VGameDetailsUser extends AppCompatActivity {
         setContentView(R.layout.activity_game_details_user);
 
         Intent intent = getIntent();
-        int position = intent.getIntExtra("position", 0);
-        this.game = DApp.getUserGameList().getGameList().get(position);
+        position = intent.getIntExtra("position", 0);
 
-        //move to presenter...
-        String gameImage = this.game.getVisibleThumbURL();
-        String gameName = this.game.getVisibleGameName();
-        String publisher = "Publisher: " + this.game.getVisiblePublisher().getName();
-        String players = "Players: " + this.game.getVisibleMinPlayers() + " - " + this.game.getVisibleMaxPlayers();
-        String playTime = "Playtime: " + this.game.getVisibleMinPlayTime() + " - " + this.game.getVisibleMaxPlayTime() + " min";
-        String minAge = "Age: " + this.game.getVisibleMinAge() + "+";
-        String location;
-        if (this.game.getLocation().length() > 0) {
-            location = "Location: " + this.game.getLocation();
-        } else {
-            location = "Location: Undefined";
-        }
-
-
-        ViewHolder holder = new ViewHolder();
-        holder.gameImage = this.findViewById(R.id.tv_user_details_game_image);
-        holder.gameName = this.findViewById(R.id.tv_user_details_game_name);
-        holder.publisher = this.findViewById(R.id.tv_user_details_publisher);
-        holder.players = this.findViewById(R.id.tv_user_details_players);
-        holder.playTime = this.findViewById(R.id.tv_user_details_play_time);
-        holder.minAge = this.findViewById(R.id.tv_user_details_min_age);
-        holder.location = this.findViewById(R.id.tv_user_details_location);
-
-        if(gameImage.trim().length() > 0) {
-            Picasso.get()
-                    .load(gameImage)
-                    .resize(200, 200)
-                    .error(R.drawable.main_menu_img_00)
-                    .centerInside()
-                    .noFade()
-                    .into(holder.gameImage);
-        } else {
-            Picasso.get()
-                    .load(R.drawable.main_menu_img_00)
-                    .resize(200, 200)
-                    .centerInside()
-                    .noFade()
-                    .into(holder.gameImage);
-        }
-
-        holder.gameName.setText(gameName);
-        holder.publisher.setText(publisher);
-        holder.players.setText(players);
-        holder.playTime.setText(playTime);
-        holder.minAge.setText(minAge);
-        holder.location.setText(location);
-
-
-        //use game to fill out display...
-        Log.d(TAG, game.getGameName());
+        presenter.setupPresenter();
     }
 
     public void onclickEdit(View view) {
-        Intent intent = new Intent(this, VGameListUser.class);
+        Bundle bundle = new Bundle();
+        bundle.putString("goto", "gameDetails");
+        Intent intent = new Intent(this, VGameEditor.class);
+        intent.putExtras(bundle);
         startActivity(intent);
     }
 
-    public void onclickDelete(View view) {
-        Intent intent = new Intent(this, VGameListUser.class);
-        startActivity(intent);
+    public int getPosition() {
+        return position;
     }
 }

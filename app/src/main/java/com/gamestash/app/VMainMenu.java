@@ -67,8 +67,11 @@ public class VMainMenu extends AppCompatActivity {
     }
 
     public void onclickAddGameManually(View view) {
+        Bundle bundle = new Bundle();
+        bundle.putString("goto", "mainMenu");
         Intent intent = new Intent(this, VGameEditor.class);
         intent.putExtra("position", -1);
+        intent.putExtras(bundle);
         startActivity(intent);
     }
 

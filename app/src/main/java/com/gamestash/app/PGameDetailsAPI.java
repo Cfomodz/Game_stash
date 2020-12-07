@@ -10,16 +10,13 @@ import android.widget.ImageView;
 import android.widget.ListPopupWindow;
 import android.widget.TextView;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import com.squareup.picasso.Picasso;
 
 import java.lang.ref.WeakReference;
-import java.util.Collections;
 import java.util.List;
 
-public class PAPIGameDetails implements IPresent, ISave, IDropDown, View.OnTouchListener, AdapterView.OnItemClickListener {
-    private static final String TAG = PAPIGameDetails.class.getSimpleName();
+public class PGameDetailsAPI implements IPresent, ISave, IDropDown, View.OnTouchListener, AdapterView.OnItemClickListener {
+    private static final String TAG = PGameDetailsAPI.class.getSimpleName();
 
     private WeakReference<VGameDetailsAPI> masterRef;
 
@@ -28,7 +25,7 @@ public class PAPIGameDetails implements IPresent, ISave, IDropDown, View.OnTouch
     private ListPopupWindow lpw;
     private ViewHolder holder = new ViewHolder();
 
-    public PAPIGameDetails(VGameDetailsAPI activity){
+    public PGameDetailsAPI(VGameDetailsAPI activity){
         this.masterRef = new WeakReference<>(activity);
     }
 
@@ -48,15 +45,12 @@ public class PAPIGameDetails implements IPresent, ISave, IDropDown, View.OnTouch
             VGameDetailsAPI master = masterRef.get();
             this.game = DApp.getApiGameList().getGameList().get(master.getPosition());
 
-
-            //move to presenter...
             String gameImage = this.game.getThumbURL();
             String gameName = this.game.getGameName();
             String publisher = "Publisher: " + this.game.getPublisher().getName();
             String players = "Players: " + this.game.getMinPlayers() + " - " + this.game.getMaxPlayers();
             String playTime = "Playtime: " + this.game.getMinPlayTime() + " - " + this.game.getMaxPlayTime() + " min";
             String minAge = "Age: " + this.game.getMinAge() + "+";
-            // String location = "something";
 
             holder.gameImage = master.findViewById(R.id.tv_api_details_game_image);
             holder.gameName = master.findViewById(R.id.tv_api_details_game_name);
