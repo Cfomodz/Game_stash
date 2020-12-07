@@ -21,4 +21,8 @@ public class VSettings extends AppCompatActivity {
     public void onClickResetLocationList(View view) {
         presenter.processChanges();
     }
+
+    public void onClickShareWishList(View view) {
+
+    }
 }

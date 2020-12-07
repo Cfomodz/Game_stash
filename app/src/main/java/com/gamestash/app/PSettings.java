@@ -42,6 +42,7 @@ public class PSettings implements IProcess {
         List<DGame> gameList = DApp.getUserGameList().getGameList();
         List<String> listWithDuplicates =  new ArrayList<>();
         Log.d(TAG,listWithDuplicates.toString());
+        listWithDuplicates.add("Wish List");
         for (DGame game: gameList){
             if(game.getLocation().trim().length()>0) {
                 listWithDuplicates.add(game.getLocation());
