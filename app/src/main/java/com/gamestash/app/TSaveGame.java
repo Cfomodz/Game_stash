@@ -98,18 +98,12 @@ public class TSaveGame implements Runnable{
         }
 
         // If no match add location to location list...
-        Log.d(TAG, "LOCATION CHECK: START: " + DApp.getUserLocationList().getLocationList().toString());
         if (gameRef.get() != null && !match) {
-            Log.d(TAG, "LOCATION CHECK: Inside gameref");
             DApp.addUserLocationList(gameRef.get().getLocation());
-            Log.d(TAG, "LOCATION CHECK: " + DApp.getUserLocationList().getLocationList().toString());
-            if(dropDownRef.get() != null){
-                Log.d(TAG, "LOCATION CHECK: Inside dropDownRef");
-                Log.d(TAG, "LOCATION CHECK: BEFORE setDropDown: " + DApp.getUserLocationList().getLocationList().toString());
-                //dropDownRef.get().setDropDown();
-                Log.d(TAG, "LOCATION CHECK: AFTER setDropDown: " + DApp.getUserLocationList().getLocationList().toString());
-            }
-            Log.d(TAG, "LOCATION CHECK: WHEN RETURNING LIST: " + DApp.getUserLocationList().getLocationList().toString());
+            // Looks like I don't need to set the drop down...leaving here just in case...
+            // if(dropDownRef.get() != null){
+                // dropDownRef.get().setDropDown();
+            // }
             return true;
         } else {
             return false;
