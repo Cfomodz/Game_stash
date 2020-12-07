@@ -93,6 +93,11 @@ public class PGameEditor implements IPresent, IProcess, ISave, View.OnTouchListe
             game.setEditedMaxPlayTime(Integer.parseInt(holder.maxPlayTime.getText().toString().trim()));
             game.setEditedMinAge(Integer.parseInt(holder.minAge.getText().toString().trim()));
 
+            if(holder.gameName.getText().toString().trim().length() > 0) {
+                game.setLocation(holder.gameName.getText().toString().trim());
+            }
+
+
             DPublisher publisher = new DPublisher();
             publisher.setName(holder.publisher.getText().toString().trim());
             game.setEditedPublisher(publisher);
