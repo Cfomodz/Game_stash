@@ -19,8 +19,18 @@
     <string name="f_lbl_game_details">Game Details</string>
     <string name="f_lbl_name">Name:</string>
     <string name="f_lbl_publisher">Publisher:</string>
-
-
+    <string name="f_lbl_num_players">N° Players:</string>
+    <string name="f_lbl_min_players">Min#</string>
+    <string name="f_lbl_num_players_hyphen">-</string>
+    <string name="f_lbl_max_players">Max#</string>
+    <string name="f_lbl_play_time">Play Time:</string>
+    <string name="f_lbl_min_play_time">Min#</string>
+    <string name="f_lbl_play_time_hyphen">-</string>
+    <string name="f_lbl_max_play_time">Max#</string>
+    <string name="f_lbl_play_time_min">min</string>
+    <string name="f_lbl_min_age">Min Age:</string>
+    <string name="f_lbl_min_age_num">#</string>
+    <string name="f_lbl_editor_location">Location:</string>
 
     <!-- "Fixed String" Values -->
 
