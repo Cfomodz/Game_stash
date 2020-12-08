@@ -1,12 +1,15 @@
 package com.gamestash.app;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import androidx.annotation.RequiresApi;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.List;
@@ -43,5 +46,40 @@ public class VGameListUser extends AppCompatActivity {
             intent.putExtra("position", position);
             startActivity(intent);
         });
+
+
+        listView.setOnItemLongClickListener((adapter1, view, position, id) -> {
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            builder.setTitle("DELETE GAME")
+                    .setMessage("Do you want to delete this game?")
+                    .setNegativeButton("No", null)
+                    .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            //DO STUFF
+                            showDeleteToast();
+                            deleteGame(position, gameList);
+                            adapter.notifyDataSetChanged();
+                        }
+                    })
+                    .show();
+
+
+
+
+            return true;
+        });
+
     }
+
+
+    public void showDeleteToast() {
+        Toast.makeText(this, "GAME DELETED", Toast.LENGTH_SHORT).show();
+    }
+
+    private void deleteGame(int position, List<DGame> gameList){
+        gameList.remove(position);
+        //Save game list again... on presenter...
+
+    };
 }

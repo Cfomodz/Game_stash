@@ -236,10 +236,10 @@ public class PGameEditor implements IPresent, IProcess, ISave, IDropDown, View.O
                 publisher.setName(gameEditorPublisher);
                 saveGame.setEditedPublisher(publisher);
 
-                //SAVE GAME OBJECT
-                this.saveGameInUserList();
-
             }
+
+            //SAVE GAME LIST
+            this.saveGameInUserList();
 
         } else {
             //do stuff to indicate the game is wrong...
@@ -313,7 +313,6 @@ public class PGameEditor implements IPresent, IProcess, ISave, IDropDown, View.O
             }
         }
 
-
         // Make sure they entered a minimum age value.
         if(holder.minAge.getText().toString().trim().length() == 0) {
             holder.minAge.setError("Enter a #");
@@ -328,7 +327,12 @@ public class PGameEditor implements IPresent, IProcess, ISave, IDropDown, View.O
 
     @Override
     public void saveGameInUserList() {
-        TSaveGame saveGame = new TSaveGame(this.masterRef.get(), this, this, this.saveGame);
+        TSaveGame saveGame;
+        if(position > -1) {
+            saveGame = new TSaveGame(this.masterRef.get(), this, true);
+        } else {
+            saveGame = new TSaveGame(this.masterRef.get(), this, this.saveGame);
+        }
         Thread thread = new Thread(saveGame);
         thread.start();
     }

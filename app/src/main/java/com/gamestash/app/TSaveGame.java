@@ -17,6 +17,7 @@ public class TSaveGame implements Runnable{
     private static WeakReference<AppCompatActivity> masterRef;
     private static WeakReference<ISave> presenterRef;
     private static WeakReference<IDropDown> dropDownRef;
+    private boolean saveEdits = false;
     private boolean existsInUserList = false;
     private boolean addedToUserGameList = false;
     private boolean addedToUserLocationList = false;
@@ -29,24 +30,36 @@ public class TSaveGame implements Runnable{
     private static final String filenameUserLocationList = "userlocationlist.json";
 
     /** This constructor will likely create a new game using GSON from API data. */
-    public TSaveGame(AppCompatActivity activity, ISave presenter, IDropDown dropDown, DGame game){
-        masterRef = new WeakReference<>(activity);
-        presenterRef = new WeakReference<>(presenter);
-        dropDownRef = new WeakReference<>(dropDown);
-        gameRef = new WeakReference<>(game);
+    public TSaveGame(AppCompatActivity activity, ISave presenter, DGame game){
+        this.masterRef = new WeakReference<>(activity);
+        this.presenterRef = new WeakReference<>(presenter);
+        this.gameRef = new WeakReference<>(game);
+    }
+
+    public TSaveGame(AppCompatActivity activity, ISave presenter, boolean saveEdits){
+        this.masterRef = new WeakReference<>(activity);
+        this.presenterRef = new WeakReference<>(presenter);
+        this.saveEdits = saveEdits;
     }
 
     @Override
     @RequiresApi(api = Build.VERSION_CODES.N)
     public void run() {
-        // ADD GAME
-        this.addedToUserGameList = this.saveGameToUserGameList();
+        // ADD NEW GAME
+        if(!this.saveEdits) {
+            this.addedToUserGameList = this.saveGameToUserGameList();
+        } // else (this.saveEdits = true){ // Do nothing. ADD GAMELIST will handle the true scenario.;}
+
+        // ADD GAMELIST: If New Game or Edits
         this.jsonGameStringCreated = this.objToJSONString(DApp.getUserGameList(), this.addedToUserGameList);
         this.savedGameToFile = this.saveToFile(filenameUserGameList, this.jsonString, this.jsonGameStringCreated);
 
-        // ADD LOCATION
-        this.addedToUserLocationList = this.saveLocationToUserLocationList(this.savedGameToFile);
-        Log.d(TAG, "LOCATION CHECK: " + DApp.getUserLocationList().getLocationList().toString());
+        // ADD NEW LOCATION
+        if(!this.saveEdits) {
+            this.addedToUserLocationList = this.saveLocationToUserLocationList(this.savedGameToFile);
+            Log.d(TAG, "LOCATION CHECK: " + DApp.getUserLocationList().getLocationList().toString());
+        }
+        // SAVE LOCATION LIST
         this.jsonLocationStringCreated = this.objToJSONString(DApp.getUserLocationList(), this.addedToUserLocationList);
         this.savedLocationListToFile = this.saveToFile(filenameUserLocationList, this.jsonString, this.jsonLocationStringCreated);
 
@@ -100,10 +113,6 @@ public class TSaveGame implements Runnable{
         // If no match add location to location list...
         if (gameRef.get() != null && !match) {
             DApp.addUserLocationList(gameRef.get().getLocation());
-            // Looks like I don't need to set the drop down...leaving here just in case...
-            // if(dropDownRef.get() != null){
-                // dropDownRef.get().setDropDown();
-            // }
             return true;
         } else {
             return false;
@@ -113,7 +122,7 @@ public class TSaveGame implements Runnable{
     @RequiresApi(api = Build.VERSION_CODES.N)
     public boolean objToJSONString(Object obj, boolean testResult) {
         this.jsonString = "";
-        if(testResult) {
+        if(testResult || saveEdits) {
             this.jsonString = new GsonBuilder()
                     .setPrettyPrinting()
                     .create()
@@ -133,12 +142,13 @@ public class TSaveGame implements Runnable{
     }
 
     public void sendToast() {
-        if (this.savedGameToFile && gameRef.get() != null) {
+        // if (this.savedGameToFile && gameRef.get() != null) {
+        if (this.savedGameToFile) {
             // TOAST::GAME ADDED TO USER LIST
-            Log.d(TAG, "Game added...");
+            Log.d(TAG, "Game Saved...");
             if (masterRef.get() != null) {
                 masterRef.get().runOnUiThread(() -> {
-                    Toast toast = Toast.makeText(masterRef.get(), "GAME ADDED TO USER LIST", Toast.LENGTH_SHORT);
+                    Toast toast = Toast.makeText(masterRef.get(), "GAME SAVED", Toast.LENGTH_SHORT);
                     toast.show();
                 });
             }

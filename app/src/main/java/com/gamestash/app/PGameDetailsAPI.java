@@ -106,7 +106,7 @@ public class PGameDetailsAPI implements IPresent, ISave, IDropDown, View.OnTouch
             if (holder.location.getText().toString().trim().length() > 0) {
                 this.game.setLocation(holder.location.getText().toString());
             }
-            TSaveGame saveGame = new TSaveGame(this.masterRef.get(), this, this, this.game);
+            TSaveGame saveGame = new TSaveGame(this.masterRef.get(), this, this.game);
             Thread thread = new Thread(saveGame);
             thread.start();
         }
