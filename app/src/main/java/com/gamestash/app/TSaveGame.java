@@ -13,19 +13,15 @@ import java.lang.ref.WeakReference;
 
 public class TSaveGame implements Runnable{
     private static final String TAG = DGameList.class.getSimpleName();
-    private static WeakReference<DGame> gameRef;
-    private static WeakReference<AppCompatActivity> masterRef;
-    private static WeakReference<ISave> presenterRef;
-    private static WeakReference<IDropDown> dropDownRef;
+    private WeakReference<DGame> gameRef;
+    private final WeakReference<AppCompatActivity> masterRef;
+    private WeakReference<ISave> presenterRef;
     private boolean saveEdits = false;
     private boolean deleting = false;
     private boolean existsInUserList = false;
     private boolean addedToUserGameList = false;
     private boolean addedToUserLocationList = false;
-    private boolean jsonGameStringCreated = false;
-    private boolean jsonLocationStringCreated = false;
     private boolean savedGameToFile = false;
-    private boolean savedLocationListToFile = false;
     private String jsonString;
     private static final String filenameUserGameList = "usergamelist.json";
     private static final String filenameUserLocationList = "userlocationlist.json";
@@ -57,8 +53,8 @@ public class TSaveGame implements Runnable{
         } // else (this.saveEdits = true){ // Do nothing. ADD GAMELIST will handle the true scenario.;}
 
         // ADD GAMELIST: If New Game or Edits
-        this.jsonGameStringCreated = this.objToJSONString(DApp.getUserGameList(), this.addedToUserGameList);
-        this.savedGameToFile = this.saveToFile(filenameUserGameList, this.jsonString, this.jsonGameStringCreated);
+        boolean jsonGameStringCreated = this.objToJSONString(DApp.getUserGameList(), this.addedToUserGameList);
+        this.savedGameToFile = this.saveToFile(filenameUserGameList, this.jsonString, jsonGameStringCreated);
 
         // ADD NEW LOCATION
         if(!this.saveEdits) {
@@ -66,8 +62,8 @@ public class TSaveGame implements Runnable{
             Log.d(TAG, "LOCATION CHECK: " + DApp.getUserLocationList().getLocationList().toString());
         }
         // SAVE LOCATION LIST
-        this.jsonLocationStringCreated = this.objToJSONString(DApp.getUserLocationList(), this.addedToUserLocationList);
-        this.savedLocationListToFile = this.saveToFile(filenameUserLocationList, this.jsonString, this.jsonLocationStringCreated);
+        boolean jsonLocationStringCreated = this.objToJSONString(DApp.getUserLocationList(), this.addedToUserLocationList);
+        this.saveToFile(filenameUserLocationList, this.jsonString, jsonLocationStringCreated);
 
         this.sendToast();
     }
