@@ -64,11 +64,7 @@ public class VGameListUser extends AppCompatActivity {
                     .show();
             return true;
         });
-
     }
-
-
-
 
     private void deleteGame(int position){
         gameList.remove(position);
