@@ -33,6 +33,7 @@ public class VGameDetailsUser extends AppCompatActivity {
         Bundle bundle = new Bundle();
         bundle.putString("goto", "gameDetails");
         Intent intent = new Intent(this, VGameEditor.class);
+        intent.putExtra("position", position);
         intent.putExtras(bundle);
         startActivity(intent);
     }

@@ -55,18 +55,6 @@ public class PGameEditor implements IPresent, IProcess, ISave, IDropDown, View.O
             AppCompatActivity master = masterRef.get();
             position = masterRef.get().getPosition();
 
-            // Set up the info for the fields...
-            // Move to presenter...
-            if(position > -1) {
-                // can you edit an api game first? not sure...yes
-                this.game = DApp.getUserGameList().getGameList().get(position);
-                //load the game editor with the game obj field data...
-                Log.d(TAG, game.getVisibleGameName());
-            } else {
-                this.game = new DGame();
-            }
-
-
             holder.favorite = master.findViewById(R.id.switch_editor_favorite);
             holder.expansion = master.findViewById(R.id.switch_editor_expansion);
             holder.gameName = master.findViewById(R.id.et_editor_game_name);
@@ -91,6 +79,31 @@ public class PGameEditor implements IPresent, IProcess, ISave, IDropDown, View.O
                 lpw.setAnchorView(holder.location);
                 lpw.setModal(true);
                 lpw.setOnItemClickListener(this);
+            }
+
+            // Set up the info for the fields...
+            if(position > -1) {
+                this.game = DApp.getUserGameList().getGameList().get(position);
+                Log.d(TAG, game.getVisibleGameName());
+
+                //holder.favorite.setChecked();
+                //holder.expansion.setChecked();
+                //holder.gameName.setText();
+                //holder.gameName.setHint();
+
+                /**
+                holder.gameName = master.findViewById(R.id.et_editor_game_name);
+                holder.publisher = master.findViewById(R.id.et_editor_publisher);
+                holder.minPlayers = master.findViewById(R.id.et_editor_min_players);
+                holder.maxPlayers = master.findViewById(R.id.et_editor_max_players);
+                holder.minPlayTime = master.findViewById(R.id.et_editor_min_play_time);
+                holder.maxPlayTime = master.findViewById(R.id.et_editor_max_play_time);
+                holder.minAge = master.findViewById(R.id.et_editor_min_age);
+                holder.location = master.findViewById(R.id.et_editor_location);
+                */
+
+            } else {
+                this.game = new DGame();
             }
         }
 
@@ -138,25 +151,11 @@ public class PGameEditor implements IPresent, IProcess, ISave, IDropDown, View.O
             publisher.setName(holder.publisher.getText().toString().trim());
             game.setEditedPublisher(publisher);
 
-
-
-            /**
-            Log.d(TAG, game.getFavorite().toString());
-            Log.d(TAG, game.getExpansion().toString());
-            Log.d(TAG, game.getEditedGameName());
-            Log.d(TAG, game.getEditedMinPlayers().toString());
-            Log.d(TAG, game.getEditedMaxPlayers().toString());
-            Log.d(TAG, game.getEditedMinPlayTime().toString());
-            Log.d(TAG, game.getEditedMaxPlayTime().toString());
-            Log.d(TAG, game.getEditedMinAge().toString());
-            */
-
             //SAVE GAME OBJECT
             this.saveGameInUserList();
 
         } else {
             //do stuff to indicate the game is wrong...
-
         }
 
         //If successful then...??? Party!
