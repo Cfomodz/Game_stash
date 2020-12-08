@@ -56,7 +56,8 @@ public class PSettings implements IProcess {
         DApp.getUserLocationList().setLocationList(listWithoutDuplicates);
         objToJSONString(DApp.getUserLocationList(),true);
         if(this.masterRef.get()!=null) {
-            TSaveToFile saveToFile = new TSaveToFile(this.masterRef.get(), "userlocationlist.json", this.jsonString);
+            String fileName = DApp.getUserLocationListJSONFileName();
+            TSaveToFile saveToFile = new TSaveToFile(this.masterRef.get(), fileName, this.jsonString);
             Thread thread = new Thread(saveToFile);
             thread.start();
         }

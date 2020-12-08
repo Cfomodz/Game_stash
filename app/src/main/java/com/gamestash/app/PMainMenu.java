@@ -42,9 +42,19 @@ public class PMainMenu implements IProcess{
 
     private void getJSON(File file) {
         //This should be in a thread...
-        TReadJSON readJSON = new TReadJSON(this, file);
-        Thread thread = new Thread(readJSON);
-        thread.start();
+        if (file.exists()){
+            TReadJSON readJSON = new TReadJSON(this, file);
+            Thread thread = new Thread(readJSON);
+            thread.start();
+        } else {
+            String jsonString = DApp.getDefaultReturnUserLocationListSTR();
+            String fileName = DApp.getUserLocationListJSONFileName();
+            TSaveToFile saveToFile = new TSaveToFile(this.masterRef.get(), fileName, jsonString);
+            Thread thread = new Thread(saveToFile);
+            thread.start();
+            DApp.setReturnJSONStr(jsonString, file);
+            processChanges();
+        }
     }
 
     private void gsonParse(SetGameList setList, String response) {

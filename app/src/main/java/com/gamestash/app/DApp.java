@@ -19,6 +19,9 @@ public class DApp {
 
     private static File userJSONFile;
     private static File userLocationListJSONFile;
+    private static final String userGameListJSONFileName = "usergamelist.json";
+    private static final String userLocationListJSONFileName = "userlocationlist.json";
+    private static final String defaultReturnUserLocationListSTR = "{\"locationList\": [\"Wish List\"]}";
     private static WeakReference<IProcess> currPresenterRef;
     private static String searchSTR;
     private static String returnApiSTR = "";
@@ -74,6 +77,12 @@ public class DApp {
     public static Boolean getHasBeenEditedSearchSTR() {return hasBeenEditedSearchSTR;}
 
     public static Boolean getHasBeenEditedReturnApiSTR() {return hasBeenEditedReturnApiSTR;}
+
+    public static String getUserGameListJSONFileName() {return userGameListJSONFileName;}
+
+    public static String getUserLocationListJSONFileName() {return userLocationListJSONFileName;}
+
+    public static String getDefaultReturnUserLocationListSTR() {return defaultReturnUserLocationListSTR;}
 
     public static Boolean getHasBeenEditedReturnUserSTR() {return hasBeenEditedReturnUserSTR;}
 

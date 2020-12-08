@@ -39,8 +39,10 @@ public class VMainMenu extends AppCompatActivity {
         ImageView imageView = findViewById(R.id.iv_main_menu);
         imageView.setImageResource(mainImgs[new Random().nextInt(mainImgs.length)]);
 
-        DApp.setUserJSONFile(new File(this.getFilesDir() + "/usergamelist.json"));
-        DApp.setUserLocationListJSONFile(new File(this.getFilesDir() + "/userlocationlist.json"));
+        String userGameListFileName = DApp.getUserGameListJSONFileName();
+        String userLocationListFileName = DApp.getUserLocationListJSONFileName();
+        DApp.setUserJSONFile(new File(this.getFilesDir() + "/" + userGameListFileName));
+        DApp.setUserLocationListJSONFile(new File(this.getFilesDir() + "/" + userLocationListFileName));
 
         this.presenter.processChanges();
 
