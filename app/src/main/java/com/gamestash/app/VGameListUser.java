@@ -17,6 +17,9 @@ import java.util.List;
 public class VGameListUser extends AppCompatActivity {
     private static final String TAG = VGameListUser.class.getSimpleName();
 
+    List<DGame> gameList;
+    AGameListUser adapter;
+
     @Override
     @RequiresApi(api = Build.VERSION_CODES.N)
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,9 +38,8 @@ public class VGameListUser extends AppCompatActivity {
         ListView listView = findViewById(R.id.lv_game_list);
         Log.d(TAG, "onCreate: Started.");
 
-        List<DGame> gameList = DApp.getUserGameList().getGameList();
-
-        AGameListUser adapter = new AGameListUser(this, R.layout.item_layout_gamelist, gameList);
+        gameList = DApp.getUserGameList().getGameList();
+        adapter = new AGameListUser(this, R.layout.item_layout_gamelist, gameList);
 
         listView.setAdapter(adapter);
         listView.setOnItemClickListener((adapter1, view, position, id) -> {
@@ -56,30 +58,32 @@ public class VGameListUser extends AppCompatActivity {
                     .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
-                            //DO STUFF
-                            showDeleteToast();
-                            deleteGame(position, gameList);
-                            adapter.notifyDataSetChanged();
+                            deleteGame(position);
                         }
                     })
                     .show();
-
-
-
-
             return true;
         });
 
     }
 
 
-    public void showDeleteToast() {
+
+
+    private void deleteGame(int position){
+        gameList.remove(position);
+        updateAdapter();
+        //Save game list again... on presenter...
+        //Save game list again... on presenter...
+        //Save game list again... on presenter...
+        showDeleteToast();
+    };
+
+    private void showDeleteToast() {
         Toast.makeText(this, "GAME DELETED", Toast.LENGTH_SHORT).show();
     }
 
-    private void deleteGame(int position, List<DGame> gameList){
-        gameList.remove(position);
-        //Save game list again... on presenter...
-
-    };
+    public void updateAdapter() {
+        adapter.notifyDataSetChanged();
+    }
 }
