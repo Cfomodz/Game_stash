@@ -25,6 +25,9 @@ public class PMainMenu implements IProcess{
             //Do something with the list...? Not on this screen?
             DApp.setHasBeenEditedUserGameList();
             //Start the process to add the location list...
+            //getJSON(DApp.getUserLocationListJSONFile());
+        }
+        if(DApp.getReturnUserLocationListSTR().equals("")){
             getJSON(DApp.getUserLocationListJSONFile());
         }
         if(DApp.getHasBeenEditedReturnUserLocationListSTR()){
