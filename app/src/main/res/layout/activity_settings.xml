@@ -28,11 +28,22 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="124dp"
-        android:layout_marginTop="178dp"
+        android:layout_marginTop="208dp"
         android:backgroundTint="#66BBFF"
         android:onClick="onClickShareWishList"
         android:text="@string/f_btn_share_wish_list"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/etTo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Email Address"
+        app:layout_constraintBottom_toTopOf="@+id/button2"
+        tools:layout_editor_absoluteX="102dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
