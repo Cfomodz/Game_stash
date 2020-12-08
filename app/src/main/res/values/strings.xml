@@ -17,6 +17,9 @@
     <string name="f_lbl_your_games">Your Games</string>
     <string name="f_lbl_game_editor">Game Editor</string>
     <string name="f_lbl_game_details">Game Details</string>
+    <string name="f_lbl_name">Name:</string>
+    <string name="f_lbl_publisher">Publisher:</string>
+
 
 
     <!-- "Fixed String" Values -->
