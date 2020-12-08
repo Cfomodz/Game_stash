@@ -30,6 +30,7 @@
         android:ems="10"
         android:hint="@string/f_hint_search_game_name"
         android:inputType="textCapWords"
+        android:selectAllOnFocus="true"
         android:onClick="onclickSearch"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/btn_add_game_api_game_name"

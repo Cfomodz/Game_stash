@@ -86,24 +86,35 @@ public class PGameEditor implements IPresent, IProcess, ISave, IDropDown, View.O
                 this.game = DApp.getUserGameList().getGameList().get(position);
                 Log.d(TAG, game.getVisibleGameName());
 
-                //holder.favorite.setChecked();
-                //holder.expansion.setChecked();
-                //holder.gameName.setText();
-                //holder.gameName.setHint();
+                if(this.game.getFavorite()){
+                    holder.favorite.setChecked(true);
+                } else {
+                    holder.favorite.setChecked(false);
+                }
 
-                /**
-                holder.gameName = master.findViewById(R.id.et_editor_game_name);
-                holder.publisher = master.findViewById(R.id.et_editor_publisher);
-                holder.minPlayers = master.findViewById(R.id.et_editor_min_players);
-                holder.maxPlayers = master.findViewById(R.id.et_editor_max_players);
-                holder.minPlayTime = master.findViewById(R.id.et_editor_min_play_time);
-                holder.maxPlayTime = master.findViewById(R.id.et_editor_max_play_time);
-                holder.minAge = master.findViewById(R.id.et_editor_min_age);
-                holder.location = master.findViewById(R.id.et_editor_location);
-                */
+                if(this.game.getExpansion()){
+                    holder.expansion.setChecked(true);
+                } else {
+                    holder.expansion.setChecked(false);
+                }
 
-            } else {
-                this.game = new DGame();
+                holder.gameName.setText(this.game.getVisibleGameName());
+                holder.gameName.setHint(this.game.getVisibleGameName());
+
+                //holder.publisher.setText();
+                //holder.publisher.setHint();
+                //holder.minPlayers.setText();
+                //holder.minPlayers.setHint();
+                //holder.maxPlayers.setText();
+                //holder.maxPlayers.setHint();
+                //holder.minPlayTime.setText();
+                //holder.minPlayTime.setHint();
+                //holder.maxPlayTime.setText();
+                //holder.minPlayTime.setHint();
+                //holder.minAge.setText();
+                //holder.minAge.setHint();
+
+                //holder.location.setText();
             }
         }
 
@@ -131,28 +142,34 @@ public class PGameEditor implements IPresent, IProcess, ISave, IDropDown, View.O
         if (this.validateGameData(holder)) {
             //IF VALID GAME DATA... THEN CREATE GAME OBJ.
 
-            this.game = new DGame();
-            game.setIsUserCreated(true);
-            game.setFavorite(holder.favorite.isChecked());
-            game.setExpansion(holder.expansion.isChecked());
-            game.setEditedGameName(holder.gameName.getText().toString().trim());
-            game.setEditedMinPlayers(Integer.parseInt(holder.minPlayers.getText().toString().trim()));
-            game.setEditedMaxPlayers(Integer.parseInt(holder.maxPlayers.getText().toString().trim()));
-            game.setEditedMinPlayTime(Integer.parseInt(holder.minPlayTime.getText().toString().trim()));
-            game.setEditedMaxPlayTime(Integer.parseInt(holder.maxPlayTime.getText().toString().trim()));
-            game.setEditedMinAge(Integer.parseInt(holder.minAge.getText().toString().trim()));
+            if(position > -1) {
+                //do stuff for game that is beign edited.
+            } else { // This is a manual entry game...
 
-            if(holder.gameName.getText().toString().trim().length() > 0) {
-                game.setLocation(holder.gameName.getText().toString().trim());
+                this.game = new DGame();
+                game.setIsUserCreated(true);
+                game.setFavorite(holder.favorite.isChecked());
+                game.setExpansion(holder.expansion.isChecked());
+                game.setEditedGameName(holder.gameName.getText().toString().trim());
+                game.setEditedMinPlayers(Integer.parseInt(holder.minPlayers.getText().toString().trim()));
+                game.setEditedMaxPlayers(Integer.parseInt(holder.maxPlayers.getText().toString().trim()));
+                game.setEditedMinPlayTime(Integer.parseInt(holder.minPlayTime.getText().toString().trim()));
+                game.setEditedMaxPlayTime(Integer.parseInt(holder.maxPlayTime.getText().toString().trim()));
+                game.setEditedMinAge(Integer.parseInt(holder.minAge.getText().toString().trim()));
+
+                if (holder.gameName.getText().toString().trim().length() > 0) {
+                    game.setLocation(holder.gameName.getText().toString().trim());
+                }
+
+
+                DPublisher publisher = new DPublisher();
+                publisher.setName(holder.publisher.getText().toString().trim());
+                game.setEditedPublisher(publisher);
+
+                //SAVE GAME OBJECT
+                this.saveGameInUserList();
+
             }
-
-
-            DPublisher publisher = new DPublisher();
-            publisher.setName(holder.publisher.getText().toString().trim());
-            game.setEditedPublisher(publisher);
-
-            //SAVE GAME OBJECT
-            this.saveGameInUserList();
 
         } else {
             //do stuff to indicate the game is wrong...

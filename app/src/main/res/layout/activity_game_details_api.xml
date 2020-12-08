@@ -133,6 +133,7 @@
         android:hint="@string/p_hint_location"
         android:importantForAutofill="no"
         android:inputType="textCapWords"
+        android:selectAllOnFocus="true"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/tv_api_details_lbl_location"
