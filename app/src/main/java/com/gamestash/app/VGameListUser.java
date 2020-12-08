@@ -69,15 +69,10 @@ public class VGameListUser extends AppCompatActivity {
     private void deleteGame(int position){
         gameList.remove(position);
         updateAdapter();
-        //Save game list again... on presenter...
-        //Save game list again... on presenter...
-        //Save game list again... on presenter...
-        showDeleteToast();
+        TSaveGame saveGame = new TSaveGame(this, true, true);
+        Thread thread = new Thread(saveGame);
+        thread.start();
     };
-
-    private void showDeleteToast() {
-        Toast.makeText(this, "GAME DELETED", Toast.LENGTH_SHORT).show();
-    }
 
     public void updateAdapter() {
         adapter.notifyDataSetChanged();

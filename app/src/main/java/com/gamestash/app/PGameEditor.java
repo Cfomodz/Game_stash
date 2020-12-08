@@ -326,7 +326,7 @@ public class PGameEditor implements IPresent, IProcess, ISave, IDropDown, View.O
     public void saveGameInUserList() {
         TSaveGame saveGame;
         if(position > -1) {
-            saveGame = new TSaveGame(this.masterRef.get(), this, true);
+            saveGame = new TSaveGame(this.masterRef.get(), true);
         } else {
             saveGame = new TSaveGame(this.masterRef.get(), this, this.saveGame);
         }

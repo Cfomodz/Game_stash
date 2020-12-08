@@ -18,6 +18,7 @@ public class TSaveGame implements Runnable{
     private static WeakReference<ISave> presenterRef;
     private static WeakReference<IDropDown> dropDownRef;
     private boolean saveEdits = false;
+    private boolean deleting = false;
     private boolean existsInUserList = false;
     private boolean addedToUserGameList = false;
     private boolean addedToUserLocationList = false;
@@ -36,10 +37,15 @@ public class TSaveGame implements Runnable{
         this.gameRef = new WeakReference<>(game);
     }
 
-    public TSaveGame(AppCompatActivity activity, ISave presenter, boolean saveEdits){
+    public TSaveGame(AppCompatActivity activity, boolean saveEdits){
         this.masterRef = new WeakReference<>(activity);
-        this.presenterRef = new WeakReference<>(presenter);
         this.saveEdits = saveEdits;
+    }
+
+    public TSaveGame(AppCompatActivity activity, boolean saveEdits, boolean deleting){
+        this.masterRef = new WeakReference<>(activity);
+        this.saveEdits = saveEdits;
+        this.deleting = deleting;
     }
 
     @Override
@@ -143,9 +149,17 @@ public class TSaveGame implements Runnable{
 
     public void sendToast() {
         // if (this.savedGameToFile && gameRef.get() != null) {
-        if (this.savedGameToFile) {
+        if(this.savedGameToFile && this.deleting) {
+            Log.d(TAG, "GameList Saved. Deletes Occurred.");
+            if (masterRef.get() != null) {
+                masterRef.get().runOnUiThread(() -> {
+                    Toast toast = Toast.makeText(masterRef.get(), "GAME DELETED.", Toast.LENGTH_SHORT);
+                    toast.show();
+                });
+            }
+        } else if (this.savedGameToFile) {
             // TOAST::GAME ADDED TO USER LIST
-            Log.d(TAG, "Game Saved...");
+            Log.d(TAG, "Game Saved to GameList.");
             if (masterRef.get() != null) {
                 masterRef.get().runOnUiThread(() -> {
                     Toast toast = Toast.makeText(masterRef.get(), "GAME SAVED", Toast.LENGTH_SHORT);
