@@ -25,6 +25,7 @@
     <string name="f_hint_game_name">Game Name</string>
     <string name="f_hint_publisher">Publisher</string>
     <string name="f_hint_search_game_name">Enter Name of Game</string>
+    <string name="f_hint_email_address">Email Address</string>
 
     <!-- "Fixed String" Buttons -->
     <string name="f_btn_view_collection">View Collection</string>

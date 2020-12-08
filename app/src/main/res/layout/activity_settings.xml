@@ -41,9 +41,9 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
         android:ems="10"
+        android:hint="@string/f_hint_email_address"
         android:inputType="textEmailAddress"
         android:selectAllOnFocus="true"
-        android:text="Email Address"
         app:layout_constraintBottom_toTopOf="@+id/button2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
