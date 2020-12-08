@@ -9,9 +9,9 @@ import java.lang.ref.WeakReference;
 
 public class TSaveToFile implements Runnable{
     private static final String TAG = TSaveToFile.class.getSimpleName();
-    private WeakReference<Context> context;
-    private String fileName;
-    private String fileContents;
+    private final WeakReference<Context> context;
+    private final String fileName;
+    private final String fileContents;
 
     public TSaveToFile(Context context, String fileName, String fileContents){
         this.context = new WeakReference<>(context);
@@ -19,9 +19,7 @@ public class TSaveToFile implements Runnable{
         this.fileContents = fileContents;
     }
 
-    public void run() {
-        save();
-    }
+    public void run() {save();}
 
     public boolean save() {
         if(this.fileContents != null){
