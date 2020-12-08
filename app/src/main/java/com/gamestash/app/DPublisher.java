@@ -1,8 +1,8 @@
 package com.gamestash.app;
 
 public class DPublisher {
-    private String name;
-    private String url;
+    private String name = "";
+    private String url = "";
 
     public DPublisher() {}
 

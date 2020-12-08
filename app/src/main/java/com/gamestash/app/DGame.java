@@ -36,7 +36,7 @@ public class DGame {
     private String editedDescription = "";
     private String editedThumbURL = "";
     private String editedImageURL = "";
-    private DPublisher editedPublisher;
+    private DPublisher editedPublisher = new DPublisher();
 
     //General User Variables
     private Boolean isUserCreated = false;
@@ -412,7 +412,7 @@ public class DGame {
     }
 
     public DPublisher getVisiblePublisher() {
-        if (editedPublisher != null) {
+        if (editedPublisher != null && editedPublisher.getName() != null && !editedPublisher.getName().equals("")) {
             return editedPublisher;
         } else {
             return publisher;

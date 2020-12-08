@@ -146,32 +146,94 @@ public class PGameEditor implements IPresent, IProcess, ISave, IDropDown, View.O
     public void processChanges() {
         //Validate
         if (this.validateGameData(holder)) {
-            //IF VALID GAME DATA... THEN CREATE GAME OBJ.
+
+                // SET VALUES FOR USE IN NEXT PIECE
+                boolean gameEditorFavorite = holder.favorite.isChecked();
+                boolean gameEditorExpansion = holder.expansion.isChecked();
+                String gameEditorGameName = holder.gameName.getText().toString().trim();
+                Integer gameEditorMinPlayers = Integer.parseInt(holder.minPlayers.getText().toString().trim());
+                Integer gameEditorMaxPlayers = Integer.parseInt(holder.maxPlayers.getText().toString().trim());
+                Integer gameEditorMinPlayTime = Integer.parseInt(holder.minPlayTime.getText().toString().trim());
+                Integer gameEditorMaxPlayTime = Integer.parseInt(holder.maxPlayTime.getText().toString().trim());
+                Integer gameEditorMinAge = Integer.parseInt(holder.minAge.getText().toString().trim());
+                String gameEditorPublisher = holder.publisher.getText().toString().trim();
+                String gameEditorLocation = holder.location.getText().toString().trim();
+
 
             if(position > -1) {
-                //do stuff for game that is being edited.
-                //pull.set...field...
-                //if value equals game value... do not set edited field...
+
+                this.pulledGame.setFavorite(gameEditorFavorite);
+                this.pulledGame.setExpansion(gameEditorExpansion);
+
+                if(pulledGame.getGameName().equals(gameEditorGameName)) {
+                    this.pulledGame.setEditedGameName("");
+                } else if(!pulledGame.getEditedGameName().equals(gameEditorGameName)) {
+                    this.pulledGame.setEditedGameName(gameEditorGameName);
+                } // else if(pulledGame.getEditedGameName().equals(gameEditorGameName)) {// Do nothing;}
+
+                if(pulledGame.getMinPlayers().equals(gameEditorMinPlayers)) {
+                    this.pulledGame.setEditedMinPlayers(-1);
+                } else if(!pulledGame.getEditedMinPlayers().equals(gameEditorMinPlayers)) {
+                    this.pulledGame.setEditedMinPlayers(gameEditorMinPlayers);
+                } // else if(!pulledGame.getEditedMinPlayers().equals(gameEditorMinPlayers)) {// Do nothing;}
+
+                if(pulledGame.getMaxPlayers().equals(gameEditorMaxPlayers)) {
+                    this.pulledGame.setEditedMaxPlayers(-1);
+                } else if(!pulledGame.getEditedMaxPlayers().equals(gameEditorMaxPlayers)) {
+                    this.pulledGame.setEditedMaxPlayers(gameEditorMaxPlayers);
+                } // else if(!pulledGame.getEditedMaxPlayers().equals(gameEditorMaxPlayers)) {// Do nothing;}
+
+                if(pulledGame.getMinPlayTime().equals(gameEditorMinPlayTime)) {
+                    this.pulledGame.setEditedMinPlayTime(-1);
+                } else if(!pulledGame.getEditedMinPlayTime().equals(gameEditorMinPlayTime)) {
+                    this.pulledGame.setEditedMinPlayTime(gameEditorMinPlayTime);
+                } // else if(!pulledGame.getEditedMinPlayTime().equals(gameEditorMinPlayTime)) {// Do nothing;}
+
+                if(pulledGame.getMaxPlayTime().equals(gameEditorMaxPlayTime)) {
+                    this.pulledGame.setEditedMaxPlayTime(-1);
+                } else if(!pulledGame.getEditedMaxPlayTime().equals(gameEditorMaxPlayTime)) {
+                    this.pulledGame.setEditedMaxPlayTime(gameEditorMaxPlayTime);
+                } // else if(!pulledGame.getEditedMaxPlayTime().equals(gameEditorMaxPlayTime)) {// Do nothing;}
+
+                if(pulledGame.getMinAge().equals(gameEditorMinAge)) {
+                    this.pulledGame.setEditedMinAge(-1);
+                } else if(!pulledGame.getEditedMinAge().equals(gameEditorMinAge)) {
+                    this.pulledGame.setEditedMinAge(gameEditorMinAge);
+                } // else if(!pulledGame.getEditedMinAge().equals(gameEditorMinAge)) {// Do nothing;}
+
+
+                if(pulledGame.getPublisher().getName().equals(gameEditorPublisher)) {
+                    this.pulledGame.getEditedPublisher().setName("");
+                } else if(!pulledGame.getEditedPublisher().getName().equals(gameEditorGameName)) {
+                    this.pulledGame.getEditedPublisher().setName(gameEditorGameName);
+                } // else if(pulledGame.getEditedPublisher().getName().equals(gameEditorGameName)) {// Do nothing;}
+
+
+                this.pulledGame.setLocation(gameEditorLocation);
+
+                // NEED TO SAVE CHANGES TO JSON...
+                // NEED TO TOAST... CHANGES SAVED...
+
             } else { // This is a manual entry game...
 
+                // CREATE NEW DGAME OBJ
                 this.saveGame = new DGame();
                 this.saveGame.setIsUserCreated(true);
-                this.saveGame.setFavorite(holder.favorite.isChecked());
-                this.saveGame.setExpansion(holder.expansion.isChecked());
-                this.saveGame.setEditedGameName(holder.gameName.getText().toString().trim());
-                this.saveGame.setEditedMinPlayers(Integer.parseInt(holder.minPlayers.getText().toString().trim()));
-                this.saveGame.setEditedMaxPlayers(Integer.parseInt(holder.maxPlayers.getText().toString().trim()));
-                this.saveGame.setEditedMinPlayTime(Integer.parseInt(holder.minPlayTime.getText().toString().trim()));
-                this.saveGame.setEditedMaxPlayTime(Integer.parseInt(holder.maxPlayTime.getText().toString().trim()));
-                this.saveGame.setEditedMinAge(Integer.parseInt(holder.minAge.getText().toString().trim()));
+                this.saveGame.setFavorite(gameEditorFavorite);
+                this.saveGame.setExpansion(gameEditorExpansion);
+                this.saveGame.setEditedGameName(gameEditorGameName);
+                this.saveGame.setEditedMinPlayers(gameEditorMinPlayers);
+                this.saveGame.setEditedMaxPlayers(gameEditorMaxPlayers);
+                this.saveGame.setEditedMinPlayTime(gameEditorMinPlayTime);
+                this.saveGame.setEditedMaxPlayTime(gameEditorMaxPlayTime);
+                this.saveGame.setEditedMinAge(gameEditorMinAge);
 
-                if (holder.gameName.getText().toString().trim().length() > 0) {
-                    saveGame.setLocation(holder.gameName.getText().toString().trim());
+                if (gameEditorGameName.length() > 0) {
+                    saveGame.setLocation(gameEditorLocation);
                 }
 
-
                 DPublisher publisher = new DPublisher();
-                publisher.setName(holder.publisher.getText().toString().trim());
+                publisher.setName(gameEditorPublisher);
                 saveGame.setEditedPublisher(publisher);
 
                 //SAVE GAME OBJECT
