@@ -46,7 +46,7 @@ public class PMainMenu implements IProcess{
             TReadJSON readJSON = new TReadJSON(this, file);
             Thread thread = new Thread(readJSON);
             thread.start();
-        } else {
+        } else if(file.getName().equals(DApp.getUserLocationListJSONFileName())){
             String jsonString = DApp.getDefaultReturnUserLocationListSTR();
             String fileName = DApp.getUserLocationListJSONFileName();
             TSaveToFile saveToFile = new TSaveToFile(this.masterRef.get(), fileName, jsonString);
@@ -60,7 +60,6 @@ public class PMainMenu implements IProcess{
     private void gsonParse(SetGameList setList, String response) {
         // This is an overloaded method...
         if(DApp.getReturnUserSTR() != null) {
-            //MGSONParser gsonParse = new MGSONParser(this, MDataHolder::setApiGameList, MDataHolder::getApiGameList, MDataHolder.getReturnApiSTR());
             MGSONParser gsonParse = new MGSONParser(this, setList, response);
             Thread thread = new Thread(gsonParse);
             thread.start();
@@ -72,7 +71,6 @@ public class PMainMenu implements IProcess{
     private void gsonParse(SetLocationList setList, String response) {
         // This is an overloaded method...
         if(DApp.getReturnUserSTR() != null) {
-            //MGSONParser gsonParse = new MGSONParser(this, MDataHolder::setApiGameList, MDataHolder::getApiGameList, MDataHolder.getReturnApiSTR());
             MGSONParser gsonParse = new MGSONParser(this, setList, response);
             Thread thread = new Thread(gsonParse);
             thread.start();

@@ -123,10 +123,10 @@ public class DApp {
         DApp.hasBeenEditedReturnUserLocationListSTR = true;
     }
 
-    public static void setReturnJSONStr(String returnJSONStr, File fileName) {
-        if(fileName == userJSONFile) {
+    public static void setReturnJSONStr(String returnJSONStr, File file) {
+        if(file == userJSONFile) {
             setReturnUserSTR(returnJSONStr);
-        } else if (fileName == userLocationListJSONFile){
+        } else if (file == userLocationListJSONFile){
             setReturnUserLocationListSTR(returnJSONStr);
         }
     }
