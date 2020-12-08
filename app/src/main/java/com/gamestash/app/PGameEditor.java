@@ -34,8 +34,6 @@ public class PGameEditor implements IPresent, IProcess, ISave, IDropDown, View.O
         this.masterRef = new WeakReference<>(activity);
     }
 
-
-
     static class ViewHolder {
         Switch favorite;
         Switch expansion;
@@ -123,7 +121,6 @@ public class PGameEditor implements IPresent, IProcess, ISave, IDropDown, View.O
                 holder.location.setText(pulledGame.getLocation());
             }
         }
-
     }
 
     public void setDropDown() {
