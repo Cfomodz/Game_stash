@@ -21,7 +21,6 @@ public class VGameDetailsAPI extends AppCompatActivity {
         position = intent.getIntExtra("position", 0);
 
         presenter.setupPresenter();
-
     }
 
     public void onclickSave(View view) {
@@ -30,5 +29,4 @@ public class VGameDetailsAPI extends AppCompatActivity {
     }
 
     public int getPosition() {return position;}
-
 }
