@@ -9,7 +9,7 @@
     <string name="f_lbl_app_name">Game Stash</string>
     <string name="f_lbl_game_CAPS">GAME STASH</string>
     <string name="f_lbl_find_a_game">Find a Game!</string>
-    <string name="f_lbl_location">Location/Shelf:</string>
+    <string name="f_lbl_location">Location:</string>
     <string name="f_lbl_favorite">Favorite</string>
     <string name="f_lbl_expansion">Expansion</string>
     <string name="f_lbl_search_results">Search Results</string>
@@ -20,25 +20,19 @@
     <string name="f_lbl_name">Name:</string>
     <string name="f_lbl_publisher">Publisher:</string>
     <string name="f_lbl_num_players">N° Players:</string>
-    <string name="f_lbl_min_players">Min#</string>
-    <string name="f_lbl_num_players_hyphen">-</string>
-    <string name="f_lbl_max_players">Max#</string>
+    <string name="f_lbl_hyphen">-</string>
     <string name="f_lbl_play_time">Play Time:</string>
-    <string name="f_lbl_min_play_time">Min#</string>
-    <string name="f_lbl_play_time_hyphen">-</string>
-    <string name="f_lbl_max_play_time">Max#</string>
-    <string name="f_lbl_play_time_min">min</string>
+    <string name="f_lbl_play_time_unit">min</string>
     <string name="f_lbl_min_age">Min Age:</string>
-    <string name="f_lbl_min_age_num">#</string>
-    <string name="f_lbl_editor_location">Location:</string>
-
-    <!-- "Fixed String" Values -->
 
     <!-- "Fixed String" Hint Text -->
     <string name="f_hint_game_name">Game Name</string>
     <string name="f_hint_publisher">Publisher</string>
     <string name="f_hint_search_game_name">Enter Name of Game</string>
     <string name="f_hint_email_address">Email Address</string>
+    <string name="f_hint_num">#</string>
+    <string name="f_hint_max_num">Max#</string>
+    <string name="f_hint_min_num">Min#</string>
 
     <!-- "Fixed String" Buttons -->
     <string name="f_btn_view_collection">View Collection</string>
@@ -70,7 +64,7 @@
 
     <!-- "Placeholder String" Image Description -->
     <string name="p_img_desc_game_thumb">Game Thumbnail Image</string>
-
+    <string name="p_img_desc_trash">Trash Can Icon</string>
 
     <!-- Delete ??? -->
     <string name="f_lbl_profile">Your User Profile</string>
