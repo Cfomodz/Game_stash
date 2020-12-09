@@ -42,6 +42,9 @@ public class PGameEditor implements IPresent, IProcess, ISave, IDropDown, View.O
     public PGameEditor(Context context, VGameEditor activity) {
         this.mContext = context;
         this.masterRef = new WeakReference<>(activity);
+
+        Intent intent = new Intent();
+        masterRef.get().setResult(RESULT_OK, intent);
     }
 
     static class ViewHolder {
