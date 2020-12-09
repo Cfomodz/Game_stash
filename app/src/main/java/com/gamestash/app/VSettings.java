@@ -29,7 +29,6 @@ public class VSettings extends AppCompatActivity {
 
     public void onClickShareWishList(View view) {
 
-        //String email = "David.Ashby.LDS@gmail.com";
         String subject = "Test Subject";
         String body = "Here are some games";
 
@@ -47,15 +46,5 @@ public class VSettings extends AppCompatActivity {
         }else{
             Toast.makeText(VSettings.this,"There is no email application installed", Toast.LENGTH_SHORT).show();
         }
-
-        /* TODO
-
-        1. Get wish list object
-            ->  from DApp (just a guess)
-        2. For each game object, parse it out into a text string
-            Game Image URL in <img src = URL> tag and Game Name
-
-         */
-
     }
 }
