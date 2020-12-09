@@ -1,10 +1,10 @@
 package com.gamestash.app;
 
-public class LocationItem {
+public class DLocationItem {
     private String locationName;
     private String locationID;
 
-    LocationItem(String location, String id) {
+    DLocationItem(String location, String id) {
         locationName = location;
         locationID = id;
     }

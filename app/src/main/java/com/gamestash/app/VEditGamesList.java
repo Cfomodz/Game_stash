@@ -13,6 +13,5 @@ public class VEditGamesList extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_games_list);
-
     }
 }
