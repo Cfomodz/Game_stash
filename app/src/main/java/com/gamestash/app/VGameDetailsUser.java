@@ -42,7 +42,16 @@ public class VGameDetailsUser extends AppCompatActivity {
         Intent intent = new Intent(this, VGameEditor.class);
         intent.putExtra("position", position);
         intent.putExtras(bundle);
-        startActivity(intent);
+        startActivityForResult(intent, 1);
+    }
+
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == 1) {
+            if(resultCode == RESULT_CANCELED) {
+                finish();
+            }
+        }
     }
 
     public int getPosition() {

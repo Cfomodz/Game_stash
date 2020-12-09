@@ -31,6 +31,15 @@ public class VGameListUser extends AppCompatActivity {
         }
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if(adapter != null){
+            adapter.notifyDataSetChanged();
+        }
+
+    }
+
     @RequiresApi(api = Build.VERSION_CODES.N)
     public void setListView() {
         setContentView(R.layout.activity_gamelist_user);
@@ -44,24 +53,36 @@ public class VGameListUser extends AppCompatActivity {
         listView.setAdapter(adapter);
         listView.setOnItemClickListener((adapter1, view, position, id) -> {
 
-            Intent intent = new Intent(getApplicationContext(), VGameDetailsUser.class);
-            intent.putExtra("position", position);
-            startActivity(intent);
+            if(gameList.get(position).getGameID().equals("err404")) {
+                Toast toast = Toast.makeText(this, "NOT A REAL GAME", Toast.LENGTH_SHORT);
+                toast.show();
+            } else {
+                Intent intent = new Intent(getApplicationContext(), VGameDetailsUser.class);
+                intent.putExtra("position", position);
+                startActivity(intent);
+            }
         });
 
 
         listView.setOnItemLongClickListener((adapter1, view, position, id) -> {
             AlertDialog.Builder builder = new AlertDialog.Builder(this);
-            builder.setTitle("DELETE GAME")
-                    .setMessage("Do you want to delete this game?")
-                    .setNegativeButton("No", null)
-                    .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                            deleteGame(position);
-                        }
-                    })
-                    .show();
+            if(gameList.get(position).getGameID().equals("err404")) {
+                builder.setTitle("DELETE GAME")
+                        .setMessage("Add a new game to remove this entry.")
+                        .setPositiveButton("OK", null)
+                        .show();
+            } else {
+                builder.setTitle("DELETE GAME")
+                        .setMessage("Do you want to delete this game?")
+                        .setNegativeButton("No", null)
+                        .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                deleteGame(position);
+                            }
+                        })
+                        .show();
+            }
             return true;
         });
     }

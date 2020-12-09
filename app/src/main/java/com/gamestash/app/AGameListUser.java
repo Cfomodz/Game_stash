@@ -46,8 +46,8 @@ public class AGameListUser extends ArrayAdapter<DGame> {
         String name = getItem(position).getVisibleGameName();
         String publisher = "Publisher: " + getItem(position).getVisiblePublisher().getName();
         String extraDetails;
-        if (getItem(position).getLocation().length() > 0 ) {
-           extraDetails = "Location: " + getItem(position).getLocation();
+        if (getItem(position).getLocation().length() > 0) {
+            extraDetails = "Location: " + getItem(position).getLocation();
         } else {
             extraDetails = "";
         }
@@ -56,7 +56,7 @@ public class AGameListUser extends ArrayAdapter<DGame> {
         final View result;
         ViewHolder holder;
 
-        if(convertView == null) {
+        if (convertView == null) {
             LayoutInflater inflater = LayoutInflater.from(mContext);
             convertView = inflater.inflate(mResource, parent, false);
 
@@ -79,11 +79,18 @@ public class AGameListUser extends ArrayAdapter<DGame> {
         result.startAnimation(animation);
         lastPosition = position;
 
-        if(gameImage.trim().length() > 0) {
+        if (gameImage.trim().length() > 0) {
             Picasso.get()
                     .load(gameImage)
                     .resize(100, 100)
                     .error(R.drawable.main_menu_img_00)
+                    .centerInside()
+                    .noFade()
+                    .into(holder.gameImage);
+        } else if (getItem(position).getGameID().equals("err404")) {
+            Picasso.get()
+                    .load(R.drawable.error_404)
+                    .resize(100, 100)
                     .centerInside()
                     .noFade()
                     .into(holder.gameImage);

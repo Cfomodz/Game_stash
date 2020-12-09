@@ -63,9 +63,7 @@ public class PMainMenu implements IProcess{
             MGSONParser gsonParse = new MGSONParser(this, setList, response);
             Thread thread = new Thread(gsonParse);
             thread.start();
-
         }
-
     }
 
     private void gsonParse(SetLocationList setList, String response) {
@@ -74,8 +72,6 @@ public class PMainMenu implements IProcess{
             MGSONParser gsonParse = new MGSONParser(this, setList, response);
             Thread thread = new Thread(gsonParse);
             thread.start();
-
         }
-
     }
 }

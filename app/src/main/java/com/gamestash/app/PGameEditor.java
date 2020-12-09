@@ -1,6 +1,9 @@
 package com.gamestash.app;
 
 import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.os.Bundle;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
@@ -11,10 +14,16 @@ import android.widget.ListPopupWindow;
 import android.widget.Spinner;
 import android.widget.Switch;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.lang.ref.WeakReference;
 import java.util.List;
+
+import static android.app.Activity.RESULT_CANCELED;
+import static android.app.Activity.RESULT_OK;
 
 public class PGameEditor implements IPresent, IProcess, ISave, IDropDown, View.OnTouchListener, AdapterView.OnItemClickListener {
 
@@ -24,6 +33,7 @@ public class PGameEditor implements IPresent, IProcess, ISave, IDropDown, View.O
     private WeakReference<VGameEditor> masterRef;
     private DGame saveGame;
     private DGame pulledGame;
+    private List<DGame> gameList;
     private List<String> locationList;
     private ListPopupWindow lpw;
     private ViewHolder holder = new ViewHolder();
@@ -45,6 +55,7 @@ public class PGameEditor implements IPresent, IProcess, ISave, IDropDown, View.O
         EditText maxPlayTime;
         EditText minAge;
         EditText location;
+        FloatingActionButton deleteBtn;
     }
 
     @Override
@@ -54,6 +65,7 @@ public class PGameEditor implements IPresent, IProcess, ISave, IDropDown, View.O
             AppCompatActivity master = masterRef.get();
             position = masterRef.get().getPosition();
 
+            holder.deleteBtn = master.findViewById(R.id.btn_editor_delete);
             holder.favorite = master.findViewById(R.id.switch_editor_favorite);
             holder.expansion = master.findViewById(R.id.switch_editor_expansion);
             holder.gameName = master.findViewById(R.id.et_editor_game_name);
@@ -68,6 +80,7 @@ public class PGameEditor implements IPresent, IProcess, ISave, IDropDown, View.O
             // holder.location list is set by:
             setDropDown();
 
+            gameList = DApp.getUserGameList().getGameList();
             locationList = DApp.getUserLocationList().getLocationList();
 
             if(masterRef.get() != null) {
@@ -82,6 +95,9 @@ public class PGameEditor implements IPresent, IProcess, ISave, IDropDown, View.O
 
             // Set up the info for the fields...
             if(position > -1) {
+                // holder.deleteBtn.setVisibility(View.GONE);
+                holder.deleteBtn.setVisibility(View.VISIBLE);
+
                 pulledGame = DApp.getUserGameList().getGameList().get(position);
                 Log.d(TAG, pulledGame.getVisibleGameName());
 
@@ -354,5 +370,27 @@ public class PGameEditor implements IPresent, IProcess, ISave, IDropDown, View.O
         String item = locationList.get(position);
         holder.location.setText(item);
         lpw.dismiss();
+    }
+
+    public void deleteGame(){
+        if(masterRef.get() != null) {
+            AlertDialog.Builder builder = new AlertDialog.Builder(masterRef.get());
+            builder.setTitle("DELETE GAME")
+                    .setMessage("Do you want to delete this game?")
+                    .setNegativeButton("No", null)
+                    .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            gameList.remove(position);
+                            TSaveGame saveGame = new TSaveGame(masterRef.get(), true, true);
+                            Thread thread = new Thread(saveGame);
+                            thread.start();
+                            Intent intent = new Intent();
+                            masterRef.get().setResult(RESULT_CANCELED, intent);
+                            masterRef.get().finish();
+                        }
+                    })
+                    .show();
+        };
     }
 }

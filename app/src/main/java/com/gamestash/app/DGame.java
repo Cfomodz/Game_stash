@@ -58,6 +58,7 @@ public class DGame {
             this.minPlayers = 0;
             this.maxPlayers = 0;
             this.minAge = 404;
+            this.location = "Missing Box 404";
         }
     }
 

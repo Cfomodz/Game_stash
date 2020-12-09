@@ -8,8 +8,11 @@ import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.gson.GsonBuilder;
+import com.google.j2objc.annotations.Weak;
 
 import java.lang.ref.WeakReference;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class TSaveGame implements Runnable{
     private static final String TAG = DGameList.class.getSimpleName();
@@ -86,6 +89,9 @@ public class TSaveGame implements Runnable{
 
         // If no match add game...
         if (!this.existsInUserList && gameRef.get() != null && presenterRef.get() != null) {
+            if(DApp.getUserGameList().getGameList().size() == 1 && DApp.getUserGameList().getGameList().get(0).getGameID().equals("err404")){
+                DApp.getUserGameList().getGameList().remove(0);
+            }
             DApp.addGameUserGameList(gameRef.get());
             return true;
         } else {

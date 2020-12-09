@@ -29,10 +29,6 @@ public class VGameDetailsAPI extends AppCompatActivity {
         presenter.saveGameInUserList();
     }
 
-    public int getPosition() {
-        return position;
-    }
-
-
+    public int getPosition() {return position;}
 
 }

@@ -51,8 +51,6 @@ public class VGameListAPI extends AppCompatActivity {
                 Toast toast = Toast.makeText(this, "GAME NOT FOUND. SEARCH AGAIN.", Toast.LENGTH_SHORT);
                 toast.show();
             }
-
-
         });
     }
 }
