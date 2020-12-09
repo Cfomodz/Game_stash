@@ -24,6 +24,7 @@
     <string name="f_lbl_play_time">Play Time:</string>
     <string name="f_lbl_play_time_unit">min</string>
     <string name="f_lbl_min_age">Min Age:</string>
+    <string name="f_lbl_settings">Settings</string>
 
     <!-- "Fixed String" Image Description -->
     <string name="f_img_desc_trash">Trash Can Icon</string>

@@ -14,7 +14,7 @@
         <activity
             android:name="com.gamestash.app.VSettings"
             android:parentActivityName="com.gamestash.app.VMainMenu"
-            android:label="@string/f_lbl_profile">
+            android:label="@string/f_lbl_settings">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.gamestash.app.VMainMenu" />

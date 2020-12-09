@@ -2,7 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="wrap_content"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
     tools:context=".VGameListUser">
@@ -18,21 +18,30 @@
 
     </ListView>
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/floatingActionButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="16dp"
-        android:backgroundTint="@color/purple_200"
-        android:clickable="true"
-        android:contentDescription="@string/f_img_desc_filter"
-        android:rotation="0"
-        app:borderWidth="0dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:srcCompat="@android:drawable/ic_menu_sort_by_size"
-        app:tint="@color/white" />
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/floatingActionButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="16dp"
+            android:backgroundTint="@color/purple_200"
+            android:clickable="true"
+            android:contentDescription="@string/f_img_desc_filter"
+            android:rotation="0"
+            app:borderWidth="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:srcCompat="@android:drawable/ic_menu_sort_by_size"
+            app:tint="@color/white"
+            android:focusable="true" />
+
+        <!--
+        Filter for:
+        Wish List (should by default be off unless turned on in filter) ->
+        Time (pull each game's min and max, add each integer between them (inclusive), make list unique, keep each value IFF value%5=0)
+        Num players (pull each game's min and max, add each integer between them (inclusive), make list unique)
+        Location (list of locations)
+        -->
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

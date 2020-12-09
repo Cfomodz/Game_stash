@@ -97,4 +97,9 @@ public class VGameListUser extends AppCompatActivity {
     public void updateAdapter() {
         adapter.notifyDataSetChanged();
     }
+
+    public void onClickFilter(){
+        //intent to child layout (or however you get to one)
+    }
+
 }
