@@ -25,9 +25,6 @@
     <string name="f_lbl_play_time_unit">min</string>
     <string name="f_lbl_min_age">Min Age:</string>
 
-
-    <!-- "Fixed String" Values -->
-
     <!-- "Fixed String" Hint Text -->
     <string name="f_hint_game_name">Game Name</string>
     <string name="f_hint_publisher">Publisher</string>
@@ -67,7 +64,7 @@
 
     <!-- "Placeholder String" Image Description -->
     <string name="p_img_desc_game_thumb">Game Thumbnail Image</string>
-
+    <string name="p_img_desc_trash">Trash Can Icon</string>
 
     <!-- Delete ??? -->
     <string name="f_lbl_profile">Your User Profile</string>

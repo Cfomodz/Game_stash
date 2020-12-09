@@ -11,6 +11,7 @@
         android:layout_width="200dp"
         android:layout_height="200dp"
         android:layout_marginTop="8dp"
+        android:contentDescription="@string/p_img_desc_game_thumb"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -58,7 +59,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:layout_marginEnd="8dp"
-        android:gravity="right"
+        android:gravity="end"
         android:text="@string/f_lbl_name"
         android:textSize="18sp"
         app:layout_constraintBaseline_toBaselineOf="@+id/et_editor_game_name"
@@ -86,7 +87,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/lbl_editor_game_name"
-        app:layout_constraintTop_toBottomOf="@+id/switch_editor_favorite">
+        app:layout_constraintTop_toBottomOf="@+id/switch_editor_favorite"
+        android:importantForAutofill="no">
 
         <requestFocus />
     </EditText>
@@ -97,7 +99,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:layout_marginEnd="8dp"
-        android:gravity="right"
+        android:gravity="end"
         android:text="@string/f_lbl_publisher"
         android:textSize="18sp"
         app:layout_constraintBaseline_toBaselineOf="@+id/et_editor_publisher"
@@ -125,7 +127,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/lbl_editor_publisher"
-        app:layout_constraintTop_toBottomOf="@+id/et_editor_game_name" />
+        app:layout_constraintTop_toBottomOf="@+id/et_editor_game_name"
+        android:importantForAutofill="no" />
 
     <TextView
         android:id="@+id/lbl_editor_num_of_players"
@@ -133,7 +136,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:layout_marginEnd="8dp"
-        android:gravity="right"
+        android:gravity="end"
         android:text="@string/f_lbl_num_players"
         android:textSize="18sp"
         app:layout_constraintBaseline_toBaselineOf="@+id/et_editor_min_players"
@@ -161,7 +164,8 @@
         app:layout_constraintEnd_toStartOf="@+id/lbl_editor_num_players_hyphen"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/lbl_editor_num_of_players"
-        app:layout_constraintTop_toBottomOf="@+id/et_editor_publisher" />
+        app:layout_constraintTop_toBottomOf="@+id/et_editor_publisher"
+        android:importantForAutofill="no" />
 
     <TextView
         android:id="@+id/lbl_editor_num_players_hyphen"
@@ -197,7 +201,8 @@
         app:layout_constraintEnd_toStartOf="@+id/textView14"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/lbl_editor_num_players_hyphen"
-        app:layout_constraintTop_toBottomOf="@+id/et_editor_publisher" />
+        app:layout_constraintTop_toBottomOf="@+id/et_editor_publisher"
+        android:importantForAutofill="no" />
 
     <TextView
         android:id="@+id/textView14"
@@ -215,7 +220,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:layout_marginEnd="8dp"
-        android:gravity="right"
+        android:gravity="end"
         android:text="@string/f_lbl_play_time"
         android:textSize="18sp"
         app:layout_constraintBaseline_toBaselineOf="@+id/et_editor_min_play_time"
@@ -243,7 +248,8 @@
         app:layout_constraintEnd_toStartOf="@+id/lbl_editor_play_time_hyphen"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/lbl_editor_play_time"
-        app:layout_constraintTop_toBottomOf="@+id/et_editor_min_players" />
+        app:layout_constraintTop_toBottomOf="@+id/et_editor_min_players"
+        android:importantForAutofill="no" />
 
     <TextView
         android:id="@+id/lbl_editor_play_time_hyphen"
@@ -278,7 +284,8 @@
         app:layout_constraintEnd_toStartOf="@+id/lbl_editor_play_time_min"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/lbl_editor_play_time_hyphen"
-        app:layout_constraintTop_toBottomOf="@+id/et_editor_max_players" />
+        app:layout_constraintTop_toBottomOf="@+id/et_editor_max_players"
+        android:importantForAutofill="no" />
 
     <TextView
         android:id="@+id/lbl_editor_play_time_min"
@@ -298,7 +305,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:layout_marginEnd="8dp"
-        android:gravity="right"
+        android:gravity="end"
         android:text="@string/f_lbl_min_age"
         android:textSize="18sp"
         app:layout_constraintBaseline_toBaselineOf="@+id/et_editor_min_age"
@@ -327,7 +334,8 @@
         app:layout_constraintEnd_toStartOf="@+id/textView18"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/lbl_editor_min_age"
-        app:layout_constraintTop_toBottomOf="@+id/et_editor_min_play_time" />
+        app:layout_constraintTop_toBottomOf="@+id/et_editor_min_play_time"
+        android:importantForAutofill="no" />
 
     <TextView
         android:id="@+id/textView18"
@@ -346,7 +354,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:layout_marginEnd="8dp"
-        android:gravity="right"
+        android:gravity="end"
         android:text="@string/f_lbl_location"
         android:textSize="18sp"
         app:layout_constraintBaseline_toBaselineOf="@+id/et_editor_location"
@@ -362,7 +370,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="32dp"
-        android:drawableRight="@android:drawable/arrow_down_float"
+        android:drawableEnd="@android:drawable/arrow_down_float"
         android:ems="10"
         android:hint="@string/p_hint_location"
         android:inputType="textCapWords"
@@ -372,7 +380,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/lbl_editor_location"
-        app:layout_constraintTop_toBottomOf="@+id/et_editor_min_age" />
+        app:layout_constraintTop_toBottomOf="@+id/et_editor_min_age"
+        android:importantForAutofill="no" />
 
     <Button
         android:id="@+id/btn_game_editor_save_game"
@@ -396,13 +405,15 @@
         android:layout_marginEnd="16dp"
         android:backgroundTint="@color/purple_200"
         android:clickable="true"
-        android:visibility="gone"
+        android:contentDescription="@string/p_img_desc_trash"
         android:onClick="onclickDelete"
+        android:visibility="gone"
         app:borderWidth="0dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@android:drawable/ic_menu_delete"
-        app:tint="@color/white" />
+        app:tint="@color/white"
+        android:focusable="true" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
