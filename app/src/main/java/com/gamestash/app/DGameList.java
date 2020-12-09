@@ -20,4 +20,8 @@ public class DGameList {
     public void setGameList(List<DGame> gameList) {this.gameList = gameList;}
 
     public List<DGame> getGameList() {return gameList;}
+
+    public void resetNullGameValues() {
+        gameList.forEach(game -> game.resetNullValues());
+    }
 }

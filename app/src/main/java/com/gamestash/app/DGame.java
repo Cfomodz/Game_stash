@@ -23,7 +23,6 @@ public class DGame {
     private Float msrp = 0f;
     private @SerializedName("primary_publisher")
     DPublisher publisher = new DPublisher();
-    //private Map<String, String> mechanics;
 
     // Edited variables.
     private String editedGameName = "";
@@ -422,17 +421,115 @@ public class DGame {
 
     public void resetUserValues() {
         if(!isUserCreated) {
-            editedGameName = "";
-            editedYearPublished = -1;
-            editedMinPlayers = -1;
-            editedMaxPlayers = -1;
-            editedMinPlayTime = -1;
-            editedMaxPlayTime = -1;
-            editedMinAge = -1;
-            editedDescription = "";
-            editedThumbURL = "";
-            editedImageURL = "";
-            editedPublisher = new DPublisher();
+            this.editedGameName = "";
+            this.editedYearPublished = -1;
+            this.editedMinPlayers = -1;
+            this.editedMaxPlayers = -1;
+            this.editedMinPlayTime = -1;
+            this.editedMaxPlayTime = -1;
+            this.editedMinAge = -1;
+            this.editedDescription = "";
+            this.editedThumbURL = "";
+            this.editedImageURL = "";
+            this.editedPublisher = new DPublisher();
+        }
+    }
+
+    public void resetNullValues() {
+        // API variables.
+        if(this.gameID == null){
+            this.gameID = "";
+        }
+        if(this.gameName == null){
+            this.gameName = "";
+        }
+        if(this.yearPublished == null) {
+            this.yearPublished = -1;
+        }
+        if(this.minPlayers == null) {
+            this.minPlayers = -1;
+        }
+        if(this.maxPlayers == null) {
+            this.maxPlayers = -1;
+        }
+        if(this.minPlayTime == null) {
+            this.minPlayTime = -1;
+        }
+        if(this.maxPlayTime == null) {
+            this.maxPlayTime = -1;
+        }
+        if(this.minAge == null) {
+            this.minAge = -1;
+        }
+        if(this.description == null) {
+            this.description = "";
+        }
+        if(this.imageURL == null) {
+            this.imageURL = "";
+        }
+        if(this.thumbURL == null) {
+            this.thumbURL = "";
+        }
+        if(this.url == null) {
+            this.url = "";
+        }
+        if(this.price == null) {
+            this.price = 0f;
+        }
+        if(this.msrp == null) {
+            this.msrp = 0f;
+        }
+        if(this.publisher == null) {
+            this.publisher = new DPublisher();
+        }
+
+        // Edited variables.
+        if(this.editedGameName == null) {
+            this.editedGameName = "";
+        }
+        if(this.editedYearPublished == null) {
+            this.editedYearPublished = -1;
+        }
+        if(this.editedMinPlayers == null) {
+            this.editedMinPlayers = -1;
+        }
+        if(this.editedMaxPlayers == null) {
+            this.editedMaxPlayers = -1;
+        }
+        if(this.editedMinPlayTime == null) {
+            this.editedMinPlayTime = -1;
+        }
+        if(this.editedMaxPlayTime == null) {
+            this.editedMaxPlayTime = -1;
+        }
+        if(this.editedMinAge == null) {
+            this.editedMinAge = -1;
+        }
+        if(this.editedDescription == null) {
+            this.editedDescription = "";
+        }
+        if(this.editedThumbURL == null) {
+            this.editedThumbURL = "";
+        }
+        if(this.editedImageURL == null) {
+            this.editedImageURL = "";
+        }
+        if(this.editedPublisher == null) {
+            this.editedPublisher = new DPublisher();
+        }
+
+        //General User Variables
+        if(this.isUserCreated == null) {
+            this.isUserCreated = false;
+        }
+        if(this.favorite == null) {
+            this.favorite = false;
+        }
+        if(this.expansion == null) {
+            this.expansion = false;
+        }
+        if(this.location == null) {
+            this.location = "";
         }
     }
 }

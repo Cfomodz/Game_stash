@@ -57,6 +57,7 @@ public class MGSONParser implements Runnable{
 
         if(setListType.equals("game")) {
             this.gameListObj = gson.fromJson(this.response, DGameList.class);
+            this.gameListObj.resetNullGameValues();
 
             if(gameListObj.getGameList() != null && !gameListObj.getGameList().isEmpty()) {
                 this.setGameList.set(this.gameListObj);
