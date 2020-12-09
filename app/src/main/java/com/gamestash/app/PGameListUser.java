@@ -1,8 +1,14 @@
 package com.gamestash.app;
 
 import android.content.Context;
+import android.content.Intent;
+import android.util.Log;
 
 import java.lang.ref.WeakReference;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class PGameListUser {
     private static final String TAG = PGameListUser.class.getSimpleName();
@@ -22,5 +28,5 @@ public class PGameListUser {
             thread.start();
         }
 
-    };
+    }
 }

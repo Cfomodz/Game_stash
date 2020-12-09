@@ -1,14 +1,19 @@
 package com.gamestash.app;
 
+import android.annotation.SuppressLint;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class VSettings extends AppCompatActivity {
     private static final String TAG = VSettings.class.getSimpleName();
@@ -29,8 +34,16 @@ public class VSettings extends AppCompatActivity {
 
     public void onClickShareWishList(View view) {
 
-        String subject = "Test Subject";
-        String body = "Here are some games";
+        List<DGame> gameList = DApp.getUserGameList().getGameList();
+        List<String> listOfGames =  new ArrayList<>();
+        for (DGame game: gameList){
+            listOfGames.add(game.getGameName());
+        }
+
+        Log.d(TAG,listOfGames.toString());
+
+        String subject = "My Game Wish List";
+        String body = listOfGames.toString();
 
         EditText email = findViewById(R.id.etTo);
 

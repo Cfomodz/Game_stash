@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.gamestash.app">
+    <queries>
+        <intent>
+            <action android:name="android.intent.action.SEND" />
+            <data android:mimeType="text/plain" />
+        </intent>
+    </queries>
     <uses-permission android:name="android.permission.INTERNET" />
     <application
         android:allowBackup="true"
@@ -11,6 +17,10 @@
         android:networkSecurityConfig="@xml/network_security_config"
         android:theme="@style/Theme.Game_stash"
         android:fullBackupContent="@xml/app_backup_rules">
+        <activity
+            android:name=".VGameListUserPopupFilter"
+            android:parentActivityName=".VGameListUser"
+            android:label="Filter" />
         <activity
             android:name="com.gamestash.app.VSettings"
             android:parentActivityName="com.gamestash.app.VMainMenu"

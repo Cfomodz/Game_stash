@@ -1,26 +1,34 @@
 package com.gamestash.app;
 
+import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.ListView;
+import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import org.w3c.dom.Text;
+
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class VGameListUser extends AppCompatActivity {
     private static final String TAG = VGameListUser.class.getSimpleName();
-
     private PGameListUser presenter;
-
     private List<DGame> gameList;
     private AGameListUser adapter;
+    Dialog myDialog;
 
     @Override
     @RequiresApi(api = Build.VERSION_CODES.N)
@@ -33,6 +41,7 @@ public class VGameListUser extends AppCompatActivity {
         if(DApp.getUserGameList() != null) {
             this.setListView();
         }
+        myDialog = new Dialog(this);
     }
 
     @Override
@@ -98,8 +107,20 @@ public class VGameListUser extends AppCompatActivity {
         adapter.notifyDataSetChanged();
     }
 
-    public void onClickFilter(){
-        //intent to child layout (or however you get to one)
+    public void onClickFilter(View view){
+        TextView txtClose;
+        Spinner spinnerOne;
+        Spinner spinnerTwo;
+        myDialog.setContentView(R.layout.activity_gamelist_user_popup_filter);
+        txtClose = (TextView) myDialog.findViewById(R.id.popupCloseButton);
+        txtClose.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                myDialog.dismiss();
+            }
+        });
+        myDialog.show();
     }
+
 
 }
