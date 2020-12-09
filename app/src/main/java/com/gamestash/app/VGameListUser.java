@@ -41,7 +41,6 @@ public class VGameListUser extends AppCompatActivity {
         if(adapter != null){
             adapter.notifyDataSetChanged();
         }
-
     }
 
     @RequiresApi(api = Build.VERSION_CODES.N)
