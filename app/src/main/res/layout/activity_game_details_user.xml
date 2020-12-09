@@ -110,7 +110,7 @@
         android:background="#FFFFFF"
         android:contentDescription="@string/f_btn_edit"
         android:onClick="onclickEdit"
-        android:tint="#00BCD4"
+        android:tint="#4F5254"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/tv_user_details_game_image"
         app:layout_constraintTop_toTopOf="parent"
