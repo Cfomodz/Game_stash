@@ -17,14 +17,18 @@ import java.util.List;
 public class VGameListUser extends AppCompatActivity {
     private static final String TAG = VGameListUser.class.getSimpleName();
 
-    List<DGame> gameList;
-    AGameListUser adapter;
+    private PGameListUser presenter;
+
+    private List<DGame> gameList;
+    private AGameListUser adapter;
 
     @Override
     @RequiresApi(api = Build.VERSION_CODES.N)
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_gamelist_user);
+
+        presenter = new PGameListUser(this);
 
         if(DApp.getUserGameList() != null) {
             this.setListView();
@@ -78,7 +82,7 @@ public class VGameListUser extends AppCompatActivity {
                         .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
-                                deleteGame(position);
+                                presenter.deleteGame(position);
                             }
                         })
                         .show();
@@ -87,13 +91,9 @@ public class VGameListUser extends AppCompatActivity {
         });
     }
 
-    private void deleteGame(int position){
-        gameList.remove(position);
-        updateAdapter();
-        TSaveGame saveGame = new TSaveGame(this, true, true);
-        Thread thread = new Thread(saveGame);
-        thread.start();
-    };
+    public List<DGame> getGameList() {
+        return gameList;
+    }
 
     public void updateAdapter() {
         adapter.notifyDataSetChanged();
