@@ -5,6 +5,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.text.Html;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
@@ -50,7 +51,7 @@ public class VSettings extends AppCompatActivity {
             String imageURL = game.getImageURL();
             String gameName = game.getGameName();
 
-            String publisher = game.getPublisher().toString();
+            String publisher = game.getPublisher().getName();
 
             String minPlayers = game.getMinPlayers().toString();
             String maxPlayers = game.getMaxPlayers().toString();
@@ -76,16 +77,17 @@ public class VSettings extends AppCompatActivity {
 
         Log.d(TAG,outputHTML);
 
-        /*
         String subject = "My Game Wish List";
+        //String body = "Here is my Wish List of games!";
 
         EditText email = findViewById(R.id.etTo);
 
         Intent emailIntent = new Intent(Intent.ACTION_SEND);
         emailIntent.putExtra(Intent.EXTRA_EMAIL, new String[]{email.getText().toString()});
         emailIntent.putExtra(Intent.EXTRA_SUBJECT, subject);
-        //emailIntent.putExtra(Intent.EXTRA_TEXT, body);
-        emailIntent.putExtra(Intent.EXTRA_HTML_TEXT, outputHTML); //If you are using HTML in your body text
+        emailIntent.putExtra(Intent.EXTRA_STREAM,outputHTML);
+        //emailIntent.putExtra(Intent.EXTRA_HTML_TEXT, outputHTML);
+        //emailIntent.putExtra(Intent.EXTRA_TEXT, Html.fromHtml(outputHTML));
         emailIntent.setType("message/rfc822");
         //emailIntent.setData(Uri.parse("mailto:"));
         if(emailIntent.resolveActivity(getPackageManager()) != null){
@@ -94,6 +96,5 @@ public class VSettings extends AppCompatActivity {
             Toast.makeText(VSettings.this,"There is no email application installed", Toast.LENGTH_SHORT).show();
         }
 
-         */
     }
 }
