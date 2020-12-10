@@ -14,7 +14,7 @@
         android:layout_gravity="end"
         android:background="@drawable/circlebackground"
         android:gravity="center"
-        android:text="X"
+        android:text="@string/f_btn_close"
         android:textColor="@color/white"
         android:textStyle="bold" />
 
@@ -29,6 +29,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="16dp"
+            android:backgroundTint="#FFFFFF"
             android:padding="5dp" />
 
         <Spinner
@@ -36,7 +37,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="16dp"
-            android:padding="5dp"/>
+            android:backgroundTint="#FFFFFF"
+            android:padding="5dp" />
 
     </LinearLayout>
 

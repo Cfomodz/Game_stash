@@ -50,6 +50,7 @@
     <string name="f_btn_settings">Settings</string>
     <string name="f_btn_reset_location_list">Reset Location List</string>
     <string name="f_btn_share_wish_list">Share Wish List</string>
+    <string name="f_btn_close">X</string>
 
 
     <!-- *************************************************************** -->
@@ -69,5 +70,17 @@
 
     <!-- "Placeholder String" Image Description -->
     <string name="p_img_desc_game_thumb">Game Thumbnail Image</string>
+
+    <!-- "Stuff for User List Filters -->
+    <string-array name="categories">
+        <item>No Of Players</item>
+        <item>Play Time</item>
+        <item>Locations</item>
+        <item>Wish List</item>
+    </string-array>
+
+    <string-array name="spinnerTwo">
+        <item>No Games Found</item>
+    </string-array>
 
 </resources>
