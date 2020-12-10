@@ -7,136 +7,158 @@
     android:layout_height="match_parent"
     tools:context=".VGameDetailsAPI">
 
-    <ImageView
-        android:id="@+id/tv_api_details_game_image"
-        android:layout_width="200dp"
-        android:layout_height="200dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="32dp"
-        android:contentDescription="@string/p_img_desc_game_thumb"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:srcCompat="@tools:sample/avatars" />
-
-    <TextView
-        android:id="@+id/tv_api_details_game_name"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="32dp"
-        android:gravity="center"
-        android:text="@string/p_lbl_game_name"
-        android:textSize="30sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_api_details_game_image" />
-
-    <TextView
-        android:id="@+id/tv_api_details_publisher"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="80dp"
-        android:layout_marginTop="32dp"
-        android:layout_marginEnd="80dp"
-        android:text="@string/p_lbl_publisher"
-        android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_api_details_game_name" />
-
-    <TextView
-        android:id="@+id/tv_api_details_max_players"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="80dp"
-        android:layout_marginTop="32dp"
-        android:layout_marginEnd="80dp"
-        android:text="@string/p_lbl_num_players"
-        android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_api_details_publisher" />
-
-    <TextView
-        android:id="@+id/tv_api_details_max_play_time"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="80dp"
-        android:layout_marginTop="32dp"
-        android:layout_marginEnd="80dp"
-        android:text="@string/p_lbl_play_time"
-        android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_api_details_max_players" />
-
-    <TextView
-        android:id="@+id/tv_api_details_min_age"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="80dp"
-        android:layout_marginTop="32dp"
-        android:layout_marginEnd="80dp"
-        android:text="@string/p_lbl_min_age"
-        android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_api_details_max_play_time" />
-
-    <TextView
-        android:id="@+id/tv_api_details_lbl_location"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="40dp"
-        android:text="@string/f_lbl_location"
-        android:textSize="18sp"
-        app:layout_constraintBaseline_toBaselineOf="@+id/et_api_details_location"
-        app:layout_constraintEnd_toStartOf="@+id/et_api_details_location"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintHorizontal_chainStyle="packed"
-        app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginLeft="40dp" />
-
-    <Button
-        android:id="@+id/btn_api_details_add_game"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginEnd="32dp"
-        android:layout_marginBottom="16dp"
-        android:onClick="onclickSave"
-        android:text="@string/f_btn_add_game"
-        app:backgroundTint="#66BBFF"
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.455"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/et_api_details_location"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0">
 
-    <EditText
-        android:id="@+id/et_api_details_location"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:layout_marginEnd="40dp"
-        android:drawableEnd="@android:drawable/arrow_down_float"
-        android:drawableRight="@android:drawable/arrow_down_float"
-        android:ems="10"
-        android:hint="@string/p_hint_location"
-        android:importantForAutofill="no"
-        android:inputType="textCapWords"
-        android:selectAllOnFocus="true"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/tv_api_details_lbl_location"
-        app:layout_constraintTop_toBottomOf="@+id/tv_api_details_min_age"
-        android:layout_marginRight="40dp" />
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="16dp">
+
+            <TextView
+                android:id="@+id/tv_api_details_game_name"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="32dp"
+                android:gravity="center"
+                android:text="@string/p_lbl_game_name"
+                android:textSize="30sp"
+                app:layout_constraintBottom_toTopOf="@+id/tv_api_details_publisher"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_api_details_game_image" />
+
+            <TextView
+                android:id="@+id/tv_api_details_min_age"
+                android:layout_width="256dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="32dp"
+                android:layout_marginEnd="32dp"
+                android:layout_marginBottom="32dp"
+                android:text="@string/p_lbl_min_age"
+                android:textSize="18sp"
+                app:layout_constraintBottom_toTopOf="@+id/et_api_details_location"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_api_details_max_play_time" />
+
+            <TextView
+                android:id="@+id/tv_api_details_max_play_time"
+                android:layout_width="256dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="32dp"
+                android:layout_marginEnd="32dp"
+                android:layout_marginBottom="32dp"
+                android:text="@string/p_lbl_play_time"
+                android:textSize="18sp"
+                app:layout_constraintBottom_toTopOf="@+id/tv_api_details_min_age"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_api_details_max_players" />
+
+            <EditText
+                android:id="@+id/et_api_details_location"
+                android:layout_width="172dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="32dp"
+                android:layout_marginBottom="32dp"
+                android:drawableEnd="@android:drawable/arrow_down_float"
+                android:ems="10"
+                android:hint="@string/p_hint_location"
+                android:importantForAutofill="no"
+                android:inputType="textCapWords"
+                android:selectAllOnFocus="true"
+                app:layout_constraintBottom_toTopOf="@+id/btn_api_details_add_game"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/tv_api_details_lbl_location"
+                app:layout_constraintTop_toBottomOf="@+id/tv_api_details_min_age" />
+
+            <TextView
+                android:id="@+id/tv_api_details_publisher"
+                android:layout_width="256dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="32dp"
+                android:layout_marginEnd="32dp"
+                android:layout_marginBottom="32dp"
+                android:text="@string/p_lbl_publisher"
+                android:textSize="18sp"
+                app:layout_constraintBottom_toTopOf="@+id/tv_api_details_max_players"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_api_details_game_name" />
+
+            <TextView
+                android:id="@+id/tv_api_details_lbl_location"
+                android:layout_width="76dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="32dp"
+                android:layout_marginEnd="8dp"
+                android:text="@string/f_lbl_location"
+                android:textSize="18sp"
+                app:layout_constraintBaseline_toBaselineOf="@+id/et_api_details_location"
+                app:layout_constraintEnd_toStartOf="@+id/et_api_details_location"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintHorizontal_chainStyle="packed"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <ImageView
+                android:id="@+id/tv_api_details_game_image"
+                android:layout_width="200dp"
+                android:layout_height="200dp"
+                android:layout_marginBottom="16dp"
+                android:contentDescription="@string/p_img_desc_game_thumb"
+                app:layout_constraintBottom_toTopOf="@+id/tv_api_details_game_name"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_chainStyle="packed"
+                tools:srcCompat="@drawable/main_menu_img_04" />
+
+            <TextView
+                android:id="@+id/tv_api_details_max_players"
+                android:layout_width="256dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="32dp"
+                android:layout_marginEnd="32dp"
+                android:layout_marginBottom="32dp"
+                android:text="@string/p_lbl_num_players"
+                android:textSize="18sp"
+                app:layout_constraintBottom_toTopOf="@+id/tv_api_details_max_play_time"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_api_details_publisher" />
+
+            <Button
+                android:id="@+id/btn_api_details_add_game"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="32dp"
+                android:layout_marginEnd="32dp"
+                android:layout_marginBottom="16dp"
+                android:onClick="onclickSave"
+                android:text="@string/f_btn_add_game"
+                app:backgroundTint="#66BBFF"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/et_api_details_location" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>

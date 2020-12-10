@@ -4,14 +4,21 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    app:layout_behavior="@string/appbar_scrolling_view_behavior">
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    android:paddingLeft="32dp"
+    android:paddingTop="32dp"
+    android:paddingRight="32dp"
+    android:paddingBottom="32dp">
 
     <ImageView
         android:id="@+id/iv_main_menu"
         android:layout_width="300dp"
         android:layout_height="300dp"
-        android:layout_marginTop="32dp"
-        android:layout_marginBottom="16dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginBottom="32dp"
+        android:contentDescription="@string/f_img_desc_random_logo"
         app:layout_constraintBottom_toTopOf="@+id/btn_main_view_collection"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -23,10 +30,11 @@
 
     <Button
         android:id="@+id/btn_main_add_game_manually"
-        android:layout_width="wrap_content"
+        android:layout_width="230dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:layout_marginBottom="8dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginBottom="16dp"
         android:onClick="onclickAddGameManually"
         android:text="@string/f_btn_add_game_manually"
         app:backgroundTint="#66BBFF"
@@ -37,9 +45,10 @@
 
     <Button
         android:id="@+id/btn_main_profile"
-        android:layout_width="wrap_content"
+        android:layout_width="230dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp"
         android:layout_marginBottom="32dp"
         android:onClick="onclickProfile"
         android:text="@string/f_btn_settings"
@@ -51,10 +60,11 @@
 
     <Button
         android:id="@+id/btn_main_add_game_search"
-        android:layout_width="wrap_content"
+        android:layout_width="230dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:layout_marginBottom="8dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginBottom="16dp"
         android:onClick="onclickAddGameSearch"
         android:text="@string/f_btn_add_game_search"
         app:backgroundTint="#66BBFF"
@@ -65,10 +75,11 @@
 
     <Button
         android:id="@+id/btn_main_view_collection"
-        android:layout_width="wrap_content"
+        android:layout_width="230dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:layout_marginBottom="8dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginBottom="16dp"
         android:onClick="onclickViewCollection"
         android:text="@string/f_btn_view_collection"
         app:backgroundTint="#66BBFF"

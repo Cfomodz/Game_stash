@@ -6,414 +6,394 @@
     android:layout_height="match_parent"
     tools:context=".VGameEditor">
 
-    <ImageView
-        android:id="@+id/imageView2"
-        android:layout_width="200dp"
-        android:layout_height="200dp"
-        android:layout_marginTop="8dp"
-        android:contentDescription="@string/p_img_desc_game_thumb"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/main_menu_img_04"
-        tools:src="@tools:sample/avatars" />
-
-    <Switch
-        android:id="@+id/switch_editor_favorite"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="8dp"
-        android:nextFocusRight="@+id/switch_editor_expansion"
-        android:nextFocusDown="@+id/switch_editor_expansion"
-        android:nextFocusForward="@+id/switch_editor_expansion"
-        android:text="@string/f_lbl_favorite"
-        app:layout_constraintEnd_toStartOf="@+id/switch_editor_expansion"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintHorizontal_chainStyle="packed"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView2"
-        tools:ignore="UseSwitchCompatOrMaterialXml" />
-
-    <Switch
-        android:id="@+id/switch_editor_expansion"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="16dp"
-        android:nextFocusLeft="@+id/switch_editor_favorite"
-        android:nextFocusRight="@+id/et_editor_game_name"
-        android:nextFocusUp="@+id/switch_editor_favorite"
-        android:nextFocusDown="@+id/et_editor_game_name"
-        android:nextFocusForward="@+id/et_editor_game_name"
-        android:text="@string/f_lbl_expansion"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/switch_editor_favorite"
-        app:layout_constraintTop_toBottomOf="@+id/imageView2"
-        tools:ignore="UseSwitchCompatOrMaterialXml" />
-
-    <TextView
-        android:id="@+id/lbl_editor_game_name"
-        android:layout_width="90dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginEnd="8dp"
-        android:gravity="end"
-        android:text="@string/f_lbl_name"
-        android:textSize="18sp"
-        app:layout_constraintBaseline_toBaselineOf="@+id/et_editor_game_name"
-        app:layout_constraintEnd_toStartOf="@+id/et_editor_game_name"
-        app:layout_constraintHorizontal_chainStyle="packed"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <EditText
-        android:id="@+id/et_editor_game_name"
-        android:layout_width="220dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="32dp"
-        android:ems="10"
-        android:hint="@string/f_hint_game_name"
-        android:inputType="textCapWords"
-        android:selectAllOnFocus="true"
-        android:nextFocusLeft="@+id/switch_editor_expansion"
-        android:nextFocusRight="@+id/et_editor_publisher"
-        android:nextFocusUp="@+id/switch_editor_expansion"
-        android:nextFocusDown="@+id/et_editor_publisher"
-        android:nextFocusForward="@+id/et_editor_publisher"
-        android:textSize="16sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/lbl_editor_game_name"
-        app:layout_constraintTop_toBottomOf="@+id/switch_editor_favorite"
-        android:importantForAutofill="no">
-
-        <requestFocus />
-    </EditText>
-
-    <TextView
-        android:id="@+id/lbl_editor_publisher"
-        android:layout_width="90dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginEnd="8dp"
-        android:gravity="end"
-        android:text="@string/f_lbl_publisher"
-        android:textSize="18sp"
-        app:layout_constraintBaseline_toBaselineOf="@+id/et_editor_publisher"
-        app:layout_constraintEnd_toStartOf="@+id/et_editor_publisher"
-        app:layout_constraintHorizontal_chainStyle="packed"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <EditText
-        android:id="@+id/et_editor_publisher"
-        android:layout_width="220dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="32dp"
-        android:ems="10"
-        android:hint="@string/f_hint_publisher"
-        android:inputType="textCapWords"
-        android:selectAllOnFocus="true"
-        android:nextFocusLeft="@+id/et_editor_game_name"
-        android:nextFocusRight="@+id/et_editor_min_players"
-        android:nextFocusUp="@+id/et_editor_game_name"
-        android:nextFocusDown="@+id/et_editor_min_players"
-        android:nextFocusForward="@+id/et_editor_min_players"
-        android:textSize="16sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/lbl_editor_publisher"
-        app:layout_constraintTop_toBottomOf="@+id/et_editor_game_name"
-        android:importantForAutofill="no" />
-
-    <TextView
-        android:id="@+id/lbl_editor_num_of_players"
-        android:layout_width="90dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginEnd="8dp"
-        android:gravity="end"
-        android:text="@string/f_lbl_num_players"
-        android:textSize="18sp"
-        app:layout_constraintBaseline_toBaselineOf="@+id/et_editor_min_players"
-        app:layout_constraintEnd_toStartOf="@+id/et_editor_min_players"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintHorizontal_chainStyle="packed"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <EditText
-        android:id="@+id/et_editor_min_players"
-        android:layout_width="72dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="16dp"
-        android:ems="10"
-        android:hint="@string/f_hint_min_num"
-        android:inputType="number"
-        android:nextFocusLeft="@+id/et_editor_publisher"
-        android:nextFocusRight="@+id/et_editor_max_players"
-        android:nextFocusUp="@+id/et_editor_publisher"
-        android:nextFocusDown="@+id/et_editor_max_players"
-        android:nextFocusForward="@+id/et_editor_max_players"
-        android:selectAllOnFocus="true"
-        android:textSize="16sp"
-        app:layout_constraintEnd_toStartOf="@+id/lbl_editor_num_players_hyphen"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/lbl_editor_num_of_players"
-        app:layout_constraintTop_toBottomOf="@+id/et_editor_publisher"
-        android:importantForAutofill="no" />
-
-    <TextView
-        android:id="@+id/lbl_editor_num_players_hyphen"
-        android:layout_width="20dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="2dp"
-        android:layout_marginEnd="2dp"
-        android:gravity="center"
-        android:text="@string/f_lbl_hyphen"
-        android:textSize="18sp"
-        app:layout_constraintBaseline_toBaselineOf="@+id/et_editor_max_players"
-        app:layout_constraintEnd_toStartOf="@+id/et_editor_max_players"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/et_editor_min_players" />
-
-    <EditText
-        android:id="@+id/et_editor_max_players"
-        style="@android:style/Widget.DeviceDefault.EditText"
-        android:layout_width="72dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="8dp"
-        android:ems="10"
-        android:hint="@string/f_hint_max_num"
-        android:inputType="number"
-        android:nextFocusLeft="@+id/et_editor_min_players"
-        android:nextFocusRight="@+id/et_editor_min_play_time"
-        android:nextFocusUp="@+id/et_editor_min_players"
-        android:nextFocusDown="@+id/et_editor_min_play_time"
-        android:nextFocusForward="@+id/et_editor_min_play_time"
-        android:selectAllOnFocus="true"
-        android:textSize="16sp"
-        app:layout_constraintEnd_toStartOf="@+id/textView14"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/lbl_editor_num_players_hyphen"
-        app:layout_constraintTop_toBottomOf="@+id/et_editor_publisher"
-        android:importantForAutofill="no" />
-
-    <TextView
-        android:id="@+id/textView14"
-        android:layout_width="44dp"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="32dp"
-        app:layout_constraintBaseline_toBaselineOf="@+id/et_editor_max_players"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/et_editor_max_players" />
-
-    <TextView
-        android:id="@+id/lbl_editor_play_time"
-        android:layout_width="90dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginEnd="8dp"
-        android:gravity="end"
-        android:text="@string/f_lbl_play_time"
-        android:textSize="18sp"
-        app:layout_constraintBaseline_toBaselineOf="@+id/et_editor_min_play_time"
-        app:layout_constraintEnd_toStartOf="@+id/et_editor_min_play_time"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintHorizontal_chainStyle="packed"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <EditText
-        android:id="@+id/et_editor_min_play_time"
-        android:layout_width="72dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="16dp"
-        android:ems="10"
-        android:hint="@string/f_hint_min_num"
-        android:inputType="number"
-        android:nextFocusLeft="@+id/et_editor_max_players"
-        android:nextFocusRight="@+id/et_editor_max_play_time"
-        android:nextFocusUp="@+id/et_editor_max_players"
-        android:nextFocusDown="@+id/et_editor_max_play_time"
-        android:nextFocusForward="@+id/et_editor_max_play_time"
-        android:selectAllOnFocus="true"
-        android:textSize="16sp"
-        app:layout_constraintEnd_toStartOf="@+id/lbl_editor_play_time_hyphen"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/lbl_editor_play_time"
-        app:layout_constraintTop_toBottomOf="@+id/et_editor_min_players"
-        android:importantForAutofill="no" />
-
-    <TextView
-        android:id="@+id/lbl_editor_play_time_hyphen"
-        android:layout_width="20dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="2dp"
-        android:layout_marginEnd="2dp"
-        android:gravity="center"
-        android:text="@string/f_lbl_hyphen"
-        android:textSize="18sp"
-        app:layout_constraintBaseline_toBaselineOf="@+id/et_editor_max_play_time"
-        app:layout_constraintEnd_toStartOf="@+id/et_editor_max_play_time"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/et_editor_min_play_time" />
-
-    <EditText
-        android:id="@+id/et_editor_max_play_time"
-        android:layout_width="72dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="8dp"
-        android:ems="10"
-        android:hint="@string/f_hint_max_num"
-        android:inputType="number"
-        android:nextFocusLeft="@+id/et_editor_min_play_time"
-        android:nextFocusRight="@+id/et_editor_min_age"
-        android:nextFocusUp="@+id/et_editor_min_play_time"
-        android:nextFocusDown="@+id/et_editor_min_age"
-        android:nextFocusForward="@+id/et_editor_min_age"
-        android:selectAllOnFocus="true"
-        android:textSize="16sp"
-        app:layout_constraintEnd_toStartOf="@+id/lbl_editor_play_time_min"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/lbl_editor_play_time_hyphen"
-        app:layout_constraintTop_toBottomOf="@+id/et_editor_max_players"
-        android:importantForAutofill="no" />
-
-    <TextView
-        android:id="@+id/lbl_editor_play_time_min"
-        android:layout_width="44dp"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="32dp"
-        android:text="@string/f_lbl_play_time_unit"
-        android:textSize="18sp"
-        app:layout_constraintBaseline_toBaselineOf="@+id/et_editor_max_play_time"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/et_editor_max_play_time" />
-
-    <TextView
-        android:id="@+id/lbl_editor_min_age"
-        android:layout_width="90dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginEnd="8dp"
-        android:gravity="end"
-        android:text="@string/f_lbl_min_age"
-        android:textSize="18sp"
-        app:layout_constraintBaseline_toBaselineOf="@+id/et_editor_min_age"
-        app:layout_constraintEnd_toStartOf="@+id/et_editor_min_age"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintHorizontal_chainStyle="packed"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <EditText
-        android:id="@+id/et_editor_min_age"
-        android:layout_width="50dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="8dp"
-        android:ems="10"
-        android:hint="@string/f_hint_num"
-        android:inputType="number"
-        android:nextFocusLeft="@+id/et_editor_max_play_time"
-        android:nextFocusRight="@+id/et_editor_location"
-        android:nextFocusUp="@+id/et_editor_max_play_time"
-        android:nextFocusDown="@+id/et_editor_location"
-        android:nextFocusForward="@+id/et_editor_location"
-        android:selectAllOnFocus="true"
-        android:textSize="16sp"
-        app:layout_constraintEnd_toStartOf="@+id/textView18"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/lbl_editor_min_age"
-        app:layout_constraintTop_toBottomOf="@+id/et_editor_min_play_time"
-        android:importantForAutofill="no" />
-
-    <TextView
-        android:id="@+id/textView18"
-        android:layout_width="154dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="32dp"
-        app:layout_constraintBaseline_toBaselineOf="@+id/et_editor_min_age"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/et_editor_min_age" />
-
-    <TextView
-        android:id="@+id/lbl_editor_location"
-        android:layout_width="90dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginEnd="8dp"
-        android:gravity="end"
-        android:text="@string/f_lbl_location"
-        android:textSize="18sp"
-        app:layout_constraintBaseline_toBaselineOf="@+id/et_editor_location"
-        app:layout_constraintEnd_toStartOf="@+id/et_editor_location"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintHorizontal_chainStyle="packed"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <EditText
-        android:id="@+id/et_editor_location"
-        android:layout_width="220dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="32dp"
-        android:drawableEnd="@android:drawable/arrow_down_float"
-        android:ems="10"
-        android:hint="@string/p_hint_location"
-        android:inputType="textCapWords"
-        android:selectAllOnFocus="true"
-        android:nextFocusLeft="@+id/et_editor_location"
-        android:nextFocusUp="@+id/et_editor_location"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/lbl_editor_location"
-        app:layout_constraintTop_toBottomOf="@+id/et_editor_min_age"
-        android:importantForAutofill="no" />
-
-    <Button
-        android:id="@+id/btn_game_editor_save_game"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
-        android:onClick="onclickSaveGame"
-        android:text="@string/f_btn_save_game"
-        app:backgroundTint="@color/purple_200"
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/et_editor_location"
-        app:layout_constraintVertical_bias="1.0" />
-
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/btn_editor_delete"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
-        android:backgroundTint="@color/purple_200"
-        android:clickable="true"
-        android:contentDescription="@string/f_img_desc_trash"
-        android:onClick="onclickDelete"
-        android:visibility="gone"
-        app:borderWidth="0dp"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@android:drawable/ic_menu_delete"
-        app:tint="@color/white"
-        android:focusable="true" />
+        app:layout_constraintVertical_bias="0.0">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="16dp">
+
+            <EditText
+                android:id="@+id/et_editor_min_play_time"
+                android:layout_width="72dp"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="@string/f_hint_min_num"
+                android:importantForAutofill="no"
+                android:inputType="number"
+                android:nextFocusLeft="@+id/et_editor_max_players"
+                android:nextFocusRight="@+id/et_editor_max_play_time"
+                android:nextFocusUp="@+id/et_editor_max_players"
+                android:nextFocusDown="@+id/et_editor_max_play_time"
+                android:nextFocusForward="@+id/et_editor_max_play_time"
+                android:selectAllOnFocus="true"
+                android:textSize="16sp"
+                app:layout_constraintBaseline_toBaselineOf="@+id/lbl_editor_play_time_hyphen"
+                app:layout_constraintEnd_toStartOf="@+id/lbl_editor_play_time_hyphen"
+                app:layout_constraintStart_toEndOf="@+id/lbl_editor_play_time" />
+
+            <ImageView
+                android:id="@+id/imageView2"
+                android:layout_width="200dp"
+                android:layout_height="200dp"
+                android:layout_marginBottom="8dp"
+                android:contentDescription="@string/p_img_desc_game_thumb"
+                app:layout_constraintBottom_toTopOf="@+id/switch_editor_expansion"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/main_menu_img_04"
+                tools:src="@drawable/main_menu_img_04" />
+
+            <Switch
+                android:id="@+id/switch_editor_favorite"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="4dp"
+                android:nextFocusRight="@+id/switch_editor_expansion"
+                android:nextFocusDown="@+id/switch_editor_expansion"
+                android:nextFocusForward="@+id/switch_editor_expansion"
+                android:text="@string/f_lbl_favorite"
+                app:layout_constraintBaseline_toBaselineOf="@+id/switch_editor_expansion"
+                app:layout_constraintEnd_toStartOf="@+id/switch_editor_expansion"
+                app:layout_constraintHorizontal_bias="0.54"
+                app:layout_constraintHorizontal_chainStyle="packed"
+                app:layout_constraintStart_toStartOf="parent"
+                tools:ignore="UseSwitchCompatOrMaterialXml" />
+
+            <TextView
+                android:id="@+id/lbl_editor_publisher"
+                android:layout_width="90dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:gravity="end"
+                android:text="@string/f_lbl_publisher"
+                android:textSize="18sp"
+                app:layout_constraintBaseline_toBaselineOf="@+id/et_editor_publisher"
+                app:layout_constraintEnd_toStartOf="@+id/et_editor_publisher"
+                app:layout_constraintHorizontal_chainStyle="packed"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <EditText
+                android:id="@+id/et_editor_max_players"
+                style="@android:style/Widget.DeviceDefault.EditText"
+                android:layout_width="72dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:ems="10"
+                android:hint="@string/f_hint_max_num"
+                android:importantForAutofill="no"
+                android:inputType="number"
+                android:nextFocusLeft="@+id/et_editor_min_players"
+                android:nextFocusRight="@+id/et_editor_min_play_time"
+                android:nextFocusUp="@+id/et_editor_min_players"
+                android:nextFocusDown="@+id/et_editor_min_play_time"
+                android:nextFocusForward="@+id/et_editor_min_play_time"
+                android:selectAllOnFocus="true"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toTopOf="@+id/et_editor_max_play_time"
+                app:layout_constraintEnd_toStartOf="@+id/textView14"
+                app:layout_constraintStart_toEndOf="@+id/lbl_editor_num_players_hyphen" />
+
+            <TextView
+                android:id="@+id/lbl_editor_play_time_min"
+                android:layout_width="44dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:text="@string/f_lbl_play_time_unit"
+                android:textSize="18sp"
+                app:layout_constraintBaseline_toBaselineOf="@+id/et_editor_max_play_time"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/et_editor_max_play_time" />
+
+            <EditText
+                android:id="@+id/et_editor_max_play_time"
+                android:layout_width="72dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:ems="10"
+                android:hint="@string/f_hint_max_num"
+                android:importantForAutofill="no"
+                android:inputType="number"
+                android:nextFocusLeft="@+id/et_editor_min_play_time"
+                android:nextFocusRight="@+id/et_editor_min_age"
+                android:nextFocusUp="@+id/et_editor_min_play_time"
+                android:nextFocusDown="@+id/et_editor_min_age"
+                android:nextFocusForward="@+id/et_editor_min_age"
+                android:selectAllOnFocus="true"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toTopOf="@+id/et_editor_min_age"
+                app:layout_constraintEnd_toStartOf="@+id/lbl_editor_play_time_min"
+                app:layout_constraintStart_toEndOf="@+id/lbl_editor_play_time_hyphen" />
+
+            <TextView
+                android:id="@+id/lbl_editor_play_time"
+                android:layout_width="90dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:gravity="end"
+                android:text="@string/f_lbl_play_time"
+                android:textSize="18sp"
+                app:layout_constraintBaseline_toBaselineOf="@+id/et_editor_min_play_time"
+                app:layout_constraintEnd_toStartOf="@+id/et_editor_min_play_time"
+                app:layout_constraintHorizontal_chainStyle="packed"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <TextView
+                android:id="@+id/lbl_editor_num_players_hyphen"
+                android:layout_width="20dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="2dp"
+                android:layout_marginEnd="2dp"
+                android:gravity="center"
+                android:text="@string/f_lbl_hyphen"
+                android:textSize="18sp"
+                app:layout_constraintBaseline_toBaselineOf="@+id/et_editor_max_players"
+                app:layout_constraintEnd_toStartOf="@+id/et_editor_max_players"
+                app:layout_constraintStart_toEndOf="@+id/et_editor_min_players" />
+
+            <TextView
+                android:id="@+id/lbl_editor_location"
+                android:layout_width="90dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:gravity="end"
+                android:text="@string/f_lbl_location"
+                android:textSize="18sp"
+                app:layout_constraintBaseline_toBaselineOf="@+id/et_editor_location"
+                app:layout_constraintEnd_toStartOf="@+id/et_editor_location"
+                app:layout_constraintHorizontal_chainStyle="packed"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <EditText
+                android:id="@+id/et_editor_location"
+                android:layout_width="220dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:drawableEnd="@android:drawable/arrow_down_float"
+                android:ems="10"
+                android:hint="@string/p_hint_location"
+                android:importantForAutofill="no"
+                android:inputType="textCapWords"
+                android:nextFocusLeft="@+id/et_editor_location"
+                android:nextFocusUp="@+id/et_editor_location"
+                android:selectAllOnFocus="true"
+                app:layout_constraintBottom_toTopOf="@+id/btn_game_editor_save_game"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/lbl_editor_location" />
+
+            <TextView
+                android:id="@+id/lbl_editor_play_time_hyphen"
+                android:layout_width="20dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="2dp"
+                android:layout_marginEnd="2dp"
+                android:gravity="center"
+                android:text="@string/f_lbl_hyphen"
+                android:textSize="18sp"
+                app:layout_constraintBaseline_toBaselineOf="@+id/et_editor_max_play_time"
+                app:layout_constraintEnd_toStartOf="@+id/et_editor_max_play_time"
+                app:layout_constraintStart_toEndOf="@+id/et_editor_min_play_time" />
+
+            <TextView
+                android:id="@+id/lbl_editor_game_name"
+                android:layout_width="90dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:gravity="end"
+                android:text="@string/f_lbl_name"
+                android:textSize="18sp"
+                app:layout_constraintBaseline_toBaselineOf="@+id/et_editor_game_name"
+                app:layout_constraintEnd_toStartOf="@+id/et_editor_game_name"
+                app:layout_constraintHorizontal_chainStyle="packed"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/btn_editor_delete"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/purple_200"
+                android:clickable="true"
+                android:contentDescription="@string/f_img_desc_trash"
+                android:visibility="gone"
+                android:focusable="true"
+                android:onClick="onclickDelete"
+                app:borderWidth="0dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@android:drawable/ic_menu_delete"
+                app:tint="@color/white" />
+
+            <TextView
+                android:id="@+id/lbl_editor_num_of_players"
+                android:layout_width="90dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:gravity="end"
+                android:text="@string/f_lbl_num_players"
+                android:textSize="18sp"
+                app:layout_constraintBaseline_toBaselineOf="@+id/et_editor_min_players"
+                app:layout_constraintEnd_toStartOf="@+id/et_editor_min_players"
+                app:layout_constraintHorizontal_chainStyle="packed"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <EditText
+                android:id="@+id/et_editor_min_age"
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:ems="10"
+                android:hint="@string/f_hint_num"
+                android:importantForAutofill="no"
+                android:inputType="number"
+                android:nextFocusLeft="@+id/et_editor_max_play_time"
+                android:nextFocusRight="@+id/et_editor_location"
+                android:nextFocusUp="@+id/et_editor_max_play_time"
+                android:nextFocusDown="@+id/et_editor_location"
+                android:nextFocusForward="@+id/et_editor_location"
+                android:selectAllOnFocus="true"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toTopOf="@+id/et_editor_location"
+                app:layout_constraintEnd_toStartOf="@+id/textView18"
+                app:layout_constraintStart_toEndOf="@+id/lbl_editor_min_age" />
+
+            <TextView
+                android:id="@+id/textView18"
+                android:layout_width="154dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                app:layout_constraintBaseline_toBaselineOf="@+id/et_editor_min_age"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/et_editor_min_age" />
+
+            <TextView
+                android:id="@+id/lbl_editor_min_age"
+                android:layout_width="90dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:gravity="end"
+                android:text="@string/f_lbl_min_age"
+                android:textSize="18sp"
+                app:layout_constraintBaseline_toBaselineOf="@+id/et_editor_min_age"
+                app:layout_constraintEnd_toStartOf="@+id/et_editor_min_age"
+                app:layout_constraintHorizontal_chainStyle="packed"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <Switch
+                android:id="@+id/switch_editor_expansion"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginBottom="16dp"
+                android:nextFocusLeft="@+id/switch_editor_favorite"
+                android:nextFocusRight="@+id/et_editor_game_name"
+                android:nextFocusUp="@+id/switch_editor_favorite"
+                android:nextFocusDown="@+id/et_editor_game_name"
+                android:nextFocusForward="@+id/et_editor_game_name"
+                android:text="@string/f_lbl_expansion"
+                app:layout_constraintBottom_toTopOf="@+id/et_editor_game_name"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/switch_editor_favorite"
+                tools:ignore="UseSwitchCompatOrMaterialXml" />
+
+            <EditText
+                android:id="@+id/et_editor_game_name"
+                android:layout_width="220dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:ems="10"
+                android:hint="@string/f_hint_game_name"
+                android:importantForAutofill="no"
+                android:inputType="textCapWords"
+                android:nextFocusLeft="@+id/switch_editor_expansion"
+                android:nextFocusRight="@+id/et_editor_publisher"
+                android:nextFocusUp="@+id/switch_editor_expansion"
+                android:nextFocusDown="@+id/et_editor_publisher"
+                android:nextFocusForward="@+id/et_editor_publisher"
+                android:selectAllOnFocus="true"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toTopOf="@+id/et_editor_publisher"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/lbl_editor_game_name">
+
+                <requestFocus />
+            </EditText>
+
+            <EditText
+                android:id="@+id/et_editor_publisher"
+                android:layout_width="220dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:ems="10"
+                android:hint="@string/f_hint_publisher"
+                android:importantForAutofill="no"
+                android:inputType="textCapWords"
+                android:nextFocusLeft="@+id/et_editor_game_name"
+                android:nextFocusRight="@+id/et_editor_min_players"
+                android:nextFocusUp="@+id/et_editor_game_name"
+                android:nextFocusDown="@+id/et_editor_min_players"
+                android:nextFocusForward="@+id/et_editor_min_players"
+                android:selectAllOnFocus="true"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toTopOf="@+id/et_editor_max_players"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/lbl_editor_publisher" />
+
+            <Button
+                android:id="@+id/btn_game_editor_save_game"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:onClick="onclickSaveGame"
+                android:text="@string/f_btn_save_game"
+                app:backgroundTint="@color/purple_200"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <EditText
+                android:id="@+id/et_editor_min_players"
+                android:layout_width="72dp"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="@string/f_hint_min_num"
+                android:importantForAutofill="no"
+                android:inputType="number"
+                android:nextFocusLeft="@+id/et_editor_publisher"
+                android:nextFocusRight="@+id/et_editor_max_players"
+                android:nextFocusUp="@+id/et_editor_publisher"
+                android:nextFocusDown="@+id/et_editor_max_players"
+                android:nextFocusForward="@+id/et_editor_max_players"
+                android:selectAllOnFocus="true"
+                android:textSize="16sp"
+                app:layout_constraintBaseline_toBaselineOf="@+id/lbl_editor_num_players_hyphen"
+                app:layout_constraintEnd_toStartOf="@+id/lbl_editor_num_players_hyphen"
+                app:layout_constraintStart_toEndOf="@+id/lbl_editor_num_of_players" />
+
+            <TextView
+                android:id="@+id/textView14"
+                android:layout_width="44dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                app:layout_constraintBaseline_toBaselineOf="@+id/et_editor_max_players"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/et_editor_max_players" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
