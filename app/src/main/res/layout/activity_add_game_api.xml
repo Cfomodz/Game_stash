@@ -37,7 +37,8 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintHorizontal_chainStyle="packed"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/lbl_add_game_api_find_a_game" />
+        app:layout_constraintTop_toBottomOf="@+id/lbl_add_game_api_find_a_game"
+        android:autofillHints="" />
 
     <Button
         android:id="@+id/btn_add_game_api_game_name"
