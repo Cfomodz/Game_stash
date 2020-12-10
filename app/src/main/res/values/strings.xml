@@ -29,6 +29,7 @@
     <!-- "Fixed String" Image Description -->
     <string name="f_img_desc_trash">Trash Can Icon</string>
     <string name="f_img_desc_filter">Filter Button</string>
+    <string name="f_img_desc_wish_list">With List Image</string>
 
     <!-- "Fixed String" Hint Text -->
     <string name="f_hint_game_name">Game Name</string>
