@@ -30,6 +30,7 @@
     <string name="f_img_desc_trash">Trash Can Icon</string>
     <string name="f_img_desc_filter">Filter Button</string>
     <string name="f_img_desc_wish_list">With List Image</string>
+    <string name="f_img_desc_pencil">Pencil</string>
 
     <!-- "Fixed String" Hint Text -->
     <string name="f_hint_game_name">Game Name</string>
@@ -52,7 +53,7 @@
     <string name="f_btn_reset_location_list">Reset Location List</string>
     <string name="f_btn_share_wish_list">Share Wish List</string>
     <string name="f_btn_close">X</string>
-    <string name="float_btn_pencil">Pencil</string>
+
 
 
     <!-- *************************************************************** -->

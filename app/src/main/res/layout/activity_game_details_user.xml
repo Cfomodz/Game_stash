@@ -17,7 +17,7 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
             android:layout_marginEnd="16dp"
@@ -29,12 +29,11 @@
 
             <TextView
                 android:id="@+id/tv_user_details_location"
-                android:layout_width="0dp"
+                android:layout_width="256dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="80dp"
-                android:layout_marginTop="15dp"
-                android:layout_marginEnd="262dp"
-                android:layout_marginBottom="187dp"
+                android:layout_marginStart="32dp"
+                android:layout_marginEnd="32dp"
+                android:layout_marginBottom="32dp"
                 android:text="@string/p_hint_location"
                 android:textSize="18sp"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -44,12 +43,11 @@
 
             <TextView
                 android:id="@+id/tv_user_details_min_age"
-                android:layout_width="0dp"
+                android:layout_width="256dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="80dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginEnd="117dp"
-                android:layout_marginBottom="24dp"
+                android:layout_marginStart="32dp"
+                android:layout_marginEnd="32dp"
+                android:layout_marginBottom="32dp"
                 android:text="@string/p_lbl_min_age"
                 android:textSize="18sp"
                 app:layout_constraintBottom_toTopOf="@+id/tv_user_details_location"
@@ -58,14 +56,12 @@
                 app:layout_constraintTop_toBottomOf="@+id/tv_user_details_play_time" />
 
             <com.google.android.material.floatingactionbutton.FloatingActionButton
-                android:id="@+id/float_btn_gamelist_user"
+                android:id="@+id/fa_btn_gamelist_user"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:layout_marginEnd="16dp"
                 android:backgroundTint="@color/purple_200"
                 android:clickable="true"
-                android:contentDescription="@string/float_btn_pencil"
+                android:contentDescription="@string/f_img_desc_pencil"
                 android:focusable="true"
                 android:onClick="onclickEdit"
                 app:borderWidth="0dp"
@@ -76,12 +72,11 @@
 
             <TextView
                 android:id="@+id/tv_user_details_players"
-                android:layout_width="0dp"
+                android:layout_width="256dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="80dp"
-                android:layout_marginTop="11dp"
-                android:layout_marginEnd="132dp"
-                android:layout_marginBottom="16dp"
+                android:layout_marginStart="32dp"
+                android:layout_marginEnd="32dp"
+                android:layout_marginBottom="32dp"
                 android:text="@string/p_lbl_num_players"
                 android:textSize="18sp"
                 app:layout_constraintBottom_toTopOf="@+id/tv_user_details_play_time"
@@ -93,9 +88,6 @@
                 android:id="@+id/tv_user_details_game_name"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="32dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="38dp"
                 android:layout_marginBottom="32dp"
                 android:gravity="center"
                 android:text="@string/p_lbl_game_name"
@@ -107,12 +99,11 @@
 
             <TextView
                 android:id="@+id/tv_user_details_play_time"
-                android:layout_width="0dp"
+                android:layout_width="256dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="80dp"
-                android:layout_marginTop="3dp"
-                android:layout_marginEnd="149dp"
-                android:layout_marginBottom="18dp"
+                android:layout_marginStart="32dp"
+                android:layout_marginEnd="32dp"
+                android:layout_marginBottom="32dp"
                 android:text="@string/p_lbl_play_time"
                 android:textSize="18sp"
                 app:layout_constraintBottom_toTopOf="@+id/tv_user_details_min_age"
@@ -122,12 +113,11 @@
 
             <TextView
                 android:id="@+id/tv_user_details_publisher"
-                android:layout_width="0dp"
+                android:layout_width="256dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="80dp"
-                android:layout_marginTop="28dp"
-                android:layout_marginEnd="153dp"
-                android:layout_marginBottom="27dp"
+                android:layout_marginStart="32dp"
+                android:layout_marginEnd="32dp"
+                android:layout_marginBottom="32dp"
                 android:text="@string/p_lbl_publisher"
                 android:textSize="18sp"
                 app:layout_constraintBottom_toTopOf="@+id/tv_user_details_players"
@@ -139,16 +129,14 @@
                 android:id="@+id/tv_user_details_game_image"
                 android:layout_width="200dp"
                 android:layout_height="200dp"
-                android:layout_marginStart="106dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="33dp"
-                android:layout_marginBottom="8dp"
+                android:layout_marginBottom="16dp"
                 android:contentDescription="@string/p_img_desc_game_thumb"
                 app:layout_constraintBottom_toTopOf="@+id/tv_user_details_game_name"
-                app:layout_constraintEnd_toStartOf="@+id/float_btn_gamelist_user"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                tools:srcCompat="@tools:sample/avatars" />
+                app:layout_constraintVertical_chainStyle="packed"
+                tools:srcCompat="@drawable/main_menu_img_01" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
 
