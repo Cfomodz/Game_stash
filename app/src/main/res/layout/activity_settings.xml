@@ -58,11 +58,11 @@
         android:layout_marginStart="80dp"
         android:layout_marginTop="40dp"
         android:layout_marginEnd="80dp"
+        android:contentDescription="@string/f_img_desc_wish_list"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/icons7"
-        android:contentDescription="TODO" />
+        app:srcCompat="@drawable/icons7" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
