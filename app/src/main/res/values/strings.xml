@@ -31,6 +31,7 @@
     <string name="f_img_desc_filter">Filter Button</string>
     <string name="f_img_desc_wish_list">With List Image</string>
     <string name="f_img_desc_pencil">Pencil</string>
+    <string name="f_img_desc_random_logo">Random Game Stash Logo</string>
 
     <!-- "Fixed String" Hint Text -->
     <string name="f_hint_game_name">Game Name</string>
@@ -45,7 +46,7 @@
     <string name="f_btn_view_collection">View Collection</string>
     <string name="f_btn_add_game_search">Add Game Search</string>
     <string name="f_btn_add_game_manually">Add Game Manually</string>
-    <string name="f_btn_find_game">Find a game!</string>
+    <string name="f_btn_find_game">Search</string>
     <string name="f_btn_save_game">Save Game</string>
     <string name="f_btn_add_game">Add Game</string>
     <string name="f_btn_edit">Edit</string>
