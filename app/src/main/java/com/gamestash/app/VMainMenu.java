@@ -29,6 +29,10 @@ public class VMainMenu extends AppCompatActivity {
 
     private IProcess presenter;
 
+    /**
+     * onCreate is used to setup the presenter, the initial variables in DApp, and the random
+     * logo image.
+     */
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,7 +76,9 @@ public class VMainMenu extends AppCompatActivity {
      * locations that would have a value.
      */
     public void onclickAddGameManually(View view) {
-        //The two puts cannot be consolidated. We need the integer for position. -1 does imply
+        //The two puts cannot be consolidated. We need the integer for position.
+        // -1 does imply mainmenu. However, at a later scene there are two views which would
+        // have actual integer values and would be coming from separate locations.
         Bundle bundle = new Bundle();
         bundle.putString("goto", "mainMenu");
         Intent intent = new Intent(this, VGameEditor.class);
@@ -81,11 +87,19 @@ public class VMainMenu extends AppCompatActivity {
         startActivity(intent);
     }
 
+    /**
+     * onclickAddGameSearch starts the activity to search for a game on the board game atlas api.
+     * @param view
+     */
     public void onclickAddGameSearch(View view) {
         Intent intent = new Intent(this, VAddGameAPI.class);
         startActivity(intent);
     }
 
+    /**
+     * onclickProfile starts the activity to use various app tools.
+     * @param view
+     */
     public void onclickProfile(View view) {
         Intent intent = new Intent(this, VAppTools. class);
         startActivity(intent);
