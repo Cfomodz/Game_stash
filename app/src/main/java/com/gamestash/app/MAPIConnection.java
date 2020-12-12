@@ -9,6 +9,10 @@ import java.net.URL;
 import java.net.URLConnection;
 import java.util.Scanner;
 
+/**
+ * <h1>MAPIConnection</h1>
+ * Handles connecting to the API and the response from the website.
+ */
 public class MAPIConnection implements Runnable {
     private static final String TAG = MAPIConnection.class.getSimpleName();
 
@@ -23,6 +27,9 @@ public class MAPIConnection implements Runnable {
         this.url = url;
     }
 
+    /**
+     * run gets things going.
+     */
     @Override
     public void run() {
         try {

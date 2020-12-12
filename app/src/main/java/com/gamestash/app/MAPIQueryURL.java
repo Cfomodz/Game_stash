@@ -96,7 +96,7 @@ public class MAPIQueryURL {
 
         this.apiQuery = TextUtils.join("&", queryList);
     }
-    
+
     private void setUrl() {
         this.url = this.apiURL + apiFunction + this.apiQuery;
     }
