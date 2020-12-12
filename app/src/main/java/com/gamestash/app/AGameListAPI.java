@@ -20,7 +20,7 @@ import java.util.List;
 /**
  * <h1>AGameList API</h1>
  * This class is used to attach the game list returned from the board game atlas api to the
- * listview in VGAmeListAPI.
+ * listview in VGameListAPI.
  */
 public class AGameListAPI extends ArrayAdapter<DGame> {
     private static final String TAG = AGameListAPI.class.getSimpleName();
