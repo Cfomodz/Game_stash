@@ -44,7 +44,7 @@
                 app:layout_constraintStart_toEndOf="@+id/lbl_editor_play_time" />
 
             <ImageView
-                android:id="@+id/imageView2"
+                android:id="@+id/img_game_editor"
                 android:layout_width="200dp"
                 android:layout_height="200dp"
                 android:layout_marginBottom="8dp"

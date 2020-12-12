@@ -11,7 +11,7 @@
     tools:context=".VAppTools">
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/btn_app_tools_share_wish_list"
         android:layout_width="230dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
@@ -20,14 +20,14 @@
         android:backgroundTint="#66BBFF"
         android:onClick="onClickShareWishList"
         android:text="@string/f_btn_share_wish_list"
-        app:layout_constraintBottom_toTopOf="@+id/button"
+        app:layout_constraintBottom_toTopOf="@+id/btn_app_tools_reset_location_list"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etTo" />
+        app:layout_constraintTop_toBottomOf="@+id/dt_app_tools_email_address" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/btn_app_tools_reset_location_list"
         android:layout_width="230dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
@@ -40,10 +40,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button2" />
+        app:layout_constraintTop_toBottomOf="@+id/btn_app_tools_share_wish_list" />
 
     <EditText
-        android:id="@+id/etTo"
+        android:id="@+id/dt_app_tools_email_address"
         android:layout_width="230dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
@@ -54,14 +54,14 @@
         android:hint="@string/f_hint_email_address"
         android:inputType="textEmailAddress"
         android:selectAllOnFocus="true"
-        app:layout_constraintBottom_toTopOf="@+id/button2"
+        app:layout_constraintBottom_toTopOf="@+id/btn_app_tools_share_wish_list"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView3" />
+        app:layout_constraintTop_toBottomOf="@+id/img_app_tools" />
 
     <ImageView
-        android:id="@+id/imageView3"
+        android:id="@+id/img_app_tools"
         android:layout_width="250dp"
         android:layout_height="250dp"
         android:layout_marginStart="32dp"
@@ -69,7 +69,7 @@
         android:layout_marginEnd="32dp"
         android:layout_marginBottom="64dp"
         android:contentDescription="@string/f_img_desc_wish_list"
-        app:layout_constraintBottom_toTopOf="@+id/etTo"
+        app:layout_constraintBottom_toTopOf="@+id/dt_app_tools_email_address"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"

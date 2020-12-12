@@ -2,7 +2,6 @@ package com.gamestash.app;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.text.Html;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
@@ -84,7 +83,7 @@ public class VAppTools extends AppCompatActivity {
         String subject = "My Game Wish List";
         //String body = "Here is my Wish List of games!";
 
-        EditText email = findViewById(R.id.etTo);
+        EditText email = findViewById(R.id.dt_app_tools_email_address);
 
         //linebreak = "\\n"
 
