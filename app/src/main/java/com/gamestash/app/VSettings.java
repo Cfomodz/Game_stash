@@ -82,6 +82,8 @@ public class VSettings extends AppCompatActivity {
 
         EditText email = findViewById(R.id.etTo);
 
+        //linebreak = "\\n"
+
         Intent emailIntent = new Intent(Intent.ACTION_SEND);
         emailIntent.putExtra(Intent.EXTRA_EMAIL, new String[]{email.getText().toString()});
         emailIntent.putExtra(Intent.EXTRA_SUBJECT, subject);

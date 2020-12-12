@@ -1,11 +1,13 @@
 package com.gamestash.app;
 
+import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -19,16 +21,19 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class VGameListUser extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
+public class VGameListUser extends AppCompatActivity {
     private static final String TAG = VGameListUser.class.getSimpleName();
     private PGameListUser presenter;
     private List<DGame> gameList;
     private AGameListUser adapter;
     Dialog myDialog;
+    private Object ArrayAdapter;
 
     @Override
     @RequiresApi(api = Build.VERSION_CODES.N)
@@ -110,16 +115,9 @@ public class VGameListUser extends AppCompatActivity implements AdapterView.OnIt
 
     public void onClickFilter(View view){
         TextView txtClose;
-        Spinner spinnerOne;
-        Spinner spinnerTwo;
         myDialog.setContentView(R.layout.activity_gamelist_user_popup_filter);
-        txtClose = (TextView) myDialog.findViewById(R.id.popupCloseButton);
-        txtClose.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                myDialog.dismiss();
-            }
-        });
+        txtClose = myDialog.findViewById(R.id.popupCloseButton);
+        txtClose.setOnClickListener(v -> myDialog.dismiss());
         initializeViews();
         myDialog.show();
     }
@@ -127,29 +125,40 @@ public class VGameListUser extends AppCompatActivity implements AdapterView.OnIt
     public void initializeViews () {
         Spinner spinnerOne = myDialog.findViewById(R.id.spinnerOne);
 
-        ArrayAdapter<CharSequence> adapterOne = ArrayAdapter.createFromResource(this, R.array.categories, R.layout.filter_spinner_item);
+        List<String> spinnerCategories = Arrays.asList("Select Filter", "No Of Players", "Play Time", "Location", "Wish List");
+
+        ArrayAdapter<String> adapterOne = new ArrayAdapter<>(this, R.layout.filter_spinner_item, spinnerCategories);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
-        //Toast.makeText(this, "test", Toast.LENGTH_SHORT).show();
+        List<String> spinnerTwoDefaultText = Collections.singletonList("Select a category above");
 
         spinnerOne.setAdapter(adapterOne);
-        updateSpinnerTwo();
+        updateSpinnerTwo(spinnerTwoDefaultText);
 
-        spinnerOne.setOnItemSelectedListener(this);
+        SpinnerInteractionListener listener = new SpinnerInteractionListener();
+        spinnerOne.setOnTouchListener(listener);
+        spinnerOne.setOnItemSelectedListener(listener);
+    }
 
+    public void updateSpinnerTwo(List<String> spinnerArray){
+        Spinner spinnerTwo = myDialog.findViewById(R.id.spinnerTwo);
+
+        ArrayAdapter<String> adapterTwo = new ArrayAdapter<String>
+                (this, R.layout.filter_spinner_item,
+                        spinnerArray);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+        //Toast toast = Toast.makeText(this, (CharSequence) spinnerArray, Toast.LENGTH_SHORT);
+
+        //adapter.notifyDataSetChanged();
+        spinnerTwo.setAdapter(adapterTwo);
+        SpinnerTwoInteractionListener listener = new SpinnerTwoInteractionListener();
+        spinnerTwo.setOnTouchListener(listener);
+        spinnerTwo.setOnItemSelectedListener(listener);
 
     }
 
-    public void updateSpinnerTwo(){
-        Spinner spinnerTwo = myDialog.findViewById(R.id.spinnerTwo);
-
-        ArrayAdapter<CharSequence> adapterTwo = ArrayAdapter.createFromResource(this, R.array.spinnerTwo, R.layout.filter_spinner_item);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-
-        spinnerTwo.setAdapter(adapterTwo);
-        spinnerTwo.setOnItemSelectedListener(this);
-
-        //adapter.notifyDataSetChanged();
+    public void showGames(String text){
 
     }
 
@@ -159,44 +168,44 @@ public class VGameListUser extends AppCompatActivity implements AdapterView.OnIt
             Toast.makeText(this, "Filter by: No of Players", Toast.LENGTH_SHORT).show();
             //call to filter games by no of players
             Log.d(TAG, filterGamesByNoPlayers().toString());
-            //filterGamesByNoPlayers();
+            updateSpinnerTwo(filterGamesByNoPlayers());
         }
         if(text.equals("Play Time")){
             Toast.makeText(this, "Filter by: Play Time:", Toast.LENGTH_SHORT).show();
             //call to filter games by amount of time
             Log.d(TAG, filterGamesByTime().toString());
-            //filterGamesByTime();
+            updateSpinnerTwo(filterGamesByTime());
         }
         if(text.equals("Locations")){
             Toast.makeText(this, "Filter by: Locations", Toast.LENGTH_SHORT).show();
             //call to filter games by Location
             Log.d(TAG, filterGamesByLocation().toString());
-            //filterGamesByLocation();
+            updateSpinnerTwo(filterGamesByLocation());
         }
         if(text.equals("Wish List")){
             Toast.makeText(this, "Filter by: Wish List", Toast.LENGTH_SHORT).show();
             //call to filter games by WishList
             Log.d(TAG, filterGamesByWishList().toString());
-            //filterGamesByWishList();
+            updateSpinnerTwo(filterGamesByWishList());
         }
 
     }
 
-    public List<Integer> filterGamesByNoPlayers() {
+    public List<String> filterGamesByNoPlayers() {
 
         List<DGame> gameList = DApp.getUserGameList().getGameList();
         List<Integer> gamesPlayers = new ArrayList<>();
 
         for (DGame game : gameList) {
-            int min = 0;
-            int max = 0;
+            Integer min = 0;
+            Integer max = 0;
             if (game.getMinPlayers() > 0) {
                 min = game.getMinPlayers();
             }
             if (game.getMaxPlayers() > 0) {
                 max = game.getMaxPlayers();
             }
-            for (int i = min; i <= max; i++) {
+            for (Integer i = min; i <= max; i++) {
                 gamesPlayers.add(i);
             }
         }
@@ -207,25 +216,35 @@ public class VGameListUser extends AppCompatActivity implements AdapterView.OnIt
         List<Integer> gamesPlayersWithoutDuplicates = new ArrayList<>(
                 new HashSet<>(gamesPlayers));
 
+        List<String> gamesPlayersWithoutDuplicatesString = new ArrayList<>();
+
+        for (Integer i: gamesPlayersWithoutDuplicates) {
+            if (i == 1) {
+                gamesPlayersWithoutDuplicatesString.add(i.toString() + " Player");
+            }else{
+                gamesPlayersWithoutDuplicatesString.add(i.toString()+" Players");
+            }
+        }
+
         //this is the final results that should be shown in the second spinner
         //Log.d(TAG, gamesPlayersWithoutDuplicates.toString());
-        return gamesPlayersWithoutDuplicates;
+        return gamesPlayersWithoutDuplicatesString;
     }
 
-    public List<Integer> filterGamesByTime() {
+    public List<String> filterGamesByTime() {
         List<DGame> gameList = DApp.getUserGameList().getGameList();
         List<Integer> gamesTime = new ArrayList<>();
 
         for (DGame game : gameList) {
-            int min = 0;
-            int max = 0;
+            Integer min = 0;
+            Integer max = 0;
             if (game.getMinPlayTime() > 0) {
                 min = game.getMinPlayTime();
             }
             if (game.getMaxPlayTime() > 0) {
                 max = game.getMaxPlayTime();
             }
-            for (int i = min; i <= max; i++) {
+            for (Integer i = min; i <= max; i++) {
                 gamesTime.add(i);
             }
         }
@@ -240,8 +259,8 @@ public class VGameListUser extends AppCompatActivity implements AdapterView.OnIt
 
         List<Integer> gamesTimeOptions = new ArrayList<>();
         for (Integer i : gamesTimeWithoutDuplicates) {
-            if (i > 4) {
-                if (i % 5 == 0) {
+            if (i > 14) {
+                if (i % 15 == 0) {
                     gamesTimeOptions.add(i);
                 }
             }else{
@@ -249,9 +268,19 @@ public class VGameListUser extends AppCompatActivity implements AdapterView.OnIt
             }
         }
 
+        List<String> gamesTimeOptionsString = new ArrayList<>();
+
+        for (Integer i: gamesTimeOptions){
+            if (i == 1){
+                gamesTimeOptionsString.add(i.toString()+" Minute");
+            }else{
+                gamesTimeOptionsString.add(i.toString()+" Minutes");
+            }
+        }
+
         //this is the final results that should be shown in the second spinner
         //Log.d(TAG, gamesTimeOptions.toString());
-        return gamesTimeOptions;
+        return gamesTimeOptionsString;
     }
 
     public List<String> filterGamesByWishList(){
@@ -274,24 +303,65 @@ public class VGameListUser extends AppCompatActivity implements AdapterView.OnIt
                 listWithDuplicates.add(game.getLocation());
             }
         }
-        List<String> listWithoutDuplicates = listWithDuplicates.stream()
-                .distinct()
-                .collect(Collectors.toList());
 
         //this is the final results that should be shown in the second spinner
         //Log.d(TAG,listWithoutDuplicates.toString());
-        return listWithoutDuplicates;
+        return listWithDuplicates.stream()
+                .distinct()
+                .collect(Collectors.toList());
     }
 
 
-    @Override
-    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-        String text = parent.getItemAtPosition(position).toString();
-        filterGames(text);
+    public class SpinnerInteractionListener implements AdapterView.OnItemSelectedListener, View.OnTouchListener {
+
+        boolean userSelect = false;
+
+        @Override
+        public boolean onTouch(View v, MotionEvent event) {
+            userSelect = true;
+            return false;
+        }
+
+        @Override
+        public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
+            if (userSelect) {
+                String text = parent.getItemAtPosition(pos).toString();
+                filterGames(text);
+                userSelect = false;
+            }
+        }
+
+        @Override
+        public void onNothingSelected(AdapterView<?> parent) {
+            Toast toast = Toast.makeText(parent.getContext(), "Select a filter", Toast.LENGTH_SHORT);
+        }
+
     }
 
-    @Override
-    public void onNothingSelected(AdapterView<?> parent) {
+    public class SpinnerTwoInteractionListener implements AdapterView.OnItemSelectedListener, View.OnTouchListener {
+
+        boolean userSelect = false;
+
+        @Override
+        public boolean onTouch(View v, MotionEvent event) {
+            userSelect = true;
+            return false;
+        }
+
+        @Override
+        public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
+            if (userSelect) {
+                String text = parent.getItemAtPosition(pos).toString();
+                showGames(text);
+                userSelect = false;
+            }
+        }
+
+        @Override
+        public void onNothingSelected(AdapterView<?> parent) {
+            Toast toast = Toast.makeText(parent.getContext(), "Select a filter", Toast.LENGTH_SHORT);
+        }
 
     }
+
 }
