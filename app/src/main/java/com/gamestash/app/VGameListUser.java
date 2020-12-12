@@ -255,7 +255,7 @@ public class VGameListUser extends AppCompatActivity {
             case "Wish List":
                 //Log.d(TAG, text);
                 for (DGame game: gameList){
-                    if (text.equals("Only Wish List") && game.getLocation().equals("Wish List")){
+                    if (game.getLocation().equals("Wish List")){
                         filteredGameList.add(game);
                         positionGameList.add(gameList.indexOf(game));
                     }else{

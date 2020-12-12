@@ -41,20 +41,13 @@ public class VAppTools extends AppCompatActivity {
 
         List<DGame> gameList = DApp.getUserGameList().getGameList();
         String outputHTML = "";
-        String htmlOpener = "<!DOCTYPE html><html><body>";
-        String htmlHeader = "<h2>Game Wish List</h2>";
-
-        outputHTML = outputHTML.concat(htmlOpener);
-        outputHTML = outputHTML.concat(htmlHeader);
 
         Log.d(TAG,outputHTML);
         String plainText = "";
 
         for (DGame game: gameList){
             if (game.getLocation().equals("Wish List")) {
-                String htmlTableOpen = "<table style=\"width:100%\"";
 
-                String imageURL = game.getImageURL();
                 String gameName = game.getGameName();
 
                 String publisher = game.getPublisher().getName();
@@ -65,15 +58,11 @@ public class VAppTools extends AppCompatActivity {
                 String minAge = game.getMinAge().toString();
                 minAge = minAge.concat("+");
 
-                String description = game.getDescription();
+                String htmlTableRow = "Publisher: " + publisher;
+                String htmlTableRow2 = "Players: " + minPlayers + " - " + maxPlayers;
+                String htmlTableRow3 = "Recommended Age: " + minAge;
 
-                String htmlTableHeading = "<tr><th><img src=\"" + imageURL + "\"></th><th>" + gameName + "</th>";
-                String htmlTableRow = "<tr><td>Publisher: " + publisher + "</td></tr>";
-                String htmlTableRow2 = "<tr><td>Players: " + minPlayers + " - " + maxPlayers + "</td><td>Age: " + minAge + "</td></tr>";
-                String htmlTableRow3 = "<tr><td>" + description + "</td></tr>";
-                String htmlTableClose = "</table>";
-
-                String gameString = htmlTableOpen + htmlTableHeading + htmlTableRow + htmlTableRow2 + htmlTableRow3 + htmlTableClose;
+                String gameString = gameName + "\n\r\n\r" + htmlTableRow + "\n\r\n\r" + htmlTableRow2 + "\n\r\n\r" + htmlTableRow3;
 
                 outputHTML = outputHTML.concat(gameString);
 
@@ -83,11 +72,8 @@ public class VAppTools extends AppCompatActivity {
             }
         }
 
-        String htmlClose = "</body></html>";
-        outputHTML = outputHTML.concat(htmlClose);
 
-
-        Log.d(TAG,outputHTML);
+        //Log.d(TAG,outputHTML);
 
         String subject = "My Game Wish List";
         //String body = "Here is my Wish List of games!";
@@ -100,11 +86,10 @@ public class VAppTools extends AppCompatActivity {
         emailIntent.putExtra(Intent.EXTRA_EMAIL, new String[]{email.getText().toString()});
         emailIntent.putExtra(Intent.EXTRA_SUBJECT, subject);
         //emailIntent.putExtra(Intent.EXTRA_STREAM,outputHTML);
-        //emailIntent.putExtra(Intent.EXTRA_TEXT, plainText);
+        emailIntent.putExtra(Intent.EXTRA_TEXT, plainText);
         //emailIntent.putExtra(Intent.EXTRA_HTML_TEXT, outputHTML);
-
-        emailIntent.putExtra(Intent.EXTRA_TEXT, Html.fromHtml(outputHTML, HtmlCompat.FROM_HTML_MODE_LEGACY));
-        emailIntent.putExtra(Intent.EXTRA_HTML_TEXT, Html.fromHtml(outputHTML, HtmlCompat.FROM_HTML_MODE_LEGACY));
+        //emailIntent.putExtra(Intent.EXTRA_TEXT, Html.fromHtml(outputHTML, HtmlCompat.FROM_HTML_MODE_LEGACY));
+        //emailIntent.putExtra(Intent.EXTRA_HTML_TEXT, Html.fromHtml(outputHTML, HtmlCompat.FROM_HTML_MODE_LEGACY));
         emailIntent.setType("text/html");
         //emailIntent.setData(Uri.parse("mailto:"));
         if(emailIntent.resolveActivity(getPackageManager()) != null){

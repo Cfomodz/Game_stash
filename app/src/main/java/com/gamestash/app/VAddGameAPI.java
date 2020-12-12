@@ -15,12 +15,20 @@ import androidx.appcompat.app.AppCompatActivity;
 public class VAddGameAPI extends AppCompatActivity {
     private static final String TAG = VAddGameAPI.class.getSimpleName();
 
+    /**
+     * onCreate sets up the activity.
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_game_api);
     }
 
+    /**
+     * onclickSearch searches for a game by the game name.
+     * @param view
+     */
     public void onclickSearch(View view) {
         EditText editTextName = findViewById(R.id.et_add_game_api_game_name);
         String search = editTextName.getText().toString();
