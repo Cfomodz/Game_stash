@@ -11,6 +11,10 @@ import com.squareup.picasso.Picasso;
 import java.lang.ref.WeakReference;
 import java.util.List;
 
+/**
+ * <h1>PGameDetailsUser</h1>
+ * Presenter for VGameDetailsUser.
+ */
 public class PGameDetailsUser implements IPresent{
     private static final String TAG = PGameDetailsUser.class.getSimpleName();
 
@@ -23,6 +27,10 @@ public class PGameDetailsUser implements IPresent{
         this.masterRef = new WeakReference<>(activity);
     }
 
+    /**
+     * <h1>ViewHolder</h1>
+     * This is to hold all the layout items for VGameDetailsUser/activity_game_details_user.xml.
+     */
     private class ViewHolder {
         ImageView gameImage;
         TextView gameName;
@@ -33,6 +41,9 @@ public class PGameDetailsUser implements IPresent{
         TextView location;
     }
 
+    /**
+     * setupPresenter is setting the ViewHolder variables to the corresponding layout items.
+     */
     @Override
     public void setupPresenter(){
         //
