@@ -88,7 +88,6 @@ public class VAppTools extends AppCompatActivity {
         //emailIntent.putExtra(Intent.EXTRA_STREAM,outputHTML);
         emailIntent.putExtra(Intent.EXTRA_TEXT, plainText);
         //emailIntent.putExtra(Intent.EXTRA_HTML_TEXT, outputHTML);
-
         //emailIntent.putExtra(Intent.EXTRA_TEXT, Html.fromHtml(outputHTML, HtmlCompat.FROM_HTML_MODE_LEGACY));
         //emailIntent.putExtra(Intent.EXTRA_HTML_TEXT, Html.fromHtml(outputHTML, HtmlCompat.FROM_HTML_MODE_LEGACY));
         emailIntent.setType("text/html");
