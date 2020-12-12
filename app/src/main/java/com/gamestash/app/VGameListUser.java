@@ -87,7 +87,7 @@ public class VGameListUser extends AppCompatActivity {
                 Intent intent = new Intent(getApplicationContext(), VGameDetailsUser.class);
                 if (filtered){
                     intent.putExtra("position", positionGameList.get(position));
-                }else{
+                } else {
                     intent.putExtra("position", position);
                 }
                 startActivity(intent);
@@ -100,6 +100,7 @@ public class VGameListUser extends AppCompatActivity {
             if(listOfGames.get(position).getGameID().equals("err404")) {
                 builder.setTitle("DELETE GAME")
                         .setMessage("Add a new game to remove this entry.")
+                        .setMessage("Add a new game to remove this entry.")
                         .setPositiveButton("OK", null)
                         .show();
             } else {
@@ -109,7 +110,11 @@ public class VGameListUser extends AppCompatActivity {
                         .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
-                                presenter.deleteGame(position);
+                                if (filtered){
+                                    presenter.deleteGame(positionGameList.get(position));
+                                } else {
+                                    presenter.deleteGame(position);
+                                }
                             }
                         })
                         .show();
@@ -123,7 +128,9 @@ public class VGameListUser extends AppCompatActivity {
     }
 
     public void updateAdapter() {
-        adapter.notifyDataSetChanged();
+        if(adapter != null){
+            setListView(gameList,false);
+        }
     }
 
 
