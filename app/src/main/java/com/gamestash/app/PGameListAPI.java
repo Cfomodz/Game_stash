@@ -77,6 +77,10 @@ class PGameListAPI implements IProcess {
         Log.d(TAG, "\tHasBeenEditedUserGameList: " + DApp.getHasBeenEditedUserGameList());
     }
 
+    /**
+     * doSearch will query the website to get the API results.
+     * @param name
+     */
     private void doSearch(String name) {
         Log.d(TAG, "Building API Query URL");
         String url = new MAPIQueryURL("", name, "", -1, -1,-1,-1).getUrl();
@@ -88,6 +92,10 @@ class PGameListAPI implements IProcess {
         thread.start();
     }
 
+    /**
+     * gsonParse This will interpret the results from doSearch.
+     * gsonParse runs on a Thread.
+     */
     private void gsonParse() {
         //MGSONParser gsonParse = new MGSONParser(this, MDataHolder::setApiGameList, MDataHolder::getApiGameList, MDataHolder.getReturnApiSTR());
         MGSONParser gsonParse = new MGSONParser(this, DApp::setApiGameList, DApp.getReturnApiSTR());

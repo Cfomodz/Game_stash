@@ -37,7 +37,7 @@ public class VGameListAPI extends AppCompatActivity {
     }
 
     /**
-     * setListView 
+     * setListView This will be the listView of the games that are returned from the API search.
      */
     public void setListView() {
         setContentView(R.layout.activity_gamelist_api);
