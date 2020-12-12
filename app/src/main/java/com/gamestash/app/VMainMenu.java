@@ -69,9 +69,10 @@ public class VMainMenu extends AppCompatActivity {
      * starting parent if the user moves backward. Position is passed as -1 to indicate that
      * no list position is being passed. This also indicates to the editor that it is opening from
      * a non-list. There is a distinction in that the game editor can be opened from to additional
-     * locations that would have a value. Most likely this
+     * locations that would have a value.
      */
     public void onclickAddGameManually(View view) {
+        //The two puts cannot be consolidated. We need the integer for position. -1 does imply
         Bundle bundle = new Bundle();
         bundle.putString("goto", "mainMenu");
         Intent intent = new Intent(this, VGameEditor.class);
