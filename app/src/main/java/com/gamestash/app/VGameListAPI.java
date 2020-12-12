@@ -17,8 +17,12 @@ import java.util.List;
 public class VGameListAPI extends AppCompatActivity {
     private static final String TAG = VGameListAPI.class.getSimpleName();
 
-    private IProcess presenter = new PAPISearchResults(this);
+    private IProcess presenter = new PGameListAPI(this);
 
+    /**
+     * onCreate sets up the activity.
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,6 +36,9 @@ public class VGameListAPI extends AppCompatActivity {
         }
     }
 
+    /**
+     * setListView This will be the listView of the games that are returned from the API search.
+     */
     public void setListView() {
         setContentView(R.layout.activity_gamelist_api);
 

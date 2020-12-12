@@ -25,6 +25,10 @@ import java.util.List;
 import static android.app.Activity.RESULT_CANCELED;
 import static android.app.Activity.RESULT_OK;
 
+/**
+ * <h1>PGameEditor</h1>
+ * This is the presenter for VGameEditor.
+ */
 public class PGameEditor implements IPresent, IProcess, ISave, IDropDown, View.OnTouchListener, AdapterView.OnItemClickListener {
 
     // Member variables.
@@ -47,6 +51,10 @@ public class PGameEditor implements IPresent, IProcess, ISave, IDropDown, View.O
         masterRef.get().setResult(RESULT_OK, intent);
     }
 
+    /**
+     * <h1>ViewHolder</h1>
+     * This is to hold all the layout items for VGameEditor/activity_game_editor.xml.
+     */
     static class ViewHolder {
         Switch favorite;
         Switch expansion;
@@ -61,6 +69,9 @@ public class PGameEditor implements IPresent, IProcess, ISave, IDropDown, View.O
         FloatingActionButton deleteBtn;
     }
 
+    /**
+     * setupPresenter is setting the ViewHolder variables to the corresponding layout items.
+     */
     @Override
     public void setupPresenter() {
 
@@ -142,6 +153,9 @@ public class PGameEditor implements IPresent, IProcess, ISave, IDropDown, View.O
         }
     }
 
+    /**
+     * setDropDown sets the adapter for the dropdown item on the layout.
+     */
     public void setDropDown() {
         holder.location.setOnTouchListener(this);
 
@@ -158,6 +172,10 @@ public class PGameEditor implements IPresent, IProcess, ISave, IDropDown, View.O
         }
     }
 
+    /**
+     * processChanges gets the values from the layout and assigns them to the appropriate DGame
+     * (if new DGame) or updates existing DGame. Saves the game to the list.
+     */
     @Override
     public void processChanges() {
         //Validate
@@ -341,6 +359,9 @@ public class PGameEditor implements IPresent, IProcess, ISave, IDropDown, View.O
         }
     }
 
+    /**
+     * saveGameInUserList will save a game in a user list on start of thread.
+     */
     @Override
     public void saveGameInUserList() {
         TSaveGame saveGame;
@@ -354,6 +375,15 @@ public class PGameEditor implements IPresent, IProcess, ISave, IDropDown, View.O
     }
 
     //LOCATION
+    //LOCATION
+    //LOCATION
+
+    /**
+     * onTouch Writes the layout when the user clicks the down arrow on the location item.
+     * @param v
+     * @param event
+     * @return
+     */
     @Override
     public boolean onTouch(View v, MotionEvent event) {
         final int DRAWABLE_RIGHT = 2;
@@ -368,6 +398,13 @@ public class PGameEditor implements IPresent, IProcess, ISave, IDropDown, View.O
         return false;
     }
 
+    /**
+     * onItemClick responds to an item when you click on the location dropdown.
+     * @param parent
+     * @param view
+     * @param position
+     * @param id
+     */
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         String item = locationList.get(position);
@@ -375,6 +412,9 @@ public class PGameEditor implements IPresent, IProcess, ISave, IDropDown, View.O
         lpw.dismiss();
     }
 
+    /**
+     * deleteGame deletes a game from the gameList on the start of thread.
+     */
     public void deleteGame(){
         if(masterRef.get() != null) {
             AlertDialog.Builder builder = new AlertDialog.Builder(masterRef.get());

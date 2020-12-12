@@ -12,6 +12,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
+/**
+ * <h1>PAppTools</h1>
+ * Presenter for VAppTools
+ */
 public class PAppTools implements IProcess {
     private static final String TAG = PMainMenu.class.getSimpleName();
 
@@ -36,6 +40,10 @@ public class PAppTools implements IProcess {
         return false;
     }
 
+    /**
+     * processChanges checks to see if variables have been updated and, if they need to be,
+     * runs the correct function to update them.
+     */
     @Override
     public void processChanges() {
         List<DGame> gameList = DApp.getUserGameList().getGameList();

@@ -3,15 +3,22 @@ package com.gamestash.app;
 import java.io.File;
 import java.lang.ref.WeakReference;
 
+/**
+ * <h1>PMainMenu</h1>
+ * Presenter for the Main menu. Handles input from the user and updates variables accordingly.
+ */
+
 public class PMainMenu implements IProcess{
     private static final String TAG = PMainMenu.class.getSimpleName();
 
     private WeakReference<VMainMenu> masterRef;
 
-    public PMainMenu(VMainMenu activity){
-        this.masterRef = new WeakReference<>(activity);
-    }
+    public PMainMenu(VMainMenu activity){this.masterRef = new WeakReference<>(activity);}
 
+    /**
+     * processChanges checks to see if variables have been updated and, if they need to be,
+     * runs the correct function to update them.
+     */
     @Override
     public void processChanges() {
         if(DApp.getReturnUserSTR().equals("")){
@@ -40,6 +47,11 @@ public class PMainMenu implements IProcess{
         }
     }
 
+    /**
+     * getJSON(File file) gets the JSON string from the file on a thread.
+     * Calls processChanges to process the changes.
+     * @param file
+     */
     private void getJSON(File file) {
         //This should be in a thread...
         if (file.exists()){
@@ -57,6 +69,13 @@ public class PMainMenu implements IProcess{
         }
     }
 
+    /**
+     * gsonParse creates a new class called MGSONParser and runs that on a thread.
+     * Parsing the gson file. Requires setList to be SetGameList to know where to put the parsed object.
+     * The response is the information returned from the getJSON function.
+     * @param setList
+     * @param response
+     */
     private void gsonParse(SetGameList setList, String response) {
         // This is an overloaded method...
         if(DApp.getReturnUserSTR() != null) {
@@ -66,6 +85,13 @@ public class PMainMenu implements IProcess{
         }
     }
 
+    /**
+     * gsonParse creates a new class called MGSONParser and runs that on a thread.
+     * Parsing the gson file. Requires setList to be SetLocationList to know where to put the parsed object.
+     * The response is the information returned from the getJSON function.
+     * @param setList
+     * @param response
+     */
     private void gsonParse(SetLocationList setList, String response) {
         // This is an overloaded method...
         if(DApp.getReturnUserSTR() != null) {

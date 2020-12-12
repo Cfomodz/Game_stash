@@ -17,14 +17,17 @@ import java.nio.charset.StandardCharsets;
 public class TReadJSON implements Runnable{
     private static final String TAG = TReadJSON.class.getSimpleName();
 
+    // Member variables.
     private WeakReference<IProcess> presenterRef;
     private File fileName;
 
+    // Constructor.
     public TReadJSON(IProcess presenter, File fileName) {
         this.presenterRef = new WeakReference<>(presenter);
         this.fileName = fileName;
     }
 
+    // Read from file, save to jsonString.
     @Override
     public void run() {
         String jsonString;

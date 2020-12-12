@@ -5,15 +5,23 @@ import android.widget.Toast;
 
 import java.lang.ref.WeakReference;
 
-class PAPISearchResults implements IProcess {
-    private static final String TAG = PAPISearchResults.class.getSimpleName();
+/**
+ * <h1>PGameListAPI</h1>
+ * Presenter for VGameListAPI.
+ */
+class PGameListAPI implements IProcess {
+    private static final String TAG = PGameListAPI.class.getSimpleName();
 
     private WeakReference<VGameListAPI> masterRef;
 
-    public PAPISearchResults(VGameListAPI activity){
+    public PGameListAPI(VGameListAPI activity){
         this.masterRef = new WeakReference<>(activity);
     }
 
+    /**
+     * processChanges checks to see if variables have been updated and, if they need to be,
+     * runs the correct function to update them.
+     */
     @Override
     public void processChanges() {
         Log.d(TAG, "Beginning to process the updates");
@@ -69,6 +77,10 @@ class PAPISearchResults implements IProcess {
         Log.d(TAG, "\tHasBeenEditedUserGameList: " + DApp.getHasBeenEditedUserGameList());
     }
 
+    /**
+     * doSearch will query the website to get the API results.
+     * @param name
+     */
     private void doSearch(String name) {
         Log.d(TAG, "Building API Query URL");
         String url = new MAPIQueryURL("", name, "", -1, -1,-1,-1).getUrl();
@@ -80,6 +92,10 @@ class PAPISearchResults implements IProcess {
         thread.start();
     }
 
+    /**
+     * gsonParse This will interpret the results from doSearch.
+     * gsonParse runs on a Thread.
+     */
     private void gsonParse() {
         //MGSONParser gsonParse = new MGSONParser(this, MDataHolder::setApiGameList, MDataHolder::getApiGameList, MDataHolder.getReturnApiSTR());
         MGSONParser gsonParse = new MGSONParser(this, DApp::setApiGameList, DApp.getReturnApiSTR());

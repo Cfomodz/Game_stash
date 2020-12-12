@@ -17,6 +17,10 @@ public class VGameDetailsAPI extends AppCompatActivity {
     private PGameDetailsAPI presenter = new PGameDetailsAPI(this);
     private int position;
 
+    /**
+     * onCreate sets up the activity.
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,10 +32,18 @@ public class VGameDetailsAPI extends AppCompatActivity {
         presenter.setupPresenter();
     }
 
+    /**
+     * onClickSave saves the game in the userList by calling the function in the presenter.
+     * @param view
+     */
     public void onclickSave(View view) {
         // Trigger PGameDetailsAPI method to save...
         presenter.saveGameInUserList();
     }
 
+    /**
+     * getPosition returns a list position.
+     * @return
+     */
     public int getPosition() {return position;}
 }

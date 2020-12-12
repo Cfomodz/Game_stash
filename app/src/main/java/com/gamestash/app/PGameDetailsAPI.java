@@ -15,6 +15,10 @@ import com.squareup.picasso.Picasso;
 import java.lang.ref.WeakReference;
 import java.util.List;
 
+/**
+ * <h1>PGameDetailsAPI</h1>
+ * Presenter for VGameDetailsAPI.
+ */
 public class PGameDetailsAPI implements IPresent, ISave, IDropDown, View.OnTouchListener, AdapterView.OnItemClickListener {
     private static final String TAG = PGameDetailsAPI.class.getSimpleName();
 
@@ -29,6 +33,10 @@ public class PGameDetailsAPI implements IPresent, ISave, IDropDown, View.OnTouch
         this.masterRef = new WeakReference<>(activity);
     }
 
+    /**
+     * <h1>ViewHolder</h1>
+     * This is to hold all the layout items for VGameDetailsApi/activity_game_details_api.xml.
+     */
     private class ViewHolder {
         ImageView gameImage;
         TextView gameName;
@@ -39,6 +47,9 @@ public class PGameDetailsAPI implements IPresent, ISave, IDropDown, View.OnTouch
         EditText location;
     }
 
+    /**
+     * setupPresenter is setting the ViewHolder variables to the corresponding layout items.
+     */
     @Override
     public void setupPresenter(){
         if(masterRef.get() != null) {
@@ -80,6 +91,9 @@ public class PGameDetailsAPI implements IPresent, ISave, IDropDown, View.OnTouch
         Log.d(TAG, game.getGameName());
     }
 
+    /**
+     * setDropDown sets the adapter for the dropdown item on the layout.
+     */
     public void setDropDown() {
         holder.location.setOnTouchListener(this);
 
@@ -94,11 +108,11 @@ public class PGameDetailsAPI implements IPresent, ISave, IDropDown, View.OnTouch
             lpw.setModal(true);
             lpw.setOnItemClickListener(this);
         }
-
-
-
     }
 
+    /**
+     * saveGameInUserList will save a game in a user list on start of thread.
+     */
     @Override
     public void saveGameInUserList() {
         if (this.masterRef.get() !=  null){
@@ -113,6 +127,15 @@ public class PGameDetailsAPI implements IPresent, ISave, IDropDown, View.OnTouch
     }
 
     //LOCATION
+    //LOCATION
+    //LOCATION
+
+    /**
+     * onTouch Writes the layout when the user clicks the down arrow on the location item.
+     * @param v
+     * @param event
+     * @return
+     */
     @Override
     public boolean onTouch(View v, MotionEvent event) {
         final int DRAWABLE_RIGHT = 2;
@@ -127,11 +150,17 @@ public class PGameDetailsAPI implements IPresent, ISave, IDropDown, View.OnTouch
         return false;
     }
 
+    /**
+     * onItemClick responds to an item when you click on the location dropdown.
+     * @param parent
+     * @param view
+     * @param position
+     * @param id
+     */
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         String item = locationList.get(position);
         holder.location.setText(item);
         lpw.dismiss();
     }
-
 }
