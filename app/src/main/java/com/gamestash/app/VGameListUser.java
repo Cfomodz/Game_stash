@@ -32,8 +32,9 @@ public class VGameListUser extends AppCompatActivity {
     private PGameListUser presenter;
     private List<DGame> gameList;
     private AGameListUser adapter;
+    private List<Integer> positionGameList;
     Dialog myDialog;
-    private Object ArrayAdapter;
+
 
     @Override
     @RequiresApi(api = Build.VERSION_CODES.N)
@@ -42,13 +43,14 @@ public class VGameListUser extends AppCompatActivity {
         setContentView(R.layout.activity_gamelist_user);
 
         presenter = new PGameListUser(this);
-
         if(DApp.getUserGameList() != null) {
-            this.setListView();
+            gameList = DApp.getUserGameList().getGameList();
+            this.setListView(gameList, false);
         }
         myDialog = new Dialog(this);
     }
 
+/*
     @Override
     protected void onResume() {
         super.onResume();
@@ -56,26 +58,38 @@ public class VGameListUser extends AppCompatActivity {
             adapter.notifyDataSetChanged();
         }
     }
+*/
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if(adapter != null){
+            setListView(gameList,false);
+        }
+    }
 
     @RequiresApi(api = Build.VERSION_CODES.N)
-    public void setListView() {
+    public void setListView(List<DGame> listOfGames, boolean filtered) {
         setContentView(R.layout.activity_gamelist_user);
 
         ListView listView = findViewById(R.id.lv_game_list);
         Log.d(TAG, "onCreate: Started.");
 
-        gameList = DApp.getUserGameList().getGameList();
-        adapter = new AGameListUser(this, R.layout.item_layout_gamelist, gameList);
+        adapter = new AGameListUser(this, R.layout.item_layout_gamelist, listOfGames);
 
         listView.setAdapter(adapter);
         listView.setOnItemClickListener((adapter1, view, position, id) -> {
 
-            if(gameList.get(position).getGameID().equals("err404")) {
+            if(listOfGames.get(position).getGameID().equals("err404")) {
                 Toast toast = Toast.makeText(this, "NOT A REAL GAME", Toast.LENGTH_SHORT);
                 toast.show();
             } else {
                 Intent intent = new Intent(getApplicationContext(), VGameDetailsUser.class);
-                intent.putExtra("position", position);
+                if (filtered){
+                    intent.putExtra("position", positionGameList.get(position));
+                }else{
+                    intent.putExtra("position", position);
+                }
                 startActivity(intent);
             }
         });
@@ -83,7 +97,7 @@ public class VGameListUser extends AppCompatActivity {
 
         listView.setOnItemLongClickListener((adapter1, view, position, id) -> {
             AlertDialog.Builder builder = new AlertDialog.Builder(this);
-            if(gameList.get(position).getGameID().equals("err404")) {
+            if(listOfGames.get(position).getGameID().equals("err404")) {
                 builder.setTitle("DELETE GAME")
                         .setMessage("Add a new game to remove this entry.")
                         .setPositiveButton("OK", null)
@@ -159,7 +173,73 @@ public class VGameListUser extends AppCompatActivity {
     }
 
     public void showGames(String text){
+        gameList = DApp.getUserGameList().getGameList();
+        List<DGame> filteredGameList = new ArrayList<>();
+        positionGameList = new ArrayList<>();
+        String[] parts = text.split(" ");
+        switch (DFilter.getCategory()){
+            case "No Of Players":
+                int noPlayers = Integer.parseInt(parts[0]);
+                Log.d(TAG, Integer.toString(noPlayers));
+                for (DGame game: gameList){
+                    if (noPlayers >= game.getMinPlayers() && noPlayers <= game.getMaxPlayers()){
+                        filteredGameList.add(game);
+                        positionGameList.add(gameList.indexOf(game));
+                    }
+                }
+                break;
+            case "Play Time":
+                int playTime = Integer.parseInt(parts[0]);
+                Log.d(TAG, Integer.toString(playTime));
+                for (DGame game: gameList){
+                    if (playTime >= game.getVisibleMinPlayTime()){
+                        filteredGameList.add(game);
+                        positionGameList.add(gameList.indexOf(game));
+                    }
+                }
+                break;
+            case "Location":
+                Log.d(TAG, text);
+                for (DGame game: gameList){
+                    if (text.equals(game.getLocation())){
+                        filteredGameList.add(game);
+                        positionGameList.add(gameList.indexOf(game));
+                    }
+                }
+                break;
+            case "Wish List":
+                Log.d(TAG, text);
+                for (DGame game: gameList){
+                    if (text.equals("Only Wish List") && game.getLocation().equals("Wish List")){
+                        filteredGameList.add(game);
+                        positionGameList.add(gameList.indexOf(game));
+                    }else{
+                        if (!game.getLocation().equals("Wish List")){
+                            filteredGameList.add(game);
+                            positionGameList.add(gameList.indexOf(game));
+                        }
+                    }
+                }
+                break;
+        }
 
+        setListView(filteredGameList, true);
+
+        //filter from that list
+        if(adapter != null){
+            adapter.notifyDataSetChanged();
+        }
+    }
+
+    public void resetGameList(){
+        gameList = DApp.getUserGameList().getGameList();
+    }
+
+    public void onClickResetGameList(){
+        resetGameList();
+        if(adapter != null){
+            adapter.notifyDataSetChanged();
+        }
     }
 
     public void filterGames(String text){
@@ -176,7 +256,7 @@ public class VGameListUser extends AppCompatActivity {
             Log.d(TAG, filterGamesByTime().toString());
             updateSpinnerTwo(filterGamesByTime());
         }
-        if(text.equals("Locations")){
+        if(text.equals("Location")){
             Toast.makeText(this, "Filter by: Locations", Toast.LENGTH_SHORT).show();
             //call to filter games by Location
             Log.d(TAG, filterGamesByLocation().toString());
@@ -195,7 +275,7 @@ public class VGameListUser extends AppCompatActivity {
 
         List<DGame> gameList = DApp.getUserGameList().getGameList();
         List<Integer> gamesPlayers = new ArrayList<>();
-
+        gamesPlayers.add(0);
         for (DGame game : gameList) {
             Integer min = 0;
             Integer max = 0;
@@ -234,7 +314,7 @@ public class VGameListUser extends AppCompatActivity {
     public List<String> filterGamesByTime() {
         List<DGame> gameList = DApp.getUserGameList().getGameList();
         List<Integer> gamesTime = new ArrayList<>();
-
+        gamesTime.add(0);
         for (DGame game : gameList) {
             Integer min = 0;
             Integer max = 0;
@@ -285,8 +365,9 @@ public class VGameListUser extends AppCompatActivity {
 
     public List<String> filterGamesByWishList(){
         List<String> wishListOptions = new ArrayList<>();
-        wishListOptions.add("Show");
-        wishListOptions.add("Hide");
+        wishListOptions.add("Select option");
+        wishListOptions.add("Only Wish List");
+        wishListOptions.add("All except Wish List");
 
         //this is the final results that should be shown in the second spinner
         //Log.d(TAG, wishListOptions.toString());
@@ -297,6 +378,7 @@ public class VGameListUser extends AppCompatActivity {
         List<DGame> gameList = DApp.getUserGameList().getGameList();
         List<String> listWithDuplicates =  new ArrayList<>();
         Log.d(TAG,listWithDuplicates.toString());
+        listWithDuplicates.add("Select option");
         listWithDuplicates.add("Wish List");
         for (DGame game: gameList){
             if(game.getLocation().trim().length()>0) {
@@ -326,7 +408,9 @@ public class VGameListUser extends AppCompatActivity {
         public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
             if (userSelect) {
                 String text = parent.getItemAtPosition(pos).toString();
+                resetGameList();
                 filterGames(text);
+                DFilter.setCategory(text);
                 userSelect = false;
             }
         }
@@ -353,6 +437,7 @@ public class VGameListUser extends AppCompatActivity {
             if (userSelect) {
                 String text = parent.getItemAtPosition(pos).toString();
                 showGames(text);
+                DFilter.setSelection(text);
                 userSelect = false;
             }
         }
