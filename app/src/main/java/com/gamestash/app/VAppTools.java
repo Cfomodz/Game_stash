@@ -43,7 +43,7 @@ public class VAppTools extends AppCompatActivity {
         String plainText = "";
 
         for (DGame game: gameList){
-            if game.getLocation().equals("Wish List") {
+            if (game.getLocation().equals("Wish List")) {
                 String htmlTableOpen = "<table style=\"width:100%\"";
 
                 String imageURL = game.getImageURL();
