@@ -23,14 +23,14 @@
         android:inputType="textCapWords"
         android:onClick="onclickSearch"
         android:selectAllOnFocus="true"
-        app:layout_constraintBottom_toTopOf="@+id/btn_add_game_api_game_name"
+        app:layout_constraintBottom_toTopOf="@+id/btn_add_game_api_search"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_chainStyle="packed"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/img_add_game_api" />
 
     <Button
-        android:id="@+id/btn_add_game_api_game_name"
+        android:id="@+id/btn_add_game_api_search"
         android:layout_width="230dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"

@@ -5,6 +5,10 @@ import android.text.TextUtils;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * <h1>MAPIQueryURL</h1>
+ * This class will build the URL and stores values returned from the API query.
+ */
 public class MAPIQueryURL {
     private static final String TAG = MAPIQueryURL.class.getSimpleName();
 
@@ -60,6 +64,9 @@ public class MAPIQueryURL {
         this.setUrl();
     }
 
+    /**
+     * setApiQuery sets the string values from the API query.
+     */
     private void setApiQuery() {
         List<String> queryList = new ArrayList<>();
         if (!this.gameIds.equals("")) {
@@ -89,7 +96,7 @@ public class MAPIQueryURL {
 
         this.apiQuery = TextUtils.join("&", queryList);
     }
-
+    
     private void setUrl() {
         this.url = this.apiURL + apiFunction + this.apiQuery;
     }

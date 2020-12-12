@@ -15,6 +15,8 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class TSaveGame implements Runnable{
+
+    // Member variables.
     private static final String TAG = DGameList.class.getSimpleName();
     private WeakReference<DGame> gameRef;
     private final WeakReference<AppCompatActivity> masterRef;
@@ -29,6 +31,7 @@ public class TSaveGame implements Runnable{
     private static final String filenameUserGameList = "usergamelist.json";
     private static final String filenameUserLocationList = "userlocationlist.json";
 
+    // Constructors.
     /** This constructor will likely create a new game using GSON from API data. */
     public TSaveGame(AppCompatActivity activity, ISave presenter, DGame game){
         this.masterRef = new WeakReference<>(activity);

@@ -13,11 +13,14 @@ import java.lang.ref.WeakReference;
  */
 
 public class TSaveToFile implements Runnable{
+
+    // Member variables.
     private static final String TAG = TSaveToFile.class.getSimpleName();
     private final WeakReference<Context> context;
     private final String fileName;
     private final String fileContents;
 
+    // Constructors.
     public TSaveToFile(Context context, String fileName, String fileContents){
         this.context = new WeakReference<>(context);
         this.fileName = fileName;
