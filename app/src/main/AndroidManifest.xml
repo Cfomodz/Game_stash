@@ -18,10 +18,6 @@
         android:theme="@style/Theme.Game_stash"
         android:fullBackupContent="@xml/app_backup_rules">
         <activity
-            android:name=".VGameListUserPopupFilter"
-            android:parentActivityName=".VGameListUser"
-            android:label="Filter" />
-        <activity
             android:name="com.gamestash.app.VAppTools"
             android:parentActivityName="com.gamestash.app.VMainMenu"
             android:label="@string/f_lbl_app_tools">
