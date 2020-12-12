@@ -32,8 +32,9 @@ public class VGameDetailsUser extends AppCompatActivity {
 
         presenter.setupPresenter();
     }
-
-    // Needed to update game details with the edited game details if any exist...
+/**
+ * Needed to update game details with the edited game details if any exist.
+ */
     @Override
     protected void onResume() {
         super.onResume();
