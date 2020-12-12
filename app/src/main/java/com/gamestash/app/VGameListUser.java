@@ -464,8 +464,8 @@ public class VGameListUser extends AppCompatActivity {
             if (userSelect) {
                 String text = parent.getItemAtPosition(pos).toString();
                 resetGameList();
-                filterGames(text);
                 DFilter.setCategory(text);
+                filterGames(text);
                 userSelect = false;
             }
         }
@@ -494,8 +494,8 @@ public class VGameListUser extends AppCompatActivity {
         public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
             if (userSelect) {
                 String text = parent.getItemAtPosition(pos).toString();
-                showGames(text);
                 DFilter.setSelection(text);
+                showGames(text);
                 userSelect = false;
             }
         }
