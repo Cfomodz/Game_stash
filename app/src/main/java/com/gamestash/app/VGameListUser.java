@@ -27,6 +27,11 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.stream.Collectors;
 
+/**
+ * Shows user a list of games that they have previously added to their collection.
+ * Further allows filtering the display of those games by certain criteria.
+ */
+
 public class VGameListUser extends AppCompatActivity {
     private static final String TAG = VGameListUser.class.getSimpleName();
     private PGameListUser presenter;
@@ -35,7 +40,10 @@ public class VGameListUser extends AppCompatActivity {
     private List<Integer> positionGameList;
     Dialog myDialog;
 
-
+    /**
+     * Displays list of games to the visible list view.
+     * @param savedInstanceState
+     */
     @Override
     @RequiresApi(api = Build.VERSION_CODES.N)
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,6 +68,9 @@ public class VGameListUser extends AppCompatActivity {
     }
 */
 
+    /**
+     * Resets the list of games to the original collection
+     */
     @Override
     protected void onResume() {
         super.onResume();
@@ -68,12 +79,18 @@ public class VGameListUser extends AppCompatActivity {
         }
     }
 
+    /**
+     * Displays the games of a provided list of type DGame
+     * (Entire collection or filtered)
+     * @param listOfGames
+     * @param filtered
+     */
     @RequiresApi(api = Build.VERSION_CODES.N)
     public void setListView(List<DGame> listOfGames, boolean filtered) {
         setContentView(R.layout.activity_gamelist_user);
 
         ListView listView = findViewById(R.id.lv_game_list);
-        Log.d(TAG, "onCreate: Started.");
+        //Log.d(TAG, "onCreate: Started.");
 
         adapter = new AGameListUser(this, R.layout.item_layout_gamelist, listOfGames);
 
@@ -123,6 +140,10 @@ public class VGameListUser extends AppCompatActivity {
         });
     }
 
+    /**
+     * Supplies entire collection
+     * @return
+     */
     public List<DGame> getGameList() {
         return gameList;
     }
@@ -134,6 +155,10 @@ public class VGameListUser extends AppCompatActivity {
     }
 
 
+    /**
+     * onClickFilter is used to popup the filter dialog
+     * @param view
+     */
     public void onClickFilter(View view){
         TextView txtClose;
         myDialog.setContentView(R.layout.activity_gamelist_user_popup_filter);
@@ -143,6 +168,9 @@ public class VGameListUser extends AppCompatActivity {
         myDialog.show();
     }
 
+    /**
+     * initializeViews sets up the initial state of the spinners within the filter dialog
+     */
     public void initializeViews () {
         Spinner spinnerOne = myDialog.findViewById(R.id.spinnerOne);
 
@@ -161,6 +189,11 @@ public class VGameListUser extends AppCompatActivity {
         spinnerOne.setOnItemSelectedListener(listener);
     }
 
+    /**
+     * updateSpinnerTwo is used to change the options within the lower spinner based
+     * upon the category selected in the first spinner
+     * @param spinnerArray
+     */
     public void updateSpinnerTwo(List<String> spinnerArray){
         Spinner spinnerTwo = myDialog.findViewById(R.id.spinnerTwo);
 
@@ -179,6 +212,11 @@ public class VGameListUser extends AppCompatActivity {
 
     }
 
+    /**
+     * showGames is used to determine the list of DGames that should be displayed based on
+     * a user's selected filter.
+     * @param text
+     */
     public void showGames(String text){
         gameList = DApp.getUserGameList().getGameList();
         List<DGame> filteredGameList = new ArrayList<>();
@@ -187,7 +225,7 @@ public class VGameListUser extends AppCompatActivity {
         switch (DFilter.getCategory()){
             case "No Of Players":
                 int noPlayers = Integer.parseInt(parts[0]);
-                Log.d(TAG, Integer.toString(noPlayers));
+                //Log.d(TAG, Integer.toString(noPlayers));
                 for (DGame game: gameList){
                     if (noPlayers >= game.getMinPlayers() && noPlayers <= game.getMaxPlayers()){
                         filteredGameList.add(game);
@@ -197,7 +235,7 @@ public class VGameListUser extends AppCompatActivity {
                 break;
             case "Play Time":
                 int playTime = Integer.parseInt(parts[0]);
-                Log.d(TAG, Integer.toString(playTime));
+                //Log.d(TAG, Integer.toString(playTime));
                 for (DGame game: gameList){
                     if (playTime >= game.getVisibleMinPlayTime()){
                         filteredGameList.add(game);
@@ -206,7 +244,7 @@ public class VGameListUser extends AppCompatActivity {
                 }
                 break;
             case "Location":
-                Log.d(TAG, text);
+                //Log.d(TAG, text);
                 for (DGame game: gameList){
                     if (text.equals(game.getLocation())){
                         filteredGameList.add(game);
@@ -215,7 +253,7 @@ public class VGameListUser extends AppCompatActivity {
                 }
                 break;
             case "Wish List":
-                Log.d(TAG, text);
+                //Log.d(TAG, text);
                 for (DGame game: gameList){
                     if (text.equals("Only Wish List") && game.getLocation().equals("Wish List")){
                         filteredGameList.add(game);
@@ -238,6 +276,10 @@ public class VGameListUser extends AppCompatActivity {
         }
     }
 
+    /**
+     * resetGameList sets the member variable gamelist back to the full
+     * collection of games then updates the view.
+     */
     public void resetGameList(){
         gameList = DApp.getUserGameList().getGameList();
     }
@@ -249,30 +291,34 @@ public class VGameListUser extends AppCompatActivity {
         }
     }
 
+    /**filterGames is used to determine which filter method should be called
+     * based on the category selected.
+     * @param text
+     */
     public void filterGames(String text){
 
         if(text.equals("No Of Players")){
             Toast.makeText(this, "Filter by: No of Players", Toast.LENGTH_SHORT).show();
             //call to filter games by no of players
-            Log.d(TAG, filterGamesByNoPlayers().toString());
+            //Log.d(TAG, filterGamesByNoPlayers().toString());
             updateSpinnerTwo(filterGamesByNoPlayers());
         }
         if(text.equals("Play Time")){
             Toast.makeText(this, "Filter by: Play Time:", Toast.LENGTH_SHORT).show();
             //call to filter games by amount of time
-            Log.d(TAG, filterGamesByTime().toString());
+            //Log.d(TAG, filterGamesByTime().toString());
             updateSpinnerTwo(filterGamesByTime());
         }
         if(text.equals("Location")){
             Toast.makeText(this, "Filter by: Locations", Toast.LENGTH_SHORT).show();
             //call to filter games by Location
-            Log.d(TAG, filterGamesByLocation().toString());
+            //Log.d(TAG, filterGamesByLocation().toString());
             updateSpinnerTwo(filterGamesByLocation());
         }
         if(text.equals("Wish List")){
             Toast.makeText(this, "Filter by: Wish List", Toast.LENGTH_SHORT).show();
             //call to filter games by WishList
-            Log.d(TAG, filterGamesByWishList().toString());
+            //Log.d(TAG, filterGamesByWishList().toString());
             updateSpinnerTwo(filterGamesByWishList());
         }
 
@@ -384,7 +430,7 @@ public class VGameListUser extends AppCompatActivity {
     public List<String> filterGamesByLocation(){
         List<DGame> gameList = DApp.getUserGameList().getGameList();
         List<String> listWithDuplicates =  new ArrayList<>();
-        Log.d(TAG,listWithDuplicates.toString());
+        //Log.d(TAG,listWithDuplicates.toString());
         listWithDuplicates.add("Select option");
         listWithDuplicates.add("Wish List");
         for (DGame game: gameList){
@@ -400,7 +446,9 @@ public class VGameListUser extends AppCompatActivity {
                 .collect(Collectors.toList());
     }
 
-
+    /**
+     * Class dedicated to listening to the user's selection on the first (category) spinner.
+     */
     public class SpinnerInteractionListener implements AdapterView.OnItemSelectedListener, View.OnTouchListener {
 
         boolean userSelect = false;
@@ -429,6 +477,9 @@ public class VGameListUser extends AppCompatActivity {
 
     }
 
+    /**
+     * Class dedicated to listening to the user's selection on the second (options) spinner.
+     */
     public class SpinnerTwoInteractionListener implements AdapterView.OnItemSelectedListener, View.OnTouchListener {
 
         boolean userSelect = false;

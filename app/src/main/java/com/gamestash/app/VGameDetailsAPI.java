@@ -6,6 +6,11 @@ import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+/**
+ * VGameDetailAPI shows the details of game objects that are returned
+ * from the Game Atlas API after a user's search
+ */
+
 public class VGameDetailsAPI extends AppCompatActivity {
     private static final String TAG = VGameDetailsAPI.class.getSimpleName();
 

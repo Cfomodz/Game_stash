@@ -2,6 +2,14 @@ package com.gamestash.app;
 
 public class DFilter {
 
+    /**
+     * DFilter allows for the semi-permanent storage of filter selections
+     * within the user game list view -> filter view. These variables are
+     * set by the spinners' listener functions and are gotten by the logic
+     * functions determining which list of games should be returned for
+     * any specific filter.
+     */
+
     private static String category = "";
     private static String selection = "";
 

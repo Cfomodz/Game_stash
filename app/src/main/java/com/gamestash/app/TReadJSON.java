@@ -9,6 +9,11 @@ import java.io.InputStream;
 import java.lang.ref.WeakReference;
 import java.nio.charset.StandardCharsets;
 
+/**
+ * TReadJSON reads local JSON files that include the user's data,
+ * such as their game list and their location list.
+ */
+
 public class TReadJSON implements Runnable{
     private static final String TAG = TReadJSON.class.getSimpleName();
 

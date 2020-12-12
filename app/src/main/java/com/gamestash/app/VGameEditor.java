@@ -11,6 +11,10 @@ import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+/**
+ * VGameEditor allows games within a user's library to be edited.
+ */
+
 public class VGameEditor extends AppCompatActivity {
     private static final String TAG = VGameEditor.class.getSimpleName();
 
