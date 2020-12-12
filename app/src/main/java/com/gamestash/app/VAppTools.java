@@ -2,12 +2,14 @@ package com.gamestash.app;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Html;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.text.HtmlCompat;
 
 import java.util.List;
 
@@ -68,7 +70,7 @@ public class VAppTools extends AppCompatActivity {
 
                 outputHTML = outputHTML.concat(gameString);
 
-                plainText = plainText.concat(gameName + " by " + publisher + ", which is a " + minPlayers + " to " + maxPlayers + " player game. The minimum recommended age is " + minAge + ".");
+                plainText = plainText.concat(gameName + " by " + publisher + ", which is a " + minPlayers + " to " + maxPlayers + " player game. The recommended age is " + minAge + ".");
                 plainText = plainText.concat(System.lineSeparator());
                 plainText = plainText.concat(System.lineSeparator());
             }
@@ -91,9 +93,10 @@ public class VAppTools extends AppCompatActivity {
         emailIntent.putExtra(Intent.EXTRA_EMAIL, new String[]{email.getText().toString()});
         emailIntent.putExtra(Intent.EXTRA_SUBJECT, subject);
         //emailIntent.putExtra(Intent.EXTRA_STREAM,outputHTML);
-        emailIntent.putExtra(Intent.EXTRA_TEXT, plainText);
-        emailIntent.putExtra(Intent.EXTRA_HTML_TEXT, outputHTML);
-        //emailIntent.putExtra(Intent.EXTRA_TEXT, Html.fromHtml(outputHTML));
+        //emailIntent.putExtra(Intent.EXTRA_TEXT, plainText);
+        //emailIntent.putExtra(Intent.EXTRA_HTML_TEXT, outputHTML);
+
+        emailIntent.putExtra(Intent.EXTRA_TEXT, Html.fromHtml(outputHTML, HtmlCompat.FROM_HTML_MODE_LEGACY));
         emailIntent.setType("text/html");
         //emailIntent.setData(Uri.parse("mailto:"));
         if(emailIntent.resolveActivity(getPackageManager()) != null){

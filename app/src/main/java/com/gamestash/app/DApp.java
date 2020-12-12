@@ -10,7 +10,7 @@ import java.util.Collections;
 import java.util.Comparator;
 
 /**
- * This class is used to store data between activities.
+ * DApp is used to store data between activities.
  */
 
 public class DApp {

@@ -2,6 +2,13 @@ package com.gamestash.app;
 
 import com.google.gson.annotations.SerializedName;
 
+/**
+ * <h1>DGame</h1>
+ * DGame is a class to store a game. It has variables for Board Game Atlas API produced
+ * content and variables for users to "override" the API produced content.
+ * Note: Content is not actually overriden. Logic exists to display user edited content instead of
+ * API produced content.
+ */
 public class DGame {
     //Member variables.
     private static final String TAG = DGame.class.getSimpleName();
