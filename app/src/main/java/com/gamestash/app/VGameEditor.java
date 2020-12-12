@@ -12,6 +12,7 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 /**
+ * <h1>VGameEditor</h1>
  * VGameEditor allows games within a user's library to be edited.
  */
 
@@ -34,11 +35,19 @@ public class VGameEditor extends AppCompatActivity {
         presenter.setupPresenter();
     }
 
+    /**
+     * onclickSaveGame saves changes.
+     * @param view
+     */
     public void onclickSaveGame(View view) {
         // Pass to presenter...
         presenter.processChanges();
     }
 
+    /**
+     * onclickDelete deletes a game.
+     * @param view
+     */
     public void onclickDelete(View view) {
         // Pass to presenter...
         presenter.deleteGame();
@@ -71,5 +80,9 @@ public class VGameEditor extends AppCompatActivity {
         return intent;
     }
 
+    /**
+     * getPosition returns a position for the userList.
+     * @return
+     */
     public int getPosition() {return position;}
 }
