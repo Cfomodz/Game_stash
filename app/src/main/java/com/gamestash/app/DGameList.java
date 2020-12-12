@@ -5,6 +5,11 @@ import com.google.gson.annotations.SerializedName;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * <h1>DGameList</h1>
+ * This is a basic class that is primarily used with the JSON calls to create the returned
+ * api objects. It can be used in other locations as it is creating a DGameList object.
+ */
 public class DGameList {
     private static final String TAG = DGameList.class.getSimpleName();
 
@@ -21,6 +26,10 @@ public class DGameList {
 
     public List<DGame> getGameList() {return gameList;}
 
+    /**
+     * resetNullGameValues loops over the class/object gameList and resets every entry to the
+     * default values. This is used when saving.
+     */
     public void resetNullGameValues() {
         gameList.forEach(game -> game.resetNullValues());
     }

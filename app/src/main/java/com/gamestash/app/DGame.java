@@ -323,6 +323,11 @@ public class DGame {
     public Boolean getIsUserCreated() {return isUserCreated;}
 
     //Getters that return edits over default api content...
+
+    /**
+     * getVisibleGameName returns the editedGameName if available, else the api gameName
+     * @return
+     */
     public String getVisibleGameName() {
         if (editedGameName != null && !editedGameName.equals("")) {
             return editedGameName;
@@ -331,13 +336,14 @@ public class DGame {
         }
     }
 
-    // Required for sorting. The toLowerCase() return ensures that case is ignored when sorting
-    // the user list. If getVisibleGameName is used instead then comparator.comparing groups
-    // uppercase letters together, then lowercase letters. Note: GROUPS not sorts...
-    // Example of sort without using this function:
-    // Game Name: Apples to Apples
-    // Game Name: Zenolyth
-    // Game Name: adam and eve
+    /**Required for sorting. The toLowerCase() return ensures that case is ignored when sorting
+    * the user list. If getVisibleGameName is used instead then comparator.comparing groups
+    * uppercase letters together, then lowercase letters. Note: GROUPS not sorts...
+    * Example of sort without using this function:
+    * Game Name: Apples to Apples
+    * Game Name: Zenolyth
+    * Game Name: adam and eve
+     */
     public String compareVisibleGameName() {
         if (editedGameName != null && !editedGameName.equals("")) {
             return editedGameName.toLowerCase();
@@ -346,6 +352,10 @@ public class DGame {
         }
     }
 
+    /**
+     * getVisibleYearPublished returns the editedYearPublished if available, else the api yearPublished
+     * @return
+     */
     public Integer getVisibleYearPublished() {
         if(editedYearPublished > 0) {
             return editedYearPublished;
@@ -354,6 +364,10 @@ public class DGame {
         }
     }
 
+    /**
+     * getVisibleMinPlayers returns the editedMinPlayers if available, else the api minPlayers
+     * @return
+     */
     public Integer getVisibleMinPlayers() {
         if(editedMinPlayers > -1) {
             return editedMinPlayers;
@@ -362,6 +376,10 @@ public class DGame {
         }
     }
 
+    /**
+     * getVisibleMaxPlayers returns the editedMaxPlayers if available, else the api maxPlayers
+     * @return
+     */
     public Integer getVisibleMaxPlayers() {
         if(editedMaxPlayers > -1) {
             return editedMaxPlayers;
@@ -370,6 +388,10 @@ public class DGame {
         }
     }
 
+    /**
+     * getVisibleMinPlayTime returns the editedMinPlayTime if available, else the api minPlayTime
+     * @return
+     */
     public Integer getVisibleMinPlayTime() {
         if(editedMinPlayTime > -1) {
             return editedMinPlayTime;
@@ -378,6 +400,10 @@ public class DGame {
         }
     }
 
+    /**
+     * getVisibleMaxPlayTime returns the editedMaxPlayTime if available, else the api maxPlayTime
+     * @return
+     */
     public Integer getVisibleMaxPlayTime() {
         if (editedMaxPlayTime > -1) {
             return editedMaxPlayTime;
@@ -386,6 +412,10 @@ public class DGame {
         }
     }
 
+    /**
+     * getVisibleMinAge returns the editedMinAge if available, else the api minAge
+     * @return
+     */
     public Integer getVisibleMinAge() {
         if (editedMinAge > -1) {
             return editedMinAge;
@@ -394,6 +424,10 @@ public class DGame {
         }
     }
 
+    /**
+     * getVisibleDescription returns the editedDescription if available, else the api description
+     * @return
+     */
     public String getVisibleDescription() {
         if (editedDescription != null && !editedDescription.equals("")) {
             return editedDescription;
@@ -402,6 +436,10 @@ public class DGame {
         }
     }
 
+    /**
+     * getVisibleThumbURL returns the editedThumbURL if available, else the api thumbURL
+     * @return
+     */
     public String getVisibleThumbURL() {
         if (editedThumbURL != null && !editedThumbURL.equals("")) {
             return editedThumbURL;
@@ -410,6 +448,10 @@ public class DGame {
         }
     }
 
+    /**
+     * getVisibleImageURL returns the editedImageURL if available, else the api imageURL
+     * @return
+     */
     public String getVisibleImageURL() {
         if (editedImageURL != null && !editedImageURL.equals("")) {
             return editedImageURL;
@@ -418,6 +460,10 @@ public class DGame {
         }
     }
 
+    /**
+     * getVisiblePublisher returns the editedPublisher if available, else the api publisher
+     * @return
+     */
     public DPublisher getVisiblePublisher() {
         if (editedPublisher != null && editedPublisher.getName() != null && !editedPublisher.getName().equals("")) {
             return editedPublisher;
@@ -426,6 +472,9 @@ public class DGame {
         }
     }
 
+    /**
+     * resetUserValues resets all edited values to defaults.
+     */
     public void resetUserValues() {
         if(!isUserCreated) {
             this.editedGameName = "";
@@ -442,6 +491,15 @@ public class DGame {
         }
     }
 
+    /**
+     * resetNullValues resets all DGame values that are null to default values.
+     * null values should only be occuring when the game is returned from an API with missing
+     * information, as in the board game atlas api returns the game with a missing
+     * value from their db.
+     *
+     * This is called after a game is saved to ensure that all values at least display when
+     * called, for example in the game editor, the details pages, and even the listviews.
+     */
     public void resetNullValues() {
         // API variables.
         if(this.gameID == null){
