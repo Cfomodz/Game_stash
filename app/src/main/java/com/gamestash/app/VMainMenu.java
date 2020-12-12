@@ -12,6 +12,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import java.io.File;
 import java.util.Random;
 
+
+/**
+ * <h1>Game Stash App</h1>
+ * The Game Stash app allows users to query the board game atlas api and store any game to their list.
+ * <b>Note:</b> The app was largely developed to give users a convenient way to set a storage location for users
+ * with a larger collection. *
+ */
 public class VMainMenu extends AppCompatActivity {
     private static final String TAG = VMainMenu.class.getSimpleName();
 
@@ -30,7 +37,7 @@ public class VMainMenu extends AppCompatActivity {
 
         presenter = new PMainMenu(this);
 
-        //Random starting image... just add R.darawable. image name to array to expand.
+        //Random starting image... just add R.drawable. image name to array to expand.
         int[] mainImgs =  {R.drawable.main_menu_img_00,
                 R.drawable.main_menu_img_01,
                 R.drawable.main_menu_img_02,
@@ -45,27 +52,25 @@ public class VMainMenu extends AppCompatActivity {
         DApp.setUserLocationListJSONFile(new File(this.getFilesDir() + "/" + userLocationListFileName));
 
         this.presenter.processChanges();
-
-        // TEST AREA START // // TEST AREA START // // TEST AREA START //
-        // TEST AREA START // // TEST AREA START // // TEST AREA START //
-        // TEST AREA START // // TEST AREA START // // TEST AREA START //
-
-        // Use your function below to test stuff you may need to test...
-        testStuff4Lee();
-        testStuff4Daren();
-        testStuff4David();
-        testStuff4Megan();
-        //  TEST AREA END  // //  TEST AREA END  // //  TEST AREA END  //
-        //  TEST AREA END  // //  TEST AREA END  // //  TEST AREA END  //
-        //  TEST AREA END  // //  TEST AREA END  // //  TEST AREA END  //
-
     }
 
+    /**
+     * onclickViewCollection starts the user game list.
+     * @param view
+     */
     public void onclickViewCollection(View view) {
         Intent intent = new Intent(this, VGameListUser.class);
         startActivity(intent);
     }
 
+    /**
+     * onclickAddGameManually starts the game editor.
+     * <b>Note:</b> Passes the bundle parm so that the game editor can return to the proper
+     * starting parent if the user moves backward. Position is passed as -1 to indicate that
+     * no list position is being passed. This also indicates to the editor that it is opening from
+     * a non-list. There is a distinction in that the game editor can be opened from to additional
+     * locations that would have a value. Most likely this
+     */
     public void onclickAddGameManually(View view) {
         Bundle bundle = new Bundle();
         bundle.putString("goto", "mainMenu");
@@ -83,23 +88,5 @@ public class VMainMenu extends AppCompatActivity {
     public void onclickProfile(View view) {
         Intent intent = new Intent(this, VAppTools. class);
         startActivity(intent);
-    }
-
-    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
-    public void testStuff4Lee() {
-        //TEST AREA for Lee
-    }
-
-    public void testStuff4Daren() {
-        //TEST AREA for Daren
-    }
-
-    public void testStuff4David() {
-        //TEST AREA for David
-        
-    }
-
-    public void testStuff4Megan() {
-        //TEST AREA for Megan
     }
 }
