@@ -9,6 +9,10 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+/**
+ *  VGameDetailUser shows the details of a game (DGame) object in a view to the user
+ *  The game object can be edited | -> deleted from this page.
+ */
 
 public class VGameDetailsUser extends AppCompatActivity {
     private static final String TAG = VGameDetailsUser.class.getSimpleName();

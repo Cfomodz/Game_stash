@@ -10,6 +10,10 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.List;
 
+/**
+ * VGameListAPI shows the games that are the results from the Board Game Atlas
+ */
+
 public class VGameListAPI extends AppCompatActivity {
     private static final String TAG = VGameListAPI.class.getSimpleName();
 

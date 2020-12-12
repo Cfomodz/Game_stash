@@ -6,6 +6,10 @@ import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+/**
+ *
+ */
+
 public class VGameDetailsAPI extends AppCompatActivity {
     private static final String TAG = VGameDetailsAPI.class.getSimpleName();
 
