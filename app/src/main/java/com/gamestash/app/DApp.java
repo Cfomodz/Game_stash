@@ -14,7 +14,7 @@ import java.util.Comparator;
  */
 
 public class DApp {
-    
+
     private static final String TAG = DApp.class.getSimpleName();
 
     // Member variables.
