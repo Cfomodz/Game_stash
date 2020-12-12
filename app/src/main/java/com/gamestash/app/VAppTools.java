@@ -43,35 +43,36 @@ public class VAppTools extends AppCompatActivity {
         String plainText = "";
 
         for (DGame game: gameList){
-            String htmlTableOpen = "<table style=\"width:100%\"";
+            if game.getLocation().equals("Wish List") {
+                String htmlTableOpen = "<table style=\"width:100%\"";
 
-            String imageURL = game.getImageURL();
-            String gameName = game.getGameName();
+                String imageURL = game.getImageURL();
+                String gameName = game.getGameName();
 
-            String publisher = game.getPublisher().getName();
+                String publisher = game.getPublisher().getName();
 
-            String minPlayers = game.getMinPlayers().toString();
-            String maxPlayers = game.getMaxPlayers().toString();
+                String minPlayers = game.getMinPlayers().toString();
+                String maxPlayers = game.getMaxPlayers().toString();
 
-            String minAge = game.getMinAge().toString();
-            minAge = minAge.concat("+");
+                String minAge = game.getMinAge().toString();
+                minAge = minAge.concat("+");
 
-            String description = game.getDescription();
+                String description = game.getDescription();
 
-            String htmlTableHeading = "<tr><th><img src=\""+imageURL+"\"></th><th>" + gameName +"</th>";
-            String htmlTableRow = "<tr><td>Publisher: "+publisher+"</td></tr>";
-            String htmlTableRow2 = "<tr><td>Players: " + minPlayers + " - " + maxPlayers + "</td><td>Age: " + minAge + "</td></tr>";
-            String htmlTableRow3 = "<tr><td>" + description + "</td></tr>";
-            String htmlTableClose = "</table>";
+                String htmlTableHeading = "<tr><th><img src=\"" + imageURL + "\"></th><th>" + gameName + "</th>";
+                String htmlTableRow = "<tr><td>Publisher: " + publisher + "</td></tr>";
+                String htmlTableRow2 = "<tr><td>Players: " + minPlayers + " - " + maxPlayers + "</td><td>Age: " + minAge + "</td></tr>";
+                String htmlTableRow3 = "<tr><td>" + description + "</td></tr>";
+                String htmlTableClose = "</table>";
 
-            String gameString = htmlTableOpen + htmlTableHeading + htmlTableRow + htmlTableRow2 + htmlTableRow3 + htmlTableClose;
+                String gameString = htmlTableOpen + htmlTableHeading + htmlTableRow + htmlTableRow2 + htmlTableRow3 + htmlTableClose;
 
-            outputHTML = outputHTML.concat(gameString);
+                outputHTML = outputHTML.concat(gameString);
 
-            plainText = plainText.concat(gameName + " by " + publisher + ", which is a " + minPlayers + " to " + maxPlayers + " player game. The minimum recommended age is " + minAge + ".");
-            plainText = plainText.concat(System.lineSeparator());
-            plainText = plainText.concat(System.lineSeparator());
-
+                plainText = plainText.concat(gameName + " by " + publisher + ", which is a " + minPlayers + " to " + maxPlayers + " player game. The minimum recommended age is " + minAge + ".");
+                plainText = plainText.concat(System.lineSeparator());
+                plainText = plainText.concat(System.lineSeparator());
+            }
         }
 
         String htmlClose = "</body></html>";
