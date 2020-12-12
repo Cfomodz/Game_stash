@@ -17,6 +17,11 @@ import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
+/**
+ * <h1>AGameList API</h1>
+ * This class is used to attach the game list returned from the board game atlas api to the
+ * listview in VGAmeListAPI.
+ */
 public class AGameListAPI extends ArrayAdapter<DGame> {
     private static final String TAG = AGameListAPI.class.getSimpleName();
 
@@ -32,6 +37,12 @@ public class AGameListAPI extends ArrayAdapter<DGame> {
         //etc.
     }
 
+    /**
+     * AGameListAPI requires a List of DGame as objects.
+     * @param context
+     * @param resource
+     * @param objects
+     */
     public AGameListAPI(Context context, int resource, List<DGame> objects) {
         super(context, resource, objects);
         this.mContext = context;
@@ -41,6 +52,7 @@ public class AGameListAPI extends ArrayAdapter<DGame> {
     @NonNull
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
+        // Set up incoming values to display
         String gameImage = getItem(position).getThumbURL();
         String name = getItem(position).getGameName();
         String publisher = "Publisher: " + getItem(position).getPublisher().getName();
@@ -49,6 +61,9 @@ public class AGameListAPI extends ArrayAdapter<DGame> {
                 "    Age: " + getItem(position).getMinAge() + "+";
         //etc.
 
+        // Viewholder is used to:
+        // a) contain all needed layout items
+        // b) only hold the items that are on screen.
         final View result;
         ViewHolder holder;
 
@@ -57,6 +72,8 @@ public class AGameListAPI extends ArrayAdapter<DGame> {
             convertView = inflater.inflate(mResource, parent, false);
 
             holder = new ViewHolder();
+
+            // Set viewholder to layout items
             holder.gameImage = convertView.findViewById(R.id.iv_gamelist_item_game_thumb);
             holder.name = convertView.findViewById(R.id.tv_gamelist_item_game_name);
             holder.publisher = convertView.findViewById(R.id.tv_gamelist_item_publisher);
@@ -70,11 +87,13 @@ public class AGameListAPI extends ArrayAdapter<DGame> {
             holder = (ViewHolder) convertView.getTag();
             result = convertView;
         }
+        // Sets up the animation for the items loading into view.
         Animation animation = AnimationUtils.loadAnimation(mContext,
                 (position > lastPosition) ? R.anim.load_down_anim : R.anim.load_up_anim);
         result.startAnimation(animation);
         lastPosition = position;
 
+        // Set the values of the layout items to the values of the list items.
         if(gameImage.trim().length() > 0) {
             Picasso.get()
                     .load(gameImage)
@@ -96,10 +115,7 @@ public class AGameListAPI extends ArrayAdapter<DGame> {
         holder.extraDetails.setText(extraDetails);
         //etc.
 
-
-
-        Log.d(TAG, getItem(position).getGameName() + " " + getItem(position).getThumbURL());
-
+        //Log.d(TAG, getItem(position).getGameName() + " " + getItem(position).getThumbURL());
         return convertView;
     }
 }
