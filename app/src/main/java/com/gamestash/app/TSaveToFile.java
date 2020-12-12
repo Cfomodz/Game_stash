@@ -7,6 +7,11 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.lang.ref.WeakReference;
 
+/**
+ * TSaveToFile saves the user's data, such as their list of
+ * locations and their list of games, to disk.
+ */
+
 public class TSaveToFile implements Runnable{
     private static final String TAG = TSaveToFile.class.getSimpleName();
     private final WeakReference<Context> context;

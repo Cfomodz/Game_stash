@@ -13,6 +13,13 @@ import androidx.core.text.HtmlCompat;
 
 import java.util.List;
 
+/**
+ * The VAppTools page allows users to both share the items on their Wish List
+ * via email, as well as reset the locations list if they stop storing games
+ * in any location and no longer want it to show up as a suggestion for a
+ * possible location while adding a game.
+ */
+
 public class VAppTools extends AppCompatActivity {
     private static final String TAG = VAppTools.class.getSimpleName();
 
@@ -97,6 +104,7 @@ public class VAppTools extends AppCompatActivity {
         //emailIntent.putExtra(Intent.EXTRA_HTML_TEXT, outputHTML);
 
         emailIntent.putExtra(Intent.EXTRA_TEXT, Html.fromHtml(outputHTML, HtmlCompat.FROM_HTML_MODE_LEGACY));
+        emailIntent.putExtra(Intent.EXTRA_HTML_TEXT, Html.fromHtml(outputHTML, HtmlCompat.FROM_HTML_MODE_LEGACY));
         emailIntent.setType("text/html");
         //emailIntent.setData(Uri.parse("mailto:"));
         if(emailIntent.resolveActivity(getPackageManager()) != null){

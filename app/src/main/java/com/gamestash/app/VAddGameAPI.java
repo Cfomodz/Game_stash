@@ -7,6 +7,11 @@ import android.widget.EditText;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+/**
+ * The VAddGameAPI class adds a selected game from the Board Game Atlas
+ * API results to the user's collection.
+ */
+
 public class VAddGameAPI extends AppCompatActivity {
     private static final String TAG = VAddGameAPI.class.getSimpleName();
 
