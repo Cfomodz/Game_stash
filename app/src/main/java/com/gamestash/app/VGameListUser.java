@@ -255,16 +255,16 @@ public class VGameListUser extends AppCompatActivity {
             case "Wish List":
                 //Log.d(TAG, text);
                 for (DGame game: gameList){
-                    if (game.getLocation().equals("Wish List")){
-                        filteredGameList.add(game);
-                        positionGameList.add(gameList.indexOf(game));
-                    }else{
-                        if (!game.getLocation().equals("Wish List")){
+                    if (DFilter.getSelection() == "Only Wish List") {
+                        if (game.getLocation().equals("Wish List")) {
+                            filteredGameList.add(game);
+                            positionGameList.add(gameList.indexOf(game));
+                        }
+                    } else if (!game.getLocation().equals("Wish List")){
                             filteredGameList.add(game);
                             positionGameList.add(gameList.indexOf(game));
                         }
                     }
-                }
                 break;
         }
 
@@ -420,7 +420,7 @@ public class VGameListUser extends AppCompatActivity {
         List<String> wishListOptions = new ArrayList<>();
         wishListOptions.add("Select option");
         wishListOptions.add("Only Wish List");
-        wishListOptions.add("All except Wish List");
+        wishListOptions.add("All Except Wish List");
 
         //this is the final results that should be shown in the second spinner
         //Log.d(TAG, wishListOptions.toString());
