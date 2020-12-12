@@ -1,10 +1,12 @@
 package com.gamestash.app;
 
-import com.google.gson.annotations.SerializedName;
-
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * <h1>DLocationList</h1>
+ * This class is used with the creation of a User Location List.
+ */
 public class DLocationList {
     private static final String TAG = DLocationList.class.getSimpleName();
 

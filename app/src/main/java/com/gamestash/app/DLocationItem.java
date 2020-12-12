@@ -1,5 +1,11 @@
 package com.gamestash.app;
 
+/**
+ * <h1>DLocationItem</h1>
+ * This Class sets up a location.
+ * Marked for deprecation.
+ * @deprecated
+ */
 public class DLocationItem {
     private String locationName;
     private String locationID;

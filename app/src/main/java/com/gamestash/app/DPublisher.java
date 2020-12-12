@@ -1,5 +1,10 @@
 package com.gamestash.app;
 
+/**
+ * <h1>DPublisher</h1>
+ * This class is used in the creation of a new game obj. It sets up the publisher.
+ * It is separate because the board game atlas api returns an object.
+ */
 public class DPublisher {
     private String name = "";
     private String url = "";
