@@ -2,6 +2,7 @@ package com.gamestash.app;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Html;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
@@ -39,6 +40,7 @@ public class VAppTools extends AppCompatActivity {
         outputHTML = outputHTML.concat(htmlHeader);
 
         Log.d(TAG,outputHTML);
+        String plainText = "";
 
         for (DGame game: gameList){
             String htmlTableOpen = "<table style=\"width:100%\"";
@@ -65,10 +67,16 @@ public class VAppTools extends AppCompatActivity {
             String gameString = htmlTableOpen + htmlTableHeading + htmlTableRow + htmlTableRow2 + htmlTableRow3 + htmlTableClose;
 
             outputHTML = outputHTML.concat(gameString);
+
+            plainText = plainText.concat(gameName + " by " + publisher + ", which is a " + minPlayers + " to " + maxPlayers + " player game. The minimum recommended age is " + minAge + ".");
+            plainText = plainText.concat(System.lineSeparator());
+            plainText = plainText.concat(System.lineSeparator());
+
         }
 
         String htmlClose = "</body></html>";
         outputHTML = outputHTML.concat(htmlClose);
+
 
         Log.d(TAG,outputHTML);
 
@@ -82,10 +90,11 @@ public class VAppTools extends AppCompatActivity {
         Intent emailIntent = new Intent(Intent.ACTION_SEND);
         emailIntent.putExtra(Intent.EXTRA_EMAIL, new String[]{email.getText().toString()});
         emailIntent.putExtra(Intent.EXTRA_SUBJECT, subject);
-        emailIntent.putExtra(Intent.EXTRA_STREAM,outputHTML);
-        //emailIntent.putExtra(Intent.EXTRA_HTML_TEXT, outputHTML);
+        //emailIntent.putExtra(Intent.EXTRA_STREAM,outputHTML);
+        emailIntent.putExtra(Intent.EXTRA_TEXT, plainText);
+        emailIntent.putExtra(Intent.EXTRA_HTML_TEXT, outputHTML);
         //emailIntent.putExtra(Intent.EXTRA_TEXT, Html.fromHtml(outputHTML));
-        emailIntent.setType("message/rfc822");
+        emailIntent.setType("text/html");
         //emailIntent.setData(Uri.parse("mailto:"));
         if(emailIntent.resolveActivity(getPackageManager()) != null){
             startActivity(emailIntent);
