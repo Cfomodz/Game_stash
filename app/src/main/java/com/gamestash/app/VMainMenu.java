@@ -81,7 +81,7 @@ public class VMainMenu extends AppCompatActivity {
     }
 
     public void onclickProfile(View view) {
-        Intent intent = new Intent(this, VSettings. class);
+        Intent intent = new Intent(this, VAppTools. class);
         startActivity(intent);
     }
 

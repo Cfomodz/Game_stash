@@ -1,11 +1,7 @@
 package com.gamestash.app;
 
-import android.annotation.SuppressLint;
-import android.content.DialogInterface;
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
-import android.text.Html;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
@@ -13,19 +9,18 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import java.util.ArrayList;
 import java.util.List;
 
-public class VSettings extends AppCompatActivity {
-    private static final String TAG = VSettings.class.getSimpleName();
+public class VAppTools extends AppCompatActivity {
+    private static final String TAG = VAppTools.class.getSimpleName();
 
     private IProcess presenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_settings);
-        presenter = new PSettings(this);
+        setContentView(R.layout.activity_app_tools);
+        presenter = new PAppTools(this);
     }
 
     public void onClickResetLocationList(View view) {
@@ -95,7 +90,7 @@ public class VSettings extends AppCompatActivity {
         if(emailIntent.resolveActivity(getPackageManager()) != null){
             startActivity(emailIntent);
         }else{
-            Toast.makeText(VSettings.this,"There is no email application installed", Toast.LENGTH_SHORT).show();
+            Toast.makeText(VAppTools.this,"There is no email application installed", Toast.LENGTH_SHORT).show();
         }
 
     }

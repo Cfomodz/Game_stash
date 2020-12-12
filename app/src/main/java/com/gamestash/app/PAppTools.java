@@ -5,7 +5,6 @@ import android.util.Log;
 
 import androidx.annotation.RequiresApi;
 
-import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
 import java.lang.ref.WeakReference;
@@ -13,13 +12,13 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class PSettings implements IProcess {
+public class PAppTools implements IProcess {
     private static final String TAG = PMainMenu.class.getSimpleName();
 
-    private WeakReference<VSettings> masterRef;
+    private WeakReference<VAppTools> masterRef;
     private String jsonString;
 
-    public PSettings(VSettings activity) {
+    public PAppTools(VAppTools activity) {
         this.masterRef = new WeakReference<>(activity);
     }
 
