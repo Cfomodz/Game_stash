@@ -5,15 +5,23 @@ import android.widget.Toast;
 
 import java.lang.ref.WeakReference;
 
-class PAPISearchResults implements IProcess {
-    private static final String TAG = PAPISearchResults.class.getSimpleName();
+/**
+ * <h1>PGameListAPI</h1>
+ * Presenter for VGameListAPI.
+ */
+class PGameListAPI implements IProcess {
+    private static final String TAG = PGameListAPI.class.getSimpleName();
 
     private WeakReference<VGameListAPI> masterRef;
 
-    public PAPISearchResults(VGameListAPI activity){
+    public PGameListAPI(VGameListAPI activity){
         this.masterRef = new WeakReference<>(activity);
     }
 
+    /**
+     * processChanges checks to see if variables have been updated and, if they need to be,
+     * runs the correct function to update them.
+     */
     @Override
     public void processChanges() {
         Log.d(TAG, "Beginning to process the updates");
