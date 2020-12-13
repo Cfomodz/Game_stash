@@ -260,11 +260,13 @@ public class VGameListUser extends AppCompatActivity {
                             filteredGameList.add(game);
                             positionGameList.add(gameList.indexOf(game));
                         }
-                    } else if (!game.getLocation().equals("Wish List")){
+                    } else {
+                        if (!game.getLocation().equals("Wish List")){
                             filteredGameList.add(game);
                             positionGameList.add(gameList.indexOf(game));
                         }
                     }
+                }
                 break;
         }
 
